@@ -1,0 +1,16 @@
+  <!-- Fenêtre : aperçu des réalisations -->
+  <dialog class="apercu" id="apercu" aria-labelledby="apercu-titre">
+    <div class="apercu-tete">
+      <h2 id="apercu-titre">Aperçu</h2>
+      <div class="bascule" role="group" aria-label="Type d'écran">
+        <button type="button" data-vue="ordi" aria-pressed="true">Ordinateur</button>
+        <button type="button" data-vue="tel" aria-pressed="false">Téléphone</button>
+      </div>
+      <button type="button" class="fermer" aria-label="Fermer l'aperçu">Fermer</button>
+    </div>
+    <div class="apercu-scene" id="apercu-scene"></div>
+    <div class="apercu-pied">
+      <p id="apercu-desc"></p>
+      <a class="bouton bouton-plat bouton-plat-contour apercu-lien" id="apercu-lien" href="#" target="_blank" rel="noopener" hidden>Voir la démonstration</a>
+    </div>
+  </dialog>

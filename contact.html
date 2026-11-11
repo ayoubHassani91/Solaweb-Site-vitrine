@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — SolaWeb</title>
+  <meta name="description" content="Demandez un devis à SolaWeb : site web, assistant IA ou automatisation. Réponse avec un devis écrit, sans engagement.">
+  <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
+  <meta name="theme-color" content="#FFFFFF">
+  <!-- Aperçu de partage : à compléter avec l'adresse (og:url) et une image absolue (og:image) une fois le domaine choisi -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="SolaWeb">
+  <meta property="og:title" content="Contact — SolaWeb">
+  <meta property="og:description" content="Demandez un devis à SolaWeb : site web, assistant IA ou automatisation. Réponse avec un devis écrit, sans engagement.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script src="js/animations.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body class="page-interne">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <!-- Logo SolaWeb (soleil levant + montagnes), redessiné en vectoriel d'après le logo fourni (assets/logo-solaweb-original.png) -->
+    <symbol id="logo-sw" viewBox="0 0 330 92">
+      <defs>
+        <linearGradient id="sw-soleil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC531"/><stop offset="1" stop-color="#FF6A1A"/></linearGradient>
+        <clipPath id="sw-horizon"><rect x="0" y="0" width="104" height="72"/></clipPath>
+      </defs>
+      <circle cx="52" cy="42" r="36" fill="url(#sw-soleil)" clip-path="url(#sw-horizon)"/>
+      <g fill="#fff"><rect x="62" y="23" width="34" height="3.4" rx="1.7"/><rect x="66" y="31" width="30" height="3.4" rx="1.7"/><rect x="10" y="49" width="30" height="3.4" rx="1.7"/></g>
+      <path d="M4 80L34 58L42 64L53 46L65 60L73 55L102 80Z" fill="#fff" stroke="#CFC3F2" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M14 84Q52 78 92 84" fill="none" stroke="#CFC3F2" stroke-width="1.4" stroke-linecap="round"/>
+      <text x="110" y="62" font-size="48" font-weight="600" letter-spacing="-1"><tspan fill="currentColor">Sola</tspan><tspan fill="#F47B20">Web</tspan></text>
+    </symbol>
+  </svg>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <div class="conteneur entete-interieur">
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+      <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="menu" id="menu" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+        <div class="menu-cta-zone"><a class="bouton bouton-plein fleche" href="contact.html">Demander un devis</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <section class="bandeau-page" aria-labelledby="t-page">
+      <div class="conteneur">
+        <ol class="fil-ariane" aria-label="Vous êtes ici"><li><a href="index.html">Accueil</a></li><li aria-current="page">Contact</li></ol>
+        <p class="sur-titre" data-anime>Contact</p>
+        <h1 id="t-page" data-mots>Parlons de votre projet&nbsp;?</h1>
+        <p data-anime style="--d:300">Dites-nous ce qui vous plaît. Nous revenons vers vous avec un devis écrit, sans engagement.</p>
+      </div>
+    </section>
+
+    <section class="section ct ct-clair fond-pale" id="contact" aria-labelledby="t-contact">
+      <div class="conteneur ct-grille">
+        <div data-anime>
+          <p class="sur-titre">Nous écrire</p>
+          <h2 id="t-contact" class="ct-titre">Un premier échange, <span class="accent">sans engagement.</span></h2>
+          <p class="ct-intro">Vous découvrez votre première maquette avant tout paiement. Elle ne vous plaît pas&nbsp;? Vous ne payez&nbsp;rien.</p>
+          <div class="ct-coord"><div class="ct-carte"><span class="ct-lbl">E-mail</span><span class="a-completer">à compléter</span></div><div class="ct-carte"><span class="ct-lbl">Téléphone</span><span class="a-completer">à compléter</span></div></div>
+        </div>
+        <div class="ct-droite" data-anime style="--d:150">
+          <form id="form-devis" class="ct-form" novalidate method="dialog" aria-describedby="note-ct">
+              <noscript><p class="ct-note">JavaScript est désactivé : le formulaire de démonstration est indisponible. Aucune donnée ne peut être envoyée.</p></noscript>
+              <fieldset class="champs-groupe" disabled>
+                <h3 class="ct-form-titre">Ou remplissez ce petit formulaire</h3>
+                <div class="ct-champ"><label for="nom">Nom <span aria-hidden="true">*</span></label><input id="nom" name="nom" type="text" autocomplete="name" maxlength="100" required aria-describedby="erreur-nom"><p class="erreur" id="erreur-nom" aria-live="polite"></p></div>
+                <div class="ct-champ"><label for="entreprise">Nom de votre entreprise <span class="req">(facultatif)</span></label><input id="entreprise" name="entreprise" type="text" autocomplete="organization" maxlength="100"></div>
+                <div class="ct-champ"><label for="email">Adresse e-mail <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="erreur-email"><p class="erreur" id="erreur-email" aria-live="polite"></p></div>
+                <div class="ct-champ"><span class="ct-lib" id="lib-service">Le service qui vous intéresse</span>
+                  <div class="ct-chips" role="radiogroup" aria-labelledby="lib-service">
+                    <label><input type="radio" name="formule" value="site" checked><span>Site web</span></label>
+                    <label><input type="radio" name="formule" value="ia"><span>Assistant IA</span></label>
+                    <label><input type="radio" name="formule" value="automatisation"><span>Automatisation</span></label>
+                    <label><input type="radio" name="formule" value="indecis"><span>Je ne sais pas encore</span></label>
+                  </div>
+                </div>
+                <div class="ct-champ"><label for="message">Votre projet, en quelques mots <span aria-hidden="true">*</span></label><textarea id="message" name="message" maxlength="2000" required aria-describedby="erreur-message"></textarea><p class="erreur" id="erreur-message" aria-live="polite"></p></div>
+                <p class="ct-note" id="note-ct">* Champs obligatoires. Formulaire de démonstration : l&rsquo;envoi est simulé, aucune donnée n&rsquo;est transmise ni enregistrée.</p>
+                <div><button class="bouton bouton-plat ct-btn bouton-plat-plein" type="submit">Envoyer ma demande</button></div>
+              </fieldset>
+              <div class="retour-simule" id="retour-simule" tabindex="-1" role="status" hidden><p></p></div>
+            </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied-site">
+    <div class="conteneur pied-grille">
+      <div class="pied-marque">
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+        <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
+      </div>
+      <nav aria-labelledby="pied-t1">
+        <h2 class="pied-titre" id="pied-t1">Le site</h2>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="pied-t2">
+        <h2 class="pied-titre" id="pied-t2">Informations</h2>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+          <li><a href="conditions.html">Conditions commerciales</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="pied-titre">Contact</h2>
+        <ul>
+          <li>E-mail : <span class="a-completer">à compléter</span></li>
+          <li>Téléphone : <span class="a-completer">à compléter</span></li>
+        </ul>
+        <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html">Demander un devis</a>
+      </div>
+    </div>
+    <div class="conteneur pied-bas">
+      <p>© 2026 SolaWeb · Version de travail : contenus provisoires, non destinée à la publication.</p>
+    </div>
+  </footer>
+</body>
+</html>

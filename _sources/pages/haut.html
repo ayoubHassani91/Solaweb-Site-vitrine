@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>__TITRE__</title>
+  <meta name="description" content="__DESC__">
+  <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
+  <meta name="theme-color" content="#FFFFFF">
+  <!-- Aperçu de partage : à compléter avec l'adresse (og:url) et une image absolue (og:image) une fois le domaine choisi -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="SolaWeb">
+  <meta property="og:title" content="__TITRE__">
+  <meta property="og:description" content="__DESC__">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script src="js/animations.js"></script>
+  <script src="js/main.js" defer></script>
+__SCRIPTS__</head>
+<body class="__CLASSE__">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <!-- Logo SolaWeb (soleil levant + montagnes), redessiné en vectoriel d'après le logo fourni (assets/logo-solaweb-original.png) -->
+    <symbol id="logo-sw" viewBox="0 0 330 92">
+      <defs>
+        <linearGradient id="sw-soleil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC531"/><stop offset="1" stop-color="#FF6A1A"/></linearGradient>
+        <clipPath id="sw-horizon"><rect x="0" y="0" width="104" height="72"/></clipPath>
+      </defs>
+      <circle cx="52" cy="42" r="36" fill="url(#sw-soleil)" clip-path="url(#sw-horizon)"/>
+      <g fill="#fff"><rect x="62" y="23" width="34" height="3.4" rx="1.7"/><rect x="66" y="31" width="30" height="3.4" rx="1.7"/><rect x="10" y="49" width="30" height="3.4" rx="1.7"/></g>
+      <path d="M4 80L34 58L42 64L53 46L65 60L73 55L102 80Z" fill="#fff" stroke="#CFC3F2" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M14 84Q52 78 92 84" fill="none" stroke="#CFC3F2" stroke-width="1.4" stroke-linecap="round"/>
+      <text x="110" y="62" font-size="48" font-weight="600" letter-spacing="-1"><tspan fill="currentColor">Sola</tspan><tspan fill="#F47B20">Web</tspan></text>
+    </symbol>
+  </svg>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <div class="conteneur entete-interieur">
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+      <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="menu" id="menu" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html"__C_index__>Accueil</a></li>
+          <li><a href="services.html"__C_services__>Services</a></li>
+          <li><a href="realisations.html"__C_realisations__>Réalisations</a></li>
+          <li><a href="tarifs.html"__C_tarifs__>Tarifs</a></li>
+          <li><a href="contact.html"__C_contact__>Contact</a></li>
+        </ul>
+        <div class="menu-cta-zone"><a class="bouton bouton-plein fleche" href="contact.html">Demander un devis</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">

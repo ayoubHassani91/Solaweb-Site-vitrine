@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>SolaWeb, vidéo de fond (source)</title>
+<style>
+  @font-face { font-family: "EB Garamond"; src: url("fonts/eb-garamond-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Instrument Sans"; src: url("fonts/instrument-sans-latin.woff2") format("woff2"); font-weight: 400 700; }
+  html, body { margin: 0; background: #e9e6f0; }
+  canvas { display: block; width: 100vw; height: auto; max-width: 1920px; margin: 0 auto; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script>
+/* Vidéo de fond de l'accueil SolaWeb : 20 secondes en boucle, 1920 × 1080.
+   Tout est dessiné en fonction du temps t (secondes) : dessiner(t) donne toujours la même image,
+   ce qui permet de capturer la vidéo image par image. L'image à t = 20 est identique à t = 0 (boucle sans saut).
+   Ouvert normalement, le fichier joue l'animation en direct (aperçu). */
+const W = 1920, H = 1080, DUREE = 20;
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+
+const C = {
+  fond: '#FFFFFF', pale: '#F6F3FE', lueur: 'rgba(221, 211, 251, 0.55)', filet: 'rgba(42, 23, 96, 0.14)',
+  violet: '#5B2BC4', violetFonce: '#2A1760', violetClair: '#DDD3FB', violetTresClair: '#F1ECFE',
+  encre: '#1E1A2E', gris: '#8A8598', grisClair: '#ECEAF2', orange: '#F47B20'
+};
+const SANS = '"Instrument Sans", "Segoe UI", Arial, sans-serif';
+const SERIF = '"EB Garamond", Garamond, Georgia, serif';
+
+// ---- outils de temps ----
+const p = (t, a, b) => Math.min(1, Math.max(0, (t - a) / (b - a)));
+const eio = x => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;   // entrée et sortie douces
+const eo = x => 1 - Math.pow(1 - x, 3);                                         // sortie douce
+const entre = (t, a, b) => eo(p(t, a, b));
+const lerp = (a, b, x) => a + (b - a) * x;
+
+// ---- outils de dessin ----
+function rect(x, y, w, h, r, fill, stroke, lw) {
+  ctx.beginPath(); ctx.roundRect(x, y, Math.max(0, w), Math.max(0, h), r);
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw || 1.5; ctx.stroke(); }
+}
+function texte(s, x, y, taille, couleur, police, graisse, align) {
+  ctx.font = (graisse || 400) + ' ' + taille + 'px ' + (police || SANS);
+  ctx.fillStyle = couleur; ctx.textAlign = align || 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function ombre(on) {
+  if (on) { ctx.shadowColor = 'rgba(42, 23, 96, 0.10)'; ctx.shadowBlur = 50; ctx.shadowOffsetY = 22; }
+  else { ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0; }
+}
+function trait(points, progres, couleur, lw) {          // trace un chemin jusqu'à « progres » (0 → 1)
+  let total = 0; const seg = [];
+  for (let i = 1; i < points.length; i++) { const d = Math.hypot(points[i][0] - points[i - 1][0], points[i][1] - points[i - 1][1]); seg.push(d); total += d; }
+  let reste = total * progres;
+  ctx.beginPath(); ctx.moveTo(points[0][0], points[0][1]);
+  for (let i = 1; i < points.length && reste > 0; i++) {
+    const k = Math.min(1, reste / seg[i - 1]);
+    ctx.lineTo(lerp(points[i - 1][0], points[i][0], k), lerp(points[i - 1][1], points[i][1], k));
+    reste -= seg[i - 1];
+  }
+  ctx.strokeStyle = couleur; ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.stroke();
+}
+function pointSur(points, progres) {
+  let total = 0; const seg = [];
+  for (let i = 1; i < points.length; i++) { const d = Math.hypot(points[i][0] - points[i - 1][0], points[i][1] - points[i - 1][1]); seg.push(d); total += d; }
+  let reste = total * progres;
+  for (let i = 1; i < points.length; i++) {
+    if (reste <= seg[i - 1]) { const k = reste / seg[i - 1]; return [lerp(points[i - 1][0], points[i][0], k), lerp(points[i - 1][1], points[i][1], k)]; }
+    reste -= seg[i - 1];
+  }
+  return points[points.length - 1];
+}
+function etiquette(s, x, y, alpha) {                     // petit titre de scène, au-dessus de l'objet
+  ctx.save(); ctx.globalAlpha *= alpha;
+  ctx.fillStyle = C.violet; ctx.fillRect(x, y - 9, 22, 2);
+  texte(s, x + 34, y, 30, C.encre, SERIF, 400);
+  ctx.restore();
+}
+
+const HORIZON = 820, CX = 960;   // ligne d'horizon et centre de la partie droite
+
+// ---------- Scène 1 : le soleil du logo se lève (0 → 4,2 s) ----------
+function soleil(t) {
+  const a = 1 - eio(p(t, 3.2, 4.2));
+  if (a <= 0) return;
+  const r = 130, monte = entre(t, 0.3, 2.6);
+  const cy = HORIZON + 150 - 150 * monte;
+  ctx.save(); ctx.globalAlpha = a;
+  ctx.beginPath(); ctx.rect(0, 0, W, HORIZON); ctx.clip();
+  const g = ctx.createLinearGradient(0, cy - r, 0, cy + r);
+  g.addColorStop(0, '#FFC531'); g.addColorStop(1, '#FF6A1A');
+  ctx.beginPath(); ctx.arc(CX, cy, r, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+  ctx.fillStyle = C.fond;                                // bandes blanches, comme dans le logo
+  ctx.fillRect(CX + 25, cy - 62, 130, 9); ctx.fillRect(CX + 40, cy - 36, 120, 9); ctx.fillRect(CX - r - 5, cy + 22, 110, 9);
+  ctx.restore();
+  ctx.save(); ctx.globalAlpha = a;                       // rayons qui se tracent un par un
+  for (let i = 0; i < 7; i++) {
+    const ang = Math.PI + (i + 0.5) * Math.PI / 7;
+    const k = eo(p(t, 1.6 + i * 0.09, 2.3 + i * 0.09));
+    if (k <= 0) continue;
+    const r1 = r + 38, r2 = r + 38 + 46 * k;
+    trait([[CX + Math.cos(ang) * r1, HORIZON + Math.sin(ang) * r1], [CX + Math.cos(ang) * r2, HORIZON + Math.sin(ang) * r2]], 1, C.orange, 5);
+  }
+  ctx.restore();
+}
+
+// ---------- Scène 2 : un site vitrine se construit (3,4 → 9,4 s) ----------
+function siteVitrine(t) {
+  const a = eio(p(t, 3.4, 4.3)) * (1 - eio(p(t, 8.5, 9.4)));
+  if (a <= 0) return;
+  const x = CX - 440, w = 880, h = 540, y = HORIZON - 30 - h + 28 * (1 - entre(t, 3.4, 4.5)) - 20 * eio(p(t, 8.5, 9.4));
+  ctx.save(); ctx.globalAlpha = a;
+  etiquette('Site vitrine', x, y - 34, entre(t, 4.0, 4.7));
+  ombre(true); rect(x, y, w, h, 14, C.fond); ombre(false); rect(x, y, w, h, 14, null, C.filet, 1.5);
+  // barre du navigateur
+  ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 14); ctx.clip();
+  ctx.fillStyle = C.pale; ctx.fillRect(x, y, w, 46);
+  [0, 1, 2].forEach(i => rect(x + 22 + i * 20, y + 18, 11, 11, 3, C.violetClair));
+  rect(x + 110, y + 13, 360, 20, 6, C.fond);
+  // menu du site
+  const n = entre(t, 4.3, 5.0);
+  ctx.globalAlpha = a * n;
+  rect(x + 40, y + 76, 26, 26, 4, C.orange);
+  rect(x + 76, y + 82, 90, 13, 3, C.encre);
+  [0, 1, 2, 3].forEach(i => rect(x + 520 + i * 78, y + 84, 56, 9, 3, C.grisClair));
+  rect(x + 790, y + 74, 76, 30, 6, C.violet);
+  // titre et texte
+  ctx.globalAlpha = a;
+  const tl = eio(p(t, 4.7, 5.6));
+  rect(x + 40, y + 160, 400 * tl, 30, 4, C.encre);
+  rect(x + 40, y + 202, 300 * eio(p(t, 4.9, 5.8)), 30, 4, C.violet);
+  rect(x + 40, y + 256, 360 * eio(p(t, 5.2, 6.0)), 11, 3, C.grisClair);
+  rect(x + 40, y + 276, 300 * eio(p(t, 5.3, 6.1)), 11, 3, C.grisClair);
+  // bouton (s'assombrit au « clic » du curseur)
+  const b = entre(t, 5.7, 6.2), clic = p(t, 7.85, 8.05) * (1 - p(t, 8.15, 8.4));
+  ctx.globalAlpha = a * b;
+  rect(x + 40, y + 312, 170, 46, 8, clic > 0 ? C.violetFonce : C.violet);
+  rect(x + 66, y + 331, 118, 9, 3, 'rgba(255,255,255,0.9)');
+  // image d'accueil : montagnes sous le soleil
+  ctx.globalAlpha = a * entre(t, 5.0, 5.9);
+  const ix = x + 500, iy = y + 140, iw = 360, ih = 220;
+  rect(ix, iy, iw, ih, 10, C.violetTresClair);
+  ctx.save(); ctx.beginPath(); ctx.roundRect(ix, iy, iw, ih, 10); ctx.clip();
+  const g = ctx.createLinearGradient(0, iy + 40, 0, iy + 160); g.addColorStop(0, '#FFC531'); g.addColorStop(1, '#FF6A1A');
+  ctx.beginPath(); ctx.arc(ix + 190, iy + 150, 64, Math.PI, 0); ctx.fillStyle = g; ctx.fill();
+  ctx.beginPath(); ctx.moveTo(ix, iy + ih); ctx.lineTo(ix + 110, iy + 120); ctx.lineTo(ix + 160, iy + 160); ctx.lineTo(ix + 230, iy + 96); ctx.lineTo(ix + iw, iy + ih); ctx.closePath();
+  ctx.fillStyle = C.violetClair; ctx.fill();
+  ctx.restore();
+  // trois cartes qui montent
+  [0, 1, 2].forEach(i => {
+    const k = entre(t, 6.0 + i * 0.18, 6.9 + i * 0.18);
+    ctx.globalAlpha = a * k;
+    const cx = x + 40 + i * 280, cy = y + 400 + 30 * (1 - k);
+    rect(cx, cy, 256, 110, 10, C.fond, C.filet, 1.5);
+    rect(cx + 18, cy + 18, 34, 34, 7, C.violetTresClair);
+    rect(cx + 18, cy + 66, 150, 10, 3, C.encre);
+    rect(cx + 18, cy + 84, 200, 8, 3, C.grisClair);
+  });
+  ctx.restore();
+  // curseur qui va cliquer sur le bouton
+  const m = eio(p(t, 6.9, 7.8));
+  if (t > 6.7) {
+    const cx = lerp(x + 640, x + 150, m), cy = lerp(y + 480, y + 342, m);
+    ctx.globalAlpha = a * p(t, 6.7, 7.0);
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx, cy + 34); ctx.lineTo(cx + 9, cy + 26); ctx.lineTo(cx + 16, cy + 40); ctx.lineTo(cx + 22, cy + 37); ctx.lineTo(cx + 15, cy + 23); ctx.lineTo(cx + 26, cy + 23); ctx.closePath();
+    ctx.fillStyle = C.encre; ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+  }
+  ctx.restore();
+}
+
+// ---------- Scène 3 : l'assistant IA répond sur téléphone (9,0 → 14,2 s) ----------
+function bulle(lignes, x, y, gauche, k, largeurMax) {
+  if (k <= 0) return 0;
+  ctx.font = '400 22px ' + SANS;
+  const lw = Math.min(largeurMax, Math.max(...lignes.map(l => ctx.measureText(l).width)) + 36);
+  const h = lignes.length * 30 + 20;
+  const bx = gauche ? x : x + largeurMax - lw;
+  ctx.save(); ctx.globalAlpha *= k; ctx.translate(0, 14 * (1 - k));
+  rect(bx, y, lw, h, 14, gauche ? C.violet : C.grisClair);
+  lignes.forEach((l, i) => texte(l, bx + 18, y + 38 + i * 30, 22, gauche ? '#fff' : C.encre));
+  ctx.restore();
+  return h;
+}
+function assistant(t) {
+  const a = eio(p(t, 9.0, 9.8)) * (1 - eio(p(t, 13.4, 14.2)));
+  if (a <= 0) return;
+  const w = 380, h = 600, x = CX - w / 2, y = HORIZON - 30 - h + 28 * (1 - entre(t, 9.0, 10.0)) - 20 * eio(p(t, 13.4, 14.2));
+  ctx.save(); ctx.globalAlpha = a;
+  etiquette('Assistant IA', x - 250, y + 40, entre(t, 9.5, 10.2));
+  ombre(true); rect(x, y, w, h, 40, C.fond); ombre(false); rect(x, y, w, h, 40, null, C.encre, 2.5);
+  rect(x + 150, y + 16, 80, 8, 4, C.grisClair);
+  // en-tête de la conversation
+  ctx.fillStyle = C.pale; ctx.fillRect(x + 3, y + 40, w - 6, 70);
+  rect(x + 24, y + 56, 38, 38, 9, C.violet);
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x + 33, y + 70); ctx.lineTo(x + 53, y + 70); ctx.moveTo(x + 33, y + 80); ctx.lineTo(x + 46, y + 80); ctx.stroke();
+  texte('Assistant', x + 76, y + 82, 24, C.encre, SANS, 600);
+  texte('répond en direct', x + 186, y + 82, 18, C.gris);
+  // messages
+  const lx = x + 22, lm = w - 44;
+  let yy = y + 136;
+  yy += bulle(['Vous êtes ouverts', 'samedi ?'], lx, yy, false, entre(t, 10.0, 10.4), lm) + 14;
+  const ecrit = t > 10.5 && t < 11.3;
+  if (ecrit) {                                           // l'assistant écrit…
+    rect(lx, yy, 86, 46, 14, C.violetTresClair);
+    for (let i = 0; i < 3; i++) { const s = 0.5 + 0.5 * Math.sin((t - 10.5) * 9 - i * 0.9); rect(lx + 18 + i * 20, yy + 20 - 4 * s, 12, 6, 2, C.violet); }
+  }
+  yy += bulle(['Oui, de 9 h à 18 h.', 'Je vous réserve', 'un créneau ?'], lx, yy, true, entre(t, 11.3, 11.7), lm) + 14;
+  yy += bulle(['Oui, 10 h svp'], lx, yy, false, entre(t, 12.1, 12.5), lm) + 14;
+  bulle(['C’est noté pour', 'samedi à 10 h.'], lx, yy, true, entre(t, 12.7, 13.1), lm);
+  ctx.restore();
+}
+
+// ---------- Scène 4 : trois tâches automatisées se relient (13,9 → 18,6 s) ----------
+function icone(type, x, y, k) {
+  ctx.save(); ctx.globalAlpha *= k; ctx.strokeStyle = C.violet; ctx.lineWidth = 3.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  if (type === 'agenda') { ctx.roundRect(x, y + 8, 60, 52, 6); ctx.moveTo(x, y + 24); ctx.lineTo(x + 60, y + 24); ctx.moveTo(x + 16, y); ctx.lineTo(x + 16, y + 14); ctx.moveTo(x + 44, y); ctx.lineTo(x + 44, y + 14); }
+  if (type === 'mail') { ctx.roundRect(x, y + 10, 64, 44, 6); ctx.moveTo(x + 2, y + 13); ctx.lineTo(x + 32, y + 36); ctx.lineTo(x + 62, y + 13); }
+  if (type === 'facture') { ctx.moveTo(x + 8, y); ctx.lineTo(x + 40, y); ctx.lineTo(x + 54, y + 14); ctx.lineTo(x + 54, y + 60); ctx.lineTo(x + 8, y + 60); ctx.closePath(); ctx.moveTo(x + 18, y + 26); ctx.lineTo(x + 44, y + 26); ctx.moveTo(x + 18, y + 38); ctx.lineTo(x + 44, y + 38); ctx.moveTo(x + 18, y + 50); ctx.lineTo(x + 34, y + 50); }
+  ctx.stroke(); ctx.restore();
+}
+function automatisation(t) {
+  const a = eio(p(t, 13.9, 14.7)) * (1 - eio(p(t, 17.8, 18.6)));
+  if (a <= 0) return;
+  const tw = 250, th = 230, gap = 80, x0 = CX - (3 * tw + 2 * gap) / 2;
+  const y = HORIZON - 120 - th + 28 * (1 - entre(t, 13.9, 15.0)) - 20 * eio(p(t, 17.8, 18.6));
+  const taches = [['agenda', 'Rendez-vous'], ['mail', 'E-mails'], ['facture', 'Factures']];
+  ctx.save(); ctx.globalAlpha = a;
+  etiquette('Automatisation', x0, y - 60, entre(t, 14.3, 15.0));
+  // liaisons
+  const chemin = [[x0 + tw, y + th / 2], [x0 + tw + gap, y + th / 2]];
+  const chemin2 = [[x0 + 2 * tw + gap, y + th / 2], [x0 + 2 * tw + 2 * gap, y + th / 2]];
+  ctx.setLineDash([8, 10]);
+  trait(chemin, eio(p(t, 14.8, 15.3)), C.violetClair, 3);
+  trait(chemin2, eio(p(t, 15.0, 15.5)), C.violetClair, 3);
+  ctx.setLineDash([]);
+  taches.forEach((tc, i) => {
+    const k = entre(t, 14.2 + i * 0.2, 15.0 + i * 0.2);
+    const x = x0 + i * (tw + gap), yy = y + 24 * (1 - k);
+    ctx.save(); ctx.globalAlpha *= k;
+    ombre(true); rect(x, yy, tw, th, 14, C.fond); ombre(false); rect(x, yy, tw, th, 14, null, C.filet, 1.5);
+    icone(tc[0], x + 34, yy + 40, 1);
+    texte(tc[1], x + 34, yy + 160, 30, C.encre, SERIF, 400);
+    rect(x + 34, yy + 184, 120, 8, 3, C.grisClair);
+    // coche quand la tâche est faite
+    const fait = eio(p(t, 15.6 + i * 0.75, 16.0 + i * 0.75));
+    if (fait > 0) {
+      rect(x + tw - 64, yy + 22, 40, 40, 9, C.violetTresClair);
+      trait([[x + tw - 54, yy + 43], [x + tw - 46, yy + 51], [x + tw - 33, yy + 33]], fait, C.violet, 4);
+    }
+    ctx.restore();
+  });
+  // petit carré qui circule d'une tâche à l'autre
+  const v = p(t, 15.5, 17.2);
+  if (v > 0 && v < 1) {
+    const tout = [[x0 + tw / 2, y + th + 30], [x0 + tw / 2, y + th + 50], [x0 + 2.5 * tw + 2 * gap, y + th + 50], [x0 + 2.5 * tw + 2 * gap, y + th + 30]];
+    ctx.setLineDash([2, 10]); trait(tout, 1, C.violetClair, 2); ctx.setLineDash([]);
+    const [px, py] = pointSur(tout, eio(v));
+    rect(px - 8, py - 8, 16, 16, 4, C.orange);
+  }
+  ctx.restore();
+}
+
+// ---------- Image complète à l'instant t ----------
+function dessiner(t) {
+  t = ((t % DUREE) + DUREE) % DUREE;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ombre(false); ctx.setLineDash([]);
+  ctx.fillStyle = C.fond; ctx.fillRect(0, 0, W, H);
+  const g = ctx.createRadialGradient(CX, 560, 0, CX, 560, 760);
+  g.addColorStop(0, C.lueur); g.addColorStop(1, 'rgba(221, 211, 251, 0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // horizon : la seule chose toujours présente (assure la boucle sans saut)
+  const hg = ctx.createLinearGradient(0, 0, W, 0);
+  hg.addColorStop(0, 'rgba(42, 23, 96, 0)'); hg.addColorStop(0.25, 'rgba(42, 23, 96, 0.16)'); hg.addColorStop(0.75, 'rgba(42, 23, 96, 0.16)'); hg.addColorStop(1, 'rgba(42, 23, 96, 0)');
+  ctx.fillStyle = hg; ctx.fillRect(0, HORIZON, W, 1.5);
+  ctx.save(); ctx.translate(CX, 540); ctx.scale(1.3, 1.3); ctx.translate(-CX, -540);   // tout en plus grand, centré
+  soleil(t); siteVitrine(t); assistant(t); automatisation(t);
+  ctx.restore();
+}
+window.dessiner = dessiner;
+
+Promise.all([document.fonts.load('400 30px "EB Garamond"'), document.fonts.load('400 22px "Instrument Sans"'), document.fonts.load('600 24px "Instrument Sans"')]).then(() => {
+  window.PRET = true;
+  if (location.search.indexOf('capture') === -1) {      // aperçu en direct
+    const debut = performance.now();
+    (function boucle(now) { dessiner((now - debut) / 1000); requestAnimationFrame(boucle); })(debut);
+  } else { dessiner(0); }
+});
+</script>
+</body>
+</html>

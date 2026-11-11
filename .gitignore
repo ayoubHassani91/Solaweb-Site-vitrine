@@ -1,0 +1,11 @@
+# Sauvegardes locales (anciennes versions, fichiers inutilisés) : non publiées
+_sauvegardes/
+
+# Fichiers système
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*
+
+# Outils
+node_modules/

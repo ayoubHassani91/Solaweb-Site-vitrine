@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>L’Atelier Vermail – démonstration (restaurant fictif)</title>
+<meta name="description" content="Site de démonstration d’un restaurant fictif, réalisé par SolaWeb. Aucune activité réelle, aucune réservation possible.">
+<style>
+:root{
+  --char:#0E0B0B; --char2:#171212; --cream:#F3E9DA; --mute:#B9AC99; --gold:#C9A24A; --gold-l:#E8CE86; --wine:#6B1E2A; --line:rgba(201,162,74,.35);
+  --display:"Didot","Bodoni 72","Bodoni MT","Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --body:"Futura","Century Gothic","Avenir Next","Avenir","Segoe UI","Helvetica Neue",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{margin:0;background:var(--char);color:var(--cream);font:400 1.0625rem/1.7 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.in{max-width:1120px;margin:0 auto;padding-inline:max(18px,env(safe-area-inset-left,0px))}
+.eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-l)}
+.btn{display:inline-block;font:600 .78rem var(--body);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:15px 30px;border:1px solid var(--gold);color:var(--cream);background:rgba(14,11,11,.35);cursor:pointer;transition:background .25s,color .25s}
+.btn:hover,.btn:focus-visible{background:var(--gold);color:var(--char)}
+.btn.f{background:var(--gold);color:var(--char)}
+.btn.f:hover{background:var(--gold-l)}
+:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px}
+
+/* ========= le « film » plein écran en arrière-plan ========= */
+.film{position:fixed;inset:0;z-index:-1;background:var(--char);overflow:hidden}
+.film::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,6,6,.6),rgba(8,6,6,.46) 40%,rgba(8,6,6,.78));pointer-events:none}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease}
+.scene.on{opacity:1}
+.scene .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.scene.on .bg{animation:kb 11s ease-out forwards}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.13)}}
+/* scène 1 : la plaque dorée s’éloigne et dévoile la façade */
+.s1 .inner{position:absolute;inset:0;transform-origin:50% 40%}
+.s1.intro .inner{animation:pull 7s cubic-bezier(.25,.6,.2,1) forwards}
+.s1.intro .bg{animation:unblur 7s ease-out forwards}
+@keyframes pull{from{transform:scale(6)}to{transform:scale(1)}}
+@keyframes unblur{from{filter:blur(14px) brightness(.55)}to{filter:blur(0) brightness(1)}}
+.s1.on:not(.intro) .inner{animation:kb 11s ease-out forwards}
+.plaque{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);width:clamp(210px,24vw,340px);aspect-ratio:3/2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  color:#3a2a0c;background:linear-gradient(135deg,#f6e3a1 0%,#c9a24a 24%,#8a6a22 48%,#d9b865 74%,#f4e2a0 100%);
+  border:2px solid #5a431a;box-shadow:inset 0 0 0 5px rgba(255,255,255,.22),inset 0 0 0 8px rgba(90,67,26,.55),0 20px 44px rgba(0,0,0,.65);text-shadow:0 1px 0 rgba(255,255,255,.45)}
+.plaque small{font:600 clamp(.42rem,.7vw,.6rem)/1 var(--body);letter-spacing:.34em;text-transform:uppercase}
+.plaque b{font:400 clamp(1.15rem,2.3vw,1.9rem)/1.05 var(--display);letter-spacing:.14em;text-transform:uppercase;margin:.35em 0}
+.plaque i{display:block;width:46%;height:1px;background:rgba(58,42,12,.55);margin:.3em 0}
+
+/* ========= en-tête ========= */
+.hd{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.hd.sc{background:rgba(14,11,11,.92);border-color:var(--line);backdrop-filter:blur(8px)}
+.hd .in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:78px;gap:16px}
+.hd nav{display:flex;gap:26px;align-items:center}
+.hd nav.r{justify-content:flex-end}
+.hd nav a{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;color:var(--cream);opacity:.9}
+.hd nav a:hover{color:var(--gold-l);opacity:1}
+.hd .res{border:1px solid var(--gold);padding:10px 18px;color:var(--gold-l);opacity:1}
+.hd .res:hover{background:var(--gold);color:var(--char)}
+.logo{font:400 1.25rem/1 var(--display);letter-spacing:.22em;text-transform:uppercase;text-decoration:none;text-align:center;color:var(--cream)}
+.logo span{display:block;font:600 .55rem var(--body);letter-spacing:.42em;color:var(--gold);margin-top:6px}
+.burger{display:none;justify-self:end;background:none;border:1px solid var(--line);color:var(--cream);padding:9px 14px;font:600 .7rem var(--body);letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+
+/* ========= accueil ========= */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:120px 20px clamp(60px,12vh,120px)}
+.hero-tx{opacity:0;animation:up 1.6s ease 5.6s forwards;max-width:760px}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero h1{font:400 clamp(2.4rem,6.4vw,5rem)/1.04 var(--display);letter-spacing:.07em;text-transform:uppercase;margin:14px 0 12px}
+.hero p{margin:0 auto 28px;max-width:34em;color:var(--cream);opacity:.92;font-size:1.08rem}
+.hero .acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.badges{margin-top:30px;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.badges b{color:var(--gold-l);font-weight:600}
+.sound-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);opacity:.7}
+
+/* ========= sections ========= */
+.sec{background:rgba(12,9,9,.84);backdrop-filter:blur(7px);min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-block:clamp(88px,12vh,130px) clamp(40px,6vh,80px);border-top:1px solid var(--line);scroll-snap-align:start}.sec>.in{width:100%}.hero{scroll-snap-align:start}
+.sec.alt{background:rgba(24,17,17,.88)}
+.sh{text-align:center;margin-bottom:clamp(34px,5vw,56px)}
+.sh h2{font:400 clamp(1.9rem,4vw,3rem)/1.1 var(--display);letter-spacing:.05em;text-transform:uppercase;margin-top:12px}
+.sh p{color:var(--mute);max-width:36em;margin:14px auto 0}
+.sh .orn{display:block;width:60px;height:1px;background:var(--gold);margin:20px auto 0}
+
+/* carte */
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.tab{background:none;border:1px solid var(--line);color:var(--cream);font:600 .72rem var(--body);letter-spacing:.22em;text-transform:uppercase;padding:12px 22px;cursor:pointer}
+.tab[aria-pressed="true"],.tab:hover{background:var(--gold);color:var(--char);border-color:var(--gold)}
+.menu{max-width:860px;margin:0 auto}
+.dish{padding:16px 0;border-bottom:1px solid rgba(201,162,74,.14)}
+.dish .top{display:flex;align-items:baseline;gap:10px}
+.dish h3{font:400 1.35rem/1.25 var(--display);color:var(--cream)}
+.dish .dots{flex:1;border-bottom:2px dotted rgba(201,162,74,.4);transform:translateY(-4px);min-width:16px}
+.dish .p{color:var(--gold-l);font-variant-numeric:tabular-nums;white-space:nowrap}
+.dish p{margin:4px 0 0;color:var(--mute);font-size:.95rem}
+.note{text-align:center;color:var(--mute);font-size:.82rem;margin-top:26px}
+
+/* lieu et chef */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,70px);align-items:center}
+.ph{position:relative;aspect-ratio:4/5;max-height:62vh;width:100%;margin-inline:auto;background:linear-gradient(145deg,#2a1d1d,#120d0d 55%,#3a2a14);border:1px solid var(--line);overflow:hidden}
+.ph.real{background:var(--photo) center/cover no-repeat}
+.ph::after{content:"Photo à ajouter";position:absolute;left:14px;bottom:12px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,233,218,.4)}
+.ph.real::after{content:none}
+.two h2{font:400 clamp(1.8rem,3.4vw,2.6rem)/1.12 var(--display);letter-spacing:.04em;text-transform:uppercase;margin:12px 0 18px}
+.two p{color:var(--cream);opacity:.9}
+.facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:26px}
+.facts div{font:400 2rem/1 var(--display);color:var(--gold-l)}
+.facts small{display:block;font:600 .62rem var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:8px}
+
+/* avis */
+.rev{max-width:780px;margin:0 auto;text-align:center;position:relative;min-height:190px}
+.rev .sl{display:none}
+.rev .sl.on{display:block;animation:fade .8s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.stars{color:var(--gold);letter-spacing:.3em;margin-bottom:14px}
+.rev q{display:block;font:italic 400 clamp(1.2rem,2.4vw,1.7rem)/1.5 var(--display);quotes:none}
+.rev cite{display:block;margin-top:18px;font-style:normal;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.dots2{display:flex;gap:10px;justify-content:center;margin-top:26px}
+.dots2 button{width:9px;height:9px;border-radius:50%;border:1px solid var(--gold);background:none;padding:0;cursor:pointer}
+.dots2 button[aria-current="true"]{background:var(--gold)}
+
+/* réservation */
+.resa{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.resa h2{font:400 clamp(1.8rem,3.6vw,2.8rem)/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;margin:12px 0 16px}
+.resa ul{list-style:none;padding:0;margin:20px 0 0;color:var(--mute);font-size:.95rem}
+.resa li{padding:6px 0 6px 18px;position:relative}
+.resa li::before{content:"";position:absolute;left:0;top:.95em;width:8px;height:1px;background:var(--gold)}
+form{background:rgba(14,11,11,.7);border:1px solid var(--line);padding:clamp(22px,4vw,38px)}
+label{display:block;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);margin:16px 0 6px}
+input,select{width:100%;background:#1b1414;border:1px solid rgba(201,162,74,.3);color:var(--cream);padding:13px 14px;font:inherit;font-size:1rem}
+input:focus,select:focus{outline:2px solid var(--gold-l);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:.84rem;color:var(--mute);letter-spacing:0;text-transform:none}
+.chk input{width:auto;margin-top:5px}
+.chk a,.chk button{color:var(--gold-l);background:none;border:0;padding:0;font:inherit;text-decoration:underline;cursor:pointer}
+form .btn{margin-top:22px;width:100%}
+#ok{display:none;margin-top:16px;padding:14px;border:1px solid var(--gold);color:var(--gold-l);font-size:.92rem}
+
+/* infos */
+.infos{display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:30px;text-align:center}
+.infos h3{font:400 1.2rem var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:12px}
+.infos p{margin:0;color:var(--cream);opacity:.9}
+.infos table{margin:0 auto;border-collapse:collapse;color:var(--cream);opacity:.9}
+.infos td{padding:3px 0;white-space:nowrap;vertical-align:top}
+.infos td:last-child{padding-left:22px;text-align:right}
+.ig-logo{display:inline-flex;color:var(--cream);line-height:0;margin-top:14px;opacity:.9}
+.ig-logo:hover,.ig-logo:focus-visible{color:var(--gold-l);opacity:1}
+
+footer{scroll-snap-align:end;background:#080606;border-top:1px solid var(--line);padding:34px 0;text-align:center;font-size:.8rem;color:var(--mute)}
+footer .links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer button{background:none;border:0;color:var(--mute);font:inherit;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;padding:4px 0}
+footer button:hover{color:var(--gold-l)}
+footer p{margin:6px 0}
+
+/* fenêtres légales */
+dialog{max-width:720px;width:calc(100% - 32px);max-height:86vh;border:1px solid var(--gold);background:#120e0e;color:var(--cream);padding:0}
+dialog::backdrop{background:rgba(0,0,0,.72)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#120e0e}
+.dh h2{font:400 1.35rem var(--display);letter-spacing:.08em;text-transform:uppercase}
+.dh button{background:none;border:1px solid var(--line);color:var(--cream);padding:8px 14px;cursor:pointer;font:600 .7rem var(--body);letter-spacing:.18em;text-transform:uppercase}
+.db{padding:6px 24px 26px;font-size:.94rem}
+.db h3{font:400 1.05rem var(--display);color:var(--gold-l);letter-spacing:.06em;margin:22px 0 4px}
+.db p{margin:0;color:var(--cream);opacity:.9}
+
+@media (max-width:860px){
+  .hd .in{grid-template-columns:auto 1fr;}
+  .hd nav{display:none}
+  .hd.open nav{display:flex;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:rgba(14,11,11,.97);border-bottom:1px solid var(--line);padding:8px 0 16px}
+  .hd.open nav a{padding:14px 24px;width:100%}
+  .hd.open nav.r{justify-content:flex-start}
+  .logo{text-align:left}
+  .burger{display:block}
+  .two,.resa{grid-template-columns:1fr}
+  .infos{grid-template-columns:1fr}
+  .ph{aspect-ratio:16/11}
+}
+@media (max-height:860px) and (min-width:861px){.dish{padding:10px 0}.dish h3{font-size:1.2rem}.sh{margin-bottom:24px}.tabs{margin-bottom:18px}.note{margin-top:14px}}
+  .scene,.scene.on .bg,.s1.intro .inner,.s1.intro .bg,.s1.on:not(.intro) .inner,.rev .sl.on{animation:none!important;transition:none!important}
+  .hero-tx{opacity:1;animation:none}
+  html{scroll-behavior:auto}
+}
+.demo-note{margin:22px auto 0;max-width:34em;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:rgba(14,11,11,.6);font-size:.9rem;color:var(--cream)}.note-fictif{margin:10px auto 0;max-width:40em;text-align:center;color:var(--mute);font-size:.92rem}.note-demo{margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:.9rem;color:var(--mute)}
+</style>
+</head>
+<body>
+
+<div class="film" aria-hidden="true">
+  <div class="scene s1 on intro"><div class="inner">
+    <div class="bg" style="background-image:linear-gradient(160deg,#2b2021,#0e0b0b 60%,#2a1f10)"></div>
+    <div class="plaque"><small>Cuisine fran&ccedil;aise</small><i></i><b>L’Atelier<br>Vermail</b><i></i><small>Paris</small></div>
+  </div></div>
+  <div class="scene"><div class="bg" style="background-image:url(photos/salle.webp),linear-gradient(150deg,#241a1a,#0e0b0b 55%,#3a2a14)"></div></div>
+  <div class="scene"><div class="bg" style="background-image:url(photos/verrerie.webp),linear-gradient(150deg,#1a1a24,#0e0b0b 55%,#2a2a3a)"></div></div>
+  <div class="scene"><div class="bg" style="background-image:url(photos/argenterie.webp),linear-gradient(150deg,#241c14,#0e0b0b 55%,#3a3a3a)"></div></div>
+  <div class="scene"><div class="bg" style="background-image:url(photos/dessert.webp),linear-gradient(150deg,#2a1d1d,#0e0b0b 55%,#4a2a14)"></div></div>
+  <div class="scene"><div class="bg" style="background-image:url(photos/asperge.webp),linear-gradient(150deg,#1d2a1d,#0e0b0b 55%,#3a4a2a)"></div></div>
+  <div class="scene"><div class="bg" style="background-image:url(photos/lustre.webp),linear-gradient(150deg,#3a2a14,#0e0b0b 55%,#4a3a1a)"></div></div>
+</div>
+<header class="hd" id="hd"><div class="in">
+  <nav aria-label="Menu principal"><a href="#carte">La carte</a><a href="#lieu">Le lieu</a><a href="#chef">Le chef</a></nav>
+  <a class="logo" href="#accueil" aria-label="L’Atelier Vermail, accueil">L’Atelier Vermail<span>Cuisine française</span></a>
+  <nav class="r" aria-label="Menu secondaire"><a href="#avis">Avis</a><a href="#infos">Infos</a><a class="res" href="#reserver">Réserver</a></nav>
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="hd">Menu</button>
+</div></header>
+
+<main>
+<section id="accueil" class="hero">
+  <div class="hero-tx">
+    <span class="eyebrow">Table de cuisine française · concept fictif</span>
+    <h1>L’Atelier Vermail</h1>
+    <p>Une cuisine de précision, des produits de saison et un service attentionné, dans une salle feutrée.</p>
+    <div class="acts"><a class="btn f" href="#reserver">Réserver une table</a><a class="btn" href="#carte">Découvrir la carte</a></div>
+<div class="badges"><span>Cuisine de saison</span><span>Menu dégustation</span><span>Cave de prestige</span></div>
+  </div>
+</section>
+
+<section id="carte" class="sec">
+  <div class="in">
+    <div class="sh"><span class="eyebrow">La carte</span><h2>Notre cuisine</h2><span class="orn"></span><p>Une carte courte, renouvelée avec les saisons.</p></div>
+    <div class="tabs" role="group" aria-label="Choisir une catégorie"></div>
+    <div class="menu" id="menu" aria-live="polite"></div>
+    <p class="note">Prix nets en euros, taxes et service compris. La liste des 14 allergènes est disponible sur demande auprès de notre équipe.</p>
+  </div>
+</section>
+
+<section id="lieu" class="sec alt">
+  <div class="in two">
+    <div class="ph real" style="--photo:url(photos/lieu.webp)" role="img" aria-label="Lustre en cristal et poutres de la salle du restaurant"></div>
+    <div>
+      <span class="eyebrow">Le lieu</span>
+      <h2>Une salle pensée pour prendre son temps</h2>
+      <p>Nappes blanches, verrerie fine, argenterie polie : chaque table est dressée à la main avant le service. Lumière tamisée, banquettes en velours, espace entre les tables.</p>
+      <div class="facts"><div>32<small>couverts</small></div><div>200<small>références en cave</small></div><div>2<small>salons privés</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="chef" class="sec">
+  <div class="in two">
+    <div>
+      <span class="eyebrow">Le chef</span>
+      <h2>Étienne Vermail</h2>
+      <p>Formé dans de grandes maisons parisiennes, le chef signe une cuisine française contemporaine : sauces nettes, cuissons justes, produits choisis auprès de petits producteurs.</p>
+      <p style="margin-top:14px">Chaque service commence par un échange avec la salle, pour que votre repas suive vos envies, vos allergies et votre rythme.</p>
+    </div>
+    <div class="ph real" style="--photo:url(photos/chef.webp)" role="img" aria-label="Le chef dressant un dessert aux violettes"></div>
+  </div>
+</section>
+
+<section id="avis" class="sec alt">
+  <div class="in">
+    <div class="sh"><span class="eyebrow">Avis</span><h2>Ils sont venus</h2><span class="orn"></span></div>
+    <p class="note-fictif">Témoignages fictifs écrits pour la démonstration : ce ne sont pas des avis de clients réels.</p>
+    <div class="rev" id="rev">
+      <div class="sl on"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Un dîner d’une grande finesse. Cuissons parfaites, service discret, et un dessert dont on se souvient.</q><cite>Camille · avis d’exemple</cite></div>
+      <div class="sl"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Le menu dégustation, avec l’accord mets et vins, est une vraie belle surprise de bout en bout.</q><cite>Antoine · avis d’exemple</cite></div>
+      <div class="sl"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Une salle élégante et un accueil chaleureux. Parfait pour un anniversaire.</q><cite>Sofia · avis d’exemple</cite></div>
+    </div>
+    <div class="dots2" id="dots2" role="group" aria-label="Choisir un avis"></div>
+  </div>
+</section>
+
+<section id="reserver" class="sec">
+  <div class="in resa">
+    <div>
+      <span class="eyebrow">Réservation</span>
+      <h2>Réserver une table</h2>
+      <p style="color:var(--mute)">Choisissez votre date, votre horaire et le nombre de convives. Dans un vrai site, le restaurant confirmerait la table.</p>
+      <ul><li>Conditions fictives : annulation gratuite jusqu’à 24 h avant.</li><li>Au-delà de 8 personnes, appelez-nous.</li><li>Fermé le dimanche et le lundi.</li></ul>
+    </div>
+    <form id="f" novalidate method="dialog">
+<p class="note-demo"><strong>Démonstration :</strong> ce formulaire ne réserve rien, n’envoie rien et n’enregistre rien.</p>
+<noscript><p class="note-demo">JavaScript est désactivé : la simulation est indisponible, aucune donnée n’est envoyée.</p></noscript>
+      <label for="date">Date</label><input id="date" type="date">
+      <div class="row2">
+        <div><label for="heure">Horaire</label><select id="heure"></select></div>
+        <div><label for="nb">Convives</label><select id="nb"></select></div>
+      </div>
+      <label for="nom">Prénom</label><input id="nom" type="text" autocomplete="given-name">
+      <label for="tel">Téléphone</label><input id="tel" type="tel" autocomplete="tel">
+      <label class="chk" for="ok1"><input id="ok1" type="checkbox"><span>J’accepte que ces informations servent à gérer ma réservation. <button type="button" data-dlg="dConf">Politique de confidentialité</button></span></label>
+      <button class="btn f" type="submit">Simuler la réservation</button>
+      <div id="ok" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<section id="infos" class="sec alt">
+  <div class="in">
+    <div class="infos">
+      <div><h3>Adresse</h3><p>L’Atelier Vermail<br>[adresse fictive de démonstration]</p></div>
+      <div><h3>Horaires</h3><table><tr><td>Lundi, dimanche</td><td>Fermé</td></tr><tr><td>Mardi – vendredi</td><td>12 h – 14 h · 19 h – 22 h</td></tr><tr><td>Samedi</td><td>19 h – 22 h 30</td></tr></table></div>
+      <div><h3>Contact</h3><p>01 99 00 47 12 (numéro fictif)<br>contact@example.org (adresse fictive)</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="in">
+  <div class="links"><button type="button" data-dlg="dMent">Mentions légales</button><button type="button" data-dlg="dCgv">CGV</button><button type="button" data-dlg="dConf">Politique de confidentialité</button></div>
+  <p>Site de démonstration – restaurant fictif · L’abus d’alcool est dangereux pour la santé, à consommer avec modération.</p>
+</div></footer>
+
+<dialog id="dMent" aria-labelledby="tMent">
+  <div class="dh"><h2 id="tMent">Mentions légales</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+<h3>Nature du site</h3><p>Ce site est une démonstration réalisée par SolaWeb pour montrer le style d’un site de restaurant. « L’Atelier Vermail » est un restaurant imaginaire : il n’existe pas d’activité, de société ni d’adresse derrière ce site.</p>
+<h3>Informations légales d’un site réel</h3><p>Pour un vrai restaurant, cette page indiquerait l’éditeur, son numéro d’immatriculation, le directeur de la publication, l’hébergeur, les mentions sur les allergènes et l’alcool, et le médiateur de la consommation. Elles ne sont volontairement pas renseignées ici.</p>
+<h3>Crédits photos</h3><p>Photos issues de Pexels (Valeriya, Paolino96, Dominika Gregus, Magda Ehlers). Les licences et les droits de ces images restent à vérifier avant tout usage commercial.</p>
+</div>
+</dialog>
+
+<dialog id="dCgv" aria-labelledby="tCgv">
+  <div class="dh"><h2 id="tCgv">Conditions de réservation et de vente</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+<h3>Exemple non applicable</h3><p>Aucune réservation ni vente n’a lieu sur ce site de démonstration. La carte, les prix et les conditions d’annulation affichés sont des exemples inventés.</p>
+<h3>Pour un site réel</h3><p>Les conditions de réservation, d’annulation et de paiement seraient rédigées avec le restaurant puis relues par un professionnel du droit.</p>
+</div>
+</dialog>
+
+<dialog id="dConf" aria-labelledby="tConf">
+  <div class="dh"><h2 id="tConf">Politique de confidentialité</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+<h3>Aucune donnée collectée</h3><p>Le formulaire de réservation de cette démonstration est une simulation : ce que vous saisissez reste dans la page, n’est ni envoyé, ni enregistré, ni transmis à un tiers.</p>
+<h3>Cookies et traceurs</h3><p>Ce site n’utilise aucun cookie ni outil de mesure d’audience ou de publicité. Il ne charge aucune ressource externe.</p>
+<h3>Pour un site réel</h3><p>La politique de confidentialité préciserait le responsable du traitement, les données collectées, leur durée de conservation et les droits des personnes. Elle serait établie avec le client réel.</p>
+</div>
+</dialog>
+
+<script>
+(function(){
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return [].slice.call((r||document).querySelectorAll(s))}
+
+/* ===== le film : la plaque s’éloigne, puis les scènes s’enchaînent ===== */
+var scenes=$$(".scene"),cur=0,first=scenes[0];
+function show(i){scenes.forEach(function(s,k){s.classList.toggle("on",k===i)})}
+if(!reduce){
+  setTimeout(function(){first.classList.remove("intro");},7400);
+  (function loop(){
+    setTimeout(function(){
+      cur=(cur+1)%scenes.length;show(cur);
+      if(cur===0){first.classList.remove("intro")}
+      loop();
+    },cur===0?9000:8000);
+  })();
+}
+
+/* ===== en-tête ===== */
+var hd=$("#hd"),bg=$("#burger");
+function sc(){hd.classList.toggle("sc",window.scrollY>40)}sc();window.addEventListener("scroll",sc,{passive:true});
+bg.addEventListener("click",function(){var o=hd.classList.toggle("open");bg.setAttribute("aria-expanded",o?"true":"false")});
+$$("#hd nav a").forEach(function(a){a.addEventListener("click",function(){hd.classList.remove("open");bg.setAttribute("aria-expanded","false")})});
+
+/* ===== la carte (exemple : à remplacer par la vraie carte du restaurant) ===== */
+var C=[
+{l:"Entrées",i:[["Foie gras de canard mi-cuit","Chutney de figues, brioche toastée","24 €"],["Saint-Jacques snackées","Purée de panais, beurre noisette","26 €"],["Velouté de cèpes","Œuf parfait, copeaux de truffe","22 €"],["Tartare de bœuf charolais","Jaune confit, condiments","21 €"]]},
+{l:"Plats",i:[["Filet de bœuf Rossini","Pommes fondantes, jus truffé","46 €"],["Sole meunière","Beurre citronné, légumes du moment","44 €"],["Ris de veau croustillant","Morilles, vin jaune","42 €"],["Carré d’agneau rôti","Jus à l’ail noir, gratin dauphinois","39 €"],["Risotto aux cèpes","Parmesan, huile de noisette (végétarien)","29 €"]]},
+{l:"Desserts",i:[["Soufflé au Grand Marnier","Crème anglaise","16 €"],["Tarte fine aux pommes","Glace vanille de Madagascar","14 €"],["Mille-feuille vanille","Caramel au beurre salé","15 €"],["Chocolat noir et noisette","Fleur de sel","15 €"]]},
+{l:"Menus",i:[["Menu déjeuner, 2 plats","Entrée + plat ou plat + dessert, du mardi au vendredi","38 €"],["Menu déjeuner, 3 plats","Entrée, plat et dessert","46 €"],["Menu dégustation, 7 services","Menu surprise du chef, pour toute la table","125 €"],["Accord mets et vins","Sélection de 4 verres, en supplément","65 €"]]}
+];
+var tabs=$(".tabs"),menu=$("#menu");
+function showCat(k){
+  $$(".tab",tabs).forEach(function(b,j){b.setAttribute("aria-pressed",j===k?"true":"false")});
+  menu.innerHTML=C[k].i.map(function(x){return '<div class="dish"><div class="top"><h3>'+x[0]+'</h3><span class="dots"></span><span class="p">'+x[2]+'</span></div><p>'+x[1]+'</p></div>'}).join("");
+}
+C.forEach(function(c,k){var b=document.createElement("button");b.type="button";b.className="tab";b.textContent=c.l;b.setAttribute("aria-pressed","false");b.addEventListener("click",function(){showCat(k)});tabs.appendChild(b)});
+showCat(0);
+
+/* ===== avis ===== */
+(function(){
+  var sl=$$(".sl",$("#rev")),d=$("#dots2"),i=0,t;
+  sl.forEach(function(_,k){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Avis "+(k+1));b.addEventListener("click",function(){go(k,true)});d.appendChild(b)});
+  function go(k,u){i=k;sl.forEach(function(s,j){s.classList.toggle("on",j===k)});$$("button",d).forEach(function(b,j){b.setAttribute("aria-current",j===k?"true":"false")});if(u){clearInterval(t)}}
+  go(0);if(!reduce){t=setInterval(function(){go((i+1)%sl.length)},7000)}
+})();
+
+/* ===== formulaire de réservation (simulé) ===== */
+var dt=$("#date"),hr=$("#heure"),nb=$("#nb");
+function iso(x){x=new Date(x.getTime()-x.getTimezoneOffset()*60000);return x.toISOString().slice(0,10)}
+function closed(v){var g=new Date(v+"T12:00:00").getDay();return g===0||g===1}
+var t0=new Date();while(closed(iso(t0)))t0.setDate(t0.getDate()+1);
+dt.min=iso(new Date());dt.value=iso(t0);
+function fillHours(){
+  hr.innerHTML="";if(!dt.value||closed(dt.value))return;
+  var g=new Date(dt.value+"T12:00:00").getDay();
+  var list=g===6?["19:00","19:30","20:00","20:30","21:00","21:30"]:["12:00","12:30","13:00","13:30","19:00","19:30","20:00","20:30","21:00"];
+  if(g===6){}
+  list.forEach(function(h){var o=document.createElement("option");o.value=o.textContent=h;hr.appendChild(o)});
+}
+dt.addEventListener("change",fillHours);fillHours();
+for(var n=1;n<=8;n++){var o=document.createElement("option");o.value=n;o.textContent=n+(n>1?" personnes":" personne");nb.appendChild(o)}
+nb.value="2";
+$("#f").addEventListener("submit",function(e){
+  e.preventDefault();var ok=$("#ok");ok.style.display="block";
+  var nom=$("#nom").value.trim(),tel=$("#tel").value.trim();
+  if(!dt.value||closed(dt.value)){ok.textContent="Le restaurant est fermé le dimanche et le lundi. Choisissez une autre date.";return}
+  if(!nom||!tel){ok.textContent="Indiquez votre prénom et votre numéro de téléphone.";return}
+  if(!$("#ok1").checked){ok.textContent="Cochez la case pour poursuivre la simulation.";return}
+  var d=new Date(dt.value+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+  ok.textContent="Simulation terminée : "+nom+", voici ce qui aurait été demandé – "+nb.value+" personne(s) le "+d+" à "+hr.value+". Aucune réservation n’a été créée et aucune donnée n’a été envoyée ni enregistrée.";
+});
+
+/* ===== fenêtres légales ===== */
+$$("[data-dlg]").forEach(function(b){b.addEventListener("click",function(){var dl=document.getElementById(b.getAttribute("data-dlg"));if(dl&&dl.showModal)dl.showModal()})});
+$$("dialog").forEach(function(dl){
+  dl.addEventListener("click",function(e){if(e.target===dl)dl.close()});
+  $$("[data-close]",dl).forEach(function(b){b.addEventListener("click",function(){dl.close()})});
+});
+})();
+</script>
+</body>
+</html>

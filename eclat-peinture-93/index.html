@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Éclat Peinture 93 · Peintre en bâtiment à Paris et en Seine-Saint-Denis</title>
+<meta name="description" content="Éclat Peinture 93, entreprise de peinture en bâtiment à Paris et dans le 93 : peinture intérieure, façades, décoration. Garantie décennale, devis gratuit sous 48 h.">
+<style>
+:root{
+  --white:#FFFFFF; --beige:#EDE3D0; --beige2:#F6F0E4; --beige-d:#D8CAB0; --khaki:#1F6F78; --khaki-d:#12383D; --pist:#6FB7BC; --orange:#1F6F78; --orange-d:#15545B; --ink:#2C2B23; --mute:#6E6A5C; --line:rgba(18,56,61,.22);
+  --display:"Bahnschrift","DIN Alternate","Franklin Gothic Medium","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body:"Avenir Next","Avenir","Segoe UI","Helvetica Neue",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{margin:0;background:var(--white);color:var(--ink);font:400 1.0625rem/1.7 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:400}
+a{color:inherit}
+.in{max-width:1120px;margin:0 auto;padding-inline:max(18px,env(safe-area-inset-left,0px))}
+.eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--orange-d);font-weight:600}
+.btn{display:inline-block;font:600 .8rem var(--body);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:15px 30px;border:2px solid var(--khaki);color:var(--khaki-d);background:transparent;cursor:pointer;transition:background .25s,color .25s}
+.btn:hover,.btn:focus-visible{background:var(--khaki);color:var(--white)}
+.btn.f{background:var(--orange);border-color:var(--orange);color:var(--white)}
+.btn.f:hover{background:var(--orange-d);border-color:var(--orange-d)}
+:focus-visible{outline:3px solid var(--khaki);outline-offset:3px}
+
+/* en-tête */
+.hd{position:fixed;inset:0 0 auto;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.hd .in{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
+.logo{text-decoration:none;line-height:1;display:inline-block}
+.logo b{display:block;font:700 1.3rem/1 var(--display);text-transform:uppercase;letter-spacing:.07em;color:var(--khaki-d);letter-spacing:.01em}
+.logo svg{display:block;width:100%;height:10px;margin-top:3px}
+.logo small{display:block;font:600 .56rem var(--body);letter-spacing:.34em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+.hd nav{display:flex;gap:26px;align-items:center}
+.hd nav a{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--ink);font-weight:600}
+.hd nav a:hover{color:var(--khaki)}
+.tel{background:var(--orange);color:var(--white)!important;padding:12px 18px;letter-spacing:.1em!important}
+.tel:hover{background:var(--orange-d)!important}
+.burger{display:none;background:none;border:2px solid var(--khaki);color:var(--khaki-d);padding:8px 14px;font:700 .7rem var(--body);letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+
+/* sections plein écran */
+.sec{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-block:clamp(92px,13vh,130px) clamp(40px,6vh,80px);scroll-snap-align:start;border-top:1px solid var(--line)}
+.sec>.in{width:100%}
+.sec.beige{background:var(--beige2)}
+.sh{text-align:center;margin-bottom:clamp(28px,5vh,52px)}
+.sh h2{font:700 clamp(1.9rem,4vw,3rem)/1.12 var(--display);color:var(--khaki-d);margin-top:10px}
+.sh p{color:var(--mute);max-width:38em;margin:12px auto 0}
+
+/* accueil : le mur beige et le coup de pinceau kaki */
+.hero{position:relative;background:radial-gradient(120% 90% at 20% 10%,#F3EBDB,var(--beige) 60%,#E3D6BC);overflow:hidden;text-align:center;justify-content:center}
+.hero .in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.brush{position:absolute;left:0;right:0;top:50%;transform:translateY(-58%);width:100%;height:46vh;z-index:1;pointer-events:none}
+.brush .st{stroke-dasharray:1;stroke-dashoffset:1;animation:sweep 2.4s cubic-bezier(.45,.05,.2,1) .3s forwards}
+@keyframes sweep{to{stroke-dashoffset:0}}
+.hero h1{font:700 clamp(2.3rem,6.6vw,5.2rem)/1.02 var(--display);text-transform:uppercase;letter-spacing:.03em;color:var(--khaki-d);margin:0 0 6px;opacity:0;animation:up 1.2s ease 1.5s forwards;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+.hero .eyebrow{opacity:0;animation:up 1s ease 1.2s forwards;margin-bottom:clamp(120px,21vh,200px)}
+.hero .sub{opacity:0;animation:up 1s ease 2s forwards;margin:clamp(100px,18vh,170px) auto 26px;max-width:34em;font-size:1.12rem;color:var(--ink)}
+.hero .acts{opacity:0;animation:up 1s ease 2.3s forwards;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* services */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--white);border:1px solid var(--line);padding:clamp(22px,3vw,34px);border-top:5px solid var(--khaki)}
+.card h3{font:700 1.55rem/1.2 var(--display);color:var(--khaki-d);margin-bottom:10px}
+.card p{margin:0 0 12px;color:var(--mute);font-size:.98rem}
+.card ul{margin:0;padding:0;list-style:none;font-size:.95rem}
+.card li{padding:5px 0 5px 20px;position:relative;border-top:1px solid rgba(18,56,61,.12)}
+.card li::before{content:"";position:absolute;left:0;top:1.05em;width:9px;height:3px;background:var(--khaki);border-radius:2px}
+
+/* avant / après */
+.ba{max-width:880px;margin:0 auto}
+.ba-box{position:relative;aspect-ratio:16/9;max-height:56vh;width:100%;overflow:hidden;border:1px solid var(--line);background:#cfc6b4;user-select:none}
+.ba-box .img{position:absolute;inset:0;background-size:cover;background-position:center}
+.ba-box .before{background-image:linear-gradient(135deg,#bdb6a6,#9d9786 60%,#8c8676)}
+.ba-box .after{background-image:linear-gradient(135deg,#bfe0e2,#7fc0c5 60%,#4fa0a7);clip-path:inset(0 0 0 50%)}
+.ba-box .tag{position:absolute;top:14px;padding:6px 12px;font:700 .68rem var(--body);letter-spacing:.2em;text-transform:uppercase;background:rgba(255,255,255,.9);color:var(--khaki-d)}
+.ba-box .tag.l{left:14px}.ba-box .tag.r{right:14px}
+.ba-box .bar{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--white);box-shadow:0 0 0 1px rgba(0,0,0,.15);pointer-events:none}
+.ba-box .bar::after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:var(--white);display:grid;place-items:center;color:var(--khaki-d);font-size:1.1rem;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba p{text-align:center;color:var(--mute);font-size:.9rem;margin:12px 0 0}
+
+/* garantie */
+.gar{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.gar div{text-align:center;padding:26px 18px;background:var(--beige2);border:1px solid var(--line)}
+.gar svg{width:44px;height:44px;stroke:var(--khaki);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:10px}
+.gar h3{font:700 1.3rem var(--display);color:var(--khaki-d);margin-bottom:6px}
+.gar p{margin:0;color:var(--mute);font-size:.95rem}
+
+/* entreprise */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,70px);align-items:center}
+.two h2{font:700 clamp(1.8rem,3.4vw,2.6rem)/1.12 var(--display);color:var(--khaki-d);margin:10px 0 16px}
+.ph{position:relative;aspect-ratio:4/5;max-height:62vh;width:100%;background:linear-gradient(145deg,#e6ddc9,#cfe0dc 55%,#9fcdcf);border:1px solid var(--line);overflow:hidden}
+.ph.real{background:var(--photo) center/cover no-repeat}
+.ph::after{content:"Photo à ajouter";position:absolute;left:14px;bottom:12px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(44,43,35,.45)}
+.ph.real::after{content:none}
+.facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:22px}
+.facts div{font:700 2rem/1 var(--display);color:var(--khaki)}
+.facts small{display:block;font:600 .62rem var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:8px;font-style:normal}
+
+/* avis */
+.rev{max-width:780px;margin:0 auto;text-align:center;min-height:200px}
+.rev .sl{display:none}
+.rev .sl.on{display:block;animation:fade .8s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.stars{color:var(--khaki);letter-spacing:.3em;margin-bottom:14px}
+.rev q{display:block;font:500 clamp(1.15rem,2.2vw,1.55rem)/1.55 var(--body);quotes:none;color:var(--ink)}
+.rev cite{display:block;margin-top:16px;font-style:normal;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.dots2{display:flex;gap:10px;justify-content:center;margin-top:24px}
+.dots2 button{width:10px;height:10px;border-radius:50%;border:2px solid var(--khaki);background:none;padding:0;cursor:pointer}
+.dots2 button[aria-current="true"]{background:var(--khaki)}
+
+/* devis */
+.resa{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.resa h2{font:700 clamp(1.8rem,3.6vw,2.8rem)/1.1 var(--display);color:var(--khaki-d);margin:10px 0 14px}
+.resa ul{list-style:none;padding:0;margin:18px 0 0;color:var(--mute);font-size:.96rem}
+.resa li{padding:6px 0 6px 20px;position:relative}
+.resa li::before{content:"";position:absolute;left:0;top:1.05em;width:9px;height:3px;background:var(--khaki);border-radius:2px}
+form{background:var(--white);border:1px solid var(--line);border-top:5px solid var(--khaki);padding:clamp(20px,3.4vw,34px)}
+label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--khaki-d);font-weight:700;margin:12px 0 5px}
+input,select,textarea{width:100%;background:var(--beige2);border:1px solid var(--beige-d);color:var(--ink);padding:11px 13px;font:inherit;font-size:1rem}
+textarea{resize:vertical;min-height:70px}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--khaki);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:.84rem;color:var(--mute);letter-spacing:0;text-transform:none;font-weight:400}
+.chk input{width:auto;margin-top:5px}
+.chk button{color:var(--khaki-d);background:none;border:0;padding:0;font:inherit;text-decoration:underline;cursor:pointer}
+form .btn{margin-top:18px;width:100%}
+#ok{display:none;margin-top:14px;padding:12px;border:2px solid var(--khaki);color:var(--khaki-d);font-size:.92rem}
+
+/* zone et contact */
+.zone{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.zone h2{font:700 clamp(1.8rem,3.4vw,2.6rem)/1.12 var(--display);color:var(--khaki-d);margin:10px 0 14px}
+.towns{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.towns span{border:1px solid var(--khaki);color:var(--khaki-d);padding:6px 14px;font-size:.88rem}
+.info h3{font:700 1.3rem var(--display);color:var(--khaki-d);margin:0 0 6px}
+.info p,.info .tbl{margin:0 0 18px}
+.info table{border-collapse:collapse}
+.info td{padding:3px 0;white-space:nowrap;vertical-align:top}
+.info td:last-child{padding-left:24px}
+.ig-logo{display:inline-flex;color:var(--khaki-d);line-height:0;margin-top:4px}
+.ig-logo:hover,.ig-logo:focus-visible{color:var(--khaki)}
+
+footer{scroll-snap-align:end;background:var(--khaki-d);color:#E3F1F1;padding:30px 0;text-align:center;font-size:.8rem}
+footer .links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+footer button{background:none;border:0;color:#E3F1F1;font:inherit;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;padding:4px 0}
+footer button:hover{color:var(--white);text-decoration:underline}
+footer p{margin:6px 0}
+
+dialog{max-width:720px;width:calc(100% - 32px);max-height:86vh;border:2px solid var(--khaki);background:var(--white);color:var(--ink);padding:0}
+dialog::backdrop{background:rgba(10,30,34,.6)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--white)}
+.dh h2{font:700 1.4rem var(--display);color:var(--khaki-d)}
+.dh button{background:none;border:2px solid var(--khaki);color:var(--khaki-d);padding:7px 14px;cursor:pointer;font:700 .7rem var(--body);letter-spacing:.16em;text-transform:uppercase}
+.db{padding:4px 24px 24px;font-size:.94rem}
+.db h3{font:700 1.1rem var(--display);color:var(--khaki);margin:20px 0 4px}
+.db p{margin:0}
+
+@media (max-width:900px){
+  .hd .in{min-height:68px}
+  .hd nav{display:none}
+  .hd.open nav{display:flex;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--white);border-bottom:1px solid var(--line);padding:6px 0 14px}
+  .hd.open nav a{padding:14px 24px}
+  .burger{display:block}
+  .cards,.gar{grid-template-columns:1fr 1fr}
+  .two,.resa,.zone{grid-template-columns:1fr}
+  .ph{aspect-ratio:16/11}
+}
+@media (max-width:560px){
+  .cards,.gar{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+  .sec{padding-block:88px 40px}
+}
+@media (max-height:860px) and (min-width:901px){
+  .card{padding:18px 22px}.card p{margin-bottom:8px}.card li{padding:3px 0 3px 20px}.sh{margin-bottom:22px}.gar div{padding:18px 14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .brush .st{animation:none;stroke-dashoffset:0}
+  .hero h1,.hero .eyebrow,.hero .sub,.hero .acts{animation:none;opacity:1}
+  .rev .sl.on{animation:none}
+  html{scroll-behavior:auto}
+}
+
+/* ===== refonte « accueil photo + devis » ===== */
+:root{--orange:#C9621F;--orange-d:#A24A12;--display:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif}
+.hd .in{min-height:74px}
+.hd nav{gap:22px}
+.logo b{font:700 1.3rem/1 var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--khaki-d)}
+.hero2{position:relative;color:#fff;padding-block:clamp(96px,14vh,130px) clamp(70px,10vh,100px);background-color:#12383D;background-image:linear-gradient(rgba(8,36,40,.58),rgba(8,36,40,.58)),url(photos/hero.jpg),linear-gradient(135deg,#1F6F78,#12383D);background-size:cover;background-position:center;border-top:0}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,64px);align-items:center}
+.hero-tx .eyebrow{color:#BFE3E6}
+.hero-tx h1{font:700 clamp(2rem,4.4vw,3.5rem)/1.1 var(--display);color:#fff;margin:12px 0 16px;letter-spacing:-.01em}
+.hero-tx p{font-size:1.12rem;max-width:30em;margin:0 0 18px;color:#EAF4F5}
+.checks{list-style:none;margin:0;padding:0;font-weight:600}
+.checks li{padding:5px 0 5px 28px;position:relative}
+.checks li::before{content:"";position:absolute;left:0;top:.55em;width:14px;height:8px;border-left:3px solid #7FD0D6;border-bottom:3px solid #7FD0D6;transform:rotate(-45deg)}
+.devis-card{background:#fff;color:var(--ink);border:0;border-radius:6px;box-shadow:0 22px 56px rgba(0,0,0,.4);padding:clamp(20px,2.6vw,30px)}
+.devis-card h2{font:700 1.5rem/1.2 var(--display);color:var(--khaki);margin:0 0 6px;text-align:center}
+.devis-card label:first-of-type{margin-top:6px}
+.devis-card .btn.f{border-radius:4px;margin-top:14px}
+.rate{position:absolute;left:max(18px,calc((100% - 1120px)/2 + 18px));bottom:26px;background:#fff;color:#222;border-radius:8px;padding:9px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);font-size:.9rem}
+.rate b{font-size:1.15rem}.rate .st{color:#F5B301;letter-spacing:.12em}.rate small{color:#666}
+.tel{border-radius:4px}
+.sh h2,.two h2,.zone h2{color:var(--khaki)}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .rate{position:static;margin:22px 18px 0;display:inline-flex}
+  .hero2{padding-bottom:40px}
+}
+/* accueil centré avec photo réelle */
+.hero3{position:relative;color:#fff;text-align:center;justify-content:center;background-color:#12383D;background-image:linear-gradient(rgba(8,36,40,.5),rgba(8,36,40,.5)),url(photos/hero.jpg),linear-gradient(135deg,#1F6F78,#12383D);background-size:cover;background-position:center;border-top:0}
+.hero3 .in{display:flex;flex-direction:column;align-items:center}
+.hero3 .eyebrow{color:#CFEBED}
+.hero3 h1{font:700 clamp(2.1rem,5.6vw,4.3rem)/1.08 var(--display);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 16px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.hero3 p{max-width:34em;font-size:1.15rem;margin:0 auto 26px;color:#F0F8F8}
+.hero3 .acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero3 .btn{border-color:#fff;color:#fff}
+.hero3 .btn:hover{background:#fff;color:var(--khaki-d)}
+.hero3 .btn.f{background:var(--orange);border-color:var(--orange);color:#fff}
+.hero3 .btn.f:hover{background:var(--orange-d);border-color:var(--orange-d)}
+/* galerie de réalisations */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gal figure{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
+.gal .im{aspect-ratio:4/5;max-height:50vh;width:100%;background-size:cover;background-position:center;background-image:var(--img),linear-gradient(145deg,#cfe3e5,#8fc3c8 60%,#4f9aa2)}
+.gal figure:nth-child(even) .im{background-image:var(--img),linear-gradient(145deg,#efe6d2,#d9c9a8 60%,#b9a67f)}
+.gal figcaption{padding:10px 12px;font-size:.92rem;color:var(--khaki-d);font-weight:600}
+@media (max-width:900px){.gal{grid-template-columns:1fr 1fr}.gal .im{max-height:34vh}}
+/* correctifs téléphone */
+@media (max-width:900px){
+  .hero3{flex-direction:column;justify-content:center;padding-bottom:80px}
+  .hero3 .in{width:100%}
+  .hero3 .rate{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;margin:0;white-space:nowrap}
+}
+@media (max-width:560px){
+  .hero3 h1{font-size:2rem;letter-spacing:.03em}
+  .hero3 .eyebrow{font-size:.64rem;letter-spacing:.2em;text-align:center}
+  .hero3 p{font-size:1.02rem}
+  .gal{grid-template-columns:1fr}
+  .gal .im{aspect-ratio:4/3;max-height:none}
+}</style>
+</head>
+<body>
+
+<header class="hd" id="hd"><div class="in">
+  <a class="logo" href="#accueil" aria-label="Éclat Peinture 93, accueil">
+    <b>Éclat Peinture</b>
+    <svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6 C40 1 70 9 110 5 S170 3 198 6" fill="none" stroke="#3E9AA3" stroke-width="5" stroke-linecap="round"/></svg>
+    <small>Peintre en bâtiment · 93</small>
+  </a>
+  <nav aria-label="Menu principal"><a href="#services">Nos services</a><a href="#realisations">Réalisations</a><a href="#garantie">Garantie</a><a href="#avis">Avis</a><a href="#devis">Devis gratuit</a><a class="tel" href="tel:+33639989312">06 39 98 93 12</a></nav>
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="hd">Menu</button>
+</div></header>
+<main>
+<section id="accueil" class="sec hero3">
+  <div class="in">
+    <span class="eyebrow">Peintre en bâtiment · Paris et Seine-Saint-Denis</span>
+    <h1>Éclat Peinture 93</h1>
+    <p>Peinture intérieure, façades et décoration. Un travail soigné, un chantier propre, un devis gratuit sous 48 h.</p>
+    <div class="acts"><a class="btn f" href="#devis">Devis gratuit</a><a class="btn" href="tel:+33639989312">06 39 98 93 12</a></div>
+  </div>
+  <div class="rate" aria-label="Note moyenne 5 sur 5"><b>5,0</b><span class="st">★★★★★</span><small>avis d’exemple</small></div>
+</section>
+<section id="services" class="sec beige">
+  <div class="in">
+    <div class="sh"><span class="eyebrow">Nos services</span><h2>Tous vos travaux de peinture</h2><p>Particuliers, copropriétés et commerces : nous intervenons à Paris et dans toute la Seine-Saint-Denis.</p></div>
+    <div class="cards">
+      <div class="card"><h3>Peinture intérieure</h3><p>Des murs et plafonds nets, des finitions durables.</p><ul><li>Murs, plafonds, boiseries</li><li>Préparation et enduit</li><li>Peinture écologique sur demande</li></ul></div>
+      <div class="card"><h3>Façades et extérieur</h3><p>Protégez et valorisez votre bâtiment.</p><ul><li>Ravalement de façade</li><li>Volets, portails, garde-corps</li><li>Peinture siloxane</li></ul></div>
+      <div class="card"><h3>Décoration et sols</h3><p>Un intérieur qui vous ressemble.</p><ul><li>Papier peint, enduits décoratifs</li><li>Conseil couleurs</li><li>Sols PVC et parquet</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="realisations" class="sec">
+  <div class="in">
+    <div class="sh"><span class="eyebrow">Réalisations</span><h2>Quelques-uns de nos chantiers</h2><p>Salons, maisons de ville et salles de bains : des finitions soignées, chez des particuliers et en copropriété.</p></div>
+    <div class="gal">
+      <figure><div class="im" style="--img:url(photos/realisation-1.jpg)" role="img" aria-label="Salon repeint"></div><figcaption>Salon, peinture murale</figcaption></figure>
+      <figure><div class="im" style="--img:url(photos/realisation-2.jpg)" role="img" aria-label="Maison de ville repeinte, extérieur"></div><figcaption>Maison de ville, extérieur</figcaption></figure>
+      <figure><div class="im" style="--img:url(photos/realisation-3.jpg)" role="img" aria-label="Grande salle de bains en marbre"></div><figcaption>Grande salle de bains</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section id="garantie" class="sec beige">
+  <div class="in">
+    <div class="sh"><span class="eyebrow">Nos engagements</span><h2>Un artisan assuré, un travail garanti</h2></div>
+    <div class="gar">
+      <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 L40 10 V24 C40 33 33 40 24 44 C15 40 8 33 8 24 V10 Z"/><path d="M16 24 L22 30 L33 18"/></svg><h3>Garantie décennale</h3><p>Vos travaux sont couverts, avec attestation fournie.</p></div>
+      <div><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="6" width="30" height="36" rx="2"/><path d="M16 16 H32 M16 24 H32 M16 32 H26"/></svg><h3>Devis gratuit</h3><p>Détaillé et sans engagement, sous 48 heures.</p></div>
+      <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40 L8 22 L24 8 L40 22 L40 40 Z"/><path d="M20 40 V28 H28 V40"/></svg><h3>Chantier propre</h3><p>Sols et meubles protégés, nettoyage en fin de travaux.</p></div>
+      <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 C14 18 10 24 10 30 A14 14 0 0 0 38 30 C38 24 34 18 24 6 Z"/></svg><h3>Peintures de qualité</h3><p>Produits professionnels, durables et peu odorants.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="entreprise" class="sec">
+  <div class="in two">
+    <div class="ph real" style="--photo:url(photos/entreprise.jpg)" role="img" aria-label="Un peintre en combinaison blanche passe la peinture au rouleau sur un mur"></div>
+    <div>
+      <span class="eyebrow">L’entreprise</span>
+      <h2>Une équipe de peintres qualifiés</h2>
+      <p>Éclat Peinture 93 est une entreprise d’artisans installée à Montreuil. Nous soignons la préparation des supports, le choix des peintures et les finitions, du petit appartement à l’immeuble entier.</p>
+      <div class="facts"><div>48 h<small>pour votre devis</small></div><div>10 ans<small>de garantie décennale</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="avis" class="sec beige">
+  <div class="in">
+    <div class="sh"><span class="eyebrow">Témoignages</span><h2>Ils nous ont fait confiance</h2></div>
+    <div class="rev" id="rev">
+      <div class="sl on"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Appartement repeint en trois jours, protections soignées et finitions impeccables. Je recommande.</q><cite>Nadia, Montreuil · avis d’exemple</cite></div>
+      <div class="sl"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Devis clair, équipe ponctuelle, ravalement de notre immeuble réalisé dans les délais.</q><cite>Syndic de copropriété, Saint-Denis · avis d’exemple</cite></div>
+      <div class="sl"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Très bons conseils sur les couleurs, et un chantier laissé parfaitement propre.</q><cite>Thomas, Paris 20e · avis d’exemple</cite></div>
+    </div>
+    <div class="dots2" id="dots2" role="group" aria-label="Choisir un avis"></div>
+  </div>
+</section>
+
+<section id="devis" class="sec">
+  <div class="in resa">
+    <div>
+      <span class="eyebrow">Devis gratuit</span>
+      <h2>Parlez-nous de votre projet</h2>
+      <p style="color:var(--mute)">Décrivez vos travaux en quelques lignes. Nous vous rappelons sous 48 heures avec un devis détaillé, sans engagement.</p>
+      <ul><li>Devis gratuit et sans engagement.</li><li>Déplacement sur place pour mesurer.</li><li>Paris et Seine-Saint-Denis (93).</li></ul>
+    </div>
+    <form id="f" novalidate>
+      <div class="row2">
+        <div><label for="nom">Prénom et nom</label><input id="nom" type="text" autocomplete="name"></div>
+        <div><label for="tel">Téléphone</label><input id="tel" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="row2">
+        <div><label for="ville">Ville ou code postal</label><input id="ville" type="text" autocomplete="postal-code"></div>
+        <div><label for="type">Type de travaux</label><select id="type"><option>Peinture intérieure</option><option>Façade ou extérieur</option><option>Décoration, papier peint</option><option>Sols</option><option>Autre</option></select></div>
+      </div>
+      <label for="msg">Votre projet</label><textarea id="msg" rows="3"></textarea>
+      <label class="chk" for="ok1"><input id="ok1" type="checkbox"><span>J’accepte que ces informations servent à établir mon devis. <button type="button" data-dlg="dConf">Politique de confidentialité</button></span></label>
+      <button class="btn f" type="submit">Envoyer ma demande</button>
+      <div id="ok" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<section id="contact" class="sec beige">
+  <div class="in zone">
+    <div>
+      <span class="eyebrow">Zone d’intervention</span>
+      <h2>Paris et toute la Seine-Saint-Denis</h2>
+      <p style="color:var(--mute)">Nous nous déplaçons gratuitement pour établir votre devis.</p>
+      <div class="towns"><span>Paris</span><span>Montreuil</span><span>Saint-Denis</span><span>Bobigny</span><span>Pantin</span><span>Aubervilliers</span><span>Bondy</span><span>Drancy</span><span>Noisy-le-Sec</span><span>Rosny-sous-Bois</span></div>
+    </div>
+    <div class="info">
+      <h3>Adresse</h3><p>Éclat Peinture 93<br>27 rue Jean Jaurès<br>93100 Montreuil</p>
+      <h3>Horaires</h3><div class="tbl"><table><tr><td>Lundi&nbsp;–&nbsp;vendredi</td><td>8&nbsp;h&nbsp;–&nbsp;18&nbsp;h</td></tr><tr><td>Samedi</td><td>9&nbsp;h&nbsp;–&nbsp;12&nbsp;h</td></tr><tr><td>Dimanche</td><td>Fermé</td></tr></table></div>
+      <h3>Contact</h3><p>06 39 98 93 12<br>contact@eclat-peinture93-demo.fr<br>
+        <a class="ig-logo" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (ouvre un nouvel onglet)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg></a></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="in">
+  <div class="links"><button type="button" data-dlg="dMent">Mentions légales</button><button type="button" data-dlg="dCgv">CGV</button><button type="button" data-dlg="dConf">Politique de confidentialité</button></div>
+  <p>© 2026 Éclat Peinture 93 · Entreprise artisanale assurée en garantie décennale</p>
+</div></footer>
+
+<dialog id="dMent" aria-labelledby="tMent">
+  <div class="dh"><h2 id="tMent">Mentions légales</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+    <h3>Éditeur du site</h3><p>Éclat Peinture 93, EURL au capital de 5 000 €, 27 rue Jean Jaurès, 93100 Montreuil. SIRET 123 456 789 00035 · RCS Bobigny B 123 456 789 · Répertoire des métiers : Bobigny 123 456 789 · TVA FR 00 123456789. Téléphone : 06 39 98 93 12. E-mail : contact@eclat-peinture93-demo.fr.</p>
+    <h3>Directeur de la publication</h3><p>Samir Delmas, gérant</p>
+    <h3>Assurance décennale</h3><p>Assureur : Assurance Décennale Artisans, 10 rue de l’Industrie, 75009 Paris · Contrat n° DEC-2026-0001234 · Couverture géographique : France métropolitaine. L’attestation d’assurance est jointe à chaque devis.</p>
+    <h3>Hébergeur</h3><p>GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis · github.com</p>
+    <h3>Prix et TVA</h3><p>Les prix sont indiqués en euros, toutes taxes comprises. La TVA applicable est de 10 % pour les travaux d’amélioration d’un logement de plus de deux ans, 20 % dans les autres cas. Le devis précise le taux retenu.</p>
+    <h3>Médiation de la consommation</h3><p>En cas de litige, vous pouvez recourir gratuitement au médiateur de la consommation : CM2C – Centre de la médiation de la consommation de conciliateurs de justice, 14 rue Saint-Jean, 75017 Paris · cm2c.net.</p>
+    <h3>Propriété intellectuelle</h3><p>Les textes, images et éléments graphiques de ce site sont protégés. Toute reproduction sans autorisation est interdite. Crédits photos : Pexels (Kelly, pu-ca-adryan, imab, artbovich, shkrabaanthony).</p>
+  </div>
+</dialog>
+
+<dialog id="dCgv" aria-labelledby="tCgv">
+  <div class="dh"><h2 id="tCgv">Conditions générales de vente</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+    <h3>Objet</h3><p>Ces conditions s’appliquent aux travaux de peinture et de décoration réalisés par Éclat Peinture 93, 27 rue Jean Jaurès, 93100 Montreuil, pour les particuliers comme pour les professionnels.</p>
+    <h3>Devis</h3><p>Le devis est gratuit, détaillé et valable 30 jours. Il précise la nature des travaux, les matériaux, les délais, le prix et la TVA applicable. Les travaux commencent après sa signature.</p>
+    <h3>Prix et paiement</h3><p>Un acompte de 30 % est demandé à la commande, le solde est réglé à la réception des travaux, par virement ou chèque. Tout retard de paiement entraîne des pénalités égales à trois fois le taux d’intérêt légal et, pour les professionnels, une indemnité forfaitaire de recouvrement de 40 €.</p>
+    <h3>Délais</h3><p>Les délais figurent au devis. Ils peuvent être prolongés en cas d’intempéries pour les travaux extérieurs, ou si l’accès au chantier est impossible.</p>
+    <h3>Droit de rétractation</h3><p>Pour un contrat conclu à votre domicile ou hors de notre établissement, vous disposez de 14 jours pour vous rétracter, sans motif, au moyen du formulaire joint au devis. Si vous demandez le début des travaux avant la fin de ce délai, vous restez redevable des travaux déjà réalisés.</p>
+    <h3>Réception et garanties</h3><p>Les travaux sont réceptionnés avec vous à leur achèvement. Ils bénéficient de la garantie de parfait achèvement d’un an et, selon leur nature, de la garantie décennale.</p>
+    <h3>Réclamations et médiation</h3><p>Pour toute réclamation, écrivez à contact@eclat-peinture93-demo.fr. À défaut de solution, vous pouvez saisir gratuitement le médiateur de la consommation : CM2C – Centre de la médiation de la consommation de conciliateurs de justice, 14 rue Saint-Jean, 75017 Paris · cm2c.net.</p>
+    <h3>Droit applicable</h3><p>Ces conditions sont soumises au droit français.</p>
+  </div>
+</dialog>
+
+<dialog id="dConf" aria-labelledby="tConf">
+  <div class="dh"><h2 id="tConf">Politique de confidentialité</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+    <h3>Responsable du traitement</h3><p>Éclat Peinture 93, 27 rue Jean Jaurès, 93100 Montreuil, contact@eclat-peinture93-demo.fr.</p>
+    <h3>Données collectées</h3><p>Lors d’une demande de devis : nom, numéro de téléphone, ville ou code postal, nature des travaux et message.</p>
+    <h3>Pourquoi nous les utilisons</h3><p>Uniquement pour étudier votre projet, vous rappeler et établir votre devis, à votre demande. La base légale est votre consentement.</p>
+    <h3>Durée de conservation</h3><p>3 ans après le dernier contact, puis suppression.</p>
+    <h3>Destinataires</h3><p>L’équipe d’Éclat Peinture 93 et, le cas échéant, l’outil de gestion des devis et l’hébergeur du site, soumis aux mêmes obligations de confidentialité. Les données ne sont ni vendues ni cédées.</p>
+    <h3>Vos droits</h3><p>Vous pouvez demander l’accès, la rectification, l’effacement de vos données, ou vous opposer à leur utilisation, en écrivant à contact@eclat-peinture93-demo.fr. En cas de désaccord, vous pouvez saisir la CNIL (cnil.fr).</p>
+    <h3>Lien externe</h3><p>Le logo Instagram mène vers un site tiers, soumis à sa propre politique de confidentialité. Aucune donnée n’est transmise à Instagram tant que vous ne cliquez pas.</p>
+    <h3>Cookies et traceurs</h3><p>Ce site n’utilise aucun cookie de mesure d’audience ou de publicité, et n’affiche donc pas de bandeau. Les polices sont celles de votre appareil : aucune connexion à un service tiers n’est nécessaire pour les afficher.</p>
+  </div>
+</dialog>
+
+<script>
+(function(){
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return [].slice.call((r||document).querySelectorAll(s))}
+
+/* en-tête et menu mobile */
+var hd=$("#hd"),bg=$("#burger");
+bg.addEventListener("click",function(){var o=hd.classList.toggle("open");bg.setAttribute("aria-expanded",o?"true":"false")});
+$$("#hd nav a").forEach(function(a){a.addEventListener("click",function(){hd.classList.remove("open");bg.setAttribute("aria-expanded","false")})});
+
+/* avant / après */
+/* avis */
+(function(){
+  var sl=$$(".sl",$("#rev")),d=$("#dots2"),i=0,t;
+  sl.forEach(function(_,k){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Avis "+(k+1));b.addEventListener("click",function(){go(k,true)});d.appendChild(b)});
+  function go(k,u){i=k;sl.forEach(function(s,j){s.classList.toggle("on",j===k)});$$("button",d).forEach(function(b,j){b.setAttribute("aria-current",j===k?"true":"false")});if(u){clearInterval(t)}}
+  go(0);if(!reduce){t=setInterval(function(){go((i+1)%sl.length)},7000)}
+})();
+
+/* formulaire de devis (simulé) */
+$("#f").addEventListener("submit",function(e){
+  e.preventDefault();var ok=$("#ok");ok.style.display="block";
+  var nom=$("#nom").value.trim(),tel=$("#tel").value.trim(),ville=$("#ville").value.trim();
+  if(!nom||!tel){ok.textContent="Indiquez votre nom et votre numéro de téléphone.";return}
+  if(!ville){ok.textContent="Indiquez votre ville ou votre code postal.";return}
+  if(!$("#ok1").checked){ok.textContent="Cochez la case de consentement pour envoyer votre demande.";return}
+  ok.textContent="Merci "+nom+" ! Votre demande de devis ("+$("#type").value.toLowerCase()+") est enregistrée, nous vous rappelons sous 48 h. (Démonstration : aucune donnée n’est envoyée.)";
+});
+
+/* fenêtres légales */
+$$("[data-dlg]").forEach(function(b){b.addEventListener("click",function(){var dl=document.getElementById(b.getAttribute("data-dlg"));if(dl&&dl.showModal)dl.showModal()})});
+$$("dialog").forEach(function(dl){
+  dl.addEventListener("click",function(e){if(e.target===dl)dl.close()});
+  $$("[data-close]",dl).forEach(function(b){b.addEventListener("click",function(){dl.close()})});
+});
+})();
+</script>
+</body>
+</html>

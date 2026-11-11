@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demander un devis — Maison Tessaron (concept fictif)</title>
+<meta name="description" content="Formulaire de demande de devis de démonstration. Aucun message n’est envoyé.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F1EFE8">
+<link rel="preload" href="fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="demo">Concept de démonstration — entreprise fictive. Aucune information de cette page ne décrit une entreprise réelle.</div>
+
+<div class="hero-wrap">
+  <header class="hero court">
+    <img class="bg" style="object-position:50% 45%" src="img/pinceau-main-1200.webp" srcset="img/pinceau-main-640.webp 640w, img/pinceau-main-1200.webp 1200w, img/pinceau-main-1800.webp 1800w" sizes="100vw" width="1200" height="1800" alt="Main tenant un pinceau dans une pièce claire en rénovation" fetchpriority="high">
+    <div class="bar">
+      <a class="logo" href="index.html" aria-label="Maison Tessaron, accueil"><i aria-hidden="true"></i>Maison Tessaron</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="menu" id="menu" aria-label="Navigation principale">
+        <a href="prestations.html">Prestations</a>
+        <a href="methode.html">Méthode</a>
+        <a href="realisations.html">Réalisations</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a class="btn" href="contact.html#devis">Demander un devis</a>
+      </nav>
+    </div>
+    <div class="hero-in">
+      <h1>Demander un devis de peinture.</h1>
+      <p class="lead">Pièces concernées, état des murs, calendrier souhaité : quelques lignes suffisent pour préparer un devis.</p>
+    </div>
+  </header>
+</div>
+
+<main id="contenu" class="contenu">
+
+  <section class="sec" id="devis" aria-labelledby="contact-t">
+    <div class="sec-in">
+      <div class="contact">
+        <div>
+          <h2 id="contact-t">Parlons de votre chantier.</h2>
+          <p class="intro">Décrivez les pièces, l’état des murs et le calendrier souhaité. Un devis détaillé précise les travaux, les produits et les finitions prévues.</p>
+          <ul>
+            <li>Formulaire de démonstration : rien n’est envoyé.</li>
+            <li>Coordonnées de l’entreprise : non renseignées (entreprise fictive).</li>
+            <li>Zone d’intervention et délai de réponse : à définir.</li>
+          </ul>
+        </div>
+        <form data-demo-form novalidate method="dialog">
+          <div class="f2">
+            <label for="nom">Nom<input id="nom" name="nom" type="text" autocomplete="name" aria-describedby="err-nom" required><span class="err" id="err-nom" aria-live="polite"></span></label>
+            <label for="email">E-mail<input id="email" name="email" type="email" autocomplete="email" aria-describedby="err-email" required><span class="err" id="err-email" aria-live="polite"></span></label>
+          </div>
+          <label for="travaux">Type de travaux
+            <select id="travaux" name="travaux" aria-describedby="err-travaux" required>
+              <option value="">Choisir…</option>
+              <option>Peinture intérieure</option>
+              <option>Préparation et enduits</option>
+              <option>Revêtements muraux</option>
+              <option>Remise en état d’une pièce</option>
+              <option>Autre / je ne sais pas encore</option>
+            </select><span class="err" id="err-travaux" aria-live="polite"></span></label>
+          <label for="message">Votre projet<textarea id="message" name="message" aria-describedby="err-message" required></textarea><span class="err" id="err-message" aria-live="polite"></span></label>
+          <div><button class="btn" type="submit">Envoyer la demande (démonstration)</button></div>
+          <p class="status" id="form-status" role="status" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="sec fit-hide" aria-labelledby="photos-t" style="padding-top:0">
+    <div class="sec-in">
+      <h2 class="titre" id="photos-t" style="font-size:clamp(1.5rem,1.1rem + 1.6vw,2.25rem)">Pour préparer votre devis.</h2>
+      <p class="muted" style="margin:10px 0 24px;max-width:36em">Quelques photos des murs concernés, des fissures ou des zones abîmées aident à estimer la préparation. Une visite sur place précise ensuite le devis.</p>
+      <div class="bande">
+        <figure><img src="img/rouleau-bac-1200.webp" srcset="img/rouleau-bac-640.webp 640w, img/rouleau-bac-1200.webp 1200w, img/rouleau-bac-1800.webp 1800w" sizes="(max-width:820px) 92vw, 31vw" width="1200" height="1800" alt="Ouvrier tenant un rouleau à peinture au-dessus d’un bac de peinture" loading="lazy" decoding="async"><figcaption>Murs à repeindre : pièces et surfaces</figcaption></figure>
+        <figure><img style="aspect-ratio:4/3" src="img/mur-ocre-1200.webp" srcset="img/mur-ocre-640.webp 640w, img/mur-ocre-1200.webp 1200w, img/mur-ocre-1800.webp 1800w" sizes="(max-width:820px) 92vw, 31vw" width="1200" height="1800" alt="Mur peint en ocre derrière un banc en bois" loading="lazy" decoding="async"><figcaption>Teintes souhaitées ou existantes</figcaption></figure>
+        <figure><img src="img/piece-gris-bleu-1200.webp" srcset="img/piece-gris-bleu-640.webp 640w, img/piece-gris-bleu-1200.webp 1200w, img/piece-gris-bleu-1800.webp 1800w" sizes="(max-width:820px) 92vw, 31vw" width="1200" height="798" alt="Pièce vide aux murs bleu-gris clair et moulures blanches" loading="lazy" decoding="async"><figcaption>État général de la pièce</figcaption></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <a class="logo" href="index.html"><i aria-hidden="true"></i>Maison Tessaron</a>
+      <p style="margin-top:14px;max-width:28em">Peinture et rénovation intérieure : préparation des supports, enduits, peinture, revêtements muraux. Entreprise fictive créée pour une démonstration de site.</p>
+    </div>
+    <div>
+      <h2>Pages</h2>
+      <ul><li><a href="index.html">Accueil</a></li><li><a href="prestations.html">Prestations</a></li><li><a href="methode.html">Méthode</a></li><li><a href="realisations.html">Réalisations</a></li><li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="confidentialite.html">Confidentialité</a></li></ul>
+    </div>
+    <div>
+      <h2>Coordonnées</h2>
+      <p>Adresse, téléphone et e-mail : volontairement non renseignés (concept fictif).</p>
+    </div>
+  </div>
+  <p class="credits">Concept de démonstration — entreprise fictive. Photographies Unsplash (licence Unsplash) à titre d’illustration, non réalisées par l’entreprise ; projets illustratifs. <a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+</footer>
+<script src="js/main.js" defer></script>
+</body>
+</html>

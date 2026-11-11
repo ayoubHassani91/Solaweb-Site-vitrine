@@ -1,0 +1,5 @@
+﻿Montserrat (graisses 400 à 800, sous-ensemble latin) — police libre de droits.
+Licence : SIL Open Font License 1.1 (https://openfontlicense.org)
+Auteurs : The Montserrat Project Authors (https://github.com/JulietaUla/Montserrat)
+Source du fichier : Google Fonts (fonts.gstatic.com), téléchargé le 03/11/2026 puis hébergé localement :
+le site n'appelle aucun service externe pour afficher cette police.

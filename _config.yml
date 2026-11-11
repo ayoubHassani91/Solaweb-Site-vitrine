@@ -1,0 +1,4 @@
+# GitHub Pages (Jekyll) : ne pas publier ces fichiers.
+# Les dossiers commençant par « _ » (_sources, _sauvegardes) sont déjà ignorés.
+exclude:
+  - README.md

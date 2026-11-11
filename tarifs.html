@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarifs — SolaWeb</title>
+  <meta name="description" content="Trois formules de site web à prix clair (490, 650 et 890 €), une page qui défile ou plusieurs pages. Maquette avant tout paiement.">
+  <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
+  <meta name="theme-color" content="#FFFFFF">
+  <!-- Aperçu de partage : à compléter avec l'adresse (og:url) et une image absolue (og:image) une fois le domaine choisi -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="SolaWeb">
+  <meta property="og:title" content="Tarifs — SolaWeb">
+  <meta property="og:description" content="Trois formules de site web à prix clair (490, 650 et 890 €), une page qui défile ou plusieurs pages. Maquette avant tout paiement.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script src="js/animations.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body class="page-interne">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <!-- Logo SolaWeb (soleil levant + montagnes), redessiné en vectoriel d'après le logo fourni (assets/logo-solaweb-original.png) -->
+    <symbol id="logo-sw" viewBox="0 0 330 92">
+      <defs>
+        <linearGradient id="sw-soleil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC531"/><stop offset="1" stop-color="#FF6A1A"/></linearGradient>
+        <clipPath id="sw-horizon"><rect x="0" y="0" width="104" height="72"/></clipPath>
+      </defs>
+      <circle cx="52" cy="42" r="36" fill="url(#sw-soleil)" clip-path="url(#sw-horizon)"/>
+      <g fill="#fff"><rect x="62" y="23" width="34" height="3.4" rx="1.7"/><rect x="66" y="31" width="30" height="3.4" rx="1.7"/><rect x="10" y="49" width="30" height="3.4" rx="1.7"/></g>
+      <path d="M4 80L34 58L42 64L53 46L65 60L73 55L102 80Z" fill="#fff" stroke="#CFC3F2" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M14 84Q52 78 92 84" fill="none" stroke="#CFC3F2" stroke-width="1.4" stroke-linecap="round"/>
+      <text x="110" y="62" font-size="48" font-weight="600" letter-spacing="-1"><tspan fill="currentColor">Sola</tspan><tspan fill="#F47B20">Web</tspan></text>
+    </symbol>
+  </svg>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <div class="conteneur entete-interieur">
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+      <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="menu" id="menu" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="tarifs.html" aria-current="page">Tarifs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="menu-cta-zone"><a class="bouton bouton-plein fleche" href="contact.html">Demander un devis</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <section class="bandeau-page" aria-labelledby="t-page">
+      <div class="conteneur">
+        <ol class="fil-ariane" aria-label="Vous êtes ici"><li><a href="index.html">Accueil</a></li><li aria-current="page">Tarifs</li></ol>
+        <p class="sur-titre" data-anime>Nos formules</p>
+        <h1 id="t-page" data-mots>Trois formules, un prix clair.</h1>
+        <p data-anime style="--d:350">Pour chaque formule, choisissez une page qui défile ou plusieurs pages séparées. Aperçu avant validation, sans abonnement de maintenance imposé. Assistants IA et automatisation : sur devis.</p>
+      </div>
+    </section>
+
+    <!-- PRIX PROPOSES (490 / 650 / 890 euros) : a valider par la proprietaire avant publication -->
+    <section class="section clair" id="tarifs" aria-labelledby="t-tarifs">
+      <div class="conteneur">
+        <div class="tete-section">
+          <p class="sur-titre">Création de site web</p>
+          <h2 id="t-tarifs">Choisissez <span class="mot-bronze">votre formule</span></h2>
+        </div>
+        <div class="formules3" data-anime="groupe">
+
+          <article class="carte-f" aria-labelledby="f-essentiel">
+            <h3 id="f-essentiel">Essentiel</h3>
+            <p class="prix">490 €</p>
+            <p class="pour">Un site simple pour présenter votre entreprise.</p>
+            <div class="choix" role="group" aria-label="Au choix">
+              <p><strong>1 page qui défile :</strong> 4 sections maximum</p>
+              <p><strong>OU plusieurs pages :</strong> 3 pages maximum</p>
+            </div>
+            <ul>
+              <li>Design moderne, adapté mobile et ordinateur</li>
+              <li>Présentation de vos services</li>
+              <li>Formulaire de contact, horaires et itinéraire</li>
+              <li>Bases du référencement naturel (sans garantie de classement)</li>
+              <li>1 série de modifications sur l'aperçu</li>
+            </ul>
+            <p class="garantie">Corrections d'anomalies : 14 jours</p>
+            <a class="bouton bouton-plat bouton-plat-contour" href="contact.html?service=site">Demander un devis</a>
+          </article>
+
+          <article class="carte-f vedette" aria-labelledby="f-vitrine">
+            <span class="badge-formule">Le plus polyvalent</span>
+            <h3 id="f-vitrine">Vitrine</h3>
+            <p class="prix">650 €</p>
+            <p class="pour">Un site complet pour valoriser votre savoir-faire.</p>
+            <div class="choix" role="group" aria-label="Au choix">
+              <p><strong>1 page qui défile :</strong> 7 sections maximum</p>
+              <p><strong>OU plusieurs pages :</strong> 5 pages maximum</p>
+            </div>
+            <p class="reprise">Toutes les prestations Essentiel, plus :</p>
+            <ul>
+              <li>Galerie de réalisations</li>
+              <li>Formulaire de demande de devis</li>
+              <li>Jusqu'à 3 avis clients authentiques, fournis par vous</li>
+              <li>Lien vers un outil de réservation externe (non fourni)</li>
+              <li>2 séries de modifications sur l'aperçu</li>
+              <li>30 min d'accompagnement au total</li>
+            </ul>
+            <p class="garantie">Corrections d'anomalies : 14 jours</p>
+            <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html?service=site">Demander un devis</a>
+          </article>
+
+          <article class="carte-f" aria-labelledby="f-plus">
+            <h3 id="f-plus">Vitrine Plus</h3>
+            <p class="prix">890 €</p>
+            <p class="pour">Un site plus complet pour présenter vos services en détail.</p>
+            <div class="choix" role="group" aria-label="Au choix">
+              <p><strong>1 page qui défile :</strong> 9 sections maximum</p>
+              <p><strong>OU plusieurs pages :</strong> 7 pages maximum</p>
+            </div>
+            <p class="reprise">Toutes les prestations Vitrine, plus :</p>
+            <ul>
+              <li>Galerie par catégorie</li>
+              <li>2 services présentés en détail (dans le nombre de sections ou de pages)</li>
+              <li>Jusqu'à 5 avis clients authentiques et une FAQ</li>
+              <li>45 min d'accompagnement au total</li>
+            </ul>
+            <p class="garantie">Corrections d'anomalies : 30 jours</p>
+            <a class="bouton bouton-plat bouton-plat-contour" href="contact.html?service=site">Demander un devis</a>
+          </article>
+
+        </div>
+        <div class="tarifs-pied" data-anime>
+          <p><strong>Dans chaque formule :</strong> adapté mobiles et ordinateurs · aperçu privé avant validation · pages légales intégrées, hors quota (à valider par vous) · textes et photos fournis par vous · nom de domaine et hébergement à votre charge · fichiers remis · aucun abonnement obligatoire. Prix en euros, <span class="a-completer">HT ou TTC : à préciser</span>.</p>
+          <button class="bouton bouton-plat bouton-plat-contour" type="button" data-dlg="d-options" aria-haspopup="dialog">Options et conditions</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fond-pale" aria-labelledby="t-etapes">
+      <div class="conteneur">
+        <div class="tete-section">
+          <p class="sur-titre">Comment ça se passe</p>
+          <h2 id="t-etapes">Vous voyez <span class="mot-bronze">votre maquette</span> avant de payer.</h2>
+        </div>
+        <ol class="etapes5" data-anime="groupe">
+          <li class="etape"><span class="etape-num" aria-hidden="true">1</span><h3>On échange.</h3><p>Vous nous présentez votre activité, vos clients et vos envies. Nous vous disons franchement si nous pouvons vous aider.</p></li>
+          <li class="etape"><span class="etape-num" aria-hidden="true">2</span><h3>Votre première maquette est créée.</h3><p>Vous n&rsquo;avez encore rien payé.</p></li>
+          <li class="etape"><span class="etape-num" aria-hidden="true">3</span><h3>Vous la découvrez à distance.</h3><p>Vous donnez votre avis et nous ajustons. Elle vous plaît&nbsp;? Vous validez et vous réglez 50&nbsp;%. Elle ne vous plaît pas&nbsp;? Nous nous arrêtons là&nbsp;: vous ne payez&nbsp;rien.</p></li>
+          <li class="etape"><span class="etape-num" aria-hidden="true">4</span><h3>Le reste du site est réalisé.</h3><p>Vous découvrez la version finale.</p></li>
+          <li class="etape"><span class="etape-num" aria-hidden="true">5</span><h3>Vous validez et réglez les 50&nbsp;% restants.</h3><p>Votre site est mis en ligne.</p></li>
+        </ol>
+        <p class="delai-etapes" data-anime>Le délai de réalisation est précisé dans votre devis.</p>
+      </div>
+    </section>
+
+    <!-- ===== Appel à l'action ===== -->
+    <section class="section clair" aria-labelledby="t-cta">
+      <div class="conteneur">
+        <div class="bande-cta" data-anime>
+          <div>
+            <p class="sur-titre">Votre projet</p>
+            <h2 id="t-cta">Parlons de votre projet&nbsp;?</h2>
+            <p>Dites-nous ce qui vous plaît. Nous revenons vers vous avec un devis écrit, sans engagement.</p>
+          </div>
+          <div class="actions">
+            <a class="bouton bouton-clair fleche" href="contact.html">Demander un devis</a>
+            <a class="bouton bouton-transparent" href="tarifs.html">Voir les tarifs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied-site">
+    <div class="conteneur pied-grille">
+      <div class="pied-marque">
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+        <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
+      </div>
+      <nav aria-labelledby="pied-t1">
+        <h2 class="pied-titre" id="pied-t1">Le site</h2>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="pied-t2">
+        <h2 class="pied-titre" id="pied-t2">Informations</h2>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+          <li><a href="conditions.html">Conditions commerciales</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="pied-titre">Contact</h2>
+        <ul>
+          <li>E-mail : <span class="a-completer">à compléter</span></li>
+          <li>Téléphone : <span class="a-completer">à compléter</span></li>
+        </ul>
+        <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html">Demander un devis</a>
+      </div>
+    </div>
+    <div class="conteneur pied-bas">
+      <p>© 2026 SolaWeb · Version de travail : contenus provisoires, non destinée à la publication.</p>
+    </div>
+  </footer>
+  <!-- Fenêtre : options et conditions -->
+  <dialog class="apercu dlg" id="d-options" aria-labelledby="d-options-t">
+    <div class="apercu-tete">
+      <h2 id="d-options-t">Options et conditions</h2>
+      <button type="button" class="fermer" data-close aria-label="Fermer">Fermer</button>
+    </div>
+    <div class="dlg-corps">
+      <div class="deux-blocs">
+        <div>
+          <h3>Dans chaque formule</h3>
+          <ul class="liste-conditions">
+            <li>Site adapté aux mobiles et aux ordinateurs</li>
+            <li>Aperçu privé avant validation</li>
+            <li>Pages légales nécessaires, intégrées à partir de vos informations (à valider par vous)</li>
+            <li>Installation et publication sur un hébergement compatible qui vous appartient</li>
+            <li>Remise des fichiers livrables</li>
+            <li>Aucun abonnement de maintenance obligatoire</li>
+          </ul>
+          <h3>Non compris</h3>
+          <p class="non-compris">Rédaction complète des textes · logo et identité graphique · achat de photographies · réservation sur mesure · paiement en ligne et boutique · espace client · applications complexes · fiche Google Business Profile · référencement mensuel ou garanti · animations complexes · gestion des réseaux sociaux · maintenance mensuelle · campagnes publicitaires · modifications illimitées. Toute fonctionnalité hors formule se chiffre sur devis.</p>
+          <h3>Corrections et modifications</h3>
+          <ul class="liste-conditions">
+            <li><strong>Correction d'anomalie :</strong> réparer ce qui ne fonctionne pas comme prévu. Elle est gratuite pendant la période indiquée dans la formule.</li>
+            <li><strong>Série de modifications :</strong> un ensemble de changements demandés en une seule fois sur l'aperçu (textes, photos, couleurs). Chaque formule en comprend un nombre précis.</li>
+            <li><strong>Demande supplémentaire :</strong> toute modification au-delà, ou après livraison, est facturée selon les options.</li>
+            <li><strong>Accompagnement :</strong> temps d'échange (téléphone ou visioconférence), total sur toute la durée du projet : 30 min pour Vitrine, 45 min pour Vitrine Plus.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Options</h3>
+          <div class="tableau-conteneur">
+            <table class="tableau tableau-options">
+              <caption class="visuellement-cache">Options supplémentaires et leur prix</caption>
+              <thead><tr><th scope="col">Option</th><th scope="col">Prix</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Section supplémentaire (page qui défile)</th><td data-label="Prix">50 €</td></tr>
+                <tr><th scope="row">Page supplémentaire (pages séparées)</th><td data-label="Prix">100 €</td></tr>
+                <tr><th scope="row">Modification simple après livraison (30 minutes maximum)</th><td data-label="Prix">40 €</td></tr>
+                <tr><th scope="row">Heure supplémentaire</th><td data-label="Prix">60 €</td></tr>
+                <tr><th scope="row">Lien de réservation externe dans Essentiel</th><td data-label="Prix">40 €</td></tr>
+                <tr><th scope="row">Accompagnement supplémentaire de 45 minutes</th><td data-label="Prix">50 €</td></tr>
+                <tr><th scope="row">Rédaction approfondie</th><td data-label="Prix">Dès 120 € par page, sur devis</td></tr>
+                <tr><th scope="row">Fonctionnalité complexe</th><td data-label="Prix">Sur devis</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p class="note-bas note-large">Une section est un véritable bloc de contenu : un bouton ou un lien n'en est pas une. Le nom de domaine et l'hébergement sont souscrits et payés par vous ; vous fournissez vos textes et vos photos. Les pages légales (mentions, confidentialité) ne comptent pas dans le nombre de sections ou de pages. Un lien vers un outil de réservation externe est possible ; une réservation intégrée et sur mesure n'est pas comprise. Le référencement se limite aux bases techniques, sans garantie de position. Chaque option est soumise à une évaluation de faisabilité. Les anomalies de réalisation signalées dans le délai indiqué sont corrigées, sans limiter les garanties légales applicables. Prix en euros, <span class="a-completer">HT ou TTC : à préciser</span>.</p>
+    </div>
+  </dialog></body>
+</html>

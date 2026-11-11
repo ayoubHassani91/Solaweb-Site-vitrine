@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Beauty Palace – démonstration (institut fictif)</title>
+<meta name="description" content="Site de démonstration d’un institut de beauté fictif, réalisé par SolaWeb. Aucune activité réelle, aucune donnée collectée.">
+<style>
+/* Concept : maison de beauté crème et beige, rappels violine, carrousel paysage photo | texte, soins en cartes verticales. Polices système : aucune connexion à un service tiers. */
+:root{
+  --cream:#FBF4EC; --beige:#F2E7DA; --sand:#E4D3C0; --white:#FFFDF9;
+  --violine:#5A3E70; --violine-d:#3E2A52; --blush:#E9CDD2;
+  --ink:#2B2233; --mute:#6A5F72; --line:#D8C7B5;
+  --display:"Didot","Bodoni 72","Bodoni MT","Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --body:"Avenir Next","Avenir","Nunito Sans","Segoe UI","Helvetica Neue",system-ui,sans-serif;
+  --photo:url("photos/fond-defaut.webp");
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:106px}.sec[id]{scroll-margin-top:calc(24px - clamp(56px,8vw,104px))}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--cream)}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--violine);outline-offset:3px}
+.in{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--ink)}
+.title{font-family:var(--display);font-weight:400;color:var(--violine);font-size:clamp(2.3rem,5.2vw,3.7rem);line-height:1.08;text-wrap:balance}
+.sec{padding-block:clamp(56px,8vw,104px)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--violine);color:#fff;padding:10px 16px;z-index:100}
+.skip:focus{left:16px}
+
+/* bandeau haut */
+.tb{background:var(--violine);color:#fff;font-size:.85rem;letter-spacing:.03em}
+.tb .in{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;padding-block:9px}
+
+/* en-tête */
+.hd{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--cream);border-bottom:1px solid var(--line)}
+.hd .in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding-block:10px}
+.hd nav{display:flex;gap:clamp(14px,2.8vw,42px)}
+.hd .nl{justify-content:flex-end}
+.hd nav a{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;padding-block:8px;border-bottom:1px solid transparent}
+.hd nav a:hover{border-bottom-color:var(--violine);color:var(--violine)}
+.logo{display:block;color:var(--violine);line-height:0;text-decoration:none}
+.logo svg{width:84px;height:84px}
+.burger{display:none;background:none;border:1px solid var(--violine);color:var(--violine);padding:9px 16px;letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;font-weight:600;cursor:pointer;border-radius:999px}
+
+/* boutons */
+.btn{display:inline-block;background:var(--violine);color:#fff;border:1px solid var(--violine);padding:13px 30px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;text-decoration:none;cursor:pointer;border-radius:999px;text-align:center}
+.btn:hover{background:var(--violine-d);border-color:var(--violine-d)}
+.btn.w{background:var(--white);color:var(--ink);border-color:var(--white)}
+.btn.w:hover{background:var(--violine);color:#fff;border-color:var(--violine)}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--ink);border-radius:0}
+.btn.o:hover,.btn.o[aria-pressed="true"]{background:var(--violine);color:#fff;border-color:var(--violine)}
+
+/* photos et emplacements */
+.slide.mont{position:relative}.hero-tx{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;gap:8px;padding:clamp(48px,9vw,110px) 20px clamp(18px,3vw,34px);text-align:center;color:#fff;background:linear-gradient(to top,rgba(43,34,51,.74),rgba(43,34,51,0))}.hero-tx .eyebrow{color:#fff;opacity:.92}.hero-tx h1{font:400 clamp(1.7rem,3.6vw,2.9rem)/1.1 var(--display);text-transform:uppercase;letter-spacing:.08em;color:#fff;margin:0}.hero-tx .acc{margin:0 0 6px;font-size:clamp(.95rem,1.4vw,1.1rem);opacity:.95}
+.ig-logo{display:inline-flex;align-items:center;color:inherit;opacity:.92;line-height:0}.ig-logo:hover,.ig-logo:focus-visible{opacity:1;transform:scale(1.1)}.ig-row{margin-top:6px}
+.ph{position:relative;overflow:hidden;background:var(--g,linear-gradient(135deg,#E6D2C0,#D5B9A6 55%,#C4A296))}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 85% 15%,rgba(255,255,255,.45),transparent 55%),radial-gradient(90% 80% at 10% 100%,rgba(90,62,112,.28),transparent 60%)}
+.ph::after{content:"Photo à ajouter";position:absolute;left:14px;bottom:12px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(43,34,51,.55)}
+.slide.mont{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;aspect-ratio:auto;max-height:none;height:clamp(300px,62vh,640px)}.slide.mont .ph{aspect-ratio:auto;min-height:0;height:100%}.hero:has(.mont) .ctl{display:none}
+.ph.real{background:var(--photo) center var(--pos,42%)/cover no-repeat}
+.ph.real::before,.ph.real::after{content:none}
+.g2{--g:linear-gradient(135deg,#EBDCCB,#D9C0B8 55%,#BFA3B5)}
+.g3{--g:linear-gradient(135deg,#E9D8C8,#CDB5C3 60%,#9C83AE)}
+.g4{--g:linear-gradient(135deg,#F0E1D2,#E1C8B5 55%,#CFAFA5)}
+.g5{--g:linear-gradient(135deg,#E4D6CC,#C9B3C8 55%,#8E769F)}
+
+/* carrousel d'accueil */
+.slide{display:none;grid-template-columns:minmax(0,1fr);min-height:0;aspect-ratio:16/9;max-height:calc(100vh - 150px)}
+.slide.on{display:grid;animation:fade .7s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.slide .ph{min-height:260px}
+.slide .tx{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;padding:clamp(28px,5vw,72px) max(24px,env(safe-area-inset-right,0px)) clamp(28px,5vw,72px) clamp(24px,5vw,72px)}
+.slide h1,.slide h2.h{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1.8rem,3.7vw,3.2rem);line-height:1.12;color:var(--ink);text-wrap:balance}
+.slide .sub{color:var(--mute);max-width:30em;text-wrap:pretty}
+.slide .fine{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ctl{display:flex;justify-content:center;align-items:center;gap:6px;padding:12px 16px;background:var(--cream);border-bottom:1px solid var(--line)}
+.ar,.pz{background:none;border:0;cursor:pointer;color:var(--violine);width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+.ar:hover,.pz:hover{background:var(--beige)}
+.ar svg{width:18px;height:18px}
+.pz{width:auto;padding:0 12px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;border-radius:999px}
+.dots{display:flex}
+.dots button{width:26px;height:26px;background:none;border:0;cursor:pointer;display:grid;place-items:center;padding:0}
+.dots button::before{content:"";width:10px;height:10px;border-radius:50%;border:1.5px solid var(--violine)}
+.dots button[aria-current="true"]::before{background:var(--violine)}
+
+/* histoire */
+.hist{background:var(--beige)}
+.hist .in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,88px);align-items:center}
+.hist .ph{aspect-ratio:4/5;width:100%}
+.hist .tx{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.hist p{max-width:34em;text-wrap:pretty}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;width:100%;padding-block:22px;border-block:1px solid var(--line);margin-block:6px}
+.stats b{display:block;font:400 clamp(1.7rem,3vw,2.4rem)/1.1 var(--display);color:var(--violine);font-variant-numeric:tabular-nums}
+.stats span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+
+/* soins */
+.head{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;margin-bottom:clamp(30px,4vw,52px)}
+.head p{color:var(--mute);max-width:36em}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.card{display:flex;flex-direction:column;gap:18px;align-items:center}
+.card .ph{aspect-ratio:4/5;width:100%}
+.card .btn{width:100%;max-width:230px;padding-inline:14px}
+
+/* tarifs */
+.panel[hidden]{display:none}.panel{background:var(--white);border:1px solid var(--line);max-width:920px;margin:clamp(28px,4vw,48px) auto 0;padding:clamp(22px,4vw,48px)}
+.panel h3.cat{font:400 clamp(1.7rem,3vw,2.3rem)/1.1 var(--display);color:var(--violine);text-align:center;margin-bottom:6px}
+.hint{text-align:center;color:var(--mute);font-size:.9rem;margin-bottom:6px}
+.grp h4{font:400 1.3rem/1.2 var(--display);color:var(--violine);text-transform:uppercase;letter-spacing:.04em;margin:30px 0 6px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.grp h4 small{font:600 .68rem var(--body);letter-spacing:.2em;color:var(--mute)}
+.grp .intro{color:var(--mute);font-size:.94rem;max-width:42em;margin-bottom:4px;text-wrap:pretty}
+.row{display:flex;align-items:baseline;gap:8px;width:100%;background:none;border:0;border-radius:3px;padding:9px 8px;text-align:left;cursor:pointer;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--ink)}
+.row:hover{background:var(--cream)}
+.row .n{min-width:0}
+.row small{font-size:.76rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--mute);margin-left:8px;white-space:nowrap}
+.row i{flex:1;min-width:16px;border-bottom:2px dotted var(--line);transform:translateY(-3px)}
+.row b{color:var(--violine);white-space:nowrap;font-variant-numeric:tabular-nums}
+.d{margin:-2px 8px 6px;font-style:italic;color:var(--mute);font-size:.92rem;text-wrap:pretty}
+
+/* avis */
+.avis{background:var(--beige);text-align:center}
+.avis .title{color:var(--ink);font-family:var(--body);font-weight:500;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(1.6rem,3vw,2.2rem)}
+.score{margin-top:10px;color:var(--mute)}
+.score b{font:400 2rem var(--display);color:var(--violine);margin-right:8px}
+.rv{position:relative;max-width:860px;margin:36px auto 0;min-height:200px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px}
+.rv .sl{display:none}
+.rv .sl.on{display:block;animation:fade .5s ease}
+.rv .sw{grid-column:2}
+.rv q{display:block;quotes:none;font:italic 400 clamp(1.15rem,2.1vw,1.45rem)/1.55 var(--display);text-wrap:pretty}
+.rv cite{display:block;margin-top:18px;font-style:normal;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.stars{color:var(--violine);letter-spacing:4px;margin-bottom:12px}
+.avis .dots{justify-content:center;margin-top:18px}
+
+/* rendez-vous */
+.rdv .in{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,6vw,80px);align-items:start}
+.rdv .tx{display:flex;flex-direction:column;gap:18px}
+.rdv ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.rdv li{padding-left:22px;position:relative;color:var(--mute)}
+.rdv li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:1px;background:var(--violine)}
+.rdv li b{color:var(--ink);font-weight:600}
+form{background:var(--white);border:1px solid var(--line);padding:clamp(20px,3.4vw,40px);display:grid;gap:18px}
+label,.lb{display:grid;gap:7px;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+input,select{font:400 1rem var(--body);letter-spacing:0;text-transform:none;color:var(--ink);background:var(--cream);border:1px solid var(--line);border-radius:0;padding:12px 14px;width:100%;min-width:0}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{font:600 .9rem var(--body);color:var(--ink);background:var(--cream);border:1px solid var(--line);padding:9px 16px;cursor:pointer;border-radius:999px;min-height:40px}
+.slot:hover:not(:disabled){border-color:var(--violine)}
+.slot[aria-pressed="true"]{background:var(--violine);color:#fff;border-color:var(--violine)}
+.slot:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.closed{color:var(--mute);font-size:.95rem;text-transform:none;letter-spacing:0;font-weight:400}
+.chk{display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font-weight:400;font-size:.9rem;color:var(--mute)}
+.chk input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--violine)}
+.chk button{background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;color:var(--violine)}
+#ok{display:none;background:var(--cream);border-left:3px solid var(--violine);padding:16px 18px;text-transform:none;letter-spacing:0;font-weight:400;font-size:.95rem}
+
+/* infos */
+.info{background:var(--beige)}
+.ig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.ig h3{font:400 1.5rem var(--display);color:var(--violine);margin-bottom:12px}
+.ig table{border-collapse:collapse;width:100%}
+.ig td{padding:7px 0;border-bottom:1px dotted var(--line)}
+.ig td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.ig p{color:var(--ink)}
+.ig .m{color:var(--mute);font-size:.92rem;margin-top:10px}
+
+/* pied de page */
+footer{background:var(--violine-d);color:#EDE3F2;padding-block:44px 52px;font-size:.92rem}
+footer .in{display:grid;gap:22px}
+footer .w{font:400 1.8rem var(--display);color:#fff;letter-spacing:.04em}
+footer .lk{display:flex;flex-wrap:wrap;gap:8px 28px}
+footer .lk button{background:none;border:0;padding:0;cursor:pointer;color:#EDE3F2;text-decoration:underline;font-size:.92rem}
+footer .demo{opacity:.82;max-width:52em}
+
+/* l’en-tête garde sa hauteur réelle : aucune section n’est cachée dessous */
+function hh(){document.documentElement.style.scrollPaddingTop=($("#hd").offsetHeight+1)+"px"}hh();window.addEventListener("resize",hh);
+/* fenêtres légales */
+dialog{width:min(720px,calc(100vw - 32px));max-height:86vh;border:0;padding:0;background:var(--white);color:var(--ink);overflow:auto}
+dialog::backdrop{background:rgba(30,18,40,.6)}
+.dh{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--white);padding:18px 24px;border-bottom:1px solid var(--line)}
+.dh h2{font:400 1.6rem var(--display);color:var(--violine)}
+.dh button{background:none;border:1px solid var(--ink);padding:8px 16px;cursor:pointer;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.db{padding:8px 24px 28px}
+.db h3{font:400 1.2rem var(--display);color:var(--violine);margin:22px 0 4px}
+.db p{color:var(--ink);font-size:.97rem}
+.db .ph1{background:var(--beige);padding:2px 6px}
+
+/* mobile */
+@media (max-width:1000px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hist .in,.rdv .in{grid-template-columns:minmax(0,1fr)}
+  .hist .ph{max-height:520px;aspect-ratio:16/11}
+  .ig{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:900px){
+  .hd .in{grid-template-columns:auto 1fr;gap:10px}
+  .hd .logo svg{width:64px;height:64px}
+  .burger{display:block;justify-self:end;order:-1}
+  .hd .logo{order:-2}
+  .hd nav{display:none;grid-column:1/-1;flex-direction:column;gap:0;padding-bottom:10px}
+  .hd.open nav{display:flex}
+  .hd nav a{padding-block:13px;border-bottom:1px solid var(--line)}
+  .hd .nl{justify-content:flex-start}
+}
+@media (max-width:760px){
+  .slide{grid-template-columns:minmax(0,1fr)}
+  .slide{aspect-ratio:auto;max-height:none}.slide .ph{min-height:0;aspect-ratio:4/3}
+  .slide.on .ph{order:-1}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rv{grid-template-columns:minmax(0,1fr);}
+  .rv .sw{grid-column:1}
+  .rv .ar{display:none}
+  .row{flex-wrap:wrap}
+  .row i{display:none}
+  .row b{margin-left:auto}
+}
+@media (max-width:480px){
+  .cards{gap:12px}
+  .card .btn{font-size:.68rem;letter-spacing:.12em}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .slide.on,.rv .sl.on{animation:none}
+}
+.demo-bandeau{background:#2b1b35;color:#fff;text-align:center;padding:10px 16px;font-size:.88rem;line-height:1.4}.demo-bandeau b{font-weight:700}.note-fictif{margin:8px 0 0;color:var(--mute);font-size:.92rem}.note-demo{margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:.9rem;color:var(--mute)}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#soins">Aller au contenu</a>
+
+<header class="hd" id="hd"><div class="in">
+  <nav class="nl" aria-label="Menu principal"><a href="#accueil">Accueil</a><a href="#soins">Soins</a><a href="#histoire">Histoire</a></nav>
+  <a class="logo" href="#accueil" aria-label="Beauty Palace, accueil">
+    <svg viewBox="0 0 120 120" role="img" aria-hidden="true"><defs><path id="circ" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1 -90 0"/></defs>
+      <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="60" r="33" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <text font-size="8.2" font-family="Avenir Next,Avenir,Segoe UI,Helvetica Neue,sans-serif" font-weight="600" fill="currentColor"><textPath href="#circ" textLength="276" lengthAdjust="spacing">BEAUTY PALACE · INSTITUT DE BEAUTÉ ·</textPath></text>
+      <text x="60" y="70" text-anchor="middle" font-size="30" font-family="Didot,Bodoni 72,Bodoni MT,Hoefler Text,Georgia,serif" fill="currentColor">BP</text></svg>
+  </a>
+  <nav class="nr" aria-label="Menu secondaire"><a href="#avis">Avis</a><a href="#rdv">Réserver</a><a href="#contact">Contact</a></nav>
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="hd">Menu</button>
+</div></header>
+
+<main>
+<section id="accueil" class="hero" aria-roledescription="carrousel" aria-label="Offres du moment" data-car="hero">
+  <div class="slide on mont">
+    <div class="ph real" style="--photo:url(photos/accueil-1.webp);--pos:0%" role="img" aria-label="Deux femmes au teint lumineux, portrait de beauté"></div>
+    <div class="ph real" style="--photo:url(photos/accueil-2.webp);--pos:20%" role="img" aria-label="Soin du visage avec massage aux billes métalliques"></div>
+    <div class="ph real" style="--photo:url(photos/accueil-3.webp);--pos:25%" role="img" aria-label="Visage de femme à la peau éclatante, gouttes de rosée"></div>
+    <div class="hero-tx"><span class="eyebrow">Institut de beauté · concept fictif</span><h1>Beauty Palace</h1><p class="acc">Le temps d’un soin, rien que pour vous.</p><a class="btn w" href="#rdv">Réserver</a></div>
+  </div>
+  <div class="ctl">
+    <button class="ar" type="button" data-prev aria-label="Diapositive précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg></button>
+    <div class="dots" role="group" aria-label="Choisir une diapositive"></div>
+    <button class="ar" type="button" data-next aria-label="Diapositive suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></button>
+    <button class="pz" type="button" data-pause aria-pressed="false">Pause</button>
+  </div>
+</section>
+
+<section id="soins" class="sec"><div class="in">
+  <div class="head"><span class="eyebrow">Expertise</span><h2 class="title">Nos soins</h2><p>Choisissez une catégorie pour découvrir les prestations et les tarifs.</p></div>
+  <div class="cards" id="cards">
+    <div class="card"><div class="ph real" style="--photo:url(photos/carte-1.webp)" role="img" aria-label="Soin du visage"></div><button class="btn o" type="button" data-cat="0" aria-pressed="false">Visage</button></div>
+    <div class="card"><div class="ph real" role="img" aria-label="Ongles et lèvres assortis"></div><button class="btn o" type="button" data-cat="1" aria-pressed="false">Mains &amp; pieds</button></div>
+    <div class="card"><div class="ph real" style="--photo:url(photos/carte-2.webp)" role="img" aria-label="Épilation"></div><button class="btn o" type="button" data-cat="2" aria-pressed="false">Épilations</button></div>
+    <div class="card"><div class="ph real" style="--photo:url(photos/carte-3.webp)" role="img" aria-label="Cures et soin laser"></div><button class="btn o" type="button" data-cat="3" aria-pressed="false">Cures &amp; laser</button></div>
+  </div>
+  <div class="panel" id="panel" aria-live="polite"></div>
+</div></section>
+
+<section id="histoire" class="hist sec"><div class="in">
+  <div class="ph real" style="--photo:url(photos/histoire.webp)" role="img" aria-label="Portrait en noir et blanc de la fondatrice"></div>
+  <div class="tx">
+    <span class="eyebrow">Solène, fondatrice</span>
+    <h2 class="title">Beauty Palace</h2>
+    <p>Beauty Palace est né d’une conviction : prendre soin de soi ne devrait jamais se faire dans la précipitation. Dans un institut lumineux et feutré, chaque cliente est accueillie comme une invitée.</p>
+    <p>Visage, mains, pieds, épilations : nous choisissons des soins efficaces, des produits choisis avec soin et des gestes précis, pour des résultats que l’on voit et que l’on ressent.</p>
+    <p>Chaque rendez-vous commence par un temps d’échange pour comprendre votre peau, votre rythme et vos envies.</p>
+    
+    <a class="btn o" href="#rdv">Prendre rendez-vous</a>
+  </div>
+</div></section>
+
+<section id="avis" class="avis sec"><div class="in" data-car="rev">
+  <h2 class="title">Avis</h2>
+  <p class="note-fictif">Témoignages fictifs écrits pour la démonstration : ce ne sont pas des avis de clientes réelles.</p>
+  <div class="rv">
+    <button class="ar" type="button" data-prev aria-label="Avis précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg></button>
+    <div class="sw">
+      <div class="sl on"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Un soin du visage vraiment sur mesure. Ma peau n’a jamais été aussi lumineuse, et l’équipe prend le temps d’écouter.</q><cite>Camille · avis d’exemple</cite></div>
+      <div class="sl"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Un semi-permanent impeccable qui tient trois semaines. Cadre apaisant et accueil très chaleureux.</q><cite>Sofia · avis d’exemple</cite></div>
+      <div class="sl"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>Épilation rapide et douce, hygiène irréprochable. Je recommande sans hésiter.</q><cite>Nadia · avis d’exemple</cite></div>
+      <div class="sl"><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><q>La cure de soins m’a convaincue : un résultat visible dès la troisième séance.</q><cite>Inès · avis d’exemple</cite></div>
+    </div>
+    <button class="ar" type="button" data-next aria-label="Avis suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></button>
+  </div>
+  <div class="dots" role="group" aria-label="Choisir un avis"></div>
+</div></section>
+
+<section id="rdv" class="rdv sec"><div class="in">
+  <div class="tx">
+    <span class="eyebrow">Réservation</span>
+    <h2 class="title">Prendre rendez-vous</h2>
+    <p>Choisissez votre prestation, votre date et votre horaire. Vous pouvez aussi cliquer sur un soin dans la liste des tarifs : il sera sélectionné pour vous.</p>
+    <ul>
+      <li><b>Conditions fictives</b> pour la démonstration : annulation ou report gratuit jusqu’à 24 h avant.</li>
+      <li><b>Absence ou retard important :</b> la prestation peut être facturée.</li>
+      <li><b>Prix TTC,</b> règlement sur place.</li>
+      <li><b>Fermé</b> le lundi et le dimanche.</li>
+    </ul>
+  </div>
+  <form id="f" novalidate method="dialog">
+<p class="note-demo"><strong>Démonstration :</strong> ce formulaire ne réserve rien, n’envoie rien et n’enregistre rien.</p>
+<noscript><p class="note-demo">JavaScript est désactivé : la simulation de réservation est indisponible, aucune donnée n’est envoyée.</p></noscript>
+    <label for="soin">Prestation<select id="soin" required></select></label>
+    <label for="date">Date<input type="date" id="date" required></label>
+    <div class="lb"><span id="lbl">Horaire</span><div class="slots" id="slots" role="group" aria-labelledby="lbl"></div></div>
+    <label for="nom">Prénom<input id="nom" required autocomplete="given-name"></label>
+    <label for="tel">Téléphone<input id="tel" type="tel" required autocomplete="tel"></label>
+    <div class="chk"><input type="checkbox" id="ok1" required><label for="ok1" style="display:block;text-transform:none;letter-spacing:0;font-weight:400;font-size:.9rem;color:var(--mute)">J’accepte que ces informations servent à gérer mon rendez-vous. <button type="button" data-dlg="dConf">Politique de confidentialité</button></label></div>
+    <button class="btn" type="submit">Simuler la réservation</button>
+    <div id="ok" role="status"></div>
+  </form>
+</div></section>
+
+<section id="contact" class="info sec"><div class="in ig">
+  <div><h3>Adresse</h3><p>Beauty Palace<br>[adresse fictive de démonstration]</p><p class="m">Institut imaginaire.</p></div>
+  <div><h3>Horaires</h3><table><tr><td>Lundi</td><td>Fermé</td></tr><tr><td>Mardi – Vendredi</td><td>10h – 19h30</td></tr><tr><td>Samedi</td><td>10h – 18h</td></tr><tr><td>Dimanche</td><td>Fermé</td></tr></table></div>
+  <div><h3>Contact</h3><p>01 99 00 12 34 (numéro fictif)<br>contact@example.org (adresse fictive)</p><p class="m">Aucun message n’est lu : ce site est une démonstration.</p></div>
+</div></section>
+</main>
+
+<footer><div class="in">
+  <div class="w">Beauty Palace</div>
+  <div class="lk"><button type="button" data-dlg="dMent">Mentions légales</button><button type="button" data-dlg="dCgv">CGV</button><button type="button" data-dlg="dConf">Politique de confidentialité</button></div>
+</div></footer>
+
+<dialog id="dMent" aria-labelledby="tMent">
+  <div class="dh"><h2 id="tMent">Mentions légales</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+<h3>Nature du site</h3><p>Ce site est une démonstration réalisée par SolaWeb pour montrer le style d’un site d’institut de beauté. « Beauty Palace » est un institut imaginaire : il n’existe pas d’activité, de société ni d’adresse derrière ce site.</p>
+<h3>Informations légales d’un site réel</h3><p>Pour un vrai institut, cette page indiquerait l’éditeur, son numéro d’immatriculation, le directeur de la publication, l’hébergeur et le médiateur de la consommation. Ces informations ne sont volontairement pas renseignées ici : elles seront fournies par le client réel.</p>
+<h3>Crédits photos</h3><p>Photos issues de Pexels (Kerim Eveyik, Melinda Madai, Mohammadreza Babaei). Les licences et les droits de ces images restent à vérifier avant tout usage commercial.</p>
+</div>
+</dialog>
+
+<dialog id="dCgv" aria-labelledby="tCgv">
+  <div class="dh"><h2 id="tCgv">Conditions de réservation et de vente</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+<h3>Exemple non applicable</h3><p>Aucune prestation n’est vendue sur ce site de démonstration. Les prestations, durées, prix et conditions d’annulation affichés sont des exemples inventés.</p>
+<h3>Pour un site réel</h3><p>Les conditions de réservation, de paiement, d’annulation, de cures et de cartes cadeau seraient rédigées avec l’institut puis relues par un professionnel du droit.</p>
+</div>
+</dialog>
+
+<dialog id="dConf" aria-labelledby="tConf">
+  <div class="dh"><h2 id="tConf">Politique de confidentialité</h2><button type="button" data-close>Fermer</button></div>
+  <div class="db">
+<h3>Aucune donnée collectée</h3><p>Le formulaire de réservation de cette démonstration est une simulation : ce que vous saisissez reste dans la page, n’est ni envoyé, ni enregistré, ni transmis à un tiers.</p>
+<h3>Cookies et traceurs</h3><p>Ce site n’utilise aucun cookie ni outil de mesure d’audience ou de publicité. Il ne charge aucune ressource externe.</p>
+<h3>Pour un site réel</h3><p>La politique de confidentialité préciserait le responsable du traitement, les données collectées, leur durée de conservation et les droits des personnes. Elle serait établie avec le client réel.</p>
+</div>
+</dialog>
+
+<script>
+(function(){
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return [].slice.call((r||document).querySelectorAll(s))}
+
+/* données issues de la plaquette tarifaire : [nom, durée, prix, description] */
+var C=[
+{l:"Visage",g:[
+ {t:"Soins du visage",i:[["Soin nettoyant","30 min","38 €"],["Option vapeur","20 min","12 €"]]},
+ {t:"Soins signature",i:[
+  ["Soin aux huiles essentielles","50 min","60 €","Soin beauté aux huiles essentielles, adapté à chaque type de peau."],
+  ["Soin oxygénant","50 min","70 €","Soin oxygénant et détoxifiant."],
+  ["Soin Dermopeeling","50 min","80 €","Soin rénovateur de peau grâce aux acides de fruits."],
+  ["Soin hydratation intense","50 min","90 €","Hydratation intense et repulpante grâce aux acides hyaluroniques de haut et bas poids moléculaire."],
+  ["Soin fermeté","50 min","96 €","Soin lifting fermeté global immédiat : visage, cou et décolleté."],
+  ["Soin anti-âge global","60 min","100 €","Soin immunité anti-âge : mains, visage, cou et décolleté."]]},
+ {t:"Soins haute technologie",intro:"Une nouvelle ère alliant haute technologie, expertise esthétique et actifs de pointe, pour une réponse sur mesure aux besoins de chaque peau.",i:[
+  ["Soin haute technologie","60 min","75 €"],["Soin haute technologie anti-âge","60 min","80 €"],["Soin lifting haute technologie","60 min","85 €"],["Soin lifting yeux","40 min","60 €"]]},
+ {t:"Soin anti-âge ciblé",intro:"Un soin anti-âge qui agit sur toutes les zones du visage pour lisser et raffermir.",i:[["Soin anti-âge ciblé","30 min","141 €"]]}
+]},
+{l:"Mains & pieds",g:[
+ {t:"Manucure et pédicure",i:[["Manucure","35 min","30 €"],["Soin pédipeeling","30 min","39 €"],["Option ongle soin pieds","10 min","8 €"]]},
+ {t:"Vernis et semi-permanent",i:[["Vernis classique","","15 €"],["Semi-permanent couleur","25 min","30 €"],["Semi-permanent French","30 min","33 €"],["Dépose de semi-permanent","20 min","15 €"]]},
+ {t:"Gel",i:[["Pose complète gel","90 min","57 €"],["Kapping ou remplissage","90 min","46 €"],["Flash gel","45 min","30 €"],["Dépose de gel","30 min","30 €"],["Remplacement","","10 €"]]},
+ {t:"Nail art",i:[["Décoration, à partir de","","1 €"],["Baby boomer","","12 €"]]}
+]},
+{l:"Épilations",g:[
+ {t:"Épilation à la cire, avec bandes",i:[["½ bras","10 min","14 €"],["Bras complet","15 min","19 €"],["⅓ jambes ou cuisses","15 min","19 €"],["¾ jambes","","26 €"],["Jambes entières","25 min","29 €"]]},
+ {t:"Épilation à la cire, sans bandes",i:[["Lèvres","10 min","11 €"],["Sourcils","10 min","11 €"],["Création de sourcils","15 min","16 €"],["Zone visage","10 min","11 €"],["Aisselles","10 min","14 €"],["Maillot classique","10 min","14 €"],["Maillot brésilien","15 min","18 €"],["Maillot semi ou intégral","20–30 min","29 €"]]},
+ {t:"Forfaits spéciaux",i:[["Forfait épilation visage, 3 zones","","dès 29,70 €"]]}
+]},
+{l:"Cures & laser",g:[
+ {t:"Cures de soins",intro:"L’intérêt d’une cure : un résultat plus efficace et qui dure. Tous les soins du visage ou du corps peuvent s’effectuer en cure, avec un prix dégressif en fonction du nombre de séances.",i:[["Cure de soins visage ou corps","","prix dégressif"]]},
+ {t:"Laser",intro:"Pour accéder aux séances de laser, une séance de diagnostic est obligatoire afin d’examiner la peau et de déterminer le phototype et le type de poil. Un questionnaire de santé est à remplir avant les séances.",i:[["Consultation laser","","offerte"]]}
+]}
+];
+
+var panel=$("#panel"),sel=$("#soin"),cards=$$("[data-cat]");
+function showCat(k){
+  cards.forEach(function(b,j){b.setAttribute("aria-pressed",j===k?"true":"false")});
+  var h='<h3 class="cat">'+C[k].l+'</h3><p class="hint">Cliquez sur une prestation pour la réserver.</p>';
+  C[k].g.forEach(function(g){
+    h+='<div class="grp"><h4>'+g.t+(g.b?'<small>'+g.b.toUpperCase()+'</small>':'')+'</h4>'+(g.intro?'<p class="intro">'+g.intro+'</p>':'');
+    g.i.forEach(function(x){
+      h+='<button type="button" class="row" data-n="'+x[0]+'"><span class="n">'+x[0]+(x[1]?'<small>'+x[1]+'</small>':'')+'</span><i></i><b>'+x[2]+'</b></button>'+(x[3]?'<p class="d">'+x[3]+'</p>':'');
+    });
+    h+='</div>';
+  });
+  panel.innerHTML=h;panel.hidden=false;
+}
+C.forEach(function(c){
+  var og=document.createElement("optgroup");og.label=c.l;
+  c.g.forEach(function(g){g.i.forEach(function(x){var o=document.createElement("option");o.value=o.textContent=x[0];og.appendChild(o)})});
+  sel.appendChild(og);
+});
+cards.forEach(function(b){b.addEventListener("click",function(){if(b.getAttribute("aria-pressed")==="true"){b.setAttribute("aria-pressed","false");panel.hidden=true;return}showCat(+b.getAttribute("data-cat"));panel.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"})})});
+panel.hidden=true;
+function pick(name){
+  for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===name){sel.selectedIndex=i;break}}
+}
+panel.addEventListener("click",function(e){
+  var r=e.target.closest(".row");if(!r)return;
+  pick(r.getAttribute("data-n"));
+  $("#rdv").scrollIntoView({behavior:reduce?"auto":"smooth"});
+});
+$$("[data-s]").forEach(function(a){a.addEventListener("click",function(){pick(a.getAttribute("data-s"))})});
+
+/* carrousels */
+function carousel(root,auto,slideSel){
+  var slides=$$(slideSel,root),dots=$(".dots",root),n=slides.length,i=0,timer=null,userPaused=false,hover=false;
+  var pz=$("[data-pause]",root),btns=[];
+  slides.forEach(function(s,k){
+    var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Aller à la diapositive "+(k+1));
+    b.addEventListener("click",function(){go(k);restart()});dots.appendChild(b);btns.push(b);
+  });
+  function go(k){
+    i=(k+n)%n;
+    slides.forEach(function(s,j){s.classList.toggle("on",j===i)});
+    btns.forEach(function(b,j){if(j===i)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
+  }
+  function stop(){if(timer){clearInterval(timer);timer=null}}
+  function start(){stop();if(auto&&!reduce&&!userPaused&&!hover)timer=setInterval(function(){go(i+1)},6500)}
+  function restart(){start()}
+  $$("[data-prev]",root).forEach(function(b){b.addEventListener("click",function(){go(i-1);restart()})});
+  $$("[data-next]",root).forEach(function(b){b.addEventListener("click",function(){go(i+1);restart()})});
+  if(pz){
+    if(reduce||!auto){pz.hidden=true}
+    pz.addEventListener("click",function(){userPaused=!userPaused;pz.setAttribute("aria-pressed",userPaused?"true":"false");pz.textContent=userPaused?"Lecture":"Pause";start()});
+  }
+  root.addEventListener("mouseenter",function(){hover=true;stop()});
+  root.addEventListener("mouseleave",function(){hover=false;start()});
+  root.addEventListener("focusin",function(){hover=true;stop()});
+  root.addEventListener("focusout",function(){hover=false;start()});
+  go(0);start();
+}
+carousel($("[data-car=hero]"),true,".slide");
+carousel($("[data-car=rev]"),false,".sl");
+
+/* formulaire de rendez-vous */
+var d=$("#date"),sl=$("#slots"),chosen=null;
+var wk=["10:00","11:15","12:30","14:00","15:15","16:30","17:45"],sat=["10:00","11:15","12:30","14:00","15:15","16:30"];
+function iso(dt){dt=new Date(dt.getTime()-dt.getTimezoneOffset()*60000);return dt.toISOString().slice(0,10)}
+function isClosed(v){var g=new Date(v+"T12:00:00").getDay();return g===0||g===1}
+var t=new Date();while(isClosed(iso(t)))t.setDate(t.getDate()+1);
+d.min=iso(new Date());d.value=iso(t);
+function render(){
+  sl.innerHTML="";chosen=null;
+  if(!d.value)return;
+  if(isClosed(d.value)){var p=document.createElement("p");p.className="closed";p.textContent="L’institut est fermé le lundi et le dimanche. Choisissez une autre date.";sl.appendChild(p);return}
+  var day=new Date(d.value+"T12:00:00").getDay(),list=day===6?sat:wk,seed=parseInt(d.value.replace(/-/g,"").slice(-4),10)||0;
+  list.forEach(function(h,k){
+    var b=document.createElement("button");b.type="button";b.className="slot";b.textContent=h;b.setAttribute("aria-pressed","false");
+    if((seed+k*3)%5===0)b.disabled=true;
+    b.addEventListener("click",function(){$$(".slot",sl).forEach(function(x){x.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");chosen=h});
+    sl.appendChild(b);
+  });
+}
+d.addEventListener("change",render);render();
+$("#f").addEventListener("submit",function(e){
+  e.preventDefault();
+  var ok=$("#ok");ok.style.display="block";
+  var nom=$("#nom").value.trim(),tel=$("#tel").value.trim();
+  if(!d.value||isClosed(d.value)){ok.textContent="Choisissez une date d’ouverture (du mardi au samedi).";return}
+  if(!chosen){ok.textContent="Choisissez un horaire pour continuer.";return}
+  if(!nom||!tel){ok.textContent="Indiquez votre prénom et votre numéro de téléphone.";return}
+  if(!$("#ok1").checked){ok.textContent="Cochez la case pour poursuivre la simulation.";return}
+  var dt=new Date(d.value+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+  ok.textContent="Simulation terminée : "+nom+", voici ce qui aurait été demandé – « "+sel.value+" » le "+dt+" à "+chosen+". Aucune réservation n’a été créée et aucune donnée n’a été envoyée ni enregistrée.";
+});
+
+/* menu mobile */
+var hd=$("#hd"),bg=$("#burger");
+bg.addEventListener("click",function(){var o=hd.classList.toggle("open");bg.setAttribute("aria-expanded",o?"true":"false")});
+$$("#hd nav a").forEach(function(a){a.addEventListener("click",function(){hd.classList.remove("open");bg.setAttribute("aria-expanded","false")})});
+
+/* l’en-tête garde sa hauteur réelle : aucune section n’est cachée dessous */
+function hh(){document.documentElement.style.scrollPaddingTop=($("#hd").offsetHeight+1)+"px"}hh();window.addEventListener("resize",hh);
+/* fenêtres légales */
+$$("[data-dlg]").forEach(function(b){b.addEventListener("click",function(){var dl=document.getElementById(b.getAttribute("data-dlg"));if(dl&&dl.showModal)dl.showModal()})});
+$$("dialog").forEach(function(dl){
+  dl.addEventListener("click",function(e){if(e.target===dl)dl.close()});
+  $$("[data-close]",dl).forEach(function(b){b.addEventListener("click",function(){dl.close()})});
+});
+})();
+</script>
+</body>
+</html>
