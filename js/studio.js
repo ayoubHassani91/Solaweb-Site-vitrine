@@ -7,7 +7,7 @@
   'use strict';
   var PROJETS = {
     beauty:  { nom: 'Beauty Palace', dossier: 'beauty-palace' },
-    eclat:   { nom: 'Éclat Peinture 93', dossier: 'eclat-peinture-93' },
+    tessaron: { nom: 'Maison Tessaron', dossier: 'maison-tessaron-v2g' },
     vermail: { nom: 'L’Atelier Vermail', dossier: 'atelier-vermail' }
   };
   var LARGEUR = { ordi: 1366, tel: 390 };

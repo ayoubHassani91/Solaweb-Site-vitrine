@@ -30,7 +30,7 @@
   window.addEventListener('pageshow', function (e) { if (e.persisted) terminer(); });
 
   var METIERS = {
-    peintre:    { img: 'assets/demos/eclat-tel.webp', alt: 'Exemple de site sur téléphone pour un peintre en bâtiment (Éclat Peinture 93, entreprise fictive)', nom: 'Éclat Peinture 93', lien: 'eclat-peinture-93/index.html' },
+    peintre:    { img: 'assets/demos/tessaron-tel-hd.webp', alt: 'Exemple de site sur téléphone pour une entreprise de peinture (Maison Tessaron, entreprise fictive)', nom: 'Maison Tessaron', lien: 'maison-tessaron-v2g/index.html' },
     beaute:     { img: 'assets/demos/beauty-palace-tel.webp', alt: 'Exemple de site sur téléphone pour un institut de beauté (Beauty Palace, entreprise fictive)', nom: 'Beauty Palace', lien: 'beauty-palace/index.html' },
     restaurant: { img: 'assets/demos/atelier-vermail-tel.webp', alt: 'Exemple de site sur téléphone pour un restaurant (L’Atelier Vermail, entreprise fictive)', nom: 'L’Atelier Vermail', lien: 'atelier-vermail/index.html' },
     autre:      { img: '', alt: '', nom: '', lien: '' }

@@ -33,7 +33,7 @@
     var legendes = document.querySelectorAll('.legende');
     var compteur = document.querySelectorAll('.compteur i');
     var adresse = document.getElementById('adresse-texte');
-    var URL_FINALE = 'www.eclat-peinture-93.fr';
+    var URL_FINALE = 'www.maison-tessaron.fr';
     var BORNES = [0, .2, .4, .6, .8, 1.01];
 
     function chantierMaj(p) {

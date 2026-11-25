@@ -70,7 +70,6 @@
     if (fenetre && typeof fenetre.showModal === 'function') {
       var infos = {
         beauty: { titre: 'Beauty Palace', texte: 'Un site de démonstration d\'institut de beauté : photos en grand, soins et tarifs, prise de rendez-vous.', images: { ordi: 'assets/demos/beauty-palace-ordi.jpg', tel: 'assets/demos/beauty-palace-tel.jpg' }, lien: 'beauty-palace/index.html' },
-        eclat: { titre: 'Éclat Peinture 93', texte: 'Un site de démonstration de peintre en bâtiment : services, galerie de chantiers, avis et demande de devis.', images: { ordi: 'assets/demos/eclat-ordi.jpg', tel: 'assets/demos/eclat-tel.jpg' }, lien: 'eclat-peinture-93/index.html' },
         vermail: { titre: 'L\'Atelier Vermail', texte: 'Un site de démonstration de restaurant : ambiance sombre et dorée, carte, réservation.', images: { ordi: 'assets/demos/atelier-vermail-ordi.jpg', tel: 'assets/demos/atelier-vermail-tel.jpg' }, lien: 'atelier-vermail/index.html' }
       };
       var scene = document.getElementById('apercu-scene');
