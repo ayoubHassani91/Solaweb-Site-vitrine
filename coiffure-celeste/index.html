@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier Céleste — Coiffure (concept fictif)</title>
+<meta name="description" content="Site de démonstration créé par SolaWeb pour un salon de coiffure fictif.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E1B19">
+<style>
+@font-face { font-family: "EB Garamond"; src: url("fonts/eb-garamond-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url("fonts/instrument-sans-latin.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+:root { --creme: #F6F1EA; --creme-2: #EFE6DA; --encre: #1E1B19; --cuivre: #B9805A; --cuivre-clair: #E9D3C2; --texte: #5B514A; --filet: rgba(30, 27, 25, .12); --ease: cubic-bezier(.16, 1, .3, 1); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: "Instrument Sans", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.65; color: var(--encre); background: var(--creme); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: "EB Garamond", Georgia, serif; font-weight: 400; letter-spacing: -.01em; line-height: 1.02; margin: 0; }
+.cadre { width: min(1180px, calc(100% - 2.5rem)); margin-inline: auto; }
+.demo-bandeau { background: var(--encre); color: #CFC4B8; font-size: .8rem; text-align: center; padding: .45rem 1rem; }
+.bouton { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: .7rem 1.6rem; border-radius: 999px; font-weight: 600; font-size: .95rem; letter-spacing: .02em; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background-color .35s, color .35s, transform .35s var(--ease); }
+.bouton:hover { transform: translateY(-2px); }
+.b-encre { background: var(--encre); color: var(--creme); }
+.b-encre:hover { background: var(--cuivre); }
+.b-ligne { border-color: rgba(30, 27, 25, .3); }
+.b-ligne:hover { border-color: var(--encre); }
+:focus-visible { outline: 2px solid var(--cuivre); outline-offset: 3px; }
+/* navigation */
+.nav { position: sticky; top: 0; z-index: 10; background: rgba(246, 241, 234, .85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--filet); }
+.nav .cadre { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4.4rem; }
+.marque { font-family: "EB Garamond", serif; font-size: 1.6rem; text-decoration: none; letter-spacing: .02em; }
+.marque em { font-style: normal; color: var(--cuivre); }
+.nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; font-size: .95rem; }
+.nav ul a { text-decoration: none; color: var(--texte); }
+.nav ul a:hover { color: var(--encre); }
+@media (max-width: 860px) { .nav ul { display: none; } }
+/* accueil */
+.heros { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(4rem, 8vw, 6rem); }
+.heros small { display: inline-block; color: var(--cuivre); font-weight: 600; letter-spacing: .06em; margin-bottom: 1.2rem; }
+.heros h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 1.4rem; }
+.heros h1 i { font-style: italic; color: var(--cuivre); }
+.heros p { color: var(--texte); max-width: 30rem; margin: 0 0 2rem; font-size: 1.12rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.heros-photo { position: relative; border-radius: 240px 240px 24px 24px; overflow: hidden; aspect-ratio: 4 / 5; }
+.heros-photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); animation: entree 1.6s var(--ease) forwards; }
+@keyframes entree { to { transform: scale(1); } }
+.heros-photo .pastille { position: absolute; left: 1.2rem; bottom: 1.2rem; padding: .7rem 1rem; border-radius: 16px; background: rgba(246, 241, 234, .9); backdrop-filter: blur(8px); font-size: .9rem; line-height: 1.35; }
+.heros-photo .pastille b { display: block; font-family: "EB Garamond", serif; font-size: 1.3rem; font-weight: 400; }
+@media (max-width: 860px) { .heros { grid-template-columns: 1fr; } .heros-photo { aspect-ratio: 4 / 3.6; border-radius: 160px 160px 20px 20px; } }
+/* prestations */
+.section { padding: clamp(4.5rem, 9vw, 7rem) 0; }
+.tete { text-align: center; max-width: 40rem; margin: 0 auto 3rem; }
+.tete h2 { font-size: clamp(2.4rem, 5vw, 4rem); margin-bottom: .8rem; }
+.tete p { color: var(--texte); margin: 0; }
+.prestations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+.presta { background: #fff; border-radius: 22px; overflow: hidden; border: 1px solid var(--filet); }
+.presta .img { aspect-ratio: 4 / 4.3; overflow: hidden; }
+.presta img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.presta:hover img { transform: scale(1.05); }
+.presta div:last-child { padding: 1.3rem 1.4rem 1.5rem; }
+.presta h3 { font-size: 1.8rem; margin-bottom: .6rem; }
+.tarifs { list-style: none; margin: 0; padding: 0; display: grid; gap: .35rem; font-size: .95rem; }
+.tarifs li { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px dotted rgba(30, 27, 25, .2); padding-bottom: .3rem; color: var(--texte); }
+.tarifs b { color: var(--encre); font-weight: 600; }
+.mention { text-align: center; margin: 1.6rem 0 0; font-size: .85rem; color: var(--texte); }
+@media (max-width: 900px) { .prestations { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; } }
+/* le salon */
+.salon { background: var(--encre); color: var(--creme); border-radius: 36px; margin: 0 1rem; }
+.salon .tete h2 { color: var(--creme); }
+.salon .tete p { color: #BDB2A7; }
+.galerie { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 14rem; gap: 1rem; }
+.galerie figure { margin: 0; border-radius: 18px; overflow: hidden; }
+.galerie figure:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
+.galerie figure:nth-child(4) { grid-column: 3; grid-row: 2 / 4; }
+.galerie figure:nth-child(5) { grid-column: 4; grid-row: 2 / 4; }
+.galerie figure:nth-child(6) { grid-column: 1 / 3; grid-row: 3; }
+.galerie img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.galerie figure:hover img { transform: scale(1.05); }
+@media (max-width: 760px) { .galerie { grid-template-columns: 1fr 1fr; grid-auto-rows: 11rem; } .galerie figure:nth-child(n) { grid-column: auto; grid-row: auto; } .galerie figure:nth-child(1) { grid-column: 1 / 3; } }
+/* rendez-vous */
+.rdv { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.rdv h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 1rem; }
+.rdv p { color: var(--texte); }
+.horaires { list-style: none; margin: 1.6rem 0 0; padding: 1.2rem 1.4rem; border-radius: 18px; background: var(--creme-2); display: grid; gap: .4rem; }
+.horaires li { display: flex; justify-content: space-between; }
+form { background: #fff; border-radius: 24px; border: 1px solid var(--filet); padding: clamp(1.4rem, 3vw, 2.2rem); display: grid; gap: 1rem; box-shadow: 0 30px 60px -44px rgba(30, 27, 25, .45); }
+label { display: grid; gap: .35rem; font-weight: 600; font-size: .92rem; }
+input, select, textarea { font: inherit; padding: .8rem 1rem; border-radius: 12px; border: 1px solid rgba(30, 27, 25, .16); background: var(--creme); color: var(--encre); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--cuivre); box-shadow: 0 0 0 3px rgba(185, 128, 90, .2); }
+.deux { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.creneaux { display: flex; flex-wrap: wrap; gap: .45rem; }
+.creneaux label { display: block; }
+.creneaux input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.creneaux span { display: inline-block; padding: .45rem .9rem; border-radius: 999px; border: 1px solid rgba(30, 27, 25, .2); font-weight: 500; cursor: pointer; transition: background-color .25s, color .25s, border-color .25s; }
+.creneaux input:checked + span { background: var(--encre); color: var(--creme); border-color: var(--encre); }
+.creneaux input:focus-visible + span { outline: 2px solid var(--cuivre); outline-offset: 2px; }
+.retour { display: none; padding: .9rem 1rem; border-radius: 12px; background: var(--cuivre-clair); font-weight: 600; }
+form.envoye .retour { display: block; }
+@media (max-width: 860px) { .rdv { grid-template-columns: 1fr; } .deux { grid-template-columns: 1fr; } }
+footer { border-top: 1px solid var(--filet); padding: 2.4rem 0; margin-top: 3rem; font-size: .9rem; color: var(--texte); }
+footer .cadre { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; }
+.apparait { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform 1s var(--ease); }
+.apparait.vu { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .apparait { opacity: 1; transform: none; transition: none; } .heros-photo img { animation: none; transform: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="demo-bandeau">Concept de démonstration réalisé par SolaWeb — salon fictif, tarifs indicatifs, photographies Unsplash à titre d’illustration.</div>
+
+<header class="nav">
+  <div class="cadre">
+    <a class="marque" href="#accueil">Atelier <em>Céleste</em></a>
+    <ul><li><a href="#prestations">Prestations</a></li><li><a href="#salon">Le salon</a></li><li><a href="#rdv">Rendez-vous</a></li></ul>
+    <a class="bouton b-encre" href="#rdv">Réserver</a>
+  </div>
+</header>
+
+<main>
+  <section class="cadre heros" id="accueil">
+    <div class="apparait vu">
+      <small>Salon de coiffure · femmes, hommes, enfants</small>
+      <h1>Une coupe qui vous <i>ressemble</i>.</h1>
+      <p>On prend le temps de vous écouter, puis on coupe, on colore et on coiffe pour que vous vous reconnaissiez, en mieux.</p>
+      <div class="actions"><a class="bouton b-encre" href="#rdv">Prendre rendez-vous</a><a class="bouton b-ligne" href="#prestations">Voir les prestations</a></div>
+    </div>
+    <div class="heros-photo"><img src="photos/accueil.webp" width="1800" height="1201" alt="Intérieur lumineux du salon, fauteuils noirs et miroirs ronds"><div class="pastille"><b>Sur rendez-vous</b>du mardi au samedi</div></div>
+  </section>
+
+  <section class="section" id="prestations">
+    <div class="cadre">
+      <div class="tete apparait"><h2>Nos prestations</h2><p>Des services simples, faits avec soin.</p></div>
+      <div class="prestations">
+        <article class="presta apparait"><div class="img"><img src="photos/coupe.webp" width="900" height="1125" alt="" loading="lazy"></div><div><h3>Coupe</h3><ul class="tarifs"><li>Coupe femme<b>dès 38 €</b></li><li>Coupe homme<b>dès 24 €</b></li><li>Coupe enfant<b>dès 16 €</b></li></ul></div></article>
+        <article class="presta apparait"><div class="img"><img src="photos/couleur.webp" width="900" height="1350" alt="" loading="lazy"></div><div><h3>Couleur</h3><ul class="tarifs"><li>Couleur racines<b>dès 42 €</b></li><li>Balayage<b>dès 85 €</b></li><li>Gloss et patine<b>dès 30 €</b></li></ul></div></article>
+        <article class="presta apparait"><div class="img"><img src="photos/brushing.webp" width="900" height="601" alt="" loading="lazy"></div><div><h3>Coiffage</h3><ul class="tarifs"><li>Brushing<b>dès 26 €</b></li><li>Chignon<b>dès 45 €</b></li><li>Soin profond<b>dès 18 €</b></li></ul></div></article>
+      </div>
+      <p class="mention">Tarifs indicatifs d’exemple : ce salon est fictif.</p>
+    </div>
+  </section>
+
+  <section class="section salon" id="salon">
+    <div class="cadre">
+      <div class="tete apparait"><h2>Le salon</h2><p>Un lieu clair et calme, des produits choisis, et du temps pour chacun.</p></div>
+      <div class="galerie apparait">
+        <figure><img src="photos/salon-3.webp" width="1000" height="667" alt="Fauteuils de barbier noir et or devant des miroirs en arche" loading="lazy"></figure>
+        <figure><img src="photos/outils.webp" width="1200" height="801" alt="Brosses, ciseaux et pinceau de coloration" loading="lazy"></figure>
+        <figure><img src="photos/salon-1.webp" width="1000" height="694" alt="Trois fauteuils face à des miroirs ronds" loading="lazy"></figure>
+        <figure><img src="photos/coupe-2.webp" width="1000" height="1500" alt="Coupe aux ciseaux et au peigne" loading="lazy"></figure>
+        <figure><img src="photos/barbier.webp" width="1000" height="667" alt="Tondeuses rangées sur une étagère" loading="lazy"></figure>
+        <figure><img src="photos/salon-2.webp" width="1000" height="1778" alt="Salon en noir et blanc, fauteuils et miroirs en arche" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="rdv">
+    <div class="cadre rdv">
+      <div class="apparait">
+        <h2>Prendre rendez-vous</h2>
+        <p>Choisissez une prestation et un moment de la journée&nbsp;: nous vous confirmons le créneau.</p>
+        <ul class="horaires"><li><span>Mardi – Vendredi</span><b>9 h – 19 h</b></li><li><span>Samedi</span><b>9 h – 18 h</b></li><li><span>Dimanche, lundi</span><b>Fermé</b></li></ul>
+      </div>
+      <form class="apparait" id="form" novalidate>
+        <div class="deux"><label>Prénom<input name="prenom" autocomplete="given-name"></label><label>Téléphone<input name="tel" type="tel" autocomplete="tel"></label></div>
+        <label>Prestation<select name="prestation"><option>Coupe</option><option>Couleur</option><option>Coiffage</option><option>Je ne sais pas encore</option></select></label>
+        <fieldset style="border:0;margin:0;padding:0"><legend style="font-weight:600;font-size:.92rem;margin-bottom:.4rem">Moment préféré</legend>
+          <div class="creneaux"><label><input type="radio" name="moment" value="matin" checked><span>Matin</span></label><label><input type="radio" name="moment" value="midi"><span>Midi</span></label><label><input type="radio" name="moment" value="apres-midi"><span>Après-midi</span></label><label><input type="radio" name="moment" value="soir"><span>Fin de journée</span></label></div>
+        </fieldset>
+        <button class="bouton b-encre" type="submit">Demander ce rendez-vous</button>
+        <p class="retour" role="status">Démonstration&nbsp;: aucune donnée n’est envoyée.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="cadre"><span>Atelier Céleste — salon fictif</span><span>Site de démonstration réalisé par SolaWeb · <a href="CREDITS-PHOTOS.txt">Crédits photos</a></span></div></footer>
+
+<script>
+(function () {
+  var f = document.getElementById('form');
+  f.addEventListener('submit', function (e) { e.preventDefault(); f.classList.add('envoye'); });
+  if (!('IntersectionObserver' in window)) { document.querySelectorAll('.apparait').forEach(function (el) { el.classList.add('vu'); }); return; }
+  var o = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('vu'); o.unobserve(x.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.apparait').forEach(function (el) { o.observe(el); });
+})();
+</script>
+</body>
+</html>

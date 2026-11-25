@@ -8,7 +8,9 @@
   var PROJETS = {
     beauty:  { nom: 'Beauty Palace', dossier: 'beauty-palace' },
     tessaron: { nom: 'Maison Tessaron', dossier: 'maison-tessaron-v2g' },
-    vermail: { nom: 'L’Atelier Vermail', dossier: 'atelier-vermail' }
+    vermail: { nom: 'L’Atelier Vermail', dossier: 'atelier-vermail' },
+    durance: { nom: 'Durance Plomberie', dossier: 'plomberie-durance' },
+    celeste: { nom: 'Atelier Céleste', dossier: 'coiffure-celeste' }
   };
   var LARGEUR = { ordi: 1366, tel: 390 };
 

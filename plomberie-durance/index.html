@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Durance Plomberie &amp; Chauffage (concept fictif)</title>
+<meta name="description" content="Site de démonstration créé par SolaWeb pour une entreprise fictive de plomberie et de chauffage.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0F2A44">
+<style>
+@font-face { font-family: "Montserrat"; src: url("fonts/montserrat-latin.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url("fonts/instrument-sans-latin.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+:root { --nuit: #0F2A44; --nuit-2: #163A5C; --eau: #22A9B8; --eau-clair: #DDF3F5; --chaud: #F29A38; --fond: #F4F7F9; --texte: #3B4B5E; --filet: rgba(15, 42, 68, .1); --ease: cubic-bezier(.16, 1, .3, 1); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: "Instrument Sans", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.6; color: var(--nuit); background: var(--fond); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: "Montserrat", sans-serif; letter-spacing: -.025em; line-height: 1.08; margin: 0; }
+.cadre { width: min(1180px, calc(100% - 2.5rem)); margin-inline: auto; }
+.demo-bandeau { background: var(--nuit); color: #C9D6E3; font-size: .8rem; text-align: center; padding: .45rem 1rem; }
+.bouton { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 3rem; padding: .7rem 1.5rem; border-radius: 999px; font-weight: 700; font-size: .98rem; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: transform .3s var(--ease), background-color .3s, box-shadow .3s; }
+.bouton:hover { transform: translateY(-2px); }
+.b-chaud { background: var(--chaud); color: #1D1206; box-shadow: 0 12px 24px -12px rgba(242, 154, 56, .8); }
+.b-ligne { border-color: rgba(255, 255, 255, .55); color: #fff; }
+.b-ligne:hover { background: rgba(255, 255, 255, .1); }
+.b-nuit { background: var(--nuit); color: #fff; }
+:focus-visible { outline: 2px solid var(--chaud); outline-offset: 3px; }
+/* navigation */
+.nav { position: absolute; top: 2.6rem; left: 0; right: 0; z-index: 10; }
+.nav .cadre { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .55rem .6rem .55rem 1.2rem; border-radius: 999px; background: rgba(15, 42, 68, .55); border: 1px solid rgba(255, 255, 255, .15); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); color: #fff; }
+.marque { display: flex; align-items: center; gap: .6rem; font-family: "Montserrat", sans-serif; font-weight: 700; text-decoration: none; letter-spacing: -.02em; }
+.marque svg { width: 1.9rem; height: 1.9rem; }
+.nav ul { list-style: none; display: flex; gap: 1.6rem; margin: 0; padding: 0; font-weight: 600; font-size: .95rem; }
+.nav ul a { text-decoration: none; opacity: .85; }
+.nav ul a:hover { opacity: 1; }
+@media (max-width: 860px) { .nav ul { display: none; } }
+/* accueil */
+.heros { position: relative; min-height: min(100svh, 860px); display: grid; align-items: end; color: #fff; overflow: hidden; }
+.heros > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; transform: scale(1.06); animation: zoom 14s var(--ease) forwards; }
+@keyframes zoom { to { transform: scale(1); } }
+.heros::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10, 28, 46, .92) 0%, rgba(10, 28, 46, .7) 45%, rgba(10, 28, 46, .15) 100%), linear-gradient(0deg, rgba(10, 28, 46, .6), transparent 40%); }
+.heros .cadre { position: relative; z-index: 1; padding: 10rem 0 4rem; }
+.etiquette { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .85rem; border-radius: 999px; background: rgba(34, 169, 184, .2); border: 1px solid rgba(34, 169, 184, .5); font-size: .85rem; font-weight: 600; color: #BFEFF4; margin-bottom: 1.4rem; }
+.etiquette::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: #4FE0C0; box-shadow: 0 0 0 4px rgba(79, 224, 192, .2); }
+.heros h1 { font-size: clamp(2.4rem, 5.6vw, 4.6rem); font-weight: 700; max-width: 15ch; margin-bottom: 1.2rem; }
+.heros p { max-width: 34rem; font-size: 1.15rem; color: #D4E0EC; margin: 0 0 2rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.atouts { display: flex; flex-wrap: wrap; gap: .6rem 2rem; margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid rgba(255, 255, 255, .18); font-size: .95rem; color: #D4E0EC; }
+.atouts b { color: #fff; font-family: "Montserrat", sans-serif; }
+/* sections */
+.section { padding: clamp(4.5rem, 9vw, 7rem) 0; }
+.tete { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem 3rem; margin-bottom: 2.6rem; }
+.tete h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; max-width: 18ch; }
+.tete p { margin: 0; max-width: 30rem; color: var(--texte); }
+.services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; }
+.service { background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid var(--filet); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.service:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -30px rgba(15, 42, 68, .4); }
+.service .img { aspect-ratio: 4 / 3; overflow: hidden; }
+.service img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.service:hover img { transform: scale(1.06); }
+.service div:last-child { padding: 1.2rem 1.3rem 1.4rem; }
+.service h3 { font-size: 1.2rem; margin-bottom: .4rem; }
+.service p { margin: 0; color: var(--texte); font-size: .96rem; }
+@media (max-width: 960px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
+/* déroulé */
+.deroule { background: var(--nuit); color: #fff; border-radius: 32px; margin: 0 1rem; }
+.deroule .grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.deroule h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 2rem; }
+.etapes { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; counter-reset: e; }
+.etapes li { counter-increment: e; display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: start; padding: 1.1rem; border-radius: 16px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .08); }
+.etapes li::before { content: counter(e); display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 12px; background: var(--eau); font-family: "Montserrat", sans-serif; font-weight: 700; color: var(--nuit); }
+.etapes b { display: block; font-family: "Montserrat", sans-serif; margin-bottom: .2rem; }
+.etapes span { color: #B9C9DA; font-size: .96rem; }
+.deroule .photo { border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; }
+.deroule .photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 860px) { .deroule .grille { grid-template-columns: 1fr; } .deroule .photo { aspect-ratio: 16 / 10; } }
+/* réalisations */
+.galerie { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 15rem 15rem; gap: 1rem; }
+.galerie figure { margin: 0; position: relative; border-radius: 20px; overflow: hidden; }
+.galerie figure:first-child { grid-row: span 2; }
+.galerie img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.galerie figure:hover img { transform: scale(1.05); }
+.galerie figcaption { position: absolute; left: .8rem; bottom: .8rem; padding: .35rem .75rem; border-radius: 999px; background: rgba(255, 255, 255, .9); font-size: .82rem; font-weight: 600; }
+@media (max-width: 760px) { .galerie { grid-template-columns: 1fr 1fr; grid-template-rows: 13rem 10rem 10rem; } .galerie figure:first-child { grid-column: span 2; grid-row: auto; } }
+/* devis */
+.devis { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.devis h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
+.devis .infos p { color: var(--texte); }
+.zone { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.4rem; }
+.zone span { padding: .35rem .8rem; border-radius: 999px; background: var(--eau-clair); color: var(--nuit-2); font-size: .88rem; font-weight: 600; }
+form { background: #fff; border-radius: 24px; border: 1px solid var(--filet); padding: clamp(1.4rem, 3vw, 2.2rem); box-shadow: 0 30px 60px -40px rgba(15, 42, 68, .4); display: grid; gap: 1rem; }
+label { display: grid; gap: .35rem; font-weight: 600; font-size: .92rem; }
+input, select, textarea { font: inherit; padding: .8rem 1rem; border-radius: 12px; border: 1px solid rgba(15, 42, 68, .18); background: var(--fond); color: var(--nuit); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--eau); box-shadow: 0 0 0 3px rgba(34, 169, 184, .2); }
+.deux { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.note { font-size: .82rem; color: var(--texte); margin: 0; }
+.retour { display: none; padding: .9rem 1rem; border-radius: 12px; background: var(--eau-clair); color: var(--nuit); font-weight: 600; }
+form.envoye .retour { display: block; }
+@media (max-width: 860px) { .devis { grid-template-columns: 1fr; } .deux { grid-template-columns: 1fr; } }
+footer { background: #0A1E31; color: #9FB2C6; padding: 3rem 0 2rem; margin-top: 4rem; font-size: .9rem; }
+footer .cadre { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; }
+footer b { color: #fff; font-family: "Montserrat", sans-serif; }
+/* apparitions */
+.apparait { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .9s var(--ease); }
+.apparait.vu { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .apparait { opacity: 1; transform: none; transition: none; } .heros > img { animation: none; transform: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="demo-bandeau">Concept de démonstration réalisé par SolaWeb — entreprise fictive, photographies Unsplash à titre d’illustration.</div>
+
+<header class="nav">
+  <div class="cadre">
+    <a class="marque" href="#accueil"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c-5 6.5-9 11.4-9 16a9 9 0 0 0 18 0c0-4.6-4-9.5-9-16z" fill="#22A9B8"/><path d="M12 20a4 4 0 0 0 4 4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Durance Plomberie</a>
+    <ul><li><a href="#services">Services</a></li><li><a href="#deroule">Intervention</a></li><li><a href="#realisations">Réalisations</a></li><li><a href="#devis">Contact</a></li></ul>
+    <a class="bouton b-chaud" href="#devis">Demander un devis</a>
+  </div>
+</header>
+
+<main>
+  <section class="heros" id="accueil">
+    <img src="photos/accueil.webp" width="1800" height="1350" alt="Plombier réparant une évacuation sous un évier">
+    <div class="cadre">
+      <span class="etiquette">Plomberie et chauffage · intervention rapide</span>
+      <h1>Une fuite, une panne, un projet&nbsp;? On s’en occupe.</h1>
+      <p>Dépannage, chauffe-eau, chaudière et salles de bain. Un devis clair avant chaque intervention, un chantier laissé propre.</p>
+      <div class="actions"><a class="bouton b-chaud" href="#devis">Demander un devis gratuit</a><a class="bouton b-ligne" href="#devis">Être rappelé</a></div>
+      <div class="atouts"><span><b>Devis</b> gratuit et détaillé</span><span><b>Prix</b> annoncé avant de commencer</span><span><b>Chantier</b> propre, rien à ranger</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="cadre">
+      <div class="tete apparait"><h2>Ce que nous faisons, au quotidien</h2><p>Du robinet qui goutte à la salle de bain complète, avec le même soin.</p></div>
+      <div class="services">
+        <article class="service apparait"><div class="img"><img src="photos/depannage.webp" width="900" height="675" alt="" loading="lazy"></div><div><h3>Dépannage</h3><p>Fuites, canalisations bouchées, évacuations&nbsp;: diagnostic et réparation.</p></div></article>
+        <article class="service apparait"><div class="img"><img src="photos/chauffage.webp" width="900" height="600" alt="" loading="lazy"></div><div><h3>Chauffage</h3><p>Chaudière, chauffe-eau, entretien et remplacement.</p></div></article>
+        <article class="service apparait"><div class="img"><img src="photos/robinetterie.webp" width="900" height="1350" alt="" loading="lazy"></div><div><h3>Robinetterie</h3><p>Mitigeurs, éviers, WC&nbsp;: pose et remplacement.</p></div></article>
+        <article class="service apparait"><div class="img"><img src="photos/salle-de-bain.webp" width="1200" height="800" alt="" loading="lazy"></div><div><h3>Salle de bain</h3><p>Rénovation complète, douche à l’italienne, meuble vasque.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section deroule" id="deroule">
+    <div class="cadre grille">
+      <div class="apparait">
+        <h2>Comment se passe une intervention</h2>
+        <ol class="etapes">
+          <li><div><b>Vous nous expliquez le problème</b><span>Par le formulaire ou par téléphone, avec une photo si possible.</span></div></li>
+          <li><div><b>Nous vous donnons un prix</b><span>Un devis écrit, sans surprise, avant de commencer.</span></div></li>
+          <li><div><b>Nous intervenons</b><span>À l’heure convenue, avec le matériel nécessaire.</span></div></li>
+          <li><div><b>Nous laissons propre</b><span>Le chantier est nettoyé et l’installation vérifiée avec vous.</span></div></li>
+        </ol>
+      </div>
+      <div class="photo apparait"><img src="photos/intervention.webp" width="1200" height="800" alt="Plombier arrivant dans une salle de bain avec sa caisse à outils" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="section" id="realisations">
+    <div class="cadre">
+      <div class="tete apparait"><h2>Quelques réalisations</h2><p>Salles de bain et cuisines rénovées (photos d’illustration).</p></div>
+      <div class="galerie apparait">
+        <figure><img src="photos/realisation-1.webp" width="1000" height="665" alt="Salle de bain avec douche vitrée et baignoire îlot" loading="lazy"><figcaption>Salle de bain complète</figcaption></figure>
+        <figure><img src="photos/realisation-2.webp" width="1000" height="1250" alt="Vasque en marbre et miroir lumineux" loading="lazy"><figcaption>Vasque et miroir</figcaption></figure>
+        <figure><img src="photos/realisation-3.webp" width="1000" height="667" alt="Évier de cuisine et robinet noir" loading="lazy"><figcaption>Cuisine</figcaption></figure>
+        <figure><img src="photos/vanne.webp" width="900" height="1200" alt="Vanne et manomètre sur une installation" loading="lazy"><figcaption>Remise en pression</figcaption></figure>
+        <figure><img src="photos/chauffage.webp" width="900" height="600" alt="Tuyauterie d’une chaufferie" loading="lazy"><figcaption>Chaufferie</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="devis">
+    <div class="cadre devis">
+      <div class="infos apparait">
+        <h2>Demandez votre devis</h2>
+        <p>Décrivez votre besoin en quelques mots. Nous vous recontactons pour fixer un rendez-vous et vous envoyer un prix.</p>
+        <p class="note">Coordonnées non affichées&nbsp;: ceci est un site de démonstration.</p>
+        <div class="zone"><span>Votre ville</span><span>Et les communes voisines</span><span>Particuliers</span><span>Professionnels</span></div>
+      </div>
+      <form class="apparait" id="form" novalidate>
+        <div class="deux"><label>Nom<input name="nom" autocomplete="name" required></label><label>Téléphone<input name="tel" type="tel" autocomplete="tel"></label></div>
+        <label>Votre besoin<select name="besoin"><option>Dépannage / fuite</option><option>Chauffe-eau / chaudière</option><option>Robinetterie</option><option>Salle de bain</option><option>Autre</option></select></label>
+        <label>Quelques mots<textarea name="message" rows="4"></textarea></label>
+        <button class="bouton b-nuit" type="submit">Envoyer ma demande</button>
+        <p class="retour" role="status">Démonstration&nbsp;: aucune donnée n’est envoyée.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="cadre"><span><b>Durance Plomberie &amp; Chauffage</b> — entreprise fictive</span><span>Site de démonstration réalisé par SolaWeb · <a href="CREDITS-PHOTOS.txt">Crédits photos</a></span></div></footer>
+
+<script>
+(function () {
+  var f = document.getElementById('form');
+  f.addEventListener('submit', function (e) { e.preventDefault(); f.classList.add('envoye'); });
+  if (!('IntersectionObserver' in window)) { document.querySelectorAll('.apparait').forEach(function (el) { el.classList.add('vu'); }); return; }
+  var o = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('vu'); o.unobserve(x.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.apparait').forEach(function (el) { o.observe(el); });
+})();
+</script>
+</body>
+</html>

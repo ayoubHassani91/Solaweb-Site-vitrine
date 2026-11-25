@@ -18,7 +18,7 @@
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/solaweb.css?v=6">
   <link rel="stylesheet" href="css/scenes.css?v=4">
-  <link rel="stylesheet" href="css/moderne.css?v=9">
+  <link rel="stylesheet" href="css/moderne.css?v=15">
   <script src="js/solaweb.js?v=9"></script>
   <script src="js/scenes.js?v=3" defer></script>
   <script src="js/main.js" defer></script>
@@ -26,15 +26,16 @@
 </head>
 <body class="sw page-accueil">
   <div class="chargeur" aria-hidden="true">
-    <div class="ch-volet ch-haut"><div class="ch-ciel"><span class="ch-soleil"></span></div></div>
-    <div class="ch-volet ch-bas"><span class="ch-reflet"></span><span class="ch-nom">SolaWeb</span></div>
+    <div class="ch-volet ch-haut"></div>
+    <div class="ch-volet ch-bas"></div>
     <span class="ch-horizon"></span>
+    <div class="ch-logo"><span class="logo-sw" aria-hidden="true"><span class="ls-nom">Sola<span class="ls-web">Web</span></span><svg class="ls-trait" viewBox="0 0 200 14" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="ls-t-c" x1="0" x2="1"><stop offset="0" stop-color="#F6B169"/><stop offset=".6" stop-color="#E07B39"/><stop offset="1" stop-color="#E07B39" stop-opacity=".2"/></linearGradient></defs><path d="M3 9C55 3.5 135 2.5 197 5.5C135 7.2 60 9.5 6 12.2Z" fill="url(#ls-t-c)"/></svg></span></div>
   </div>
   <a class="lien-evitement" href="#contenu">Aller au contenu</a>
 
   <header class="entete">
     <div class="conteneur entete-interieur">
-      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-h"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-h)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="logo-sw" aria-hidden="true"><span class="ls-nom">Sola<span class="ls-web">Web</span></span><svg class="ls-trait" viewBox="0 0 200 14" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="ls-t-h" x1="0" x2="1"><stop offset="0" stop-color="#F6B169"/><stop offset=".6" stop-color="#E07B39"/><stop offset="1" stop-color="#E07B39" stop-opacity=".2"/></linearGradient></defs><path d="M3 9C55 3.5 135 2.5 197 5.5C135 7.2 60 9.5 6 12.2Z" fill="url(#ls-t-h)"/></svg></span></a>
       <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="menu" id="menu" aria-label="Navigation principale">
         <ul>
@@ -174,11 +175,13 @@
       <img class="deco deco-hd" src="assets/3d/deco-soleil.webp" data-fixe="assets/3d/deco-soleil-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="deco deco-bg" src="assets/3d/deco-anneau.webp" data-fixe="assets/3d/deco-anneau-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="deco deco-bd" src="assets/3d/deco-spheres.webp" data-fixe="assets/3d/deco-spheres-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="cadre">
         <h2 id="t-exemples">Exemples de sites</h2>
-        <p class="intro">Ces sites de démonstration montrent ce que nous pouvons faire pour un peintre, un institut de beauté ou un restaurant. Ouvrez-les sur votre téléphone&nbsp;: c&rsquo;est là que vos clients vous chercheront.</p>
+        <p class="intro">Ces sites de démonstration montrent ce que nous pouvons faire pour un artisan, un commerce ou un restaurant. Ouvrez-les sur votre téléphone&nbsp;: c&rsquo;est là que vos clients vous chercheront.</p>
         <div class="exemples">
           <a class="exemple" href="maison-tessaron-v2g/index.html"><div class="e-img"><img src="assets/demos/tessaron-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>Maison Tessaron</h3><p>Peinture et rénovation</p></a>
           <a class="exemple" href="beauty-palace/index.html"><div class="e-img"><img src="assets/demos/beauty-palace-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>Beauty Palace</h3><p>Institut de beauté</p></a>
           <a class="exemple" href="atelier-vermail/index.html"><div class="e-img"><img src="assets/demos/atelier-vermail-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>L&rsquo;Atelier Vermail</h3><p>Restaurant</p></a>
+          <a class="exemple" href="plomberie-durance/index.html"><div class="e-img"><img src="assets/demos/durance-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>Durance Plomberie</h3><p>Plomberie et chauffage</p></a>
+          <a class="exemple" href="coiffure-celeste/index.html"><div class="e-img"><img src="assets/demos/celeste-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>Atelier Céleste</h3><p>Salon de coiffure</p></a>
         </div>
         <p class="note">Les entreprises, adresses et avis de ces démonstrations sont fictifs. <a href="realisations.html">Toutes les réalisations</a></p>
       </div>
@@ -207,7 +210,7 @@
   <footer class="pied-site">
     <div class="conteneur pied-grille">
       <div class="pied-marque">
-        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-p"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-p)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="logo-sw" aria-hidden="true"><span class="ls-nom">Sola<span class="ls-web">Web</span></span><svg class="ls-trait" viewBox="0 0 200 14" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="ls-t-p" x1="0" x2="1"><stop offset="0" stop-color="#F6B169"/><stop offset=".6" stop-color="#E07B39"/><stop offset="1" stop-color="#E07B39" stop-opacity=".2"/></linearGradient></defs><path d="M3 9C55 3.5 135 2.5 197 5.5C135 7.2 60 9.5 6 12.2Z" fill="url(#ls-t-p)"/></svg></span></a>
         <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
       </div>
       <nav aria-labelledby="pied-t1">

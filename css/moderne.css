@@ -181,3 +181,78 @@ html body::after { display: none !important; }
 @media (max-width: 760px) { .deco { width: 5.5rem; opacity: .85; } .deco-hd { width: 7rem; top: 1%; } .deco-md { display: none; } }
 @media (prefers-reduced-motion: reduce) { .deco { animation: none; } }
 .bloc-exemples .deco-bg { left: -1.5%; bottom: -2%; }
+
+/* =====================================================================
+   Logo « SolaWeb » retravaillé (25.11.2026) : le nom à empattements,
+   son trait orange, et le soleil levant terminé (disque, arc d'horizon, 5 rayons)
+   ===================================================================== */
+.logo-sw { display: inline-flex; flex-direction: column; align-items: center; width: 8.4rem; line-height: 0; vertical-align: middle; }
+.logo-sw .ls-soleil { display: block; width: 36%; height: auto; overflow: visible; margin-bottom: -7%; }
+.logo-sw .ls-rayon { fill: #E58A45; transform-box: view-box; transform-origin: 100px 47px; transition: transform .6s cubic-bezier(.16, 1, .3, 1); }
+.logo-sw .ls-disque { transition: transform .6s cubic-bezier(.16, 1, .3, 1); }
+.logo-sw .ls-arc { fill: none; stroke: #E99355; stroke-width: 1.7; stroke-linecap: round; }
+.logo-sw .ls-nom { display: grid; width: 100%; aspect-ratio: 800 / 214; }
+.logo-sw .ls-nom > * { grid-area: 1 / 1; width: 100%; height: 100%; display: block; }
+.logo-sw .la-lettres { background: var(--nuit); -webkit-mask: url("../assets/logo-solaweb-v2-lettres.webp") center / contain no-repeat; mask: url("../assets/logo-solaweb-v2-lettres.webp") center / contain no-repeat; transition: background-color .4s; }
+.logo-sw .la-trait { transform-origin: 49.5% 50%; }
+html body .pied-site .logo-sw { width: 10.5rem; }
+html body .pied-site .logo-sw .la-lettres { background: #F3EEE4; }
+html body .entete .marque { line-height: 0; }
+@media (max-width: 920px) { html body .entete .logo-sw { width: 7.4rem; } }
+/* survol : les rayons s'allongent, le soleil monte, le trait se redessine */
+a:hover > .logo-sw .ls-rayon, a:focus-visible > .logo-sw .ls-rayon { transform: scale(1.14); }
+a:hover > .logo-sw .ls-disque, a:focus-visible > .logo-sw .ls-disque { transform: translateY(-2px); }
+a:hover > .logo-sw .la-trait, a:focus-visible > .logo-sw .la-trait { animation: trait-pose .7s cubic-bezier(.16, 1, .3, 1) both; }
+a:hover > .logo-sw .la-lettres { background: #2C3D63; }
+html body .pied-site a:hover > .logo-sw .la-lettres { background: #fff; }
+/* à l'arrivée sur la page, le trait de la navigation se pose */
+html.pret .entete .logo-sw .la-trait { animation: trait-pose .9s cubic-bezier(.16, 1, .3, 1) .5s both; }
+
+/* ---------- Écran de chargement avec ce logo ---------- */
+.chargeur .ch-horizon { display: none !important; }
+.ch-logo { position: absolute; left: 50%; top: 50%; z-index: 3; transform: translate(-50%, -55%); transition: opacity .3s ease, transform .5s ease; }
+.ch-logo .logo-sw { width: min(25rem, 72vw); }
+.ch-logo .la-lettres { background: #F3EEE4; clip-path: inset(0 100% 0 0); animation: ch-lettres 1s cubic-bezier(.65, 0, .35, 1) .55s forwards; }
+.ch-logo .la-trait { transform: scaleX(0); animation: ch-trait .7s cubic-bezier(.16, 1, .3, 1) 1.25s forwards; }
+.ch-logo .ls-arc { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ch-arc .8s cubic-bezier(.16, 1, .3, 1) .1s forwards; }
+.ch-logo .ls-disque { transform: translateY(15px); animation: ch-disque 1s cubic-bezier(.16, 1, .3, 1) .35s forwards; }
+.ch-logo .ls-rayon { transform: scale(0); animation: ch-rayon .6s cubic-bezier(.34, 1.4, .64, 1) forwards; animation-delay: calc(.85s + var(--r) * 70ms); }
+@keyframes ch-lettres { to { clip-path: inset(0 0 0 0); } }
+@keyframes ch-trait { to { transform: scaleX(1); } }
+@keyframes ch-arc { to { stroke-dashoffset: 0; } }
+@keyframes ch-disque { to { transform: none; } }
+@keyframes ch-rayon { to { transform: scale(1); } }
+.chargeur.fini .ch-logo { opacity: 0; transform: translate(-50%, -62%); }
+@media (prefers-reduced-motion: reduce) {
+  .ch-logo .la-lettres, .ch-logo .la-trait, .ch-logo .ls-arc, .ch-logo .ls-disque, .ch-logo .ls-rayon { animation: none !important; clip-path: none; transform: none; stroke-dashoffset: 0; }
+  .logo-sw .ls-rayon, .logo-sw .ls-disque { transition: none; }
+}
+/* pied de page : le lien du logo prend toute sa hauteur */
+html body .pied-site .pied-marque > a { display: block !important; width: max-content; height: auto !important; max-height: none !important; overflow: visible !important; line-height: 0; margin-bottom: 1.2rem; }
+html body .pied-site .pied-marque .logo-sw { display: flex; }
+html body .logo-sw { height: auto !important; font-family: inherit; overflow: visible; }
+
+/* =====================================================================
+   Logo « SolaWeb » (demande de la cliente, 25.11.2026) : juste le nom,
+   lettrage moderne, et un trait orange effilé. Plus de soleil.
+   ===================================================================== */
+html body .logo-sw { display: inline-flex !important; flex-direction: column; align-items: flex-start; width: auto !important; height: auto !important; line-height: 1; }
+.logo-sw .ls-nom { font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 1.55rem; letter-spacing: -.045em; color: var(--nuit); white-space: nowrap; transition: color .3s; }
+.logo-sw .ls-web { font-weight: 500; color: inherit; }
+.logo-sw .ls-trait { display: block; width: 104%; height: .42em; margin: .08em 0 0 -1%; overflow: visible; font-size: 1.55rem; transform-origin: left center; }
+html body .pied-site .logo-sw .ls-nom { color: #F3EEE4; font-size: 1.9rem; }
+html body .pied-site .logo-sw .ls-trait { font-size: 1.9rem; }
+@media (max-width: 920px) { html body .entete .logo-sw .ls-nom, html body .entete .logo-sw .ls-trait { font-size: 1.35rem; } }
+/* mouvement : le trait se dessine à l'arrivée et au survol */
+html.pret .entete .logo-sw .ls-trait { animation: trait-pose .9s cubic-bezier(.16, 1, .3, 1) .45s both; }
+a:hover > .logo-sw .ls-trait, a:focus-visible > .logo-sw .ls-trait { animation: trait-pose .7s cubic-bezier(.16, 1, .3, 1) both; }
+a:hover > .logo-sw .ls-nom { color: #2C3D63; }
+html body .pied-site a:hover > .logo-sw .ls-nom { color: #fff; }
+/* écran de chargement */
+.ch-logo .logo-sw .ls-nom { font-size: clamp(3rem, 9vw, 5.6rem); color: #F3EEE4; clip-path: inset(0 100% 0 0); animation: ch-lettres 1s cubic-bezier(.65, 0, .35, 1) .25s forwards; }
+.ch-logo .logo-sw .ls-trait { font-size: clamp(3rem, 9vw, 5.6rem); transform: scaleX(0); animation: ch-trait .8s cubic-bezier(.16, 1, .3, 1) 1.05s forwards; }
+@media (prefers-reduced-motion: reduce) { .ch-logo .logo-sw .ls-nom, .ch-logo .logo-sw .ls-trait { animation: none !important; clip-path: none; transform: none; } }
+html body .logo-sw .ls-nom { display: inline-block !important; aspect-ratio: auto !important; width: auto !important; }
+html body .logo-sw .ls-nom > * { display: inline !important; grid-area: auto !important; width: auto !important; height: auto !important; }
+/* accueil : cinq exemples sur une ligne */
+.exemples { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)) !important; }
