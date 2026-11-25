@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Propositions de logo — SolaWeb</title>
+<style>
+@font-face { font-family: "Instrument Sans"; src: url("../assets/fonts/instrument-sans-latin.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("../assets/fonts/eb-garamond-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+:root { --marine: #1B2742; --marine-2: #22304F; --creme: #F7F3EC; --sable: #D9CDB4; --soleil: #D98A55; --encre: #1B2742; --ease: cubic-bezier(.16, 1, .3, 1); }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Instrument Sans", system-ui, sans-serif; background: #ECE7DE; color: var(--encre); }
+header { padding: 2.5rem 2rem 1rem; max-width: 72rem; margin: 0 auto; }
+h1 { font-weight: 500; font-size: 1.6rem; letter-spacing: -.01em; margin: 0 0 .4rem; }
+header p { margin: 0; color: #4A5470; }
+button.rejouer { margin-top: 1rem; font: inherit; font-size: .9rem; font-weight: 500; padding: .55rem 1rem; border-radius: 8px; border: 1px solid rgba(27,39,66,.25); background: transparent; color: var(--encre); cursor: pointer; }
+button.rejouer:hover { background: rgba(27,39,66,.06); }
+main { max-width: 72rem; margin: 0 auto; padding: 1rem 2rem 4rem; display: grid; gap: 2rem; }
+.piste { display: grid; grid-template-columns: 1.3fr 1fr; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 1px 2px rgba(27,39,66,.06), 0 12px 32px -20px rgba(27,39,66,.35); }
+.scene { background: radial-gradient(ellipse 80% 70% at 50% 45%, var(--marine-2), var(--marine)); min-height: 19rem; display: grid; place-items: center; position: relative; }
+.scene .etiq { position: absolute; left: 1rem; top: .9rem; font-size: .75rem; letter-spacing: .04em; color: rgba(247,243,236,.55); }
+.cote { display: grid; grid-template-rows: 1fr 1fr; }
+.clair { background: var(--creme); display: grid; place-items: center; padding: 1.5rem; }
+.entete { background: var(--marine); display: flex; align-items: center; padding: 0 1.4rem; }
+.desc { grid-column: 1 / -1; padding: 1.1rem 1.4rem 1.3rem; border-top: 1px solid rgba(27,39,66,.08); }
+.desc h2 { margin: 0 0 .25rem; font-size: 1.05rem; font-weight: 600; }
+.desc p { margin: 0; color: #4A5470; font-size: .95rem; line-height: 1.5; max-width: 62ch; }
+
+.logo { display: inline-flex; align-items: center; gap: .55em; line-height: 1; }
+.logo svg { display: block; height: 1.15em; width: auto; overflow: visible; }
+.logo .nom { font-family: "Instrument Sans", sans-serif; font-weight: 500; letter-spacing: -.025em; }
+.scene .logo { font-size: 3.2rem; color: var(--creme); }
+.clair .logo { font-size: 2.2rem; color: var(--encre); }
+.entete .logo { font-size: 1.45rem; color: var(--creme); }
+
+/* ---- A. Soleil levant ---- */
+.a .horizon { stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.a .reflet { stroke: var(--soleil); stroke-width: 2.2; stroke-linecap: round; opacity: .55; }
+.a .soleil { fill: var(--soleil); }
+/* ---- B. Soleil rayé ---- */
+.b .soleil { fill: var(--soleil); }
+/* ---- C. Le nom seul ---- */
+.c .nom { font-family: "EB Garamond", serif; font-weight: 400; letter-spacing: -.01em; font-size: 1.12em; }
+.c .point { display: inline-block; width: .2em; height: .2em; border-radius: 50%; background: var(--soleil); margin-left: .06em; transform: translateY(.02em); }
+.c.logo { gap: 0; align-items: baseline; }
+
+/* ---- Animations d'ouverture (dans la scène bleue) ---- */
+.scene .lettre { display: inline-block; opacity: 0; transform: translateY(.35em); filter: blur(6px); animation: lettre .9s var(--ease) forwards; animation-delay: calc(.55s + var(--i) * 45ms); }
+@keyframes lettre { to { opacity: 1; transform: none; filter: blur(0); } }
+/* A : l'horizon se trace, le soleil se lève, le reflet suit */
+.scene .a .horizon { stroke-dasharray: 46; stroke-dashoffset: 46; animation: trace .7s var(--ease) .05s forwards; }
+.scene .a .soleil { transform: translateY(18px); transform-box: fill-box; animation: leve 1s var(--ease) .3s forwards; }
+.scene .a .reflet { stroke-dasharray: 24; stroke-dashoffset: 24; animation: trace .6s var(--ease) .75s forwards; }
+.scene .a .cache { }
+@keyframes trace { to { stroke-dashoffset: 0; } }
+@keyframes leve { to { transform: translateY(0); } }
+/* B : le disque apparaît, les bandes s'ouvrent */
+.scene .b .soleil { transform: scale(.6); opacity: 0; transform-origin: 50% 50%; transform-box: fill-box; animation: disque .9s var(--ease) .05s forwards; }
+.scene .b .bande { transform: scaleX(0); transform-origin: 0 50%; transform-box: fill-box; animation: bande .6s var(--ease) forwards; }
+.scene .b .bande:nth-of-type(1) { animation-delay: .5s; } .scene .b .bande:nth-of-type(2) { animation-delay: .58s; } .scene .b .bande:nth-of-type(3) { animation-delay: .66s; }
+@keyframes disque { to { transform: none; opacity: 1; } }
+@keyframes bande { to { transform: none; } }
+/* C : les lettres montent, le point de soleil apparaît en dernier */
+.scene .c .point { transform: scale(0); animation: point .7s var(--ease) 1.15s forwards; }
+@keyframes point { to { transform: translateY(.02em) scale(1); } }
+@media (max-width: 760px) { .piste { grid-template-columns: 1fr; } .scene .logo { font-size: 2.4rem; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Trois pistes pour le logo SolaWeb</h1>
+  <p>Grand format : l'écran d'ouverture du site, animé. À droite : le logo sur fond crème et dans la barre du haut.</p>
+  <button class="rejouer" type="button" onclick="document.querySelectorAll('.scene').forEach(function(s){var c=s.innerHTML;s.innerHTML='';void s.offsetWidth;s.innerHTML=c;})">Rejouer les animations</button>
+</header>
+<main>
+  <template id="t-a"><span class="logo a"><svg viewBox="0 0 48 40" aria-hidden="true"><defs><clipPath id="ciel-REF"><rect x="0" y="0" width="48" height="30"/></clipPath></defs><g clip-path="url(#ciel-REF)"><circle class="soleil" cx="24" cy="30" r="17"/></g><line class="horizon" x1="1" y1="30" x2="47" y2="30"/><line class="reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="nom">SolaWeb</span></span></template>
+  <template id="t-b"><span class="logo b"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><mask id="bandes-REF"><rect width="40" height="40" fill="#fff"/><rect class="bande" x="0" y="22" width="40" height="2.2" fill="#000"/><rect class="bande" x="0" y="27.5" width="40" height="2.6" fill="#000"/><rect class="bande" x="0" y="33" width="40" height="3" fill="#000"/></mask></defs><circle class="soleil" cx="20" cy="20" r="17" mask="url(#bandes-REF)"/></svg><span class="nom">SolaWeb</span></span></template>
+  <template id="t-c"><span class="logo c"><span class="nom">Solaweb</span><span class="point" aria-hidden="true"></span></span></template>
+
+  <section class="piste" data-t="t-a"><div class="scene"><span class="etiq">Ouverture</span></div><div class="cote"><div class="clair"></div><div class="entete"></div></div>
+    <div class="desc"><h2>A. Soleil levant</h2><p>Un demi-soleil sur la ligne d'horizon, avec son reflet. Le nom est écrit dans une lettre moderne et posée. À l'ouverture, l'horizon se trace, le soleil se lève, puis le nom apparaît. C'est la piste la plus proche de l'idée « on l'illumine ».</p></div></section>
+  <section class="piste" data-t="t-b"><div class="scene"><span class="etiq">Ouverture</span></div><div class="cote"><div class="clair"></div><div class="entete"></div></div>
+    <div class="desc"><h2>B. Soleil rayé</h2><p>Un soleil plein, coupé de bandes comme un coucher de soleil sur l'eau. C'est la piste la plus graphique : le symbole se reconnaît seul, en icône de téléphone ou en tampon sur un flyer.</p></div></section>
+  <section class="piste" data-t="t-c"><div class="scene"><span class="etiq">Ouverture</span></div><div class="cote"><div class="clair"></div><div class="entete"></div></div>
+    <div class="desc"><h2>C. Le nom seul</h2><p>Le nom dans une lettre à empattements plus calme que l'actuelle, avec un point de soleil orange. C'est la piste la plus sobre et la plus « maison artisanale », proche du logo actuel mais apaisée.</p></div></section>
+</main>
+<script>
+var n = 0;
+document.querySelectorAll('.piste').forEach(function (p) {
+  var t = document.getElementById(p.dataset.t).innerHTML;
+  function poser(zone, anime) {
+    var html = t.replace(/REF/g, 'r' + (n++));
+    zone.insertAdjacentHTML('beforeend', html);
+    if (anime) {
+      var nom = zone.querySelector('.nom'); var txt = nom.textContent; nom.textContent = '';
+      txt.split('').forEach(function (ch, i) { var s = document.createElement('span'); s.className = 'lettre'; s.style.setProperty('--i', i); s.textContent = ch; nom.appendChild(s); });
+    }
+  }
+  poser(p.querySelector('.scene'), true);
+  poser(p.querySelector('.clair'), false);
+  poser(p.querySelector('.entete'), false);
+});
+</script>
+</body>
+</html>

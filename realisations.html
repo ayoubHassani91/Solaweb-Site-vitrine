@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Réalisations — SolaWeb</title>
+  <title>Exemples de sites réalisés | SolaWeb</title>
   <meta name="description" content="Trois sites de démonstration réalisés par SolaWeb : institut de beauté, peintre en bâtiment et restaurant, sur ordinateur et téléphone.">
   <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
-  <meta name="theme-color" content="#FFFFFF">
-  <!-- Aperçu de partage : à compléter avec l'adresse (og:url) et une image absolue (og:image) une fois le domaine choisi -->
+  <meta name="theme-color" content="#F5F6F8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="SolaWeb">
@@ -19,12 +18,22 @@
   <link rel="preload" href="assets/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/theme.css">
-  <script src="js/animations.js"></script>
+  <link rel="stylesheet" href="css/accueil-photo.css?v=7">
+  <link rel="stylesheet" href="css/marine.css?v=8">
   <script src="js/main.js" defer></script>
-  <script src="js/palettes.js" defer></script>
-  <script src="js/portable.js" defer></script>
+  <script src="js/bandeau-cookies.js" defer></script>
+  <script src="js/studio.js" defer></script>
+  <link rel="stylesheet" href="css/solaweb.css?v=6">
+  <link rel="stylesheet" href="css/moderne.css?v=9">
+  <link rel="stylesheet" href="css/pages.css?v=6">
+  <script src="js/solaweb.js?v=9"></script>
 </head>
 <body class="page-interne">
+  <div class="chargeur" aria-hidden="true">
+    <div class="ch-volet ch-haut"><div class="ch-ciel"><span class="ch-soleil"></span></div></div>
+    <div class="ch-volet ch-bas"><span class="ch-reflet"></span><span class="ch-nom">SolaWeb</span></div>
+    <span class="ch-horizon"></span>
+  </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <!-- Logo SolaWeb (soleil levant + montagnes), redessiné en vectoriel d'après le logo fourni (assets/logo-solaweb-original.png) -->
     <symbol id="logo-sw" viewBox="0 0 330 92">
@@ -43,126 +52,140 @@
 
   <header class="entete">
     <div class="conteneur entete-interieur">
-      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-h"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-h)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
       <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="menu" id="menu" aria-label="Navigation principale">
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html" aria-current="page">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <div class="menu-cta-zone"><a class="bouton bouton-plein fleche" href="contact.html">Demander un devis</a></div>
+        <div class="menu-cta-zone"><a class="bouton" href="contact.html">Demander un devis</a></div>
       </nav>
     </div>
   </header>
 
   <main id="contenu">
 
-    <section class="bandeau-page" aria-labelledby="t-page">
+    <section class="bandeau-page bandeau-sombre" aria-labelledby="t-page">
+      <div class="bandeau-fond" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/video/accueil/accueil-ordinateur.jpg">
+          <source src="assets/video/accueil/accueil-ordinateur-leger.mp4" type="video/mp4">
+        </video>
+        <script>if (matchMedia('(prefers-reduced-motion: reduce)').matches) { var v = document.currentScript.previousElementSibling; v.removeAttribute('autoplay'); v.pause(); }</script>
+      </div>
       <div class="conteneur">
         <ol class="fil-ariane" aria-label="Vous êtes ici"><li><a href="index.html">Accueil</a></li><li aria-current="page">Réalisations</li></ol>
-        <p class="sur-titre" data-anime>Nos réalisations</p>
-        <h1 id="t-page" data-mots>Des exemples concrets pour imaginer votre futur site.</h1>
-        <p data-anime style="--d:400">Trois sites de démonstration, sur ordinateur et sur téléphone. Choisissez un projet ou laissez-les défiler.</p>
+        <h1 id="t-page" data-mots>Nos réalisations</h1>
+        <p data-anime style="--d:400">Trois sites complets, faits pour un institut de beauté, un peintre et un restaurant. Essayez-les comme le feraient vos clients.</p>
       </div>
     </section>
 
-    <!-- ===== Portable et téléphone : les démos défilent sur l'écran ===== -->
-    <section class="section ciel" id="realisations" aria-labelledby="t-realisations">
+    <!-- ===== Le studio : les vrais sites de démonstration, à essayer ici ===== -->
+    <section class="section studio-section a-deco" id="realisations" aria-labelledby="t-studio">
+      <img class="deco deco-hg" src="assets/3d/deco-soleil.webp" data-fixe="assets/3d/deco-soleil-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="deco deco-hd" src="assets/3d/deco-anneau.webp" data-fixe="assets/3d/deco-anneau-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="conteneur">
-        <h2 id="t-realisations" class="visuellement-cache">Les démonstrations sur ordinateur et téléphone</h2>
-        <noscript><p class="mention-real">Les trois réalisations s'ouvrent directement : <a href="beauty-palace/index.html">Beauty Palace</a> · <a href="eclat-peinture-93/index.html">Éclat Peinture 93</a> · <a href="atelier-vermail/index.html">L'Atelier Vermail</a>.</p></noscript>
-        <div class="scene-portable" id="scene-portable">
-          <canvas id="particules" aria-hidden="true"></canvas>
-          <div class="apparition">
-            <div class="cadre-scene" id="portable">
-              <div class="calque" id="calque">
-                <div class="stage" id="stage">
-                  <span class="ombre ombre-l" aria-hidden="true"></span>
-                  <span class="ombre ombre-t" aria-hidden="true"></span>
-                  <img class="p-photo" src="assets/maquette-dz.webp" width="1755" height="896" loading="lazy" decoding="async" alt="Un ordinateur portable et un smartphone affichant des sites de démonstration">
-
-                  <!-- Écran du portable -->
-                  <div class="vitre" id="vitre" role="img" aria-label="Écran du portable : site de démonstration">
-                    <img class="demo actif" data-projet="beauty" src="assets/demos/beauty-palace-ordi.jpg" width="1366" height="768" alt="" decoding="async">
-                    <img class="demo" data-projet="eclat" src="assets/demos/eclat-ordi.jpg" width="1366" height="768" alt="" loading="lazy" decoding="async">
-                    <img class="demo" data-projet="vermail" src="assets/demos/atelier-vermail-ordi.jpg" width="1366" height="768" alt="" loading="lazy" decoding="async">
-                    <canvas id="vitre-canvas" aria-hidden="true"></canvas>
-                    <span class="reflet" aria-hidden="true"></span>
-                    <i class="sonde s-hg"></i><i class="sonde s-hd"></i><i class="sonde s-bg"></i><i class="sonde s-bd"></i>
-                  </div>
-
-                  <!-- Écran du téléphone -->
-                  <div class="vitre-tel" id="vitre-tel" role="img" aria-label="Écran du téléphone : version mobile du site">
-                    <img class="demo-tel actif" data-projet="beauty" src="assets/demos/beauty-palace-tel.jpg" width="500" height="1100" alt="" decoding="async">
-                    <img class="demo-tel" data-projet="eclat" src="assets/demos/eclat-tel.jpg" width="500" height="1100" alt="" loading="lazy" decoding="async">
-                    <img class="demo-tel" data-projet="vermail" src="assets/demos/atelier-vermail-tel.jpg" width="500" height="1100" alt="" loading="lazy" decoding="async">
-                    <canvas id="vitre-tel-canvas" aria-hidden="true"></canvas>
-                    <span class="reflet" aria-hidden="true"></span>
-                    <i class="sonde s-hg"></i><i class="sonde s-hd"></i><i class="sonde s-bg"></i><i class="sonde s-bd"></i>
-                  </div>
-
-                  <!-- L'îlot du téléphone repasse devant l'écran -->
-                  <img class="p-encoche" src="assets/maquette-dz.webp" width="1755" height="896" alt="" aria-hidden="true" loading="lazy" decoding="async">
-                </div>
+        <div class="studio-tete">
+          <h2 id="t-studio">Essayez les sites, ici même</h2>
+          <p>Faites défiler, cliquez, puis passez en vue téléphone&nbsp;: c&rsquo;est le vrai site qui s&rsquo;adapte.</p>
+        </div>
+        <div class="studio">
+          <div class="studio-barre">
+            <div class="studio-onglets" role="tablist" aria-label="Choisir une démonstration">
+              <button type="button" role="tab" data-projet="beauty" aria-selected="true">Beauty Palace</button>
+              <button type="button" role="tab" data-projet="eclat" aria-selected="false">Éclat Peinture 93</button>
+              <button type="button" role="tab" data-projet="vermail" aria-selected="false">L&rsquo;Atelier Vermail</button>
+            </div>
+            <div class="studio-outils">
+              <div class="studio-appareils" role="group" aria-label="Taille d&rsquo;écran">
+                <button type="button" data-appareil="ordi" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>Ordinateur</button>
+                <button type="button" data-appareil="tel" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>Téléphone</button>
+              </div>
+              <a class="studio-ouvrir" id="studio-ouvrir" href="beauty-palace/index.html" target="_blank" rel="noopener">Nouvel onglet<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+            </div>
+          </div>
+          <div class="studio-scene" id="studio-scene" data-appareil="ordi">
+            <div class="studio-cadre" id="studio-cadre">
+              <div class="studio-adresse" aria-hidden="true"><span></span><span></span><span></span><em id="studio-url">beauty-palace / accueil</em></div>
+              <div class="studio-ecran" id="studio-ecran">
+                <iframe id="studio-iframe" src="beauty-palace/index.html" title="Démonstration en direct : Beauty Palace" loading="lazy"></iframe>
+                <div class="studio-chargement" aria-hidden="true"></div>
               </div>
             </div>
           </div>
+          <p class="studio-note">Entreprises, adresses et avis fictifs : ces sites montrent ce que nous pouvons faire pour vous.</p>
         </div>
-        <div class="commandes-real">
-          <div class="selecteur" role="group" aria-label="Choisir une réalisation">
-            <button type="button" data-projet="beauty" aria-pressed="true">Beauty Palace</button>
-            <button type="button" data-projet="eclat" aria-pressed="false">Éclat Peinture 93</button>
-            <button type="button" data-projet="vermail" aria-pressed="false">L'Atelier Vermail</button>
-          </div>
-          <div class="actions-real">
-            <button class="bouton bouton-plat bouton-plat-plein" type="button" id="ouvrir-apercu" aria-haspopup="dialog">Voir l'aperçu</button>
-            <button class="bouton bouton-plat bouton-plat-contour" type="button" id="pause-real" aria-pressed="false" aria-describedby="aide-pause">Pause</button>
-          </div>
-        </div>
-        <p class="visuellement-cache" id="aide-pause">Met en pause ou reprend le changement automatique de projet.</p>
-        <p class="visuellement-cache" id="annonce-real" aria-live="polite"></p>
       </div>
     </section>
 
-    <section class="section clair" aria-labelledby="t-liste">
+    <!-- ===== Les fiches projet ===== -->
+    <section class="section fiches-section a-deco" aria-labelledby="t-fiches">
+      <img class="deco deco-md" src="assets/3d/deco-spheres.webp" data-fixe="assets/3d/deco-spheres-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async">
       <div class="conteneur">
-        <div class="tete-section">
-          <p class="sur-titre">Les sites en détail</p>
-          <h2 id="t-liste">Ouvrez une démonstration</h2>
-          <p>Les noms, adresses et avis de ces sites sont fictifs : ils montrent ce que nous pouvons faire pour vous.</p>
-        </div>
-        <div class="grille-projets" data-anime="groupe">
-          <a class="carte-projet" href="beauty-palace/index.html">
-            <div class="cp-image"><img src="assets/demos/beauty-palace-ordi.jpg" width="1366" height="768" alt="" loading="lazy" decoding="async"></div>
-            <div class="cp-texte"><span class="cp-type">Institut de beauté</span><h3>Beauty Palace</h3><span class="lien-fleche">Voir le site</span></div>
+        <h2 id="t-fiches" class="visuellement-cache">Les trois démonstrations en détail</h2>
+        <article class="fiche" id="fiche-beauty">
+          <a class="fiche-visuel" href="beauty-palace/index.html" aria-label="Ouvrir le site Beauty Palace">
+            <img src="assets/demos/beauty-palace-ordi-hd.webp" width="1366" height="768" alt="" loading="lazy" decoding="async">
+            <img class="fiche-tel" src="assets/demos/beauty-palace-tel-hd.webp" width="500" height="1100" alt="" loading="lazy" decoding="async">
           </a>
-          <a class="carte-projet" href="eclat-peinture-93/index.html">
-            <div class="cp-image"><img src="assets/demos/eclat-ordi.jpg" width="1366" height="768" alt="" loading="lazy" decoding="async"></div>
-            <div class="cp-texte"><span class="cp-type">Peintre en bâtiment</span><h3>Éclat Peinture 93</h3><span class="lien-fleche">Voir le site</span></div>
+          <div class="fiche-texte">
+            <p class="fiche-metier">Institut de beauté</p>
+            <h3>Beauty Palace</h3>
+            <p>Une maison de soins élégante : on découvre les prestations, l&rsquo;histoire de l&rsquo;institut, puis on prend rendez-vous sans quitter le site.</p>
+            <ul class="fiche-pages" aria-label="Pages du site"><li>Soins</li><li>Histoire de la maison</li><li>Avis clients</li><li>Prise de rendez-vous</li><li>Contact</li></ul>
+            <div class="fiche-actions">
+              <button class="bouton" type="button" data-essayer="beauty">Essayer dans le studio</button>
+              <a class="bouton bouton-contour" href="beauty-palace/index.html">Ouvrir le site</a>
+            </div>
+          </div>
+        </article>
+        <article class="fiche fiche-inverse" id="fiche-eclat">
+          <a class="fiche-visuel" href="eclat-peinture-93/index.html" aria-label="Ouvrir le site Éclat Peinture 93">
+            <img src="assets/demos/eclat-ordi-hd.webp" width="1366" height="768" alt="" loading="lazy" decoding="async">
+            <img class="fiche-tel" src="assets/demos/eclat-tel-hd.webp" width="500" height="1100" alt="" loading="lazy" decoding="async">
           </a>
-          <a class="carte-projet" href="atelier-vermail/index.html">
-            <div class="cp-image"><img src="assets/demos/atelier-vermail-ordi.jpg" width="1366" height="768" alt="" loading="lazy" decoding="async"></div>
-            <div class="cp-texte"><span class="cp-type">Restaurant</span><h3>L&rsquo;Atelier Vermail</h3><span class="lien-fleche">Voir le site</span></div>
+          <div class="fiche-texte">
+            <p class="fiche-metier">Peintre en bâtiment</p>
+            <h3>Éclat Peinture 93</h3>
+            <p>Un artisan qui inspire confiance : les services, des chantiers en photo, la garantie, puis une demande de devis en quelques champs.</p>
+            <ul class="fiche-pages" aria-label="Pages du site"><li>Services</li><li>Chantiers réalisés</li><li>Garantie</li><li>L&rsquo;entreprise</li><li>Avis clients</li><li>Demande de devis</li></ul>
+            <div class="fiche-actions">
+              <button class="bouton" type="button" data-essayer="eclat">Essayer dans le studio</button>
+              <a class="bouton bouton-contour" href="eclat-peinture-93/index.html">Ouvrir le site</a>
+            </div>
+          </div>
+        </article>
+        <article class="fiche" id="fiche-vermail">
+          <a class="fiche-visuel" href="atelier-vermail/index.html" aria-label="Ouvrir le site L&rsquo;Atelier Vermail">
+            <img src="assets/demos/atelier-vermail-ordi-hd.webp" width="1366" height="768" alt="" loading="lazy" decoding="async">
+            <img class="fiche-tel" src="assets/demos/atelier-vermail-tel-hd.webp" width="500" height="1100" alt="" loading="lazy" decoding="async">
           </a>
-        </div>
+          <div class="fiche-texte">
+            <p class="fiche-metier">Restaurant</p>
+            <h3>L&rsquo;Atelier Vermail</h3>
+            <p>Une table qui donne faim : la carte, le lieu, le chef, et la réservation d&rsquo;une table mise en avant.</p>
+            <ul class="fiche-pages" aria-label="Pages du site"><li>La carte</li><li>Le lieu</li><li>Le chef</li><li>Avis clients</li><li>Réservation</li><li>Infos pratiques</li></ul>
+            <div class="fiche-actions">
+              <button class="bouton" type="button" data-essayer="vermail">Essayer dans le studio</button>
+              <a class="bouton bouton-contour" href="atelier-vermail/index.html">Ouvrir le site</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
+
 
     <!-- ===== Appel à l'action ===== -->
-    <section class="section clair" aria-labelledby="t-cta">
+    <section class="section clair appel-sombre" aria-labelledby="t-cta">
       <div class="conteneur">
         <div class="bande-cta" data-anime>
           <div>
-            <p class="sur-titre">Votre projet</p>
-            <h2 id="t-cta">Parlons de votre projet&nbsp;?</h2>
+            <h2 id="t-cta">Parlons de votre projet</h2>
             <p>Dites-nous ce qui vous plaît. Nous revenons vers vous avec un devis écrit, sans engagement.</p>
           </div>
           <div class="actions">
             <a class="bouton bouton-clair fleche" href="contact.html">Demander un devis</a>
-            <a class="bouton bouton-transparent" href="tarifs.html">Voir les tarifs</a>
           </div>
         </div>
       </div>
@@ -172,7 +195,7 @@
   <footer class="pied-site">
     <div class="conteneur pied-grille">
       <div class="pied-marque">
-        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-p"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-p)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
         <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
       </div>
       <nav aria-labelledby="pied-t1">
@@ -181,7 +204,6 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -195,31 +217,12 @@
       </nav>
       <div>
         <h2 class="pied-titre">Contact</h2>
-        <ul>
-          <li>E-mail : <span class="a-completer">à compléter</span></li>
-          <li>Téléphone : <span class="a-completer">à compléter</span></li>
-        </ul>
-        <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html">Demander un devis</a>
+        <p>Par le <a href="contact.html">formulaire de contact</a>. Nous vous répondons avec un devis écrit.</p>
       </div>
     </div>
     <div class="conteneur pied-bas">
       <p>© 2026 SolaWeb · Version de travail : contenus provisoires, non destinée à la publication.</p>
     </div>
   </footer>
-  <!-- Fenêtre : aperçu des réalisations -->
-  <dialog class="apercu" id="apercu" aria-labelledby="apercu-titre">
-    <div class="apercu-tete">
-      <h2 id="apercu-titre">Aperçu</h2>
-      <div class="bascule" role="group" aria-label="Type d'écran">
-        <button type="button" data-vue="ordi" aria-pressed="true">Ordinateur</button>
-        <button type="button" data-vue="tel" aria-pressed="false">Téléphone</button>
-      </div>
-      <button type="button" class="fermer" aria-label="Fermer l'aperçu">Fermer</button>
-    </div>
-    <div class="apercu-scene" id="apercu-scene"></div>
-    <div class="apercu-pied">
-      <p id="apercu-desc"></p>
-      <a class="bouton bouton-plat bouton-plat-contour apercu-lien" id="apercu-lien" href="#" target="_blank" rel="noopener" hidden>Voir la démonstration</a>
-    </div>
-  </dialog></body>
+  <!-- Fenêtre : aperçu des réalisations --></body>
 </html>

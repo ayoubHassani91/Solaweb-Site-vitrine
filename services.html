@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Services — SolaWeb</title>
+  <title>Nos services : site internet, assistant IA, automatisation | SolaWeb</title>
   <meta name="description" content="Sites vitrines, e-commerce, assistants IA et automatisation des tâches : les services de SolaWeb pour artisans, commerçants et indépendants.">
   <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
-  <meta name="theme-color" content="#FFFFFF">
-  <!-- Aperçu de partage : à compléter avec l'adresse (og:url) et une image absolue (og:image) une fois le domaine choisi -->
+  <meta name="theme-color" content="#F5F6F8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="SolaWeb">
@@ -19,10 +18,21 @@
   <link rel="preload" href="assets/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/theme.css">
-  <script src="js/animations.js"></script>
+  <link rel="stylesheet" href="css/accueil-photo.css?v=7">
+  <link rel="stylesheet" href="css/marine.css?v=8">
   <script src="js/main.js" defer></script>
+  <script src="js/bandeau-cookies.js" defer></script>
+  <link rel="stylesheet" href="css/solaweb.css?v=6">
+  <link rel="stylesheet" href="css/moderne.css?v=9">
+  <link rel="stylesheet" href="css/pages.css?v=5">
+  <script src="js/solaweb.js?v=9"></script>
 </head>
-<body class="page-interne">
+<body class="page-interne" data-fond="motion">
+  <div class="chargeur" aria-hidden="true">
+    <div class="ch-volet ch-haut"><div class="ch-ciel"><span class="ch-soleil"></span></div></div>
+    <div class="ch-volet ch-bas"><span class="ch-reflet"></span><span class="ch-nom">SolaWeb</span></div>
+    <span class="ch-horizon"></span>
+  </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <!-- Logo SolaWeb (soleil levant + montagnes), redessiné en vectoriel d'après le logo fourni (assets/logo-solaweb-original.png) -->
     <symbol id="logo-sw" viewBox="0 0 330 92">
@@ -41,27 +51,31 @@
 
   <header class="entete">
     <div class="conteneur entete-interieur">
-      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-h"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-h)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
       <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="menu" id="menu" aria-label="Navigation principale">
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html" aria-current="page">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <div class="menu-cta-zone"><a class="bouton bouton-plein fleche" href="contact.html">Demander un devis</a></div>
+        <div class="menu-cta-zone"><a class="bouton" href="contact.html">Demander un devis</a></div>
       </nav>
     </div>
   </header>
 
   <main id="contenu">
 
-    <section class="bandeau-page" aria-labelledby="t-page">
+    <section class="bandeau-page bandeau-sombre" aria-labelledby="t-page">
+      <div class="bandeau-fond" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/video/accueil/accueil-ordinateur.jpg">
+          <source src="assets/video/accueil/accueil-ordinateur-leger.mp4" type="video/mp4">
+        </video>
+        <script>if (matchMedia('(prefers-reduced-motion: reduce)').matches) { var v = document.currentScript.previousElementSibling; v.removeAttribute('autoplay'); v.pause(); }</script>
+      </div>
       <div class="conteneur">
         <ol class="fil-ariane" aria-label="Vous êtes ici"><li><a href="index.html">Accueil</a></li><li aria-current="page">Services</li></ol>
-        <p class="sur-titre" data-anime>Ce que nous faisons</p>
         <h1 id="t-page" data-mots>Nos services</h1>
         <p data-anime style="--d:300">Des sites vitrines pour les artisans, commerçants et indépendants, et des outils pour gagner du temps : assistants IA et automatisation de vos tâches.</p>
       </div>
@@ -69,60 +83,38 @@
 
     <section class="section clair" aria-labelledby="t-offre">
       <div class="conteneur">
-        <div class="tete-section">
-          <p class="sur-titre">Trois services</p>
-          <h2 id="t-offre">Choisissez ce dont <span class="mot-bronze">vous avez besoin</span></h2>
-        </div>
-        <div class="cartes-services" data-anime="groupe">
+        <h2 id="t-offre">Le détail de chaque service</h2>
+        <ul class="services services-detail">
+          <li class="service" id="digital"><div class="s-3d" aria-hidden="true"><img src="assets/3d/site-anim.webp" data-fixe="assets/3d/site.webp" width="240" height="240" alt="" loading="lazy" decoding="async"></div><h3>Site internet</h3><div><p>Un site rapide et lisible sur téléphone, pour que vos clients vous trouvent et vous appellent. Nous nous occupons de tout, du design à la mise en ligne.</p><ul class="s-liste"><li>Site vitrine pour présenter votre activité</li><li>Boutique en ligne</li><li>Refonte d&rsquo;un site existant</li><li>Mises à jour et entretien, sur devis</li></ul></div><div class="s-prix"><strong>À partir de 490&nbsp;€</strong>site vitrine<br><a href="contact.html?service=site">Demander un devis</a></div></li>
+          <li class="service" id="ia"><div class="s-3d" aria-hidden="true"><img src="assets/3d/bulle-anim.webp" data-fixe="assets/3d/bulle.webp" width="240" height="240" alt="" loading="lazy" decoding="async"></div><h3>Assistant IA</h3><div><p>Il répond aux questions de vos clients sur votre site, le soir et le week-end compris, puis vous transmet leurs demandes.</p><ul class="s-liste"><li>Réponses aux questions que vos clients posent souvent</li><li>Disponible à toute heure</li></ul></div><div class="s-prix"><strong>Sur devis</strong><a href="contact.html?service=ia">Demander un devis</a></div></li>
+          <li class="service" id="automatisation"><div class="s-3d" aria-hidden="true"><img src="assets/3d/auto-anim.webp" data-fixe="assets/3d/auto.webp" width="240" height="240" alt="" loading="lazy" decoding="async"></div><h3>Automatisation</h3><div><p>Les tâches qui reviennent chaque semaine peuvent partir sans que vous ayez à y penser.</p><ul class="s-liste"><li>Prise de rendez-vous</li><li>Tri et réponses aux e-mails</li><li>Devis et factures</li></ul></div><div class="s-prix"><strong>Sur devis</strong><a href="contact.html?service=automatisation">Demander un devis</a></div></li>
+        </ul>
+      </div>
+    </section>
 
-          <article class="carte-s" id="digital">
-            <div class="cs-tete"><span class="cs-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></span><h3>Digital</h3></div>
-            <p>Un site internet pour exister en ligne et développer votre activité. Du design au développement, on s&rsquo;occupe de tout.</p>
-            <p class="cs-etiq">Type de besoin :</p>
-            <ul><li>Site vitrine</li><li>E-commerce</li><li>Refonte</li><li>Maintenance</li></ul>
-            <div class="cs-pied"><span class="cs-prix">Dès 490 €</span><a class="cs-lien" href="tarifs.html">Voir les formules</a></div>
-          </article>
-
-          <article class="carte-s" id="ia">
-            <div class="cs-tete"><span class="cs-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 5h16v11H10l-6 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><h3>Assistants IA</h3></div>
-            <p>Nous concevons des assistants conversationnels directement intégrés à vos sites pour améliorer l&rsquo;expérience utilisateur et faciliter la prise de contact.</p>
-            <p class="cs-etiq">Type de besoin :</p>
-            <ul><li>Chatbots FAQ connectés à vos contenus</li><li>Réponses automatiques 24h/24, 7j/7</li></ul>
-            <div class="cs-pied"><span class="cs-prix">Sur devis</span><a class="cs-lien" href="contact.html?service=ia">Demander un devis</a></div>
-          </article>
-
-          <!-- A VALIDER : texte et prestations du service 03 proposes a titre provisoire -->
-          <article class="carte-s" id="automatisation">
-            <div class="cs-tete"><span class="cs-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg></span><h3>Automatisation</h3></div>
-            <p>Nous automatisons vos tâches répétitives pour vous faire gagner du temps au quotidien.</p>
-            <p class="cs-etiq">Type de besoin :</p>
-            <ul><li>Prise de rendez-vous automatique</li><li>Tri et réponses aux emails</li><li>Devis et factures automatiques</li></ul>
-            <div class="cs-pied"><span class="cs-prix">Sur devis</span><a class="cs-lien" href="contact.html?service=automatisation">Demander un devis</a></div>
-          </article>
-
-        </div>
-        <div class="ligne-limites" data-anime>
-          <div>
-            <h3>Sur devis, hors formules</h3>
-            <p>E-commerce, refonte, maintenance, assistants IA, automatisation, réservation sur mesure, espace client, applications complexes. Pas proposé pour l&rsquo;instant : campagnes publicitaires, référencement mensuel ou garanti, identité graphique complète.</p>
-          </div>
-          <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html">Demander un devis</a>
+    <section class="bloc pierre" aria-labelledby="t-faq">
+      <div class="conteneur duo">
+        <h2 id="t-faq">Questions fréquentes</h2>
+        <div class="faq">
+          <details><summary>Combien coûte un site internet&nbsp;?</summary><div class="rep"><p>Un site vitrine commence à 490&nbsp;€. Le devis est gratuit et vous n&rsquo;êtes engagé à rien. L&rsquo;assistant IA et l&rsquo;automatisation sont chiffrés au cas par cas.</p></div></details>
+          <details><summary>Et si la maquette ne me plaît pas&nbsp;?</summary><div class="rep"><p>Vous ne payez rien. La première maquette est présentée avant tout paiement.</p></div></details>
+          <details><summary>En combien de temps le site est-il prêt&nbsp;?</summary><div class="rep"><p>Le délai est écrit dans le devis. Il dépend aussi du temps que vous mettez à nous envoyer textes, photos et validations.</p></div></details>
+          <details><summary>J&rsquo;ai déjà un site. Pouvez-vous le refaire&nbsp;?</summary><div class="rep"><p>Oui, la refonte d&rsquo;un site existant fait partie de nos prestations. Le devis précise ce que nous reprenons de l&rsquo;ancien site.</p></div></details>
+          <details><summary>Je ne suis pas à l&rsquo;aise avec internet. Est-ce un problème&nbsp;?</summary><div class="rep"><p>Non. Vous nous parlez de votre métier et nous nous chargeons du reste, jusqu&rsquo;à la mise en ligne.</p></div></details>
         </div>
       </div>
     </section>
 
     <!-- ===== Appel à l'action ===== -->
-    <section class="section clair" aria-labelledby="t-cta">
+    <section class="section clair appel-sombre" aria-labelledby="t-cta">
       <div class="conteneur">
         <div class="bande-cta" data-anime>
           <div>
-            <p class="sur-titre">Votre projet</p>
-            <h2 id="t-cta">Parlons de votre projet&nbsp;?</h2>
+            <h2 id="t-cta">Parlons de votre projet</h2>
             <p>Dites-nous ce qui vous plaît. Nous revenons vers vous avec un devis écrit, sans engagement.</p>
           </div>
           <div class="actions">
             <a class="bouton bouton-clair fleche" href="contact.html">Demander un devis</a>
-            <a class="bouton bouton-transparent" href="tarifs.html">Voir les tarifs</a>
           </div>
         </div>
       </div>
@@ -132,7 +124,7 @@
   <footer class="pied-site">
     <div class="conteneur pied-grille">
       <div class="pied-marque">
-        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-p"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-p)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
         <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
       </div>
       <nav aria-labelledby="pied-t1">
@@ -141,7 +133,6 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -155,11 +146,7 @@
       </nav>
       <div>
         <h2 class="pied-titre">Contact</h2>
-        <ul>
-          <li>E-mail : <span class="a-completer">à compléter</span></li>
-          <li>Téléphone : <span class="a-completer">à compléter</span></li>
-        </ul>
-        <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html">Demander un devis</a>
+        <p>Par le <a href="contact.html">formulaire de contact</a>. Nous vous répondons avec un devis écrit.</p>
       </div>
     </div>
     <div class="conteneur pied-bas">

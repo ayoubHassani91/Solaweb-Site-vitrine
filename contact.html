@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact — SolaWeb</title>
+  <title>Demander un devis gratuit | SolaWeb</title>
   <meta name="description" content="Demandez un devis à SolaWeb : site web, assistant IA ou automatisation. Réponse avec un devis écrit, sans engagement.">
   <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
-  <meta name="theme-color" content="#FFFFFF">
-  <!-- Aperçu de partage : à compléter avec l'adresse (og:url) et une image absolue (og:image) une fois le domaine choisi -->
+  <meta name="theme-color" content="#F5F6F8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="SolaWeb">
@@ -19,10 +18,45 @@
   <link rel="preload" href="assets/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/theme.css">
-  <script src="js/animations.js"></script>
+  <link rel="stylesheet" href="css/accueil-photo.css?v=7">
+  <link rel="stylesheet" href="css/marine.css?v=8">
   <script src="js/main.js" defer></script>
+  <script src="js/bandeau-cookies.js" defer></script>
+<style>
+/* Contact : bulles qui flottent (style SolaWeb : marine, creme, sable) */
+.bandeau-page.avec-bulles{position:relative;overflow:hidden}
+.bulles{position:absolute;right:max(2rem,8%);top:50%;width:15rem;height:11rem;transform:translateY(-50%);pointer-events:none}
+.bulle{position:absolute;border-radius:1.1rem;box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
+.bulle::after{content:"";position:absolute;width:1.1rem;height:1.1rem;transform:rotate(45deg);border-radius:0 0 .25rem 0}
+.bulle-claire{left:0;top:0;width:8.6rem;height:5.2rem;background:#EADFC8;display:grid;place-items:center;animation:sw-flotte-a 6s ease-in-out infinite}
+.bulle-claire::after{left:1.2rem;bottom:-.5rem;background:#EADFC8}
+.bulle-s{font-family:"EB Garamond",Georgia,serif;font-size:3.4rem;line-height:1;color:#E8864A}
+.bulle-sombre{right:0;bottom:0;width:7.6rem;height:4.4rem;background:#0B1424;border:1px solid rgba(233,223,200,.25);display:flex;gap:.5rem;align-items:center;justify-content:center;animation:sw-flotte-b 7s ease-in-out infinite}
+.bulle-sombre::after{right:1rem;bottom:-.5rem;background:#0B1424}
+.bulle-sombre i{width:.7rem;height:.7rem;border-radius:50%;background:#E8864A;animation:sw-point 1.4s ease-in-out infinite}
+.bulle-sombre i:nth-child(2){animation-delay:.2s}
+.bulle-sombre i:nth-child(3){animation-delay:.4s}
+@keyframes sw-flotte-a{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+@keyframes sw-flotte-b{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(9px) rotate(-1deg)}}
+@keyframes sw-point{0%,100%{opacity:.35;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
+@media (max-width:1000px){.bulles{display:none}}
+@media (prefers-reduced-motion:reduce){.bulle,.bulle-sombre i{animation:none}}
+.ct-voies{display:grid;gap:1rem;margin:1.4rem 0}
+.ct-voie{background:#fff;border:1px solid rgba(31,45,77,.14);border-radius:12px;padding:1.1rem 1.25rem;display:grid;gap:.5rem;justify-items:start}
+.ct-voie p{margin:0;color:#3B4663}
+.bouton[aria-disabled="true"]{opacity:.6;cursor:not-allowed}
+html .ct-voie .bouton.bouton-plat.bouton-plat-plein.bouton-wa{background:#E8864A;border-color:#E8864A;color:#14213D;opacity:.9}
+</style>  <link rel="stylesheet" href="css/solaweb.css?v=6">
+  <link rel="stylesheet" href="css/moderne.css?v=9">
+  <link rel="stylesheet" href="css/pages.css?v=5">
+  <script src="js/solaweb.js?v=9"></script>
 </head>
 <body class="page-interne">
+  <div class="chargeur" aria-hidden="true">
+    <div class="ch-volet ch-haut"><div class="ch-ciel"><span class="ch-soleil"></span></div></div>
+    <div class="ch-volet ch-bas"><span class="ch-reflet"></span><span class="ch-nom">SolaWeb</span></div>
+    <span class="ch-horizon"></span>
+  </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <!-- Logo SolaWeb (soleil levant + montagnes), redessiné en vectoriel d'après le logo fourni (assets/logo-solaweb-original.png) -->
     <symbol id="logo-sw" viewBox="0 0 330 92">
@@ -41,45 +75,49 @@
 
   <header class="entete">
     <div class="conteneur entete-interieur">
-      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-h"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-h)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
       <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="menu" id="menu" aria-label="Navigation principale">
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html" aria-current="page">Contact</a></li>
         </ul>
-        <div class="menu-cta-zone"><a class="bouton bouton-plein fleche" href="contact.html">Demander un devis</a></div>
+        <div class="menu-cta-zone"><a class="bouton" href="contact.html">Demander un devis</a></div>
       </nav>
     </div>
   </header>
 
   <main id="contenu">
 
-    <section class="bandeau-page" aria-labelledby="t-page">
+    <section class="bandeau-page bandeau-sombre avec-bulles" aria-labelledby="t-page">
+      <div class="bandeau-fond" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/video/accueil/accueil-ordinateur.jpg">
+          <source src="assets/video/accueil/accueil-ordinateur-leger.mp4" type="video/mp4">
+        </video>
+        <script>if (matchMedia('(prefers-reduced-motion: reduce)').matches) { var v = document.currentScript.previousElementSibling; v.removeAttribute('autoplay'); v.pause(); }</script>
+      </div>
       <div class="conteneur">
         <ol class="fil-ariane" aria-label="Vous êtes ici"><li><a href="index.html">Accueil</a></li><li aria-current="page">Contact</li></ol>
-        <p class="sur-titre" data-anime>Contact</p>
-        <h1 id="t-page" data-mots>Parlons de votre projet&nbsp;?</h1>
+        <h1 id="t-page" data-mots>Parlons de votre projet</h1>
         <p data-anime style="--d:300">Dites-nous ce qui vous plaît. Nous revenons vers vous avec un devis écrit, sans engagement.</p>
       </div>
+      <div class="bulles" aria-hidden="true"><div class="bulle bulle-claire"><span class="sw-logo bulle-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-b"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-b)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg></span></div><div class="bulle bulle-sombre"><i></i><i></i><i></i></div></div>
     </section>
 
     <section class="section ct ct-clair fond-pale" id="contact" aria-labelledby="t-contact">
       <div class="conteneur ct-grille">
         <div data-anime>
-          <p class="sur-titre">Nous écrire</p>
           <h2 id="t-contact" class="ct-titre">Un premier échange, <span class="accent">sans engagement.</span></h2>
           <p class="ct-intro">Vous découvrez votre première maquette avant tout paiement. Elle ne vous plaît pas&nbsp;? Vous ne payez&nbsp;rien.</p>
-          <div class="ct-coord"><div class="ct-carte"><span class="ct-lbl">E-mail</span><span class="a-completer">à compléter</span></div><div class="ct-carte"><span class="ct-lbl">Téléphone</span><span class="a-completer">à compléter</span></div></div>
+          <!-- WhatsApp, téléphone, e-mail : à ajouter ici quand les coordonnées seront connues (lien WhatsApp : https://wa.me/33XXXXXXXXX) -->
         </div>
         <div class="ct-droite" data-anime style="--d:150">
           <form id="form-devis" class="ct-form" novalidate method="dialog" aria-describedby="note-ct">
               <noscript><p class="ct-note">JavaScript est désactivé : le formulaire de démonstration est indisponible. Aucune donnée ne peut être envoyée.</p></noscript>
               <fieldset class="champs-groupe" disabled>
-                <h3 class="ct-form-titre">Ou remplissez ce petit formulaire</h3>
+                <h3 class="ct-form-titre">Décrivez-nous votre projet</h3>
                 <div class="ct-champ"><label for="nom">Nom <span aria-hidden="true">*</span></label><input id="nom" name="nom" type="text" autocomplete="name" maxlength="100" required aria-describedby="erreur-nom"><p class="erreur" id="erreur-nom" aria-live="polite"></p></div>
                 <div class="ct-champ"><label for="entreprise">Nom de votre entreprise <span class="req">(facultatif)</span></label><input id="entreprise" name="entreprise" type="text" autocomplete="organization" maxlength="100"></div>
                 <div class="ct-champ"><label for="email">Adresse e-mail <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="erreur-email"><p class="erreur" id="erreur-email" aria-live="polite"></p></div>
@@ -105,7 +143,7 @@
   <footer class="pied-site">
     <div class="conteneur pied-grille">
       <div class="pied-marque">
-        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-p"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-p)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
         <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
       </div>
       <nav aria-labelledby="pied-t1">
@@ -114,7 +152,6 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -128,11 +165,7 @@
       </nav>
       <div>
         <h2 class="pied-titre">Contact</h2>
-        <ul>
-          <li>E-mail : <span class="a-completer">à compléter</span></li>
-          <li>Téléphone : <span class="a-completer">à compléter</span></li>
-        </ul>
-        <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html">Demander un devis</a>
+        <p>Par le <a href="contact.html">formulaire de contact</a>. Nous vous répondons avec un devis écrit.</p>
       </div>
     </div>
     <div class="conteneur pied-bas">

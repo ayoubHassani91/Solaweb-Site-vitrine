@@ -3,3 +3,6 @@
 exclude:
   - README.md
   - CLAUDE.md
+  - DESIGN.md
+  - PRODUCT.md
+  - LISEZ-MOI-version-finale.txt

@@ -1,0 +1,183 @@
+/* =====================================================================
+   SolaWeb — touche moderne et tech (25.11.2026, nuit)
+   Clair et aéré : fond gris très clair avec trame de points, halos doux,
+   navigation flottante, grands panneaux arrondis, cartes translucides avec
+   halo qui suit la souris, boutons pilule, typographie plus grande.
+   Chargé EN DERNIER sur toutes les pages (remplace css/nuit.css, non chargé).
+   ===================================================================== */
+:root {
+  --fond: #F5F6F8;
+  --fond-carte: rgba(255, 255, 255, .72);
+  --bord: rgba(31, 45, 77, .09);
+  --ombre: 0 1px 2px rgba(22, 33, 58, .04), 0 24px 48px -28px rgba(22, 33, 58, .22);
+  --rayon-l: 28px;
+  --rayon-m: 18px;
+  --mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
+  --papier: #F5F6F8; --pierre: #EDEFF3; --filet-s: rgba(31, 45, 77, .1);
+}
+
+/* ---------- Fond : gris clair, trame de points, halos ---------- */
+html { background: var(--fond) !important; }
+html body { background: transparent !important; }
+.scene-offre, .bloc, .bloc.pierre { background: transparent !important; }
+html body::before { content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background-image: radial-gradient(rgba(31, 45, 77, .11) 1px, transparent 1.2px); background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 85%); mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 85%); }
+html body::after { content: ""; position: fixed; z-index: -1; pointer-events: none; width: 70vmax; height: 70vmax; right: -25vmax; top: -30vmax; border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 163, 107, .22), rgba(240, 163, 107, 0) 62%); }
+.aurore { position: relative; isolation: isolate; }
+.aurore::before { content: ""; position: absolute; z-index: -1; inset: -10% -5% auto auto; width: 55vmax; height: 55vmax; border-radius: 50%; background: radial-gradient(circle, rgba(88, 120, 200, .16), rgba(88, 120, 200, 0) 60%); pointer-events: none; }
+
+/* ---------- Typographie plus grande, plus d'air ---------- */
+html body h1, html body h2 { font-weight: 600 !important; letter-spacing: -.035em !important; line-height: 1.04 !important; }
+.offre-liste h2, #t-exemples, .fin-boite h2, .chantier-texte h2, html body .bandeau-page h1 { font-size: clamp(2.5rem, 5.4vw, 4.6rem) !important; }
+.chantier-texte h2 { font-size: clamp(2.2rem, 4vw, 3.6rem) !important; }
+.intro, .fin-boite > p { font-size: clamp(1.08rem, 1.3vw, 1.22rem) !important; line-height: 1.65; max-width: 40rem; }
+.bloc { padding: clamp(7rem, 13vw, 11rem) 0 !important; }
+.fin { padding: clamp(8rem, 15vw, 12rem) 0 !important; }
+html body .section { padding-block: clamp(5rem, 10vw, 8rem) !important; }
+
+/* ---------- Navigation flottante ---------- */
+html body .entete { position: sticky; top: 14px !important; width: min(1180px, calc(100% - 2rem)); margin: 14px auto 0; border-radius: 999px !important; border: 1px solid var(--bord) !important; background: rgba(255, 255, 255, .7) !important; backdrop-filter: saturate(1.4) blur(16px); -webkit-backdrop-filter: saturate(1.4) blur(16px); box-shadow: 0 10px 34px -18px rgba(22, 33, 58, .35); }
+html body .entete .entete-interieur { width: auto !important; padding: 0 .45rem 0 1.5rem !important; min-height: 3.7rem !important; }
+html body .entete .menu ul { gap: 1.6rem !important; }
+html body .entete .menu a:not(.bouton) { font-size: .95rem; }
+html body .entete .bouton { min-height: 2.75rem !important; padding: .5rem 1.25rem !important; }
+.logo-ancien { width: 8.4rem; }
+@media (max-width: 920px) {
+  html body .entete { border-radius: 22px !important; }
+  html body .entete .menu { border-radius: 18px; margin-top: .5rem; border: 1px solid var(--bord); box-shadow: var(--ombre); background: rgba(255, 255, 255, .96) !important; }
+}
+
+/* ---------- Grands panneaux arrondis (accueil vidéo, chantier, promesse) ---------- */
+.accueil { margin: 14px 14px 0; border-radius: var(--rayon-l); overflow: hidden; }
+.scene-chantier, .scene-promesse { margin: 14px; border-radius: var(--rayon-l); overflow: clip; }
+.accueil-grille { padding: clamp(5rem, 13vh, 8rem) 0 clamp(4.5rem, 11vh, 7rem) !important; }
+.accueil h1 { font-size: clamp(2.8rem, 6.4vw, 5.6rem) !important; letter-spacing: -.04em !important; }
+html body .pied-site { margin: 14px; border-radius: var(--rayon-l); }
+
+/* ---------- Boutons pilule ---------- */
+html body .bouton, html body .bouton.bouton-plat { border-radius: 999px !important; min-height: 3.1rem; padding: .7rem 1.6rem; }
+.metiers label span, .choix-fin span { border-radius: 999px !important; }
+
+/* ---------- Cartes translucides avec halo qui suit la souris ---------- */
+.offre-demo, .exemple .e-img, html body .carte-s, html body .carte-f, html body .ct-droite, html body .bande-cta, html body .services-detail .service, html body .faq details {
+  --mx: 50%; --my: 50%;
+}
+.offre-demo { background: radial-gradient(520px circle at var(--mx) var(--my), rgba(240, 163, 107, .16), transparent 60%), var(--fond-carte) !important; border: 1px solid var(--bord) !important; border-radius: var(--rayon-l) !important; box-shadow: var(--ombre); backdrop-filter: blur(8px); }
+html body .carte-s, html body .carte-f, html body .ct-droite, html body .bande-cta { background: radial-gradient(420px circle at var(--mx) var(--my), rgba(240, 163, 107, .13), transparent 60%), var(--fond-carte) !important; border: 1px solid var(--bord) !important; border-radius: var(--rayon-m) !important; box-shadow: var(--ombre) !important; }
+.exemple .e-img { border-radius: var(--rayon-m) !important; border: 1px solid var(--bord) !important; box-shadow: var(--ombre); position: relative; }
+.exemple .e-img::after { content: ""; position: absolute; inset: 0; background: radial-gradient(360px circle at var(--mx) var(--my), rgba(255, 255, 255, .28), transparent 55%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.exemple:hover .e-img::after { opacity: 1; }
+.exemples { gap: 2rem !important; }
+
+/* ---------- Démos : barre de titre de fenêtre, en police technique ---------- */
+.demo::before { position: absolute; top: 1.1rem; left: 1.4rem; font-family: var(--mono); font-size: .74rem; letter-spacing: .02em; color: rgba(31, 45, 77, .5); }
+.demo-site::before { content: "aperçu — site vitrine"; }
+.demo-ia::before { content: "aperçu — assistant"; }
+.demo-auto::before { content: "aperçu — automatisation"; }
+.d-legende { font-family: var(--mono); font-size: .72rem !important; letter-spacing: .01em; }
+.d-chat, .d-flux li { border: 1px solid var(--bord); }
+.ordi-adresse, .ecran-adresse { font-family: var(--mono); }
+
+/* ---------- Services (accueil) : plus d'air ---------- */
+.offre { gap: clamp(3rem, 8vw, 8rem) !important; }
+.offre-liste h2 { margin-bottom: 2.6rem !important; }
+.o-item button { padding: 1.4rem 0 !important; }
+.offre-demo { min-height: min(34rem, 70vh) !important; }
+
+/* ---------- Fin de page : halo ---------- */
+.fin { position: relative; isolation: isolate; overflow: hidden; border-top: 0 !important; background: transparent !important; }
+.fin::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 55%; width: min(60rem, 120vw); aspect-ratio: 2 / 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(240, 163, 107, .28), rgba(88, 120, 200, .10) 45%, transparent 70%); filter: blur(10px); pointer-events: none; }
+
+/* ---------- Pages intérieures : en-tête aéré avec halos ---------- */
+html body .bandeau-page { background: transparent !important; border-bottom: 0 !important; padding: clamp(6rem, 14vw, 10rem) 0 clamp(3rem, 6vw, 5rem) !important; position: relative; isolation: isolate; overflow: visible; }
+html body .bandeau-page::before { content: "" !important; position: absolute; z-index: -1; left: 50%; top: 0; width: min(70rem, 130vw); height: 100%; transform: translateX(-50%); background: radial-gradient(ellipse 50% 60% at 70% 40%, rgba(240, 163, 107, .2), transparent 70%), radial-gradient(ellipse 45% 55% at 25% 30%, rgba(88, 120, 200, .14), transparent 70%); pointer-events: none; display: block !important; }
+html body .section.clair, html body .fond-pale, html body .section.fond-pale { background: transparent !important; }
+
+/* ---------- Animations réduites ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .offre-demo, html body .carte-s { --mx: 50%; --my: 50%; }
+}
+
+/* ---------- Démo « site » : droite, entièrement dans le cadre, images nettes ---------- */
+.demo-site { justify-content: center; align-items: flex-start; padding: 3.4rem 2rem 3.4rem !important; }
+.demo-site .d-ordi { width: 76% !important; margin-left: 2%; transform: none !important; border: 7px solid #10182A !important; border-bottom-width: 10px !important; border-radius: 12px !important; aspect-ratio: 1366 / 768; overflow: hidden; }
+.demo-site .d-ordi img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.demo-site .d-tel { right: 7% !important; bottom: 3.6rem !important; width: 16% !important; aspect-ratio: 500 / 1100; border: 4px solid #10182A !important; border-radius: 16px !important; overflow: hidden; transform: translateY(16px); }
+.demo-site.actif .d-tel { transform: none; }
+.demo-site .d-tel img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.offre-demo:hover .demo-site .d-ordi { transform: none !important; }
+
+/* =====================================================================
+   Sans espaces blancs (25.11.2026) : panneaux pleine largeur, navigation
+   qui flotte par-dessus l'accueil, nouveau logo, services sans défilement épinglé.
+   ===================================================================== */
+.accueil, .scene-chantier, .scene-promesse, html body .pied-site { margin: 0 !important; border-radius: 0 !important; }
+/* la navigation flotte au-dessus de la page (plus de bande blanche au-dessus de l'accueil) */
+html body .entete { position: fixed !important; top: 14px !important; left: 50%; transform: translateX(-50%); margin: 0 !important; z-index: 60; }
+html body .accueil .accueil-grille { padding-top: clamp(8rem, 18vh, 10rem) !important; }
+html body .bandeau-page { padding-top: clamp(9rem, 16vw, 12rem) !important; }
+html body main > section:first-child:not(.accueil):not(.bandeau-page) { padding-top: 8rem; }
+/* nouveau logo « Soleil levant » dans la navigation claire */
+html body .entete .marque { color: var(--nuit) !important; font-size: 1.4rem; }
+html body .entete .marque .sw-nom { color: var(--nuit); }
+html body .pied-site .sw-logo { color: var(--clair-sur-nuit); font-size: 1.6rem; }
+/* services : choix au clic ou au survol, sans épinglage */
+.scene-offre { height: auto !important; }
+.scene-offre .scene-colle { position: static !important; height: auto !important; padding: clamp(7rem, 13vw, 10rem) 0; }
+.o-trait { display: none; }
+
+/* ---------- Fond en motion design (vidéo Blender, injectée par js/solaweb.js) ---------- */
+html body::before { display: none !important; }
+.fond-motion { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+.fond-motion video { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; opacity: .55; }
+.fond-motion::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(245, 246, 248, .78) 0%, rgba(245, 246, 248, .35) 45%, rgba(245, 246, 248, .2) 100%); }
+/* navigation un peu plus opaque au-dessus des en-têtes sombres */
+html body .entete { background: rgba(255, 255, 255, .86) !important; }
+@media (prefers-reduced-motion: reduce) { .fond-motion video { opacity: .4; } }
+/* fond motion : plus discret pour ne jamais gêner la lecture */
+.fond-motion video { opacity: .3 !important; filter: blur(.4px); }
+.fond-motion::after { background: linear-gradient(180deg, rgba(245, 246, 248, .72) 0%, rgba(245, 246, 248, .5) 50%, rgba(245, 246, 248, .42) 100%) !important; }
+
+/* =====================================================================
+   Ajustements (25.11.2026, tard) : vidéo d'accueil en avant, fonds selon la page
+   ===================================================================== */
+/* accueil : la vidéo passe au premier plan, voile seulement côté texte */
+.accueil { min-height: min(100svh, 860px); display: grid; align-items: center; }
+.accueil-grille { grid-template-columns: minmax(0, 1fr) !important; }
+.accueil-texte { max-width: 40rem; }
+.accueil-fond video, html.js .accueil.parti .accueil-fond video, html.js .accueil .accueil-fond video { filter: none !important; }
+html.js .accueil .accueil-fond video { filter: brightness(.6) !important; }
+html.js .accueil.parti .accueil-fond video { filter: none !important; }
+.accueil-fond::after { background: linear-gradient(90deg, rgba(23, 34, 56, .9) 0%, rgba(23, 34, 56, .7) 38%, rgba(23, 34, 56, .2) 70%, rgba(23, 34, 56, .1) 100%) !important; }
+/* champ de points : seulement sur la page Services */
+.fond-motion video { opacity: .3 !important; }
+/* autres pages : grands halos très doux qui dérivent lentement */
+.fond-doux { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+.fond-doux i { position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(40px); opacity: .5; animation: derive 38s ease-in-out infinite alternate; }
+.fond-doux i:nth-child(1) { left: -18vmax; top: -22vmax; background: radial-gradient(circle, rgba(240, 163, 107, .35), rgba(240, 163, 107, 0) 65%); }
+.fond-doux i:nth-child(2) { right: -22vmax; top: 18vh; background: radial-gradient(circle, rgba(98, 128, 205, .25), rgba(98, 128, 205, 0) 65%); animation-duration: 46s; animation-delay: -12s; }
+.fond-doux i:nth-child(3) { left: 25vw; bottom: -30vmax; background: radial-gradient(circle, rgba(240, 163, 107, .22), rgba(240, 163, 107, 0) 65%); animation-duration: 52s; animation-delay: -24s; }
+@keyframes derive { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(6vw, 4vh) scale(1.08); } 100% { transform: translate(-4vw, 8vh) scale(.95); } }
+html body::after { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .fond-doux i { animation: none; } }
+/* lisibilité du texte d'accueil sur la vidéo */
+.accueil-fond::after { background: linear-gradient(90deg, rgba(23, 34, 56, .94) 0%, rgba(23, 34, 56, .86) 42%, rgba(23, 34, 56, .35) 72%, rgba(23, 34, 56, .12) 100%) !important; }
+@media (max-width: 900px) { .accueil-fond::after { background: linear-gradient(180deg, rgba(23, 34, 56, .55) 0%, rgba(23, 34, 56, .86) 35%, rgba(23, 34, 56, .9) 70%, rgba(23, 34, 56, .7) 100%) !important; } }
+
+/* ---------- Formes 3D décoratives (Blender) dans les grandes zones claires ---------- */
+.a-deco { position: relative; isolation: isolate; }
+.a-deco > :not(.deco) { position: relative; z-index: 1; }
+.deco { position: absolute; z-index: 0; width: clamp(7rem, 14vw, 13rem); height: auto; pointer-events: none; filter: drop-shadow(0 24px 30px rgba(22, 33, 58, .16)); animation: deco-flotte 9s ease-in-out infinite; }
+.deco-hd { top: 4%; right: 4%; width: clamp(9rem, 18vw, 17rem); }
+.deco-hg { top: 6%; left: 3%; }
+.deco-bg { bottom: 6%; left: 2%; animation-delay: -3s; }
+.deco-bd { bottom: 4%; right: 3%; animation-delay: -6s; }
+.deco-md { top: 38%; right: -2%; animation-delay: -4s; }
+@keyframes deco-flotte { 0%, 100% { translate: 0 0; } 50% { translate: 0 -16px; } }
+/* accueil : moins de blanc sous les exemples */
+.bloc-exemples { padding-bottom: clamp(4.5rem, 8vw, 6.5rem) !important; }
+@media (max-width: 760px) { .deco { width: 5.5rem; opacity: .85; } .deco-hd { width: 7rem; top: 1%; } .deco-md { display: none; } }
+@media (prefers-reduced-motion: reduce) { .deco { animation: none; } }
+.bloc-exemples .deco-bg { left: -1.5%; bottom: -2%; }

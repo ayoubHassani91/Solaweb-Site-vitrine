@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Politique de confidentialité — SolaWeb</title>
+  <title>Politique de confidentialité | SolaWeb</title>
   <meta name="description" content="Politique de confidentialité du site SolaWeb : données collectées, durée de conservation, vos droits.">
   <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
-  <meta name="theme-color" content="#FFFFFF">
-  <!-- Aperçu de partage : à compléter avec l'adresse (og:url) et une image absolue (og:image) une fois le domaine choisi -->
+  <meta name="theme-color" content="#F5F6F8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="SolaWeb">
@@ -19,10 +18,21 @@
   <link rel="preload" href="assets/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/theme.css">
-  <script src="js/animations.js"></script>
+  <link rel="stylesheet" href="css/accueil-photo.css?v=7">
+  <link rel="stylesheet" href="css/marine.css?v=8">
   <script src="js/main.js" defer></script>
+  <script src="js/bandeau-cookies.js" defer></script>
+  <link rel="stylesheet" href="css/solaweb.css?v=6">
+  <link rel="stylesheet" href="css/moderne.css?v=9">
+  <link rel="stylesheet" href="css/pages.css?v=5">
+  <script src="js/solaweb.js?v=9"></script>
 </head>
 <body class="page-interne">
+  <div class="chargeur" aria-hidden="true">
+    <div class="ch-volet ch-haut"><div class="ch-ciel"><span class="ch-soleil"></span></div></div>
+    <div class="ch-volet ch-bas"><span class="ch-reflet"></span><span class="ch-nom">SolaWeb</span></div>
+    <span class="ch-horizon"></span>
+  </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <!-- Logo SolaWeb (soleil levant + montagnes), redessiné en vectoriel d'après le logo fourni (assets/logo-solaweb-original.png) -->
     <symbol id="logo-sw" viewBox="0 0 330 92">
@@ -41,27 +51,31 @@
 
   <header class="entete">
     <div class="conteneur entete-interieur">
-      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-h"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-h)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
       <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="menu" id="menu" aria-label="Navigation principale">
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <div class="menu-cta-zone"><a class="bouton bouton-plein fleche" href="contact.html">Demander un devis</a></div>
+        <div class="menu-cta-zone"><a class="bouton" href="contact.html">Demander un devis</a></div>
       </nav>
     </div>
   </header>
 
   <main id="contenu">
 
-    <section class="bandeau-page" aria-labelledby="t-page">
+    <section class="bandeau-page bandeau-sombre" aria-labelledby="t-page">
+      <div class="bandeau-fond" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/video/accueil/accueil-ordinateur.jpg">
+          <source src="assets/video/accueil/accueil-ordinateur-leger.mp4" type="video/mp4">
+        </video>
+        <script>if (matchMedia('(prefers-reduced-motion: reduce)').matches) { var v = document.currentScript.previousElementSibling; v.removeAttribute('autoplay'); v.pause(); }</script>
+      </div>
       <div class="conteneur">
         <ol class="fil-ariane" aria-label="Vous êtes ici"><li><a href="index.html">Accueil</a></li><li aria-current="page">Politique de confidentialité</li></ol>
-        <p class="sur-titre">Informations</p>
         <h1 id="t-page" data-mots>Politique de confidentialité</h1>
       </div>
     </section>
@@ -69,10 +83,9 @@
     <section class="section clair page-legale">
       <div class="conteneur">
         <div class="texte-long">
-      <div class="bandeau-provisoire"><p><strong>Projet à faire valider avant publication.</strong> Cette politique décrit le fonctionnement prévu du formulaire de contact. Les passages « à compléter » dépendent du service d&rsquo;envoi et de l&rsquo;hébergeur choisis. Ce texte n&rsquo;est pas un conseil juridique : faites-le relire par un professionnel.</p></div>
 
       <h2>1. Qui est responsable de vos données ?</h2>
-      <p>L&rsquo;éditeur du site, SolaWeb (<span class="a-completer">nom, adresse et e-mail : à compléter, voir les mentions légales</span>).</p>
+      <p>L&rsquo;éditeur du site, SolaWeb (voir les mentions légales).</p>
 
       <h2>2. Quelles données collectons-nous ?</h2>
       <p>Uniquement celles que vous saisissez dans le formulaire de contact : votre nom ou le nom de votre entreprise, votre adresse e-mail, votre téléphone (facultatif), votre secteur d&rsquo;activité, la formule envisagée et votre message.</p>
@@ -80,22 +93,19 @@
       <h2>3. Pourquoi, et sur quelle base ?</h2>
       <p>Pour répondre à votre demande, vous envoyer un devis et préparer votre projet. Cela repose sur les mesures précontractuelles prises à votre demande.</p>
 
-      <h2>4. Combien de temps les conservons-nous ?</h2>
-      <p><span class="a-completer">À définir (par exemple 3 ans après le dernier échange pour une demande restée sans suite ; la durée légale pour les factures en cas de projet réalisé).</span></p>
+      <h2>4. Qui peut y accéder ?</h2>
+      <p>L&rsquo;éditeur du site. Vos données ne sont ni vendues ni utilisées pour de la publicité.</p>
 
-      <h2>5. Qui peut y accéder ?</h2>
-      <p>L&rsquo;éditeur du site. Pour transmettre le formulaire et héberger le site, nous passons par : <span class="a-completer">service d&rsquo;envoi et hébergeur : à compléter</span>. Vos données ne sont ni vendues ni utilisées pour de la publicité.</p>
-
-      <h2>6. Cookies et traceurs</h2>
+      <h2>5. Cookies et traceurs</h2>
       <p>Ce site n&rsquo;utilise aucun cookie de suivi, aucun outil de mesure d&rsquo;audience et aucun service publicitaire. Les polices et les images sont hébergées sur le site lui-même.</p>
 
-      <h2>7. Vos droits</h2>
-      <p>Vous pouvez demander l&rsquo;accès à vos données, leur rectification, leur effacement, la limitation de leur traitement, vous y opposer, ou demander leur portabilité. Écrivez-nous à : <span class="a-completer">e-mail à compléter</span>. Nous répondons dans un délai d&rsquo;un mois.</p>
+      <h2>6. Vos droits</h2>
+      <p>Vous pouvez demander l&rsquo;accès à vos données, leur rectification, leur effacement, la limitation de leur traitement, vous y opposer, ou demander leur portabilité. Écrivez-nous via le <a href="contact.html">formulaire de contact</a>. Nous répondons dans un délai d&rsquo;un mois.</p>
 
-      <h2>8. Réclamation</h2>
+      <h2>7. Réclamation</h2>
       <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (cnil.fr).</p>
 
-      <h2>9. État de la version de travail</h2>
+      <h2>8. État de la version de travail</h2>
       <p>Dans cette version de travail, le formulaire est une démonstration : il n&rsquo;envoie et n&rsquo;enregistre aucune donnée.</p>
         </div>
       </div>
@@ -105,7 +115,7 @@
   <footer class="pied-site">
     <div class="conteneur pied-grille">
       <div class="pied-marque">
-        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-p"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-p)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
         <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
       </div>
       <nav aria-labelledby="pied-t1">
@@ -114,7 +124,6 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -128,11 +137,7 @@
       </nav>
       <div>
         <h2 class="pied-titre">Contact</h2>
-        <ul>
-          <li>E-mail : <span class="a-completer">à compléter</span></li>
-          <li>Téléphone : <span class="a-completer">à compléter</span></li>
-        </ul>
-        <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html">Demander un devis</a>
+        <p>Par le <a href="contact.html">formulaire de contact</a>. Nous vous répondons avec un devis écrit.</p>
       </div>
     </div>
     <div class="conteneur pied-bas">

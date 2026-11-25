@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mentions légales — SolaWeb</title>
+  <title>Mentions légales | SolaWeb</title>
   <meta name="description" content="Mentions légales du site SolaWeb.">
   <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
-  <meta name="theme-color" content="#FFFFFF">
-  <!-- Aperçu de partage : à compléter avec l'adresse (og:url) et une image absolue (og:image) une fois le domaine choisi -->
+  <meta name="theme-color" content="#F5F6F8">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="SolaWeb">
@@ -19,10 +18,21 @@
   <link rel="preload" href="assets/fonts/eb-garamond-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/theme.css">
-  <script src="js/animations.js"></script>
+  <link rel="stylesheet" href="css/accueil-photo.css?v=7">
+  <link rel="stylesheet" href="css/marine.css?v=8">
   <script src="js/main.js" defer></script>
+  <script src="js/bandeau-cookies.js" defer></script>
+  <link rel="stylesheet" href="css/solaweb.css?v=6">
+  <link rel="stylesheet" href="css/moderne.css?v=9">
+  <link rel="stylesheet" href="css/pages.css?v=5">
+  <script src="js/solaweb.js?v=9"></script>
 </head>
 <body class="page-interne">
+  <div class="chargeur" aria-hidden="true">
+    <div class="ch-volet ch-haut"><div class="ch-ciel"><span class="ch-soleil"></span></div></div>
+    <div class="ch-volet ch-bas"><span class="ch-reflet"></span><span class="ch-nom">SolaWeb</span></div>
+    <span class="ch-horizon"></span>
+  </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <!-- Logo SolaWeb (soleil levant + montagnes), redessiné en vectoriel d'après le logo fourni (assets/logo-solaweb-original.png) -->
     <symbol id="logo-sw" viewBox="0 0 330 92">
@@ -41,27 +51,31 @@
 
   <header class="entete">
     <div class="conteneur entete-interieur">
-      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-h"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-h)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
       <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="menu" id="menu" aria-label="Navigation principale">
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-        <div class="menu-cta-zone"><a class="bouton bouton-plein fleche" href="contact.html">Demander un devis</a></div>
+        <div class="menu-cta-zone"><a class="bouton" href="contact.html">Demander un devis</a></div>
       </nav>
     </div>
   </header>
 
   <main id="contenu">
 
-    <section class="bandeau-page" aria-labelledby="t-page">
+    <section class="bandeau-page bandeau-sombre" aria-labelledby="t-page">
+      <div class="bandeau-fond" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/video/accueil/accueil-ordinateur.jpg">
+          <source src="assets/video/accueil/accueil-ordinateur-leger.mp4" type="video/mp4">
+        </video>
+        <script>if (matchMedia('(prefers-reduced-motion: reduce)').matches) { var v = document.currentScript.previousElementSibling; v.removeAttribute('autoplay'); v.pause(); }</script>
+      </div>
       <div class="conteneur">
         <ol class="fil-ariane" aria-label="Vous êtes ici"><li><a href="index.html">Accueil</a></li><li aria-current="page">Mentions légales</li></ol>
-        <p class="sur-titre">Informations</p>
         <h1 id="t-page" data-mots>Mentions légales</h1>
       </div>
     </section>
@@ -69,43 +83,26 @@
     <section class="section clair page-legale">
       <div class="conteneur">
         <div class="texte-long">
-      <div class="bandeau-provisoire"><p><strong>À compléter avant publication.</strong> Les passages signalés « à compléter » concernent l&rsquo;éditeur du site : ils doivent être renseignés et vérifiés. Ce texte n&rsquo;est pas un conseil juridique : faites-le relire par un professionnel.</p></div>
 
       <h2>1. Éditeur du site</h2>
       <ul>
-        <li>Nom ou dénomination : <span class="a-completer">à compléter</span> (nom commercial : SolaWeb)</li>
-        <li>Statut : <span class="a-completer">à compléter (par exemple micro-entrepreneur)</span></li>
-        <li>Numéro SIRET : <span class="a-completer">à compléter</span></li>
-        <li>Adresse professionnelle ou de domiciliation : <span class="a-completer">à compléter</span></li>
-        <li>E-mail : <span class="a-completer">à compléter</span></li>
-        <li>Téléphone : <span class="a-completer">à compléter</span></li>
-        <li>TVA : <span class="a-completer">à confirmer (par exemple « TVA non applicable, art. 293 B du CGI »)</span></li>
+        <li>Nom commercial : SolaWeb</li>
       </ul>
 
-      <h2>2. Directeur de la publication</h2>
-      <p><span class="a-completer">À compléter (en général, l&rsquo;éditeur du site).</span></p>
-
-      <h2>3. Hébergeur</h2>
-      <ul>
-        <li>Nom : <span class="a-completer">à compléter une fois l&rsquo;hébergement choisi</span></li>
-        <li>Adresse : <span class="a-completer">à compléter</span></li>
-        <li>Téléphone : <span class="a-completer">à compléter</span></li>
-      </ul>
-
-      <h2>4. Propriété intellectuelle</h2>
+      <h2>2. Propriété intellectuelle</h2>
       <p>Les textes, le logo, la mise en page et les éléments graphiques de ce site appartiennent à son éditeur. Toute reproduction, totale ou partielle, sans autorisation écrite est interdite.</p>
 
-      <h2>5. Crédits photographiques</h2>
-      <p>Les photographies des sites présentés dans la section « Réalisations » proviennent de banques d&rsquo;images libres de droits ; les crédits figurent dans chaque site. <span class="a-completer">À vérifier avant publication.</span></p>
+      <h2>3. Crédits photographiques</h2>
+      <p>Les photographies des sites présentés dans la section « Réalisations » proviennent de banques d&rsquo;images libres de droits ; les crédits figurent dans chaque site.</p>
 
-      <h2>6. Responsabilité</h2>
+      <h2>4. Responsabilité</h2>
       <p>SolaWeb s&rsquo;efforce de fournir des informations exactes et à jour, sans garantie d&rsquo;absence d&rsquo;erreur. SolaWeb n&rsquo;est pas responsable du contenu des sites vers lesquels ce site renvoie.</p>
 
-      <h2>7. Données personnelles et cookies</h2>
+      <h2>5. Données personnelles et cookies</h2>
       <p>Voir la politique de confidentialité. Ce site n&rsquo;utilise aucun cookie de suivi ni outil de mesure d&rsquo;audience.</p>
 
-      <h2>8. Droit applicable et médiation</h2>
-      <p>Ce site est soumis au droit français. Médiateur de la consommation : <span class="a-completer">à compléter</span>.</p>
+      <h2>6. Droit applicable et médiation</h2>
+      <p>Ce site est soumis au droit français.</p>
         </div>
       </div>
     </section>
@@ -114,7 +111,7 @@
   <footer class="pied-site">
     <div class="conteneur pied-grille">
       <div class="pied-marque">
-        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><svg class="logo-sw" viewBox="0 0 330 92" aria-hidden="true" focusable="false"><use href="#logo-sw"/></svg></a>
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="sw-logo"><svg class="sw-mark" viewBox="0 0 48 40" aria-hidden="true" focusable="false"><defs><clipPath id="sw-ciel-p"><rect width="48" height="30"/></clipPath></defs><g clip-path="url(#sw-ciel-p)"><circle class="sw-soleil" cx="24" cy="30" r="17"/></g><line class="sw-horizon" x1="1" y1="30" x2="47" y2="30"/><line class="sw-reflet" x1="12" y1="36.5" x2="36" y2="36.5"/></svg><span class="sw-nom">SolaWeb</span></span></a>
         <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
       </div>
       <nav aria-labelledby="pied-t1">
@@ -123,7 +120,6 @@
           <li><a href="index.html">Accueil</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="realisations.html">Réalisations</a></li>
-          <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -137,11 +133,7 @@
       </nav>
       <div>
         <h2 class="pied-titre">Contact</h2>
-        <ul>
-          <li>E-mail : <span class="a-completer">à compléter</span></li>
-          <li>Téléphone : <span class="a-completer">à compléter</span></li>
-        </ul>
-        <a class="bouton bouton-plat bouton-plat-plein fleche" href="contact.html">Demander un devis</a>
+        <p>Par le <a href="contact.html">formulaire de contact</a>. Nous vous répondons avec un devis écrit.</p>
       </div>
     </div>
     <div class="conteneur pied-bas">

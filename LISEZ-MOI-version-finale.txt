@@ -1,0 +1,9 @@
+﻿Version finale du 23/11/2026 : site SolaWeb (version de Said, Solaweb v10)
+
+Contenu : bandeau cookies d'information, logo de Said avec trait orange doux (#E8864A) partout,
+page Contact avec bulles animees et boutons orange, bouton 'Parlons de votre projet' sur l'accueil,
+aucun tarif affiche (page Tarifs retiree, services 'Sur devis').
+Ouvrir index.html pour voir le site.
+
+A completer avant publication : numero WhatsApp, e-mail, telephone, statut, HT/TTC, mentions legales.
+Ne pas publier en l'etat.

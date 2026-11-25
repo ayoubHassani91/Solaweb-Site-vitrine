@@ -1,0 +1,112 @@
+/* =====================================================================
+   PROPOSITIONS D'ACCUEIL AVEC PHOTO (12.11.2026)
+   Inspirées de morlaix.obrothersbarbershop.fr : grande photo plein écran adoucie par un voile clair,
+   titre au centre ou à gauche, barre d'infos blanche qui chevauche le bas de la photo.
+   Le fond clair d'Ayoub est conservé : seule la zone d'accueil change.
+   Chargé après theme.css, seulement par les pages proposition-accueil-*.html.
+   Photos : assets/photos/ (1 = bureau, 2 = herbes, 3 = brique).
+   ===================================================================== */
+
+/* ---- Base commune : l'accueil devient une grande photo, la vidéo claire est masquée ---- */
+html .heros { overflow: visible; align-items: center; justify-content: center; min-height: min(calc(100svh - 4.5rem - 7rem), 820px); background-color: #fff; background-repeat: no-repeat; background-size: cover; background-position: center; }
+@media (min-width: 921px) { html .heros { min-height: min(calc(100vh - var(--h-entete) - 4.5rem), 780px); } }
+html .heros .heros-video, html .heros .video-pause { display: none !important; }
+html .heros::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+html .heros .heros-texte { position: relative; z-index: 2; padding-block: clamp(3rem, 8vh, 5.5rem) clamp(6rem, 14vh, 9rem); }
+html main#contenu > .heros + .section { padding-top: clamp(6rem, 9vw, 8rem); }
+
+/* ---- Barre d'infos blanche qui chevauche le bas de la photo (comme chez O'Brothers) ---- */
+.barre-infos { position: absolute; left: 50%; bottom: 0; z-index: 4; transform: translate(-50%, 50%); width: min(1100px, calc(100% - 2rem)); box-sizing: border-box; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; align-items: center; gap: 1rem 1.4rem; padding: 1rem 1.2rem 1rem 1.6rem; background: #fff; border-radius: 14px; box-shadow: 0 18px 45px -22px rgba(26, 15, 51, 0.45), 0 2px 6px rgba(26, 15, 51, 0.06); }
+.barre-infos ul { display: contents; list-style: none; margin: 0; padding: 0; }
+.barre-infos li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.92rem; font-weight: 500; line-height: 1.3; color: var(--encre); }
+.barre-infos li::before { content: ""; width: 1.2rem; height: 1.2rem; flex: none; border-radius: 50%; background: var(--violet-100) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-6.5' fill='none' stroke='%235B2BC4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 68% no-repeat; }
+.barre-infos li + li { border-left: 1px solid rgba(42, 23, 96, 0.14); padding-left: 1.2rem; }
+@media (max-width: 920px) {
+  .barre-infos { grid-template-columns: 1fr; padding: 1.1rem 1.2rem; gap: 0.7rem; }
+  .barre-infos li + li { border-left: 0; padding-left: 0; }
+  .barre-infos .bouton { width: 100%; justify-content: center; margin-top: 0.3rem; }
+  html main#contenu > .heros + .section { padding-top: 11rem; }
+}
+
+/* ---- Proposition 1 : photo du bureau en plein écran, texte centré sur un voile clair ---- */
+.photo-1 .heros { background-image: url("../assets/photos/accueil-1-bureau.jpg"); background-position: center 62%; }
+.photo-1 .heros::before { background: radial-gradient(ellipse 64% 80% at 50% 42%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.74) 52%, rgba(255, 255, 255, 0.4) 100%); }
+
+/* ---- Proposition 3 : photo de la brique en plein écran, texte à gauche, voile clair à gauche ---- */
+.photo-3 .heros { background-image: url("../assets/photos/accueil-3-brique.jpg"); background-position: 72% center; justify-content: flex-start; }
+.photo-3 .heros::before { background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.88) 42%, rgba(255, 255, 255, 0.3) 68%, rgba(255, 255, 255, 0) 100%); }
+
+/* ---- Proposition 2 : photo en portrait à droite, fondue dans un fond clair, texte à gauche ---- */
+.photo-2 .heros { background-color: #F6F2EC; justify-content: flex-start; }
+.photo-2 .heros::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: min(48vw, 680px); z-index: 0; pointer-events: none; background: url("../assets/photos/accueil-2-herbes.jpg") center 30% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%); mask-image: linear-gradient(90deg, transparent 0%, #000 32%); }
+
+/* ---- Textes alignés à gauche (propositions 2 et 3) ---- */
+html .photo-2 .heros .heros-texte, html .photo-3 .heros .heros-texte { text-align: left; margin: 0 auto 0 clamp(1rem, 6vw, 6.5rem); max-width: 40rem; width: auto; padding-inline: 0; }
+html .photo-2 .heros .heros-texte p, html .photo-3 .heros .heros-texte p { margin-inline: 0; }
+html .photo-2 .heros .actions, html .photo-3 .heros .actions { justify-content: flex-start; }
+html .photo-2 .heros h1 .accent::after, html .photo-3 .heros h1 .accent::after { margin: 0.12em 0 0; }
+
+/* ---- Téléphone et petites tablettes : texte centré, photo plus discrète ---- */
+@media (max-width: 920px) {
+  html .photo-2 .heros .heros-texte, html .photo-3 .heros .heros-texte { text-align: center; margin-inline: auto; padding-inline: var(--gouttiere); }
+  html .photo-2 .heros .heros-texte p, html .photo-3 .heros .heros-texte p { margin-inline: auto; }
+  html .photo-2 .heros .actions, html .photo-3 .heros .actions { justify-content: center; }
+  html .photo-2 .heros h1 .accent::after, html .photo-3 .heros h1 .accent::after { margin-inline: auto; }
+  .photo-2 .heros::after { width: 100%; opacity: 0.4; -webkit-mask-image: none; mask-image: none; }
+  .photo-3 .heros::before { background: rgba(255, 255, 255, 0.74); }
+  .photo-1 .heros::before { background: rgba(255, 255, 255, 0.72); }
+}
+
+/* =====================================================================
+   PROPOSITIONS 4, 5 ET 6 (photos : ordinateur au soleil, code et jus d'orange, fenêtre ouverte)
+   ===================================================================== */
+
+/* ---- Proposition 4 : ordinateur dans la lumière chaude, plein écran, texte centré ---- */
+.photo-4 .heros { background-image: url("../assets/photos/accueil-4-ordinateur.jpg"); background-position: center 42%; }
+.photo-4 .heros::before { background: radial-gradient(ellipse 66% 82% at 50% 42%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.76) 54%, rgba(255, 255, 255, 0.42) 100%); }
+
+/* ---- Proposition 5 : code et fleurs violettes, plein écran, texte à droite sur les fleurs ---- */
+.photo-5 .heros { background-image: url("../assets/photos/accueil-5-code.jpg"); background-position: 28% center; justify-content: flex-end; }
+.photo-5 .heros::before { background: linear-gradient(270deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.88) 42%, rgba(255, 255, 255, 0.3) 68%, rgba(255, 255, 255, 0) 100%); }
+html .photo-5 .heros .heros-texte { text-align: left; margin: 0 clamp(1rem, 6vw, 6.5rem) 0 auto; max-width: 40rem; width: auto; padding-inline: 0; }
+html .photo-5 .heros .heros-texte p { margin-inline: 0; }
+html .photo-5 .heros .actions { justify-content: flex-start; }
+html .photo-5 .heros h1 .accent::after { margin: 0.12em 0 0; }
+
+/* ---- Proposition 6 : fenêtre ouverte (portrait) à droite, fondue dans un fond clair, texte à gauche ---- */
+.photo-6 .heros { background-color: #FBF7F1; justify-content: flex-start; }
+.photo-6 .heros::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: min(48vw, 680px); z-index: 0; pointer-events: none; background: url("../assets/photos/accueil-6-fenetre.jpg") center 36% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%); mask-image: linear-gradient(90deg, transparent 0%, #000 32%); }
+html .photo-6 .heros .heros-texte { text-align: left; margin: 0 auto 0 clamp(1rem, 6vw, 6.5rem); max-width: 40rem; width: auto; padding-inline: 0; }
+html .photo-6 .heros .heros-texte p { margin-inline: 0; }
+html .photo-6 .heros .actions { justify-content: flex-start; }
+html .photo-6 .heros h1 .accent::after { margin: 0.12em 0 0; }
+
+@media (max-width: 920px) {
+  html .photo-5 .heros .heros-texte, html .photo-6 .heros .heros-texte { text-align: center; margin-inline: auto; padding-inline: var(--gouttiere); }
+  html .photo-5 .heros .heros-texte p, html .photo-6 .heros .heros-texte p { margin-inline: auto; }
+  html .photo-5 .heros .actions, html .photo-6 .heros .actions { justify-content: center; }
+  html .photo-5 .heros h1 .accent::after, html .photo-6 .heros h1 .accent::after { margin-inline: auto; }
+  .photo-4 .heros::before { background: rgba(255, 255, 255, 0.74); }
+  .photo-5 .heros::before { background: rgba(255, 255, 255, 0.74); }
+  .photo-6 .heros::after { width: 100%; opacity: 0.4; -webkit-mask-image: none; mask-image: none; }
+}
+
+/* =====================================================================
+   ACCUEIL DU SITE (classe photo-6c) : fenêtre ouverte recadrée en horizontal, en plein écran,
+   textes centrés sur un voile crème.
+   ===================================================================== */
+.photo-6c .heros { background-color: #FBF7F1; background-image: url("../assets/photos/accueil-6-fenetre-large.jpg"); background-position: center 45%; }
+.photo-6c .heros::before { background: radial-gradient(ellipse 42% 50% at 50% 46%, rgba(251, 247, 241, 0.85) 0%, rgba(251, 247, 241, 0.62) 55%, rgba(251, 247, 241, 0) 100%); }
+html .photo-6c .heros .bouton.bouton-contour { background: rgba(251, 247, 241, 0.88); }
+
+/* ---- Diaporama de l'accueil : la fenêtre puis le bureau, en fondu (7 s par photo) ---- */
+.photo-6c .heros { background-image: none; }
+.photo-6c .heros::before { z-index: 1; }
+.diapo { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.diapo span { position: absolute; inset: 0; background-repeat: no-repeat; background-size: cover; opacity: 0; animation: diapo-fondu 14s ease-in-out infinite; }
+.diapo .diapo-1 { background-image: url("../assets/photos/accueil-6-fenetre-large.jpg"); background-position: center 45%; opacity: 1; }
+.diapo .diapo-2 { background-image: url("../assets/photos/accueil-1-bureau.jpg"); background-position: center 60%; animation-delay: -7s; }
+@keyframes diapo-fondu { 0%, 43% { opacity: 1; } 50%, 93% { opacity: 0; } 100% { opacity: 1; } }
+/* Si « réduire les animations » est activé : seulement la première photo, sans mouvement */
+@media (prefers-reduced-motion: reduce) { .diapo span { animation: none; } .diapo .diapo-2 { opacity: 0; } }
+@media (max-width: 920px) { .photo-6c .heros::before { background: radial-gradient(ellipse 90% 60% at 50% 45%, rgba(251, 247, 241, 0.82) 0%, rgba(251, 247, 241, 0.6) 60%, rgba(251, 247, 241, 0.25) 100%); } }

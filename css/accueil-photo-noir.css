@@ -1,0 +1,32 @@
+/* =====================================================================
+   VERSIONS « FOND NOIR » DES PROPOSITIONS D'ACCUEIL (12.11.2026)
+   Même mise en page que accueil-photo.css, mais la photo est assombrie par un voile noir chaud
+   et les textes passent en clair. Le reste du site (en-tête, sections) garde le fond clair d'Ayoub.
+   Chargé après accueil-photo.css, seulement par les pages proposition-noir-*.html (classe « noir »).
+   ===================================================================== */
+
+/* ---- Textes clairs sur la photo sombre ---- */
+html .noir .heros h1 { color: #F7F2E8; }
+html .noir .heros h1 .accent { color: #D9CCFF; }
+html .noir .heros .eyebrow-sw { color: #E6DFD2; }
+html .noir .heros .heros-texte p { color: #D8D0C2; }
+html .noir .heros .heros-texte p.promesse { color: #F7F2E8; }
+html .noir .heros .bouton.bouton-contour { background: transparent; border-color: rgba(247, 242, 232, 0.5); color: #F7F2E8; }
+html .noir .heros .bouton.bouton-contour:hover { background: rgba(247, 242, 232, 0.1); border-color: #fff; color: #fff; box-shadow: none; }
+html .noir .heros .bouton.bouton-contour::before { background: radial-gradient(110px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 65%); }
+
+/* ---- Voiles noirs ---- */
+.noir.photo-1 .heros::before { background: radial-gradient(ellipse 66% 84% at 50% 42%, rgba(12, 10, 9, 0.8) 0%, rgba(12, 10, 9, 0.64) 55%, rgba(12, 10, 9, 0.42) 100%); }
+.noir.photo-4 .heros::before { background: radial-gradient(ellipse 66% 84% at 50% 42%, rgba(12, 10, 9, 0.7) 0%, rgba(12, 10, 9, 0.54) 55%, rgba(12, 10, 9, 0.34) 100%); }
+.noir.photo-3 .heros::before { background: linear-gradient(90deg, rgba(12, 10, 9, 0.93) 0%, rgba(12, 10, 9, 0.85) 42%, rgba(12, 10, 9, 0.32) 68%, rgba(12, 10, 9, 0) 100%); }
+.noir.photo-5 .heros::before { background: linear-gradient(270deg, rgba(12, 10, 9, 0.93) 0%, rgba(12, 10, 9, 0.85) 42%, rgba(12, 10, 9, 0.32) 68%, rgba(12, 10, 9, 0) 100%); }
+
+/* ---- Portraits (2 et 6) : fond noir, la photo se fond dedans ---- */
+.noir.photo-2 .heros, .noir.photo-6 .heros { background-color: #0F0D0C; }
+.noir.photo-2 .heros::after, .noir.photo-6 .heros::after { filter: brightness(0.88) contrast(1.05); }
+
+/* ---- Téléphone et petites tablettes ---- */
+@media (max-width: 920px) {
+  .noir.photo-1 .heros::before, .noir.photo-3 .heros::before, .noir.photo-4 .heros::before, .noir.photo-5 .heros::before { background: rgba(12, 10, 9, 0.68); }
+  .noir.photo-2 .heros::after, .noir.photo-6 .heros::after { opacity: 0.5; }
+}

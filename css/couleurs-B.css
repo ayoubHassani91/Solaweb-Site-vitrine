@@ -1,0 +1,45 @@
+/* =====================================================================
+   OPTION B : terracotta — ESSAI DE COULEURS (12.11.2026) : plus de violet. Une seule couleur d'accent : le terracotta (orange brûlé tiré du soleil du logo), avec du noir et de l'ivoire autour.
+   Ne change que les couleurs (pas la mise en page). Chargé en dernier, seulement par les pages
+   proposition-B-*.html (accueil à fond noir).
+   ===================================================================== */
+:root {
+  --violet-950: #1C1410; --violet-900: #8F3F12; --violet-700: #B8541A;
+  --violet-600: #C8641E; --violet-500: #D98A4A; --violet-300: #F0C9A8;
+  --violet-200: #F3DCC8; --violet-100: #F8EBDD; --violet-050: #FCF6EF;
+  --orange-texte: #9A4515; --orange-clair: #F4C29C;
+  --encre: #1A1714; --texte-doux: #5C564E; --filet: rgba(26, 23, 20, 0.12); --focus: #C8641E;
+  --ombre-carte: 0 1px 2px rgba(26, 23, 20, 0.06), 0 6px 18px rgba(26, 23, 20, 0.07);
+  --ombre-carte-survol: 0 2px 4px rgba(26, 23, 20, 0.06), 0 18px 36px -10px rgba(26, 23, 20, 0.22);
+}
+html h1, html h2, html h3 { color: var(--encre); }
+html p { color: var(--texte-doux); }
+html .accent { color: var(--violet-700); }
+#logo-sw path { stroke: #D9B79A; }
+
+/* Accueil sombre : mot en couleur, boutons, barre */
+html .noir .heros h1 .accent { color: #F4C29C; }
+html .bouton.bouton-plein:hover, html .bouton.bouton-plat.bouton-plat-plein:hover { box-shadow: 0 6px 14px -8px rgba(184, 84, 26, 0.55); }
+html .bouton.bouton-contour, html .bouton.bouton-plat.bouton-plat-contour { border-color: rgba(26, 23, 20, 0.3); color: var(--encre); }
+html .bouton.bouton-contour::before, html .bouton.bouton-plat.bouton-plat-contour::before { background: radial-gradient(110px circle at var(--mx, 50%) var(--my, 50%), rgba(184, 84, 26, 0.1), rgba(0, 0, 0, 0) 65%); }
+html .noir .heros .bouton.bouton-contour { border-color: rgba(247, 242, 232, 0.5); color: #F7F2E8; }
+.barre-infos { box-shadow: 0 18px 45px -22px rgba(26, 23, 20, 0.5), 0 2px 6px rgba(26, 23, 20, 0.06); }
+.barre-infos li + li { border-left-color: rgba(26, 23, 20, 0.14); }
+.barre-infos li::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-6.5' fill='none' stroke='%23B8541A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+
+/* En-tête, cartes, fenêtre d'aperçu */
+html .entete.defile { box-shadow: 0 10px 30px -18px rgba(26, 23, 20, 0.45); }
+html .carte-s, html .carte-f, html .etape, .carte-projet { border-color: var(--filet); }
+html .carte-s:hover, html .carte-f:hover, html .carte-f:focus-within, html .etape:hover, .carte-projet:hover { border-color: rgba(184, 84, 26, 0.5); }
+html .apercu::backdrop { background: rgba(20, 16, 12, 0.65); }
+
+/* Bandeaux sombres, bande d'appel, contact sombre, pied de page */
+.bandeau-page, .bande-cta { background: linear-gradient(160deg, #140D09 0%, #2A1A11 100%); }
+.bandeau-page p, .bande-cta p { color: #D8D0C2; }
+html .ct-sombre { background: var(--violet-950); }
+html .ct-sombre p, html .ct-sombre .ct-lbl { color: #D8D0C2; }
+.pied-site { color: #BDB5A7; }
+.pied-site p { color: #BDB5A7; }
+html .pied-site a:not(.bouton) { color: #E6DFD2; }
+html .pied-site a:not(.bouton):hover { color: #fff; }
+.pied-bas p { color: #948C7F; }

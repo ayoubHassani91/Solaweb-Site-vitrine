@@ -1,0 +1,51 @@
+/* =====================================================================
+   OPTION A : noir et ivoire — ESSAI DE COULEURS (12.11.2026) : plus de violet. Aucune couleur d'accent : boutons noirs sur fond clair, ivoire sur fond sombre. Le soleil orange du logo est la seule couleur.
+   Ne change que les couleurs (pas la mise en page). Chargé en dernier, seulement par les pages
+   proposition-A-*.html (accueil à fond noir).
+   ===================================================================== */
+:root {
+  --violet-950: #0F0E0D; --violet-900: #2E2A25; --violet-700: #14110E;
+  --violet-600: #3A352F; --violet-500: #8A8072; --violet-300: #CFC8BA;
+  --violet-200: #E4DED2; --violet-100: #EFEBE2; --violet-050: #F6F3EC;
+  --orange-texte: #6F6558; --orange-clair: #E6DFD2;
+  --encre: #1A1714; --texte-doux: #5C564E; --filet: rgba(26, 23, 20, 0.12); --focus: #3A352F;
+  --ombre-carte: 0 1px 2px rgba(26, 23, 20, 0.06), 0 6px 18px rgba(26, 23, 20, 0.07);
+  --ombre-carte-survol: 0 2px 4px rgba(26, 23, 20, 0.06), 0 18px 36px -10px rgba(26, 23, 20, 0.22);
+}
+html h1, html h2, html h3 { color: var(--encre); }
+html p { color: var(--texte-doux); }
+html .accent { color: var(--violet-700); }
+#logo-sw path { stroke: #A39984; }
+
+/* Accueil sombre : mot en couleur, boutons, barre */
+html .noir .heros h1 .accent { color: #E6DFD2; }
+html .bouton.bouton-plein:hover, html .bouton.bouton-plat.bouton-plat-plein:hover { box-shadow: 0 6px 14px -8px rgba(20, 17, 14, 0.5); }
+html .bouton.bouton-contour, html .bouton.bouton-plat.bouton-plat-contour { border-color: rgba(26, 23, 20, 0.3); color: var(--encre); }
+html .bouton.bouton-contour::before, html .bouton.bouton-plat.bouton-plat-contour::before { background: radial-gradient(110px circle at var(--mx, 50%) var(--my, 50%), rgba(20, 17, 14, 0.06), rgba(0, 0, 0, 0) 65%); }
+html .noir .heros .bouton.bouton-contour { border-color: rgba(247, 242, 232, 0.5); color: #F7F2E8; }
+.barre-infos { box-shadow: 0 18px 45px -22px rgba(26, 23, 20, 0.5), 0 2px 6px rgba(26, 23, 20, 0.06); }
+.barre-infos li + li { border-left-color: rgba(26, 23, 20, 0.14); }
+.barre-infos li::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-6.5' fill='none' stroke='%2314110E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+
+/* En-tête, cartes, fenêtre d'aperçu */
+html .entete.defile { box-shadow: 0 10px 30px -18px rgba(26, 23, 20, 0.45); }
+html .carte-s, html .carte-f, html .etape, .carte-projet { border-color: var(--filet); }
+html .carte-s:hover, html .carte-f:hover, html .carte-f:focus-within, html .etape:hover, .carte-projet:hover { border-color: rgba(20, 17, 14, 0.4); }
+html .apercu::backdrop { background: rgba(20, 16, 12, 0.65); }
+
+/* Bandeaux sombres, bande d'appel, contact sombre, pied de page */
+.bandeau-page, .bande-cta { background: linear-gradient(160deg, #0B0A09 0%, #1C1916 100%); }
+.bandeau-page p, .bande-cta p { color: #D8D0C2; }
+html .ct-sombre { background: var(--violet-950); }
+html .ct-sombre p, html .ct-sombre .ct-lbl { color: #D8D0C2; }
+.pied-site { color: #BDB5A7; }
+.pied-site p { color: #BDB5A7; }
+html .pied-site a:not(.bouton) { color: #E6DFD2; }
+html .pied-site a:not(.bouton):hover { color: #fff; }
+.pied-bas p { color: #948C7F; }
+/* Boutons de l'accueil sombre : ivoire (le noir ne se verrait pas sur la photo sombre) */
+html .noir .heros .bouton.bouton-plein, html .noir .heros .bouton.bouton-plat.bouton-plat-plein { background: #F4EFE6; border-color: #F4EFE6; color: #14110E; }
+html .noir .heros .bouton.bouton-plein:hover, html .noir .heros .bouton.bouton-plat.bouton-plat-plein:hover { background: #fff; border-color: #fff; color: #14110E; box-shadow: 0 8px 22px -12px rgba(255, 255, 255, 0.4); }
+/* Le bouton de la barre blanche reste noir (la barre est dans l'accueil mais son fond est blanc) */
+html .noir .heros .barre-infos .bouton.bouton-plein { background: var(--violet-700); border-color: var(--violet-700); color: #fff; }
+html .noir .heros .barre-infos .bouton.bouton-plein:hover { background: var(--violet-900); border-color: var(--violet-900); color: #fff; box-shadow: 0 6px 14px -8px rgba(20, 17, 14, 0.5); }

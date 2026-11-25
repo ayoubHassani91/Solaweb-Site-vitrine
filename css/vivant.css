@@ -1,0 +1,217 @@
+/* =====================================================================
+   SolaWeb : finitions (25.11.2026, v2 « plus calme »)
+   Chargé EN DERNIER sur toutes les pages. Contient :
+   1. le logo « Soleil levant » (en-tête, pied de page, ouverture)
+   2. l'ouverture : le logo s'anime, puis l'accueil se dévoile
+   3. typographie et boutons (plus fins, un seul mouvement de flèche)
+   4. cartes de services avec objets 3D (Blender) animés au survol seulement
+   5. engagements et questions fréquentes en mise en page typographique
+   Tout respecte le réglage « animations réduites » du visiteur.
+   ===================================================================== */
+
+:root {
+  --sw-marine: #1F2D4D;
+  --sw-marine-fonce: #17223B;
+  --sw-marine-doux: #4C5D86;
+  --sw-creme: #FBF7F1;
+  --sw-sable-clair: #EADFC8;
+  --sw-soleil: #D98A55;
+  --sw-texte: #3A465F;
+  --sw-filet: rgba(31, 45, 77, .12);
+  --sw-ease: cubic-bezier(.16, 1, .3, 1);
+  --sw-police: "Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- Surfaces du navigateur ---------- */
+::selection { background: var(--sw-sable-clair); color: var(--sw-marine); }
+html body :focus-visible { outline: 2px solid var(--sw-soleil); outline-offset: 3px; }
+
+/* ---------- 1. Logo « Soleil levant » ---------- */
+.sw-logo { display: inline-flex; align-items: center; gap: .5em; line-height: 1; color: inherit; white-space: nowrap; }
+.sw-logo .sw-mark { display: block; height: 1.12em; width: auto; overflow: visible; flex: none; }
+.sw-logo .sw-soleil { fill: var(--sw-soleil); }
+.sw-logo .sw-horizon { stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.sw-logo .sw-reflet { stroke: var(--sw-soleil); stroke-width: 2.2; stroke-linecap: round; opacity: .55; }
+.sw-logo .sw-nom { font-family: var(--sw-police); font-weight: 500; letter-spacing: -.025em; }
+html .entete .marque { color: var(--sw-creme); font-size: 1.55rem; text-decoration: none; display: inline-flex; align-items: center; }
+html .pied-site .pied-marque .sw-logo { color: var(--sw-creme); font-size: 1.7rem; }
+@media (max-width: 920px) { html .entete .marque { font-size: 1.35rem; } }
+
+/* ---------- 2. Ouverture ---------- */
+.chargeur {
+  position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center;
+  background: radial-gradient(ellipse 80% 70% at 50% 45%, #22304F 0%, var(--sw-marine-fonce) 75%);
+  color: var(--sw-creme);
+  animation: ch-auto .6s ease 3.6s forwards; /* sans JavaScript : se retire seul */
+}
+.chargeur .sw-logo { font-size: clamp(2.4rem, 6vw, 3.6rem); }
+.chargeur .sw-horizon { stroke-dasharray: 46; stroke-dashoffset: 46; animation: ch-trace .8s var(--sw-ease) .1s forwards; }
+.chargeur .sw-soleil { transform: translateY(18px); animation: ch-leve 1.1s var(--sw-ease) .35s forwards; }
+.chargeur .sw-reflet { stroke-dasharray: 24; stroke-dashoffset: 24; animation: ch-trace .7s var(--sw-ease) .85s forwards; }
+.chargeur .sw-nom > span { display: inline-block; opacity: 0; transform: translateY(.3em); filter: blur(5px); animation: ch-lettre .9s var(--sw-ease) forwards; animation-delay: calc(.6s + var(--i) * 45ms); }
+.chargeur.fini { animation: ch-sortie .7s var(--sw-ease) forwards; }
+.chargeur.fini .sw-logo { animation: ch-logo-part .7s var(--sw-ease) forwards; }
+@keyframes ch-trace { to { stroke-dashoffset: 0; } }
+@keyframes ch-leve { to { transform: translateY(0); } }
+@keyframes ch-lettre { to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes ch-sortie { to { opacity: 0; visibility: hidden; } }
+@keyframes ch-logo-part { to { transform: translateY(-10px) scale(.98); opacity: 0; } }
+@keyframes ch-auto { to { opacity: 0; visibility: hidden; } }
+
+/* les animations de la page attendent la fin de l'ouverture */
+html.en-chargement [data-anime].vu, html.en-chargement [data-anime="groupe"].vu > *,
+html.en-chargement [data-mots].vu .mot > span, html.en-chargement .page-accueil .diapo-film,
+html.en-chargement .page-accueil .diapo-voile { animation-play-state: paused !important; }
+
+/* apparitions au défilement : un simple fondu qui monte de quelques pixels */
+@keyframes monter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes monter-mot { from { opacity: 0; transform: translateY(.45em); } to { opacity: 1; transform: none; } }
+
+/* ---------- 3a. Typographie ---------- */
+html h1, html h2 { font-family: var(--sw-police); font-weight: 500; letter-spacing: -.025em; line-height: 1.12; text-wrap: balance; }
+html h3 { font-family: var(--sw-police); font-weight: 600; letter-spacing: -.01em; }
+html .mot-bronze { color: var(--sw-marine-doux); }
+html .tete-section h2::after { display: none !important; }
+html .tete-section p { color: var(--sw-texte); }
+
+/* ---------- 2b. Accueil : vidéo + titre ---------- */
+html body.page-accueil .heros { min-height: min(calc(100svh - 4.5rem), 780px); background: var(--sw-marine-fonce); justify-content: center; align-items: center; overflow: hidden; }
+html body.page-accueil .heros::before { content: none; }
+html main#contenu > .heros + .section { padding-top: clamp(4.5rem, 8vw, 7rem); }
+.page-accueil .diapo { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: var(--sw-marine-fonce); }
+.page-accueil .diapo-film { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: blur(3px) saturate(.75); animation: film-entree 2.4s var(--sw-ease) both; }
+.page-accueil .diapo-voile { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(23, 34, 59, .9) 0%, rgba(23, 34, 59, .82) 55%, rgba(23, 34, 59, .74) 100%); animation: voile-entree 1.6s ease both; }
+@keyframes film-entree { from { transform: scale(1.08); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes voile-entree { from { opacity: .4; } to { opacity: 1; } }
+html body.page-accueil .heros .heros-texte {
+  position: relative; z-index: 2; width: auto; height: auto; overflow: visible; clip: auto;
+  max-width: 46rem; margin: 0 auto; padding: clamp(4rem, 12vh, 7rem) var(--gouttiere, 1.25rem);
+  text-align: center; opacity: 1; animation: none;
+}
+html body.page-accueil .heros h1 { color: var(--sw-creme); font-size: clamp(2.3rem, 4.8vw, 3.9rem); font-weight: 500; line-height: 1.06; text-shadow: none; margin: 0 0 .5em; }
+html body.page-accueil .heros h1 .accent { display: block; color: var(--sw-sable-clair); }
+html body.page-accueil .heros h1 .accent::after { display: none; }
+html body.page-accueil .heros .heros-texte p.promesse { color: rgba(251, 247, 241, .86); font-weight: 400; font-size: clamp(1.05rem, 1.5vw, 1.2rem); line-height: 1.6; max-width: 34rem; margin: 0 auto; text-shadow: none; }
+html body.page-accueil .heros .heros-texte p.promesse strong { color: var(--sw-creme); font-weight: 500; }
+html body.page-accueil .heros .actions { display: flex !important; flex-wrap: wrap; justify-content: center; gap: .7rem; margin: 2.2rem 0 0; }
+@media (max-width: 920px) {
+  html body.page-accueil .heros { min-height: calc(100svh - 4rem); }
+  html body.page-accueil .heros .heros-texte { padding: 3.5rem 1.25rem; }
+}
+
+/* ---------- 3b. Boutons : plus fins, un seul mouvement ---------- */
+html body .bouton, html body .bouton.bouton-plat {
+  min-height: 2.75rem; padding: .6rem 1.15rem; gap: .55rem; border-radius: 10px;
+  font-family: var(--sw-police); font-size: .95rem; font-weight: 500; letter-spacing: 0; line-height: 1.2;
+  box-shadow: none; transform: none; translate: none; filter: none; animation: none;
+  transition: background-color .25s ease, border-color .25s ease, color .25s ease;
+}
+html body .bouton::before, html body .bouton.bouton-plat::before { display: none; }
+html body .bouton:hover, html body .bouton.bouton-plat:hover { transform: none; box-shadow: none; filter: none; }
+html body .bouton:active { transform: translateY(1px); }
+html body .bouton.fleche::after, html body .bouton.bouton-plat.fleche::after {
+  content: ""; display: inline-block; width: .95em; height: .95em; flex: none; background: currentColor; animation: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8h9.5M9 4.5 12.5 8 9 11.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8h9.5M9 4.5 12.5 8 9 11.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform .35s var(--sw-ease);
+}
+html body .bouton.fleche:hover::after, html body .bouton.fleche:focus-visible::after { transform: translateX(3px); }
+/* plein : marine sur fond clair */
+html body .bouton.bouton-plein, html body .bouton.bouton-plat.bouton-plat-plein { background: var(--sw-marine); border: 1px solid var(--sw-marine); color: var(--sw-creme); }
+html body .bouton.bouton-plein:hover, html body .bouton.bouton-plat.bouton-plat-plein:hover { background: #2B3B60; border-color: #2B3B60; color: #fff; }
+/* contour */
+html body .bouton.bouton-contour, html body .bouton.bouton-plat.bouton-plat-contour { background: transparent; border: 1px solid rgba(31, 45, 77, .25); color: var(--sw-marine); }
+html body .bouton.bouton-contour:hover, html body .bouton.bouton-plat.bouton-plat-contour:hover { background: rgba(31, 45, 77, .05); border-color: rgba(31, 45, 77, .5); color: var(--sw-marine); }
+/* sur fond marine (en-tête, accueil, pied de page, bandeau) : sable clair */
+html body .entete .bouton.bouton-plein, html body.page-accueil .heros .bouton.bouton-plein, html body .pied-site .bouton.bouton-plein,
+html body .pied-site .bouton.bouton-plat.bouton-plat-plein, html body .bouton.bouton-clair { background: var(--sw-sable-clair); border: 1px solid var(--sw-sable-clair); color: var(--sw-marine); }
+html body .entete .bouton.bouton-plein:hover, html body.page-accueil .heros .bouton.bouton-plein:hover, html body .pied-site .bouton.bouton-plein:hover,
+html body .pied-site .bouton.bouton-plat.bouton-plat-plein:hover, html body .bouton.bouton-clair:hover { background: #F4ECDC; border-color: #F4ECDC; color: var(--sw-marine); }
+html body.page-accueil .heros .bouton.bouton-contour { border-color: rgba(251, 247, 241, .35); color: var(--sw-creme); }
+html body.page-accueil .heros .bouton.bouton-contour:hover { background: rgba(251, 247, 241, .08); border-color: rgba(251, 247, 241, .6); color: #fff; }
+/* bouton de l'en-tête : plus compact */
+html body .entete .bouton { min-height: 2.35rem; padding: .45rem .95rem; font-size: .9rem; }
+/* liens « en savoir + » : soulignement qui se dessine */
+.cs-lien, .lien-fleche { text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-size: 100% 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .4s var(--sw-ease); }
+.cs-lien:hover, .lien-fleche:hover, .carte-projet:hover .lien-fleche { background-size: 0% 1px; background-position: 100% 100%; }
+@media (max-width: 560px) {
+  html body.page-accueil .heros .actions .bouton { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ---------- 4. Cartes de services + objets 3D (animés au survol seulement) ---------- */
+html .carte-s, html .carte-s:hover { box-shadow: none; transform: none; }
+html .carte-s { border: 1px solid var(--sw-filet); border-radius: 14px; padding: 1.6rem 1.6rem 1.4rem; transition: border-color .3s ease; }
+html .carte-s:hover { border-color: rgba(31, 45, 77, .3); }
+.carte-s .cs-3d { display: block; width: 5.5rem; height: 5.5rem; margin: 0 0 1rem -.4rem; }
+.carte-s .cs-3d img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.carte-s .cs-3d img[src*="/auto"] { scale: 1.12; }
+.carte-s.avec-3d .cs-tete .cs-ico { display: none; }
+html .carte-s h3 { font-size: 1.2rem; margin: 0 0 .5rem; }
+html .carte-s p, html .carte-s li, html .etape p, html .carte-f p { font-size: 1rem; line-height: 1.6; color: var(--sw-texte); }
+html .carte-s .cs-pied { border-top: 1px solid var(--sw-filet); padding-top: .9rem; margin-top: auto; }
+html .cs-prix { color: var(--sw-marine); font-weight: 600; font-size: 1rem; }
+html .cs-prix small { display: block; font-size: .8rem; font-weight: 400; color: var(--sw-texte); margin-top: .15rem; }
+html .carte-s .cs-etiq { text-transform: none; letter-spacing: 0; font-size: .9rem; font-weight: 600; color: var(--sw-marine); }
+html .carte-s li::before { width: 6px; height: 1px; top: .85em; transform: none; background: var(--sw-soleil); }
+
+/* ---------- 5. Engagements et questions : titre à gauche, contenu à droite ---------- */
+.duo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.duo-tete h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); margin: 0 0 .8rem; }
+.duo-tete p { margin: 0; color: var(--sw-texte); font-size: 1.05rem; line-height: 1.6; max-width: 32ch; }
+.engagements { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
+.engagements > div { padding: 1.4rem 0; border-top: 1px solid var(--sw-filet); }
+.engagements dt { font-weight: 600; color: var(--sw-marine); font-size: 1.05rem; margin: 0 0 .35rem; display: flex; align-items: center; gap: .6rem; }
+.engagements dt::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: var(--sw-soleil); flex: none; }
+.engagements dd { margin: 0; color: var(--sw-texte); line-height: 1.6; }
+.faq { margin: 0; border-bottom: 1px solid var(--sw-filet); }
+.faq details { border-top: 1px solid var(--sw-filet); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.25rem 0; font-weight: 500; font-size: 1.08rem; color: var(--sw-marine); transition: color .25s ease; }
+.faq summary:hover { color: var(--sw-marine-doux); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex: none; width: 1rem; height: 1rem; background: currentColor; transition: transform .45s var(--sw-ease);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2.5v11M2.5 8h11' stroke='%23000' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2.5v11M2.5 8h11' stroke='%23000' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq .faq-reponse { padding: 0 2.5rem 1.4rem 0; color: var(--sw-texte); line-height: 1.65; }
+.faq .faq-reponse p { margin: 0; max-width: 60ch; }
+.faq details[open] .faq-reponse { animation: faq-ouvre .5s var(--sw-ease); }
+@keyframes faq-ouvre { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (max-width: 900px) {
+  .duo { grid-template-columns: 1fr; gap: 1.6rem; }
+  .engagements { grid-template-columns: 1fr; }
+}
+
+/* ---------- Page Contact : boutons aux couleurs du site ---------- */
+html .ct-voie .bouton.bouton-plat.bouton-plat-plein.bouton-wa { background: var(--sw-marine); border-color: var(--sw-marine); color: var(--sw-creme); opacity: 1; }
+
+/* ---------- Bandeau cookies plus discret sur téléphone ---------- */
+@media (max-width: 560px) {
+  .sw-cookies { font-size: .85rem !important; padding: .7rem .9rem !important; gap: .5rem .8rem !important; }
+  .sw-cookies p { flex-basis: 100% !important; }
+  .sw-cookies button { width: auto !important; padding: .45rem 1rem !important; margin-left: auto; }
+}
+
+/* ---------- Animations réduites ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .chargeur { animation: ch-auto .3s ease .5s forwards; }
+  .chargeur.fini { animation: ch-auto .3s ease forwards; }
+  .chargeur *, .chargeur .sw-nom > span { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; stroke-dashoffset: 0 !important; }
+  .page-accueil .diapo-film, .page-accueil .diapo-voile { animation: none; }
+  html body .bouton.fleche::after { transition: none; }
+}
+
+/* ---------- Corrections relevées par le détecteur ---------- */
+/* bouton Menu (téléphone) : lisible au survol */
+html body .bouton-menu { background: transparent; border: 1px solid rgba(251, 247, 241, .35); color: var(--sw-creme); border-radius: 10px; font-family: var(--sw-police); font-weight: 500; }
+html body .bouton-menu:hover, html body .bouton-menu[aria-expanded="true"] { background: rgba(251, 247, 241, .08); border-color: rgba(251, 247, 241, .6); color: #fff; }
+/* numéros des étapes : couleur pleine, sans dégradé */
+html .etape-num { background: none !important; -webkit-background-clip: border-box !important; background-clip: border-box !important; color: var(--sw-soleil) !important; -webkit-text-fill-color: currentColor; font-family: var(--sw-police); font-weight: 500; }
+/* page Contact : bulle avec le soleil du logo, plus de lettre orange peu lisible */
+.bulle-claire .bulle-logo { color: var(--sw-marine); font-size: 2.6rem; }
+/* méthode en 5 étapes : une frise sur un filet, sans boîtes */
+html .etapes5 { gap: 0 1.8rem; }
+html .etapes5 .etape, html .etapes5 .etape:hover { background: none; border: 0; border-top: 1px solid rgba(31, 45, 77, .18); border-radius: 0; box-shadow: none; transform: none; padding: 1.3rem 0 0; position: relative; }
+html .etapes5 .etape::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--sw-soleil); }
+html .etapes5 .etape-num { font-size: 1rem !important; letter-spacing: .02em; margin: 0 0 .6rem; display: block; }
+html .etapes5 .etape h3 { font-size: 1.05rem; line-height: 1.35; margin: 0 0 .5rem; }
+@media (max-width: 920px) { html .etapes5 .etape { padding-bottom: 1.4rem; } }

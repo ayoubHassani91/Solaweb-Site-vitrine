@@ -1,0 +1,518 @@
+/* =====================================================================
+   SolaWeb — feuille principale (25.11.2026, version « mix »)
+   ADN de la version marine : accueil sur vidéo, ouverture calme avec le logo,
+   boutons fins, sections en deux colonnes à filets.
+   Repris de la version « livrée » : démo par métier dans le téléphone,
+   maquette qui se construit étape par étape, liste des services avec prix.
+   Palette : papier #F7F6F2, pierre #ECE8E0, nuit #1F2D4D (marine d'origine),
+   encre #16213A, soleil #E07B39 (orange du logo, seul accent).
+   Accueil : ce fichier seul. Autres pages : chargé en dernier, par-dessus
+   les anciennes feuilles qu'il recolore.
+   ===================================================================== */
+
+@font-face { font-family: "Montserrat"; src: url("../assets/fonts/montserrat-latin.woff2") format("woff2"); font-weight: 400 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Instrument Sans"; src: url("../assets/fonts/instrument-sans-latin.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+
+:root {
+  --papier: #F7F6F2;
+  --pierre: #ECE8E0;
+  --nuit: #1F2D4D;
+  --nuit-fonce: #172238;
+  --encre: #16213A;
+  --soleil: #E07B39;
+  --soleil-clair: #F0A36B;
+  --clair-sur-nuit: #F3EEE4;
+  --texte: #3A4560;
+  --filet-s: rgba(22, 33, 58, .13);
+  --titre: "Montserrat", "Segoe UI", sans-serif;
+  --corps: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --doux: cubic-bezier(.16, 1, .3, 1);
+  --largeur: min(1180px, calc(100% - 2.5rem));
+
+  /* anciennes variables des autres pages, rebranchées */
+  --marine: #1F2D4D; --violet-950: #16213A; --violet-900: #172238; --violet-700: #1F2D4D; --violet-600: #1F2D4D;
+  --violet-500: #6B7896; --violet-300: #C9CEDA; --violet-200: #DDE0E7; --violet-100: #ECE8E0; --violet-050: #F7F6F2;
+  --orange: #1F2D4D; --or: #E07B39; --bronze: #1F2D4D; --orange-texte: #1F2D4D; --orange-clair: #ECE8E0;
+  --texte-doux: #3A4560; --filet: rgba(22, 33, 58, .13); --focus: #1F2D4D; --creme: #F7F6F2; --sable: #ECE8E0;
+  --police-titre: "Montserrat", sans-serif; --police-texte: "Instrument Sans", system-ui, sans-serif;
+}
+
+/* ---------- Base ---------- */
+html body { background: var(--papier); color: var(--encre); font-family: var(--corps); }
+body.sw { margin: 0; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body.sw *, body.sw *::before, body.sw *::after { box-sizing: border-box; }
+body.sw img { max-width: 100%; display: block; }
+body.sw a { color: inherit; }
+body.sw [hidden] { display: none !important; }
+::selection { background: var(--soleil-clair); color: var(--encre); }
+html body :focus-visible { outline: 2px solid var(--soleil); outline-offset: 3px; }
+html body h1, html body h2 { font-family: var(--titre) !important; font-weight: 700 !important; letter-spacing: -.02em !important; line-height: 1.12; color: var(--encre); text-wrap: balance; font-style: normal !important; }
+html body h3 { font-family: var(--titre); font-weight: 600; letter-spacing: -.01em; color: var(--encre); }
+.cadre { width: var(--largeur); margin-inline: auto; }
+.visuellement-cache { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.lien-evitement { position: absolute; left: -999px; top: .5rem; z-index: 10001; background: var(--encre); color: #fff; padding: .6rem 1rem; border-radius: 6px; }
+.lien-evitement:focus { left: .5rem; }
+
+/* ---------- Logo « Soleil levant » ---------- */
+.sw-logo { display: inline-flex; align-items: center; gap: .5em; line-height: 1; white-space: nowrap; color: inherit; }
+.sw-logo .sw-mark { display: block; height: 1.12em; width: auto; overflow: visible; flex: none; }
+.sw-logo .sw-soleil { fill: var(--soleil); }
+.sw-logo .sw-horizon { stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.sw-logo .sw-reflet { stroke: var(--soleil); stroke-width: 2.2; stroke-linecap: round; opacity: .6; }
+.sw-logo .sw-nom { font-family: var(--corps); font-weight: 600; letter-spacing: -.025em; }
+
+/* ---------- En-tête (marine, comme la version d'origine) ---------- */
+html body .entete { position: sticky; top: 0; z-index: 50; background: var(--nuit); border: 0; box-shadow: none; backdrop-filter: none; }
+html body .entete .entete-interieur { width: var(--largeur); max-width: none; margin-inline: auto; padding: 0; min-height: 4.4rem; display: flex; align-items: center; gap: 2rem; }
+html body .entete .marque { color: var(--clair-sur-nuit); font-size: 1.45rem; text-decoration: none; display: inline-flex; align-items: center; margin-right: auto; }
+html body .entete .menu { display: flex !important; align-items: center; gap: 2rem !important; position: static; background: none; box-shadow: none; padding: 0; }
+html body .entete .menu ul { display: flex; gap: 1.8rem !important; list-style: none; margin: 0; padding: 0; }
+html body .entete .menu a:not(.bouton) { font-family: var(--corps); font-weight: 500; font-size: .98rem; color: rgba(243, 238, 228, .86); text-decoration: none; padding: .35rem 0 !important; margin: 0 !important; background: none !important; border: 0 !important; position: relative; }
+html body .entete .menu a:not(.bouton):hover { color: #fff; }
+html body .entete .menu a[aria-current="page"] { color: #fff; }
+html body .entete .menu a[aria-current="page"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--soleil); }
+html body .bouton-menu { display: none; font-family: var(--corps); font-weight: 600; font-size: .95rem; background: transparent; color: var(--clair-sur-nuit); border: 1px solid rgba(243, 238, 228, .4); border-radius: 8px; padding: .45rem .9rem; min-height: 2.6rem; cursor: pointer; }
+html body .bouton-menu:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+@media (max-width: 920px) {
+  html.js body .bouton-menu { display: inline-flex; align-items: center; }
+  html body .entete .menu { position: absolute; left: 0; right: 0; top: 100%; display: none !important; flex-direction: column; align-items: stretch; gap: 1rem !important; padding: 1.25rem; background: var(--nuit); border-top: 1px solid rgba(255, 255, 255, .1); }
+  html:not(.js) body .entete .menu, html body .entete .menu.ouvert { display: flex !important; }
+  html body .entete .menu ul { flex-direction: column; gap: .2rem !important; }
+  html body .entete .menu a:not(.bouton) { display: block; padding: .7rem 0 !important; font-size: 1.1rem; }
+  html body .entete .menu .bouton { width: 100%; }
+  html body .entete .marque { font-size: 1.3rem; }
+}
+
+/* ---------- Boutons : un seul modèle, fin ---------- */
+html body .bouton, html body .bouton.bouton-plat {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 2.9rem; padding: .65rem 1.3rem; border-radius: 8px; border: 1px solid var(--nuit);
+  font-family: var(--corps); font-size: 1rem; font-weight: 600; letter-spacing: 0; line-height: 1.2; text-decoration: none;
+  background: var(--nuit); color: #fff; box-shadow: none; transform: none; translate: none; filter: none; animation: none; cursor: pointer; overflow: visible;
+  transition: background-color .25s ease, border-color .25s ease, color .25s ease;
+}
+html body .bouton:hover, html body .bouton.bouton-plat:hover { background: #2C3D63; border-color: #2C3D63; color: #fff; transform: none; box-shadow: none; filter: none; }
+html body .bouton:active { transform: translateY(1px); }
+html body .bouton.bouton-contour, html body .bouton.bouton-plat.bouton-plat-contour { background: transparent; color: var(--nuit); border-color: rgba(31, 45, 77, .35); }
+html body .bouton.bouton-contour:hover, html body .bouton.bouton-plat.bouton-plat-contour:hover { background: rgba(31, 45, 77, .06); border-color: var(--nuit); color: var(--nuit); }
+/* sur fond marine : bouton clair */
+html body .nuit .bouton, html body .accueil .bouton, html body .entete .bouton, html body .pied-site .bouton, html body .bande-cta .bouton, html body .bouton.bouton-clair, html body .bandeau-page .bouton { background: var(--clair-sur-nuit) !important; color: var(--nuit) !important; border-color: var(--clair-sur-nuit) !important; }
+html body .nuit .bouton:hover, html body .accueil .bouton:hover, html body .entete .bouton:hover, html body .pied-site .bouton:hover, html body .bande-cta .bouton:hover, html body .bouton.bouton-clair:hover { background: #fff !important; border-color: #fff !important; }
+html body .entete .bouton { min-height: 2.5rem; padding: .45rem 1rem; font-size: .93rem; }
+
+/* ---------- Ouverture : le logo, puis un fondu ---------- */
+
+/* ---------- Accueil : vidéo de fond + démo par métier ---------- */
+.accueil { position: relative; overflow: hidden; background: var(--nuit-fonce); color: var(--clair-sur-nuit); }
+.accueil-fond { position: absolute; inset: 0; z-index: 0; }
+.accueil-fond video { width: 100%; height: 100%; object-fit: cover; filter: blur(3px) saturate(.7); transform: scale(1.04); }
+.accueil-fond::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(23, 34, 56, .93) 0%, rgba(23, 34, 56, .84) 55%, rgba(23, 34, 56, .74) 100%); }
+.accueil-grille { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 3rem; align-items: center; padding: clamp(3rem, 8vh, 5.5rem) 0 clamp(3rem, 8vh, 5rem); }
+.accueil h1 { color: #fff; font-size: clamp(2.5rem, 5.6vw, 4.6rem); line-height: 1.04; margin: 0 0 1.4rem; }
+.accueil-texte > p { margin: 0 0 2rem; max-width: 34rem; font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: rgba(243, 238, 228, .88); }
+.metiers { border: 0; margin: 0 0 1.6rem; padding: 0; }
+.metiers legend { font-size: .98rem; font-weight: 500; color: rgba(243, 238, 228, .88); margin-bottom: .7rem; padding: 0; }
+.metiers-liste { display: flex; flex-wrap: wrap; gap: .5rem; }
+.metiers label { position: relative; cursor: pointer; }
+.metiers input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.metiers label span { display: inline-flex; align-items: center; min-height: 2.5rem; padding: .4rem 1rem; border: 1px solid rgba(243, 238, 228, .35); border-radius: 8px; font-weight: 500; font-size: .96rem; color: var(--clair-sur-nuit); transition: border-color .2s, background-color .2s, color .2s; }
+.metiers label:hover span { border-color: rgba(243, 238, 228, .75); }
+.metiers input:checked + span { background: var(--clair-sur-nuit); border-color: var(--clair-sur-nuit); color: var(--nuit); }
+.metiers input:focus-visible + span { outline: 2px solid var(--soleil); outline-offset: 2px; }
+.accueil-action { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; }
+.accueil-action p { margin: 0; font-size: .98rem; color: rgba(243, 238, 228, .8); }
+.accueil-action p b { color: #fff; font-weight: 600; }
+/* le téléphone */
+.vitrine { margin: 0; justify-self: center; width: min(16.5rem, 100%); display: flex; flex-direction: column; }
+.tel { position: relative; aspect-ratio: 500 / 1130; border-radius: 2.3rem; background: #0C1222; padding: 1.45rem .55rem .7rem; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .7); border: 1px solid rgba(255, 255, 255, .12); }
+.tel::before { content: ""; position: absolute; top: .55rem; left: 50%; width: 3.4rem; height: .45rem; transform: translateX(-50%); border-radius: 1rem; background: #222A3C; }
+.tel-ecran { position: relative; height: 100%; border-radius: .9rem .9rem 1.8rem 1.8rem; overflow: hidden; background: #fff; }
+.tel-ecran img { width: 100%; height: 100%; object-fit: cover; transition: opacity .35s ease; }
+.tel-ecran.change img { opacity: 0; }
+.tel-maquette { position: absolute; inset: 0; padding: 1.2rem 1rem 1rem; display: none; flex-direction: column; gap: .7rem; background: #fff; }
+.tel-ecran[data-metier="autre"] .tel-maquette { display: flex; }
+.tel-maquette i { display: block; border: 1.5px dashed rgba(31, 45, 77, .4); border-radius: 6px; }
+.tel-maquette .m-nom { height: 1.1rem; width: 55%; }
+.tel-maquette .m-heros { flex: 1.3; display: grid; place-items: center; text-align: center; font-style: normal; font-family: var(--titre); font-weight: 600; color: var(--nuit); font-size: .92rem; padding: 1rem; }
+.tel-maquette .m-bouton { height: 2rem; width: 50%; border-color: rgba(224, 123, 57, .8); }
+.tel-maquette .m-bloc { flex: 1; }
+.vitrine-legende { margin: .9rem 0 0; text-align: center; font-size: .86rem; color: rgba(243, 238, 228, .75); }
+.vitrine-legende a { color: #fff; text-underline-offset: 3px; }
+@media (max-width: 900px) {
+  .accueil-grille { grid-template-columns: 1fr; gap: 2.5rem; }
+  .vitrine { width: min(13.5rem, 70%); }
+  .accueil-action .bouton { width: 100%; }
+}
+
+/* ---------- Sections ---------- */
+.bloc { padding: clamp(4.5rem, 9vw, 7.5rem) 0; }
+.bloc.pierre { background: var(--pierre); }
+.nuit { background: var(--nuit); color: var(--clair-sur-nuit); }
+.nuit h2, .nuit h3 { color: #fff; }
+.bloc h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); margin: 0 0 .9rem; }
+.intro { max-width: 38rem; margin: 0 0 2.8rem; font-size: 1.1rem; color: var(--texte); }
+.nuit .intro { color: rgba(243, 238, 228, .82); }
+/* deux colonnes : titre à gauche, contenu à droite (ADN de la version précédente) */
+.duo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.duo .intro { margin-bottom: 0; }
+@media (max-width: 900px) { .duo { grid-template-columns: 1fr; gap: 1.6rem; } }
+
+/* services : une liste, pas des cartes */
+.services { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--encre); }
+.service { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) minmax(0, 1.6fr) 10rem; gap: 1.2rem 2.2rem; align-items: center; padding: 1.7rem 0; border-bottom: 1px solid var(--filet-s); }
+.service .s-3d { width: 5.5rem; height: 5.5rem; }
+.service .s-3d img { width: 100%; height: 100%; object-fit: contain; }
+.service h3 { margin: 0; font-size: clamp(1.25rem, 2vw, 1.6rem); }
+.service p { margin: 0; color: var(--texte); }
+.s-prix { text-align: right; }
+.s-prix strong { display: block; font-family: var(--titre); font-weight: 600; color: var(--encre); }
+.s-prix a { display: inline-block; margin-top: .35rem; font-size: .95rem; color: var(--nuit); text-underline-offset: 4px; text-decoration-color: var(--soleil); }
+@media (max-width: 860px) {
+  .service { grid-template-columns: 4.2rem 1fr; gap: .5rem 1.1rem; align-items: start; }
+  .service .s-3d { width: 4.2rem; height: 4.2rem; grid-row: span 3; }
+  .s-prix { text-align: left; }
+}
+
+/* méthode : la maquette se construit pendant la lecture */
+.methode { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5.5rem); align-items: start; }
+.atelier { position: sticky; top: 6rem; margin: 0; }
+.ecran-m { border-radius: 10px; background: #fff; overflow: hidden; aspect-ratio: 4 / 3; display: flex; flex-direction: column; box-shadow: 0 30px 60px -32px rgba(0, 0, 0, .6); }
+.ecran-adresse { padding: .65rem .9rem; background: #EEF0F3; border-bottom: 1px solid #DCE0E6; font-size: .8rem; color: #4F5A70; display: flex; align-items: center; gap: .5rem; }
+.ecran-adresse b { width: .5rem; height: .5rem; border-radius: 50%; background: #B9BFCB; transition: background-color .4s; }
+.page-m { flex: 1; padding: 1rem; display: grid; grid-template-rows: 1.5rem 1fr .9fr; gap: .8rem; position: relative; }
+.page-m > *, .page-m i { transition: background-color .6s var(--doux), border-color .6s var(--doux), opacity .5s; }
+.pm-entete { display: flex; justify-content: space-between; }
+.pm-entete i { display: block; width: 30%; border-radius: 4px; }
+.pm-entete i + i { width: 20%; }
+.pm-heros { display: flex; flex-direction: column; justify-content: center; gap: .55rem; padding: 1.2rem; border-radius: 6px; }
+.pm-heros i { display: block; height: .85rem; width: 70%; border-radius: 3px; }
+.pm-heros i:nth-child(2) { width: 45%; }
+.pm-heros i:nth-child(3) { width: 30%; height: 1.7rem; margin-top: .4rem; }
+.pm-cartes { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; }
+.pm-cartes i { display: block; border-radius: 6px; }
+.page-m i, .pm-heros { border: 1.5px dashed transparent; background: transparent; }
+.notes-m { position: absolute; inset: 0; padding: 1.6rem 1.8rem; display: flex; flex-direction: column; gap: .9rem; transition: opacity .5s; background: repeating-linear-gradient(transparent 0 1.9rem, #E5E8EE 1.9rem calc(1.9rem + 1px)); }
+.notes-m p { margin: 0; font-size: .92rem; color: #4F5A70; line-height: 1.9rem; }
+.retours-m { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .5s; }
+.retours-m span { position: absolute; background: #FFF4D6; color: var(--encre); font-size: .78rem; padding: .3rem .55rem; border-radius: 4px; box-shadow: 0 4px 10px -6px rgba(0, 0, 0, .4); }
+.retours-m span:nth-child(1) { top: 26%; right: 8%; } .retours-m span:nth-child(2) { bottom: 12%; left: 9%; }
+.ecran-m:not([data-etape="1"]) .notes-m { opacity: 0; }
+.ecran-m[data-etape="2"] .page-m i, .ecran-m[data-etape="3"] .page-m i, .ecran-m[data-etape="2"] .pm-heros, .ecran-m[data-etape="3"] .pm-heros { border-color: rgba(31, 45, 77, .35); }
+.ecran-m[data-etape="2"] .pm-heros i, .ecran-m[data-etape="3"] .pm-heros i { border: 0; background: rgba(31, 45, 77, .1); }
+.ecran-m[data-etape="3"] .retours-m { opacity: 1; }
+.ecran-m[data-etape="4"] .pm-entete i, .ecran-m[data-etape="5"] .pm-entete i { background: var(--encre); }
+.ecran-m[data-etape="4"] .pm-entete i + i, .ecran-m[data-etape="5"] .pm-entete i + i { background: var(--soleil); }
+.ecran-m[data-etape="4"] .pm-heros, .ecran-m[data-etape="5"] .pm-heros { background: #2F5D57; }
+.ecran-m[data-etape="4"] .pm-heros i, .ecran-m[data-etape="5"] .pm-heros i { background: rgba(255, 255, 255, .85); }
+.ecran-m[data-etape="4"] .pm-heros i:nth-child(3), .ecran-m[data-etape="5"] .pm-heros i:nth-child(3) { background: var(--soleil); }
+.ecran-m[data-etape="4"] .pm-cartes i, .ecran-m[data-etape="5"] .pm-cartes i { background: #E6E1D7; }
+.ecran-m[data-etape="5"] .ecran-adresse { color: var(--encre); }
+.ecran-m[data-etape="5"] .ecran-adresse b { background: #2E9E66; }
+.atelier figcaption { margin-top: .9rem; font-size: .86rem; color: rgba(243, 238, 228, .7); }
+.etapes-m { list-style: none; margin: 0; padding: 0; border-left: 1px solid rgba(243, 238, 228, .25); }
+.etapes-m li { position: relative; padding: 0 0 clamp(2.8rem, 12vh, 6rem) 2rem; color: rgba(243, 238, 228, .62); transition: color .4s; }
+.etapes-m li:last-child { padding-bottom: 0; }
+.etapes-m li::before { content: ""; position: absolute; left: -5px; top: .45rem; width: 9px; height: 9px; border-radius: 50%; background: var(--nuit); border: 1px solid rgba(243, 238, 228, .5); transition: background-color .4s, border-color .4s; }
+.etapes-m li.actif { color: var(--clair-sur-nuit); }
+.etapes-m li.actif::before { background: var(--soleil); border-color: var(--soleil); }
+.etapes-m h3 { margin: 0 0 .4rem; font-size: clamp(1.15rem, 1.8vw, 1.4rem); color: inherit; }
+.etapes-m p { margin: 0; max-width: 32rem; }
+@media (max-width: 860px) {
+  .methode { grid-template-columns: 1fr; }
+  .atelier { top: 4.8rem; z-index: 2; background: var(--nuit); padding-bottom: .8rem; }
+  .etapes-m li { padding-bottom: 2.4rem; }
+}
+
+/* exemples */
+.exemples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.exemple { display: block; text-decoration: none; color: inherit; }
+.exemple .e-img { aspect-ratio: 16 / 10; overflow: hidden; border-radius: 8px; border: 1px solid var(--filet-s); }
+.exemple img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .7s var(--doux); }
+.exemple:hover img { transform: scale(1.03); }
+.exemple h3 { margin: 1rem 0 .15rem; font-size: 1.2rem; }
+.exemple p { margin: 0; font-size: .95rem; color: var(--texte); }
+.exemple:hover h3 { text-decoration: underline; text-decoration-color: var(--soleil); text-underline-offset: 4px; }
+.note { margin: 1.6rem 0 0; font-size: .92rem; color: var(--texte); }
+.note a { color: var(--nuit); text-underline-offset: 3px; }
+@media (max-width: 860px) { .exemples { grid-template-columns: 1fr; } }
+
+/* engagements et questions : filets */
+.engagements { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
+.engagements > div { padding: 1.3rem 0; border-top: 1px solid var(--filet-s); }
+.engagements dt { font-family: var(--titre); font-weight: 600; color: var(--encre); margin: 0 0 .3rem; }
+.engagements dd { margin: 0; color: var(--texte); }
+.faq { border-bottom: 1px solid var(--filet-s); }
+.faq details { border-top: 1px solid var(--filet-s); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.2rem 0; font-weight: 600; font-size: 1.05rem; color: var(--encre); }
+.faq summary:hover { color: var(--nuit); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex: none; width: .9rem; height: .9rem; background: currentColor; transition: transform .35s var(--doux);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2.5v11M2.5 8h11' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 2.5v11M2.5 8h11' stroke='%23000' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq .rep { padding: 0 2.5rem 1.3rem 0; color: var(--texte); }
+.faq .rep p { margin: 0; max-width: 60ch; }
+@media (max-width: 760px) { .engagements { grid-template-columns: 1fr; } }
+
+/* dernier appel */
+.appel { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem 3rem; }
+.appel h2 { margin: 0 0 .5rem; }
+.appel p { margin: 0; max-width: 34rem; color: rgba(243, 238, 228, .85); }
+
+/* ---------- Pied de page ---------- */
+html body .pied-site { background: var(--nuit-fonce); color: rgba(243, 238, 228, .75); border: 0; }
+html body .pied-site a { color: var(--clair-sur-nuit); }
+html body .pied-site .pied-titre { font-family: var(--corps); font-weight: 600; color: #fff; letter-spacing: 0; text-transform: none; font-size: 1rem; }
+html body .pied-site .pied-marque .sw-logo { color: var(--clair-sur-nuit); font-size: 1.6rem; }
+html body .pied-site p { color: rgba(243, 238, 228, .72); }
+body.sw .conteneur { width: var(--largeur); margin-inline: auto; }
+body.sw .pied-grille { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2rem 3rem; padding: 4rem 0 2.4rem; }
+body.sw .pied-site ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+body.sw .pied-site ul a { text-decoration: none; }
+body.sw .pied-site ul a:hover { text-decoration: underline; text-underline-offset: 3px; }
+body.sw .pied-titre { margin: 0 0 .9rem; }
+body.sw .pied-marque p { margin: 1rem 0 0; max-width: 24rem; font-size: .95rem; }
+body.sw .pied-bas { border-top: 1px solid rgba(255, 255, 255, .12); padding: 1.2rem 0 1.6rem; font-size: .85rem; }
+body.sw .pied-bas p { margin: 0; }
+@media (max-width: 860px) { body.sw .pied-grille { grid-template-columns: 1fr 1fr; } body.sw .pied-marque { grid-column: 1 / -1; } }
+
+/* ---------- Bandeau cookies ---------- */
+.sw-cookies { background: var(--nuit) !important; border-radius: 10px !important; }
+.sw-cookies button { background: var(--clair-sur-nuit) !important; color: var(--nuit) !important; border-radius: 8px !important; }
+@media (max-width: 560px) {
+  .sw-cookies { font-size: .85rem !important; padding: .7rem .9rem !important; gap: .5rem .8rem !important; }
+  .sw-cookies p { flex-basis: 100% !important; }
+  .sw-cookies button { width: auto !important; padding: .45rem 1rem !important; margin-left: auto; }
+}
+
+/* ---------- Autres pages ---------- */
+html body .sur-titre, html body p.sur-titre { display: none !important; }
+html body .bandeau-page { background: var(--nuit) !important; color: var(--clair-sur-nuit); }
+html body .bandeau-page::before, html body .bandeau-page::after { content: none !important; }
+html body .bandeau-page h1 { color: #fff !important; transform: none !important; }
+html body .bandeau-page h1 .accent, html body .bandeau-page h1 span { color: #fff !important; }
+html body .bandeau-page p, html body .bandeau-page .fil-ariane, html body .bandeau-page .fil-ariane a { color: rgba(243, 238, 228, .85); }
+html body .fond-pale { background: var(--pierre); }
+html body .section.clair { background: var(--papier); }
+html body .mot-bronze, html body h2 .accent, html body h1 .accent { color: inherit !important; }
+html body h1 .accent::after, html body h2 .accent::after, html .tete-section h2::after { display: none !important; }
+html body .carte-s, html body .carte-f, html body .etape { border-radius: 10px; border: 1px solid var(--filet-s); box-shadow: none; background: #fff; transform: none !important; }
+html body .carte-s .cs-3d { display: block; width: 5rem; height: 5rem; margin: 0 0 1rem -.3rem; }
+html body .carte-s .cs-3d img { width: 100%; height: 100%; object-fit: contain; }
+html body .carte-s.avec-3d .cs-ico { display: none; }
+html body .carte-s .cs-pied { border-top: 1px solid var(--filet-s); padding-top: .9rem; margin-top: auto; }
+html body .cs-prix { color: var(--encre); font-family: var(--titre); font-weight: 600; }
+html body .cs-prix small { display: block; font-size: .82rem; font-weight: 400; font-family: var(--corps); color: var(--texte); }
+html body .carte-s li::before { background: var(--soleil); width: 5px; height: 5px; transform: none; border-radius: 50%; }
+html body .carte-s .cs-etiq { text-transform: none; letter-spacing: 0; color: var(--encre); }
+html body .bande-cta { background: var(--nuit); border-radius: 10px; }
+html body .bande-cta h2, html body .bande-cta p { color: #fff; }
+html body .ct-voie .bouton.bouton-wa { background: var(--nuit); border-color: var(--nuit); color: #fff; }
+.bulle-claire .bulle-logo { color: var(--nuit); font-size: 2.6rem; }
+html body .bulle-claire, html body .bulle-claire::after { background: var(--clair-sur-nuit); }
+html body .bulle-sombre, html body .bulle-sombre::after { background: var(--nuit-fonce); }
+html body .bulle-sombre i { background: var(--soleil); }
+html body .etape-num { background: none !important; -webkit-background-clip: border-box !important; background-clip: border-box !important; color: var(--soleil) !important; -webkit-text-fill-color: currentColor; font-family: var(--titre); font-weight: 600; }
+html body input:focus, html body textarea:focus, html body select:focus { border-color: var(--nuit); box-shadow: 0 0 0 3px rgba(31, 45, 77, .15); outline: none; }
+
+/* ---------- Entrée de l'accueil (un seul moment, après l'ouverture) ---------- */
+
+/* ---------- Animations réduites ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .chargeur { animation: ch-auto .3s ease .5s forwards; }
+  .chargeur.fini { animation: ch-auto .3s ease forwards; }
+  .chargeur * { animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; }
+  .page-m > *, .page-m i, .etapes-m li, .tel-ecran img { transition: none; }
+}
+
+/* ---------- Corrections après relecture (25.11.2026) ---------- */
+html body .entete { border-bottom: 1px solid rgba(243, 238, 228, .12); }
+.nuit { background: var(--nuit-fonce); }
+.etapes-m li { color: rgba(243, 238, 228, .8); padding-bottom: clamp(2rem, 6vh, 3.5rem); }
+.ecran-adresse { color: #4F5A70; }
+.exemple img[src*="beauty-palace"] { object-position: center 12%; }
+@media (max-width: 860px) {
+  .atelier { position: static; background: none; padding-bottom: 0; }
+  .methode > div { order: -1; }
+}
+@media (max-width: 600px) { .vitrine { width: min(11rem, 58%); } }
+html body .carte-s, html body .carte-f, html body .etape, html body .bande-cta, html body .exemple .e-img, html body .ecran-m { border-radius: 8px; }
+/* pages internes : pas de fondu identique sur chaque élément, pas d'effets décoratifs */
+html.js body [data-anime], html.js body [data-anime="groupe"] > *, html.js body [data-mots] .mot > span { opacity: 1 !important; animation: none !important; transform: none !important; }
+html body #particules, html body #vitre-canvas, html body #vitre-tel-canvas, html body .bulles { display: none !important; }
+/* page Services : même liste que l'accueil, avec le détail */
+.services-detail .service { grid-template-columns: 5.5rem minmax(0, .8fr) minmax(0, 1.8fr) 11rem; align-items: start; }
+.services-detail .s-liste { margin: .8rem 0 0; padding: 0; list-style: none; display: grid; gap: .3rem; }
+.services-detail .s-liste li { position: relative; padding-left: 1rem; color: var(--texte); }
+.services-detail .s-liste li::before { content: ""; position: absolute; left: 0; top: .7em; width: 5px; height: 5px; border-radius: 50%; background: var(--soleil); }
+.services-detail .s-prix { color: var(--texte); font-size: .92rem; }
+@media (max-width: 860px) { .services-detail .service { grid-template-columns: 4.2rem 1fr; } .services-detail .service > div { grid-column: 2; } }
+html body .pied-site .pied-grille p a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* =====================================================================
+   MOUVEMENT (25.11.2026) — fil conducteur : une journée de soleil.
+   Ouverture : le soleil se lève, l'écran s'ouvre le long de l'horizon.
+   Logos : le soleil se lève au survol, descend quand on fait défiler, se couche en pied de page.
+   Boutons : un demi-soleil se lève derrière le texte, l'horizon se trace.
+   ===================================================================== */
+:root { --ouvre: cubic-bezier(.77, 0, .18, 1); }
+
+/* ---------- 1. Ouverture ---------- */
+.chargeur { position: fixed; inset: 0; z-index: 10000; pointer-events: none; animation: ch-secours .4s ease 3.6s forwards; }
+.ch-volet { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--nuit); overflow: hidden; }
+.ch-haut { top: 0; display: flex; align-items: flex-end; justify-content: center; }
+.ch-bas { bottom: 0; display: flex; flex-direction: column; align-items: center; padding-top: 1rem; gap: 1.6rem; }
+.ch-ciel { width: clamp(10rem, 24vw, 16rem); height: calc(clamp(10rem, 24vw, 16rem) / 2); overflow: hidden; position: relative; }
+.ch-soleil { position: absolute; left: 0; top: 0; width: 100%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 45%, #F4A266 0%, var(--soleil) 62%); transform: translateY(100%); animation: ch-leve 1.25s var(--doux) .35s forwards; }
+.ch-horizon { position: absolute; left: 0; right: 0; top: calc(50% - 1px); height: 2px; background: var(--clair-sur-nuit); transform: scaleX(0); animation: ch-horizon .9s var(--doux) .05s forwards; }
+.ch-reflet { display: block; width: clamp(6rem, 14vw, 9.5rem); height: 3px; border-radius: 3px; background: var(--soleil); opacity: .65; transform: scaleX(0); animation: ch-horizon .7s var(--doux) .9s forwards; }
+.ch-nom { font-family: var(--corps); font-weight: 600; font-size: clamp(1.6rem, 3.6vw, 2.4rem); color: var(--clair-sur-nuit); letter-spacing: .3em; opacity: 0; animation: ch-nom 1s var(--doux) .95s forwards; }
+@keyframes ch-leve { to { transform: translateY(0); } }
+@keyframes ch-horizon { to { transform: scaleX(1); } }
+@keyframes ch-nom { to { opacity: 1; letter-spacing: -.02em; } }
+@keyframes ch-secours { to { opacity: 0; visibility: hidden; } }
+/* l'écran s'ouvre le long de l'horizon */
+.chargeur.fini { animation: none; }
+.chargeur.fini .ch-haut { transform: translateY(-100%); transition: transform .95s var(--ouvre); }
+.chargeur.fini .ch-bas { transform: translateY(100%); transition: transform .95s var(--ouvre); }
+.chargeur.fini .ch-horizon { animation: none; transform: scaleX(1); opacity: 0; transition: opacity .35s ease .15s; }
+.chargeur.fini .ch-nom, .chargeur.fini .ch-reflet { animation: none; opacity: 0; transition: opacity .2s ease; }
+
+/* ---------- 2. L'accueil apparaît derrière ---------- */
+.accueil h1 .ligne { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.accueil h1 .ligne > span { display: block; }
+html.js .accueil h1 .ligne > span { transform: translateY(105%); }
+html.js .accueil .accueil-texte > :not(h1), html.js .accueil .vitrine { opacity: 0; transform: translateY(16px); }
+html.js .accueil .vitrine { transform: translateY(70px) rotate(3deg); }
+html.js .accueil .accueil-fond video { transform: scale(1.18); filter: blur(6px) saturate(.4) brightness(.5); }
+html.js .accueil.parti h1 .ligne > span { transform: none; transition: transform 1s var(--doux); }
+html.js .accueil.parti h1 .ligne:nth-child(2) > span { transition-delay: .12s; }
+html.js .accueil.parti .accueil-texte > :not(h1) { opacity: 1; transform: none; transition: opacity .8s ease, transform .9s var(--doux); }
+html.js .accueil.parti .accueil-texte > p { transition-delay: .35s; }
+html.js .accueil.parti .accueil-texte > fieldset { transition-delay: .45s; }
+html.js .accueil.parti .accueil-texte > .accueil-action { transition-delay: .55s; }
+html.js .accueil.parti .vitrine { opacity: 1; transform: none; transition: opacity .8s ease .3s, transform 1.3s var(--doux) .3s; }
+html.js .accueil.parti .accueil-fond video { transform: scale(1.04); filter: blur(3px) saturate(.7); transition: transform 2.4s var(--doux), filter 1.8s ease; }
+html.js .accueil.parti .tel-ecran img { animation: ecran-allume 1.2s ease .9s both; }
+@keyframes ecran-allume { from { filter: brightness(.25) saturate(.3); } to { filter: none; } }
+/* pages intérieures : le titre monte quand l'écran s'ouvre */
+html.js body .bandeau-page h1, html.js body .bandeau-page h1 ~ p { opacity: 0; transform: translateY(28px); }
+html.js.pret body .bandeau-page h1, html.js.pret body .bandeau-page h1 ~ p { opacity: 1; transform: none; transition: opacity .8s ease, transform 1s var(--doux); }
+html.js.pret body .bandeau-page h1 ~ p { transition-delay: .15s; }
+
+/* ---------- 3. Logos : le soleil raconte la journée ---------- */
+.sw-logo .sw-soleil { transition: transform .6s var(--doux), translate 1.2s var(--doux), fill .8s ease; }
+.sw-logo .sw-reflet { transform-box: fill-box; transform-origin: center; transition: transform .6s var(--doux), opacity .4s; }
+.sw-logo .sw-horizon { transform-box: fill-box; transform-origin: center; transition: transform .6s var(--doux); }
+a:hover > .sw-logo .sw-soleil, a:focus-visible > .sw-logo .sw-soleil { transform: translateY(-4px); }
+a:hover > .sw-logo .sw-reflet, a:focus-visible > .sw-logo .sw-reflet { transform: scaleX(1.35); opacity: .9; }
+a:hover > .sw-logo .sw-horizon { transform: scaleX(1.06); }
+.sw-logo .sw-nom { transition: letter-spacing .5s var(--doux); }
+a:hover > .sw-logo .sw-nom { letter-spacing: -.01em; }
+/* en-tête : le soleil descend à mesure qu'on fait défiler */
+html body .entete .sw-soleil { translate: 0 calc(var(--couche, 0) * 10px); }
+/* pied de page : coucher de soleil quand on arrive en bas */
+html body .pied-site .sw-soleil { translate: 0 2px; }
+html body .pied-site.couchant .sw-soleil { translate: 0 13px; fill: #C9602A; transition: translate 2.2s var(--doux) .2s, fill 2s ease .2s; }
+/* page Contact : le soleil de la bulle se lève en boucle lente */
+.bulle-logo .sw-soleil { animation: bulle-leve 5s var(--doux) infinite; }
+@keyframes bulle-leve { 0%, 15% { transform: translateY(16px); } 45%, 85% { transform: none; } 100% { transform: translateY(16px); } }
+
+/* ---------- 4. Boutons : un demi-soleil se lève derrière le texte ---------- */
+html body .bouton, html body .bouton.bouton-plat { overflow: hidden !important; isolation: isolate; --b-soleil: #3A5089; }
+html body .bouton::before, html body .bouton.bouton-plat::before {
+  content: "" !important; display: block !important; position: absolute; left: 50%; bottom: 0; width: 160%; aspect-ratio: 1; height: auto; inset: auto auto 0 50%;
+  border-radius: 50%; background: var(--b-soleil); z-index: -1; opacity: 1;
+  transform: translate(-50%, 101%); transition: transform .55s var(--doux);
+}
+html body .bouton::after, html body .bouton.fleche::after, html body .bouton.bouton-plat.fleche::after {
+  content: "" !important; display: block !important; position: absolute; left: 12%; right: 12%; bottom: 0; top: auto; width: auto; height: 2px; inset: auto 12% 0 12%;
+  background: var(--soleil); border-radius: 2px; z-index: -1; -webkit-mask: none; mask: none; opacity: 1;
+  transform: scaleX(0); transition: transform .45s var(--doux) .08s;
+}
+html body .bouton:hover::before, html body .bouton:focus-visible::before { transform: translate(-50%, 66%); }
+html body .bouton:hover::after, html body .bouton:focus-visible::after { transform: scaleX(1); }
+html body .bouton:hover, html body .bouton.bouton-plat:hover { background: var(--nuit); border-color: var(--nuit); color: #fff; }
+html body .bouton:active { transform: scale(.97); transition: transform .12s ease; }
+html body .bouton.bouton-contour, html body .bouton.bouton-plat.bouton-plat-contour { --b-soleil: rgba(31, 45, 77, .1); }
+html body .bouton.bouton-contour:hover, html body .bouton.bouton-plat.bouton-plat-contour:hover { background: transparent; border-color: var(--nuit); color: var(--nuit); }
+/* boutons clairs sur fond marine */
+html body .nuit .bouton, html body .accueil .bouton, html body .entete .bouton, html body .pied-site .bouton, html body .bande-cta .bouton, html body .bouton.bouton-clair, html body .bandeau-page .bouton { --b-soleil: #FFFFFF; }
+html body .nuit .bouton:hover, html body .accueil .bouton:hover, html body .entete .bouton:hover, html body .pied-site .bouton:hover, html body .bande-cta .bouton:hover, html body .bouton.bouton-clair:hover { background: var(--clair-sur-nuit) !important; border-color: var(--clair-sur-nuit) !important; color: var(--nuit) !important; }
+/* le bouton principal de l'accueil se signale une fois, quand l'écran s'est ouvert */
+html.js .accueil.parti #cta-maquette::before { animation: bouton-salut 1.6s var(--doux) 1.6s backwards; }
+@keyframes bouton-salut { 0% { transform: translate(-50%, 101%); } 45% { transform: translate(-50%, 70%); } 100% { transform: translate(-50%, 101%); } }
+
+/* puces de métier : le soleil se lève sur le métier choisi */
+.metiers label span { position: relative; overflow: hidden; isolation: isolate; }
+.metiers label span::before { content: ""; position: absolute; left: 50%; bottom: 0; width: 170%; aspect-ratio: 1; border-radius: 50%; background: var(--clair-sur-nuit); z-index: -1; transform: translate(-50%, 101%); transition: transform .5s var(--doux); }
+.metiers label:hover span::before { transform: translate(-50%, 88%); }
+.metiers input:checked + span { background: transparent; }
+.metiers input:checked + span::before { transform: translate(-50%, 25%); }
+.metiers label:active span { transform: scale(.97); }
+
+/* liens : le trait se trace */
+.s-prix a, .note a, .vitrine-legende a, html body .pied-site .pied-grille p a { text-decoration: none; background: linear-gradient(var(--soleil), var(--soleil)) 0 100% / 100% 1.5px no-repeat; padding-bottom: 2px; }
+.s-prix a:hover, .note a:hover, .vitrine-legende a:hover, html body .pied-site .pied-grille p a:hover { animation: trait-trace .55s var(--doux); }
+@keyframes trait-trace { 0% { background-size: 0 1.5px; background-position: 0 100%; } 100% { background-size: 100% 1.5px; } }
+.exemple h3 { background: linear-gradient(var(--soleil), var(--soleil)) 0 100% / 0 2px no-repeat; display: inline; transition: background-size .5s var(--doux); }
+.exemple:hover h3 { text-decoration: none; background-size: 100% 2px; }
+/* menu : l'horizon se trace sous le lien survolé */
+html body .entete .menu a:not(.bouton)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--soleil); transform: scaleX(0); transition: transform .4s var(--doux); }
+html body .entete .menu a:not(.bouton):hover::after, html body .entete .menu a[aria-current="page"]::after { transform: scaleX(1); }
+
+/* ---------- Animations réduites ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .chargeur, .chargeur * { animation: none !important; transition: none !important; }
+  .ch-soleil, .ch-horizon, .ch-reflet { transform: none !important; }
+  .ch-nom { opacity: 1 !important; letter-spacing: -.02em !important; }
+  .chargeur.fini { opacity: 0; transition: opacity .3s ease !important; }
+  html.js .accueil h1 .ligne > span, html.js .accueil .accueil-texte > :not(h1), html.js .accueil .vitrine, html.js body .bandeau-page h1, html.js body .bandeau-page h1 ~ p { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html.js .accueil .accueil-fond video { transform: scale(1.04) !important; filter: blur(3px) saturate(.7) !important; }
+  html.js .accueil.parti .tel-ecran img, .bulle-logo .sw-soleil, html.js .accueil.parti #cta-maquette::before { animation: none !important; }
+  html body .entete .sw-soleil, html body .pied-site .sw-soleil { translate: none !important; }
+  html body .bouton::before, html body .bouton::after, .metiers label span::before { transition-duration: .01s !important; }
+}
+/* réglages après vérification des survols */
+html body .nuit .bouton, html body .accueil .bouton, html body .entete .bouton, html body .pied-site .bouton, html body .bande-cta .bouton, html body .bouton.bouton-clair, html body .bandeau-page .bouton { --b-soleil: #F6D3B4; }
+.metiers label span::before { background: rgba(243, 238, 228, .16); }
+.metiers input:checked + span::before { background: var(--clair-sur-nuit); }
+
+/* =====================================================================
+   VERSION AÉRÉE (25.11.2026, soir) : en-tête clair, ancien logo, bandeaux légers
+   ===================================================================== */
+/* ---------- Ancien logo (nom à empattements + trait orange) ---------- */
+.logo-ancien { display: grid; width: 9.2rem; aspect-ratio: 800 / 214; }
+.logo-ancien > * { grid-area: 1 / 1; width: 100%; height: 100%; display: block; }
+.logo-ancien .la-lettres { background: var(--nuit); -webkit-mask: url("../assets/logo-solaweb-v2-lettres.webp") center / contain no-repeat; mask: url("../assets/logo-solaweb-v2-lettres.webp") center / contain no-repeat; transition: background-color .4s ease; }
+.logo-ancien .la-trait { transform-origin: 49.5% 50%; }
+html.pret .entete .la-trait { animation: trait-pose .9s var(--doux) .5s both; }
+a:hover > .logo-ancien .la-trait, a:focus-visible > .logo-ancien .la-trait { animation: trait-pose .7s var(--doux) both; }
+a:hover > .logo-ancien .la-lettres { background: #2C3D63; }
+@keyframes trait-pose { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+html body .pied-site .logo-ancien { width: 10.5rem; }
+html body .pied-site .logo-ancien .la-lettres { background: var(--clair-sur-nuit); }
+@media (max-width: 920px) { .logo-ancien { width: 7.8rem; } }
+
+/* ---------- En-tête clair et fin ---------- */
+html body .entete { background: rgba(247, 246, 242, .92) !important; backdrop-filter: saturate(1.2) blur(10px); -webkit-backdrop-filter: saturate(1.2) blur(10px); border-bottom: 1px solid var(--filet-s) !important; }
+html body .entete .entete-interieur { min-height: 4.1rem; }
+html body .entete .marque { color: var(--nuit); }
+html body .entete .menu a:not(.bouton) { color: var(--texte) !important; font-weight: 500; }
+html body .entete .menu a:not(.bouton):hover, html body .entete .menu a[aria-current="page"] { color: var(--encre) !important; }
+html body .entete .bouton { background: var(--nuit) !important; border-color: var(--nuit) !important; color: #fff !important; --b-soleil: #3A5089; }
+html body .entete .bouton:hover { background: var(--nuit) !important; border-color: var(--nuit) !important; color: #fff !important; }
+html body .bouton-menu { color: var(--nuit); border-color: rgba(31, 45, 77, .3); }
+html body .bouton-menu:hover { background: rgba(31, 45, 77, .06); color: var(--nuit); }
+@media (max-width: 920px) { html body .entete .menu { background: var(--papier) !important; border-top: 1px solid var(--filet-s); } }
+
+/* ---------- En-têtes des pages intérieures : clairs et aérés ---------- */
+html body .bandeau-page { background: var(--papier) !important; color: var(--encre) !important; min-height: 0 !important; padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(2.5rem, 5vw, 3.5rem) !important; border-bottom: 1px solid var(--filet-s); }
+html body .bandeau-page h1, html body .bandeau-page h1 span, html body .bandeau-page h1 .accent { color: var(--encre) !important; font-size: clamp(2.2rem, 4.4vw, 3.4rem) !important; font-weight: 700 !important; }
+html body .bandeau-page p, html body .bandeau-page .fil-ariane, html body .bandeau-page .fil-ariane a { color: var(--texte) !important; }
+html body .bandeau-page h1 { position: relative; padding-bottom: .5em; margin-bottom: .5em; }
+html body .bandeau-page h1::after { content: ""; position: absolute; left: 0; bottom: 0; width: 3.5rem; height: 2px; background: var(--soleil); transform-origin: left; display: block !important; }
+html.pret body .bandeau-page h1::after { animation: trait-pose .9s var(--doux) .4s both; }
+html body .bande-cta { background: var(--pierre) !important; color: var(--encre); border-radius: 12px; }
+html body .bande-cta h2, html body .bande-cta p { color: var(--encre) !important; }
+html body .bande-cta .bouton { background: var(--nuit) !important; color: #fff !important; border-color: var(--nuit) !important; --b-soleil: #3A5089; }

@@ -1,0 +1,101 @@
+/* =====================================================================
+   BLEU MARINE ET CRÈME (12.11.2026) — retours : « retire le noir, fond crème, en-tête en bleu marine,
+   enlève tout ce qui est orange ». Plus de violet, plus de noir, plus d'orange, y compris dans le logo.
+   Chargé en dernier par proposition-marine-*.html (version claire de l'accueil).
+   ===================================================================== */
+:root {
+  --violet-950: #101B33; --violet-900: #1B2A4A; --violet-700: #1F2D4D;
+  --violet-600: #2F4570; --violet-500: #6F83A8; --violet-300: #C7D0E0;
+  --violet-200: #DDE3EE; --violet-100: #EEE7DA; --violet-050: #F6F1E8;
+  --orange: #2F4570; --or: #C9B995; --bronze: #1F2D4D;
+  --orange-texte: #3A4F7D; --orange-clair: #C9B995;
+  --encre: #14213D; --texte-doux: #4E5568; --filet: rgba(20, 33, 61, 0.12); --focus: #2F4570;
+  --creme: #FBF7F1; --sable: #F3EDE2;
+}
+
+/* ---- Fonds crème ---- */
+html body { background: var(--creme); color: var(--encre); }
+html .clair { background: var(--creme); }
+html .ciel, html .creme, html .fond-pale { background: var(--sable); }
+html h1, html h2, html h3 { color: var(--encre); }
+html p { color: var(--texte-doux); }
+html .heros h1 { color: var(--encre); }
+html .accent, html .heros h1 .accent, html .mot-bronze, html .ct-clair .ct-titre .accent { color: #3A4F7D; }
+html .heros h1 .accent::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 14' preserveAspectRatio='none'%3E%3Cpath d='M3 10C60 3 170 2 297 6' fill='none' stroke='%231F2D4D' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E"); }
+
+/* ---- En-tête bleu marine (menu, logo, bouton de devis) ---- */
+html .entete { background: #1F2D4D; border-bottom: 0; }
+html .entete.defile { box-shadow: 0 10px 30px -18px rgba(8, 14, 30, 0.7); }
+html .entete .logo-sw { color: #F5F0E4; --logo-web: #E6D9BC; }
+html .menu a:not(.bouton) { color: #F1ECE0; }
+html .menu a:not(.bouton):hover, html .menu a[aria-current] { color: #E6D9BC; }
+html .menu a:not(.bouton)::after { background: #E6D9BC; }
+html .entete .bouton.bouton-plein { background: #EADFC8; border-color: #EADFC8; color: #14213D; }
+html .entete .bouton.bouton-plein:hover { background: #F4ECD9; border-color: #F4ECD9; color: #14213D; box-shadow: 0 8px 20px -10px rgba(234, 223, 200, 0.5); }
+html .bouton-menu { border-color: rgba(241, 236, 224, 0.55); color: #F1ECE0; }
+@media (max-width: 920px) { html.js .menu { background: #1F2D4D; } }
+
+/* ---- Logo sans orange : soleil sable, « Web » sable ---- */
+#sw-soleil stop:first-child { stop-color: #EFE4C8; }
+#sw-soleil stop:last-child { stop-color: #C9B995; }
+#logo-sw tspan:last-child { fill: var(--logo-web, #3A4F7D); }
+#logo-sw path { stroke: #B9AE98; }
+
+/* ---- Boutons : marine sur fond clair, ombres neutres ---- */
+html .bouton.bouton-plein:hover, html .bouton.bouton-plat.bouton-plat-plein:hover { box-shadow: 0 6px 14px -8px rgba(31, 45, 77, 0.5); }
+html .bouton.bouton-contour, html .bouton.bouton-plat.bouton-plat-contour { border-color: rgba(20, 33, 61, 0.3); color: var(--encre); }
+html .bouton.bouton-contour:hover, html .bouton.bouton-plat.bouton-plat-contour:hover { background: rgba(20, 33, 61, 0.04); border-color: var(--violet-700); color: var(--violet-700); }
+html .bouton.bouton-contour::before, html .bouton.bouton-plat.bouton-plat-contour::before { background: radial-gradient(110px circle at var(--mx, 50%) var(--my, 50%), rgba(31, 45, 77, 0.08), rgba(31, 45, 77, 0) 65%); }
+html .ct-sombre .bouton.bouton-plat.ct-btn { background: #EADFC8; border-color: #EADFC8; color: #14213D; }
+html .bouton.bouton-clair { background: #EADFC8; border-color: #EADFC8; color: #14213D; }
+html .bouton.bouton-clair:hover { background: #F4ECD9; border-color: #F4ECD9; }
+
+/* ---- Barre blanche de l'accueil, cartes, avis provisoire ---- */
+.barre-infos { box-shadow: 0 18px 45px -22px rgba(16, 27, 51, 0.5), 0 2px 6px rgba(16, 27, 51, 0.06); }
+.barre-infos li + li { border-left-color: rgba(20, 33, 61, 0.14); }
+.barre-infos li::before { background-color: var(--violet-100); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-6.5' fill='none' stroke='%231F2D4D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+html .carte-s, html .carte-f, html .etape, .carte-projet { border-color: var(--filet); }
+html .carte-s:hover, html .carte-f:hover, html .carte-f:focus-within, html .etape:hover, .carte-projet:hover { border-color: rgba(31, 45, 77, 0.45); }
+html .bandeau-provisoire { background: #F1EDE3; border-left-color: #1F2D4D; }
+html .apercu::backdrop { background: rgba(10, 18, 36, 0.65); }
+
+/* ---- Bandeaux, bande d'appel, contact, pied de page : bleu marine profond ---- */
+.bandeau-page, .bande-cta { background: linear-gradient(160deg, #0F1A2E 0%, #1D2B48 100%); }
+.bandeau-page p, .bande-cta p { color: #D6DBE6; }
+.fil-ariane { color: #C9CFDD; }
+.fil-ariane a { border-bottom-color: rgba(255, 255, 255, 0.4); }
+.fil-ariane a:hover { border-color: #E6D9BC; }
+html .ct-sombre { background: var(--violet-950); }
+html .ct-sombre p { color: #D6DBE6; }
+html .ct-sombre .ct-lbl { color: #C9CFDD; }
+html .ct-sombre .ct-titre .accent, html .bandeau-page .accent { color: #E6D9BC; }
+.pied-site { background: var(--violet-950); color: #C9CFDD; }
+.pied-site p { color: #C9CFDD; }
+.pied-site .logo-sw { --logo-web: #E6D9BC; }
+html .pied-site a:not(.bouton) { color: #EDE7D8; background: linear-gradient(#E6D9BC, #E6D9BC) left 100% / 0 1px no-repeat; }
+html .pied-site a:not(.bouton):hover { color: #fff; background-size: 100% 1px; }
+.pied-bas { border-top-color: rgba(255, 255, 255, 0.12); }
+.pied-bas p { color: #9AA3B8; }
+html .pied-site .bouton.bouton-plein, html .pied-site .bouton.bouton-plat.bouton-plat-plein { background: #EADFC8; border-color: #EADFC8; color: #14213D; }
+html .pied-site .bouton.bouton-plein:hover, html .pied-site .bouton.bouton-plat.bouton-plat-plein:hover { background: #F4ECD9; border-color: #F4ECD9; }
+
+/* ---- Accueil photo : titre moins imposant (17.11.2026) : environ 20 % plus petit ---- */
+html .photo-6c .heros h1 { font-size: clamp(2.1rem, 3.7vw, 3.5rem); }
+
+/* ---- v9 (17.11.2026) : nouveau logo « SolaWeb » blanc, trait sable, sur toutes les pages (assets/logo-solaweb-v2.png) ---- */
+.entete .logo-projet-barre { height: 46px; width: auto; display: block; }
+@media (max-width: 920px) { .entete .logo-projet-barre { height: 38px; } }
+.pied-site .logo-projet-pied { height: 52px; width: auto; display: block; }
+html .pied-site .pied-marque a { background: none; }
+
+/* ---- v9 (17.11.2026) : tarifs « à partir de 490 € », puis sur devis ---- */
+html .carte-f .prix .prix-des { display: block; font-family: var(--police-texte); font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #5B6785; margin-bottom: .15rem; }
+html .carte-f .vedette .prix .prix-des, html .carte-f.vedette .prix .prix-des { color: inherit; opacity: .75; }
+.dlg .liste-conditions + .non-compris { margin-top: .9rem; }
+/* 17.11.2026 : une seule carte de prix, centrée, sans liste */
+#tarifs .formules3 { grid-template-columns: minmax(0, 36rem); justify-content: center; }
+#tarifs .carte-f { text-align: center; align-items: center; padding: clamp(2rem, 4vw, 3rem); }
+html #tarifs .carte-f .prix { margin-top: .6rem; font-size: clamp(3.2rem, 6vw, 4.4rem); line-height: 1; }
+html #tarifs .carte-f .prix .prix-des { font-size: .8rem; line-height: 1.4; margin-bottom: .5rem; }
+html #tarifs .carte-f .devis-perso { font-weight: 600; color: #14213D; margin: .4rem 0 0; font-size: 1.1rem; }
+html #tarifs .carte-f .pour { font-weight: 400; color: #3B4663; max-width: 28rem; margin: 1rem auto 1.6rem; line-height: 1.6; }
