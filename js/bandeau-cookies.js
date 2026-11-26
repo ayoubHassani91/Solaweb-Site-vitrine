@@ -5,7 +5,9 @@
    ce bandeau devra devenir un vrai bandeau de consentement (Accepter / Refuser). */
 (function () {
   var CLE = 'sw-info-cookies';
-  try { if (localStorage.getItem(CLE) === 'ok') return; } catch (e) { /* stockage bloque : le bandeau s'affiche */ }
+  /* Pendant les essais (page ouverte depuis l'ordinateur, adresse en file:) le bandeau s'affiche a chaque fois.
+     En ligne, le choix du visiteur est memorise normalement. */
+  try { if (location.protocol !== 'file:' && localStorage.getItem(CLE) === 'ok') return; } catch (e) { /* stockage bloque : le bandeau s'affiche */ }
 
   var css = document.createElement('style');
   css.textContent =
@@ -19,6 +21,13 @@
     'background:#EADFC8;color:#1F2D4D;}' +
     '.sw-cookies button:hover{background:#fff;}' +
     '.sw-cookies a:focus-visible,.sw-cookies button:focus-visible{outline:2px solid #fff;outline-offset:3px;}' +
+    /* 25.11.2026, demande de Souad : bandeau blanc, bouton marine (passe devant les couleurs des feuilles de style) */
+    'html body .sw-cookies{background:#fff !important;color:#1F2D4D;border:1px solid rgba(31,45,77,.16);box-shadow:0 14px 40px -8px rgba(10,16,32,.38);}' +
+    'html body .sw-cookies p{color:#1F2D4D;}' +
+    'html body .sw-cookies a,html body .sw-cookies a:hover,html body .sw-cookies a:focus-visible{color:#1F2D4D;}' +
+    'html body .sw-cookies button{background:#1F2D4D !important;color:#fff !important;}' +
+    'html body .sw-cookies button:hover{background:#2C3D63 !important;}' +
+    'html body .sw-cookies a:focus-visible,html body .sw-cookies button:focus-visible{outline:2px solid #1F2D4D;}' +
     '@media (max-width:560px){.sw-cookies{left:.5rem;right:.5rem;bottom:.5rem;}.sw-cookies button{width:100%;}}';
   document.head.appendChild(css);
 

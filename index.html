@@ -17,25 +17,22 @@
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/solaweb.css?v=6">
-  <link rel="stylesheet" href="css/scenes.css?v=4">
+  <link rel="stylesheet" href="css/scenes.css?v=5">
   <link rel="stylesheet" href="css/moderne.css?v=15">
+  <link rel="stylesheet" href="css/accueil-said.css?v=7">
+  <link rel="stylesheet" href="css/logo-said.css?v=2">
   <script src="js/solaweb.js?v=9"></script>
-  <script src="js/scenes.js?v=3" defer></script>
+  <script src="js/scenes.js?v=6" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/bandeau-cookies.js" defer></script>
+  <script src="js/bandeau-cookies.js?v=4" defer></script>
 </head>
 <body class="sw page-accueil">
-  <div class="chargeur" aria-hidden="true">
-    <div class="ch-volet ch-haut"></div>
-    <div class="ch-volet ch-bas"></div>
-    <span class="ch-horizon"></span>
-    <div class="ch-logo"><span class="logo-sw" aria-hidden="true"><span class="ls-nom">Sola<span class="ls-web">Web</span></span><svg class="ls-trait" viewBox="0 0 200 14" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="ls-t-c" x1="0" x2="1"><stop offset="0" stop-color="#F6B169"/><stop offset=".6" stop-color="#E07B39"/><stop offset="1" stop-color="#E07B39" stop-opacity=".2"/></linearGradient></defs><path d="M3 9C55 3.5 135 2.5 197 5.5C135 7.2 60 9.5 6 12.2Z" fill="url(#ls-t-c)"/></svg></span></div>
-  </div>
+  
   <a class="lien-evitement" href="#contenu">Aller au contenu</a>
 
   <header class="entete">
     <div class="conteneur entete-interieur">
-      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="logo-sw" aria-hidden="true"><span class="ls-nom">Sola<span class="ls-web">Web</span></span><svg class="ls-trait" viewBox="0 0 200 14" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="ls-t-h" x1="0" x2="1"><stop offset="0" stop-color="#F6B169"/><stop offset=".6" stop-color="#E07B39"/><stop offset="1" stop-color="#E07B39" stop-opacity=".2"/></linearGradient></defs><path d="M3 9C55 3.5 135 2.5 197 5.5C135 7.2 60 9.5 6 12.2Z" fill="url(#ls-t-h)"/></svg></span></a>
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="logo-said" aria-hidden="true"><i class="ld-lettres"></i><img class="ld-trait" src="assets/logo-solaweb-v2-trait-orange.png" width="1187" height="317" alt=""></span></a>
       <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
       <nav class="menu" id="menu" aria-label="Navigation principale">
         <ul>
@@ -51,28 +48,28 @@
 
   <main id="contenu">
 
-    <section class="accueil" aria-labelledby="titre-accueil">
-      <div class="accueil-fond" aria-hidden="true">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/video/accueil/accueil-ordinateur.jpg">
-          <source src="assets/video/accueil/accueil-telephone-leger.mp4" type="video/mp4" media="(max-width: 900px)">
-          <source src="assets/video/accueil/accueil-ordinateur-leger.mp4" type="video/mp4">
+    <section class="hs" aria-labelledby="titre-accueil">
+      <div class="hs-fond" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="auto" poster="assets/video/accueil/accueil-ordinateur.jpg">
+          <source src="assets/video/accueil/accueil-telephone-v2.mp4" type="video/mp4" media="(max-width: 920px)">
+          <source src="assets/video/accueil/accueil-ordinateur.mp4" type="video/mp4">
         </video>
         <script>if (matchMedia('(prefers-reduced-motion: reduce)').matches) { var v = document.currentScript.previousElementSibling; v.removeAttribute('autoplay'); v.pause(); }</script>
+        <div class="hs-voile"></div>
+        <div class="hs-logo"><div class="logo-anime"><img class="la-lettres" src="assets/logo-solaweb-v2-lettres.png" width="1187" height="317" alt=""><img class="la-trait" src="assets/logo-solaweb-v2-trait-orange.png" width="1187" height="317" alt=""><div class="la-reflet"></div></div><p>Sites web, assistants IA et automatisation</p></div>
       </div>
-      <div class="cadre accueil-grille">
-        <div class="accueil-texte">
-          <h1 id="titre-accueil"><span class="ligne"><span>Votre vitrine,</span></span> <span class="ligne"><span>on l&rsquo;illumine.</span></span></h1>
-          <p>Nous créons le site internet des artisans, commerçants et indépendants. Vous voyez la maquette avant de payer, et si elle ne vous convient pas, vous ne payez rien.</p>
-          <div class="accueil-action">
-            <a class="bouton" id="cta-maquette" href="contact.html?service=site">Demander ma maquette</a>
-            <p>Site vitrine à partir de <b>490&nbsp;€</b></p>
-          </div>
-        </div>
+      <div class="hs-texte">
+        <h1 id="titre-accueil">Votre vitrine, <span class="hs-accent">on l&rsquo;illumine</span></h1>
+        <p>Découvrez votre maquette avant de payer.</p>
+      </div>
+      <div class="hs-action">
+        <a href="contact.html?service=site">Demander ma maquette</a>
+        <p>Site vitrine à partir de <b>490&nbsp;€</b></p>
       </div>
     </section>
 
     <!-- ===== Scène 1 : le chantier (épinglée, avance avec le défilement) ===== -->
-    <section class="scene scene-chantier" data-scene="chantier" style="--h:420vh" aria-labelledby="t-chantier">
+    <section class="scene scene-chantier scene-auto" data-scene="chantier" style="--h:auto" aria-labelledby="t-chantier">
       <div class="scene-colle">
         <div class="chantier-texte">
           <h2 id="t-chantier">Vous voyez la maquette avant de payer</h2>
@@ -210,7 +207,7 @@
   <footer class="pied-site">
     <div class="conteneur pied-grille">
       <div class="pied-marque">
-        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="logo-sw" aria-hidden="true"><span class="ls-nom">Sola<span class="ls-web">Web</span></span><svg class="ls-trait" viewBox="0 0 200 14" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="ls-t-p" x1="0" x2="1"><stop offset="0" stop-color="#F6B169"/><stop offset=".6" stop-color="#E07B39"/><stop offset="1" stop-color="#E07B39" stop-opacity=".2"/></linearGradient></defs><path d="M3 9C55 3.5 135 2.5 197 5.5C135 7.2 60 9.5 6 12.2Z" fill="url(#ls-t-p)"/></svg></span></a>
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="logo-said" aria-hidden="true"><i class="ld-lettres"></i><img class="ld-trait" src="assets/logo-solaweb-v2-trait-orange.png" width="1187" height="317" alt=""></span></a>
         <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
       </div>
       <nav aria-labelledby="pied-t1">

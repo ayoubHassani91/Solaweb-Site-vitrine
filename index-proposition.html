@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SolaWeb | Sites internet pour artisans, commerçants et indépendants</title>
+  <meta name="description" content="SolaWeb crée le site internet des artisans, commerçants et indépendants. Vous voyez la maquette avant de payer, et si elle ne vous convient pas, vous ne payez rien.">
+  <meta name="robots" content="noindex, nofollow"><!-- Version de travail : à retirer avant publication -->
+  <meta name="theme-color" content="#F5F6F8">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="SolaWeb">
+  <meta property="og:title" content="SolaWeb | Votre vitrine, on l'illumine">
+  <meta property="og:description" content="Le site internet des artisans, commerçants et indépendants, avec la maquette avant tout paiement.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/solaweb.css?v=6">
+  <link rel="stylesheet" href="css/scenes.css?v=4">
+  <link rel="stylesheet" href="css/moderne.css?v=15">
+  <link rel="stylesheet" href="css/accueil-said.css?v=3">
+  <link rel="stylesheet" href="css/logo-said.css?v=2">
+  <script src="js/solaweb.js?v=9"></script>
+  <script src="js/scenes.js?v=3" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/bandeau-cookies.js?v=4" defer></script>
+</head>
+<body class="sw page-accueil">
+  
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="entete">
+    <div class="conteneur entete-interieur">
+      <a class="marque" href="index.html" aria-label="SolaWeb, page d'accueil"><span class="logo-said" aria-hidden="true"><i class="ld-lettres"></i><img class="ld-trait" src="assets/logo-solaweb-v2-trait-orange.png" width="1187" height="317" alt=""></span></a>
+      <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="menu" id="menu" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html" aria-current="page">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="menu-cta-zone"><a class="bouton" href="contact.html">Demander un devis</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <section class="hs" aria-labelledby="titre-accueil">
+      <div class="hs-fond" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="auto" poster="assets/video/accueil/accueil-ordinateur.jpg">
+          <source src="assets/video/accueil/accueil-telephone-v2.mp4" type="video/mp4" media="(max-width: 920px)">
+          <source src="assets/video/accueil/accueil-ordinateur.mp4" type="video/mp4">
+        </video>
+        <script>if (matchMedia('(prefers-reduced-motion: reduce)').matches) { var v = document.currentScript.previousElementSibling; v.removeAttribute('autoplay'); v.pause(); }</script>
+        <div class="hs-voile"></div>
+        <div class="hs-logo"><div class="logo-anime"><img class="la-lettres" src="assets/logo-solaweb-v2-lettres.png" width="1187" height="317" alt=""><img class="la-trait" src="assets/logo-solaweb-v2-trait-orange.png" width="1187" height="317" alt=""><div class="la-reflet"></div></div><p>Sites web, assistants IA et automatisation</p></div>
+      </div>
+      <div class="hs-texte">
+        <h1 id="titre-accueil">Votre vitrine, <span class="hs-accent">on l&rsquo;illumine</span></h1>
+        <p>Découvrez votre maquette avant de payer.</p>
+      </div>
+    </section>
+
+    <!-- ===== Scène 1 : le chantier (épinglée, avance avec le défilement) ===== -->
+    <section class="scene scene-chantier" data-scene="chantier" style="--h:420vh" aria-labelledby="t-chantier">
+      <div class="scene-colle">
+        <div class="chantier-texte">
+          <h2 id="t-chantier">Vous voyez la maquette avant de payer</h2>
+          <div class="legendes" aria-live="polite">
+            <div class="legende active"><b>Nous faisons connaissance</b><p>Vous nous présentez votre activité, vos clients et vos envies. Nous vous disons franchement si nous pouvons vous aider.</p></div>
+            <div class="legende"><b>Nous dessinons une première maquette</b><p>Vous n&rsquo;avez encore rien payé.</p></div>
+            <div class="legende"><b>Vous la découvrez à distance</b><p>Vous donnez votre avis et nous ajustons. Si elle vous plaît, vous réglez 50&nbsp;%. Sinon, nous nous arrêtons là et vous ne payez rien.</p></div>
+            <div class="legende"><b>Nous réalisons le reste du site</b><p>Vous découvrez la version finale, sur ordinateur et sur téléphone.</p></div>
+            <div class="legende"><b>Le site est mis en ligne</b><p>Vous réglez les 50&nbsp;% restants. Le délai est indiqué dans votre devis.</p></div>
+          </div>
+          <div class="compteur" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="chantier-legende">Exemple fictif : le site de Maison Tessaron.</p>
+        </div>
+        <div class="chantier-scene" aria-hidden="true">
+          <div class="ordi">
+            <div class="ordi-ecran">
+              <div class="ordi-adresse"><span class="pastille"></span><span id="adresse-texte">notes du premier échange</span><span class="curseur"></span></div>
+              <div class="ordi-page">
+                <svg class="filaire" viewBox="0 0 900 506" preserveAspectRatio="none">
+                  <rect class="r" x="0" y="0" width="900" height="44"/>
+                  <rect class="r" x="0" y="44" width="900" height="462"/>
+                  <path class="t" pathLength="1" d="M0 44H900"/>
+                  <path class="t" pathLength="1" d="M40 16H170M40 30H130"/>
+                  <path class="t" pathLength="1" d="M470 22H520M535 22H595M610 22H660M675 22H700M715 22H780"/>
+                  <rect class="t o" pathLength="1" x="800" y="12" width="70" height="20" rx="2"/>
+                  <path class="t" pathLength="1" d="M330 205H570M250 238H650M300 272H600M330 290H570"/>
+                  <rect class="t o" pathLength="1" x="330" y="318" width="104" height="30" rx="2"/>
+                  <rect class="t" pathLength="1" x="446" y="318" width="104" height="30" rx="2"/>
+                  <path class="t" pathLength="1" d="M120 470L420 330L560 410"/>
+                </svg>
+                <img class="reel" src="assets/demos/tessaron-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async">
+                <div class="balayage"></div>
+                <div class="notes"><span>Photo plus grande&nbsp;?</span><span>Ajouter les avis</span></div>
+              </div>
+            </div>
+            <div class="ordi-pied"></div>
+            <div class="tel-sort"><img src="assets/demos/tessaron-tel-hd.webp" width="500" height="1100" alt="" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Services : au choix, avec une démonstration ===== -->
+    <section class="scene scene-offre" data-scene="offre" style="--h:auto" aria-labelledby="t-offre">
+      <div class="scene-colle offre">
+        <div class="offre-liste">
+          <h2 id="t-offre">Nos services</h2>
+          <ol>
+            <li class="o-item actif" data-i="0"><button type="button" aria-controls="demo-0"><img src="assets/3d/site-anim.webp" data-fixe="assets/3d/site.webp" width="240" height="240" alt="" aria-hidden="true"><span class="o-nom">Site internet</span><span class="o-prix">dès 490&nbsp;€</span></button><div class="o-desc"><p>Un site rapide et lisible sur téléphone, pour que vos clients vous trouvent et vous appellent. Nous nous occupons de tout, du design à la mise en ligne.</p></div><span class="o-trait" aria-hidden="true"></span></li>
+            <li class="o-item" data-i="1"><button type="button" aria-controls="demo-1"><img src="assets/3d/bulle-anim.webp" data-fixe="assets/3d/bulle.webp" width="240" height="240" alt="" aria-hidden="true"><span class="o-nom">Assistant IA</span><span class="o-prix">sur devis</span></button><div class="o-desc"><p>Il répond aux questions de vos clients sur votre site, le soir et le week-end compris, puis vous transmet leurs demandes.</p></div><span class="o-trait" aria-hidden="true"></span></li>
+            <li class="o-item" data-i="2"><button type="button" aria-controls="demo-2"><img src="assets/3d/auto-anim.webp" data-fixe="assets/3d/auto.webp" width="240" height="240" alt="" aria-hidden="true"><span class="o-nom">Automatisation</span><span class="o-prix">sur devis</span></button><div class="o-desc"><p>Rendez-vous, réponses aux e-mails, devis&nbsp;: les tâches qui reviennent chaque semaine peuvent partir sans que vous ayez à y penser.</p></div><span class="o-trait" aria-hidden="true"></span></li>
+          </ol>
+          <a class="lien-simple" href="services.html">Le détail des services et les questions fréquentes</a>
+        </div>
+        <div class="offre-demo" aria-live="polite">
+          <div class="demo demo-site actif" id="demo-0">
+            <div class="d-ordi"><img src="assets/demos/beauty-palace-ordi-hd.webp" width="1366" height="768" alt="Exemple de site pour un institut de beauté (entreprise fictive)" loading="lazy" decoding="async"></div>
+            <div class="d-tel"><img src="assets/demos/beauty-palace-tel-hd.webp" width="500" height="1100" alt="" loading="lazy" decoding="async"></div>
+            <p class="d-legende">Exemple : Beauty Palace, entreprise fictive.</p>
+          </div>
+          <div class="demo demo-ia" id="demo-1">
+            <div class="d-chat">
+              <div class="d-chat-tete"><span></span>Assistant de L&rsquo;Atelier Vermail</div>
+              <p class="msg client">Bonsoir, vous êtes ouverts dimanche midi&nbsp;?</p>
+              <p class="msg bot">Bonsoir&nbsp;! Le restaurant est fermé le dimanche. Il est ouvert du mardi au samedi, midi et soir.</p>
+              <p class="msg client">Samedi soir alors, pour 4 personnes&nbsp;?</p>
+              <p class="msg bot">Je transmets votre demande au restaurant, qui vous confirme la réservation. Votre numéro de téléphone&nbsp;?</p>
+            </div>
+            <p class="d-legende">Exemple de conversation, restaurant fictif.</p>
+          </div>
+          <div class="demo demo-auto" id="demo-2">
+            <ol class="d-flux">
+              <li><b>Demande de devis reçue</b>par le formulaire du site, mardi 21&nbsp;h</li>
+              <li><b>Réponse envoyée au client</b>avec vos prochaines disponibilités</li>
+              <li><b>Rendez-vous ajouté</b>dans votre agenda, jeudi 9&nbsp;h</li>
+              <li><b>Rappel envoyé</b>au client la veille du rendez-vous</li>
+            </ol>
+            <p class="d-legende">Exemple de déroulé pour un artisan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Scène 3 : la promesse s'allume mot à mot ===== -->
+    <section class="scene scene-promesse" data-scene="promesse" style="--h:240vh" aria-labelledby="t-promesse">
+      <div class="scene-colle">
+        <div class="promesse">
+          <h2 id="t-promesse" class="visuellement-cache">Nos engagements</h2>
+          <p class="promesse-texte">Vous voyez la maquette avant de payer. Si elle ne vous plaît pas, vous ne payez rien.</p>
+          <ul class="promesse-faits">
+            <li><b>Paiement en deux fois</b>50&nbsp;% à la validation de la maquette, le reste avant la mise en ligne.</li>
+            <li><b>Le site vous appartient</b>Nom de domaine et hébergement à votre nom, fichiers remis une fois le site payé.</li>
+            <li><b>Pas d&rsquo;abonnement imposé</b>La maintenance est proposée sur devis. Tout est écrit dans nos <a href="conditions.html">conditions</a>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloc a-deco bloc-exemples" aria-labelledby="t-exemples">
+      <img class="deco deco-hd" src="assets/3d/deco-soleil.webp" data-fixe="assets/3d/deco-soleil-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="deco deco-bg" src="assets/3d/deco-anneau.webp" data-fixe="assets/3d/deco-anneau-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="deco deco-bd" src="assets/3d/deco-spheres.webp" data-fixe="assets/3d/deco-spheres-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="cadre">
+        <h2 id="t-exemples">Exemples de sites</h2>
+        <p class="intro">Ces sites de démonstration montrent ce que nous pouvons faire pour un artisan, un commerce ou un restaurant. Ouvrez-les sur votre téléphone&nbsp;: c&rsquo;est là que vos clients vous chercheront.</p>
+        <div class="exemples">
+          <a class="exemple" href="maison-tessaron-v2g/index.html"><div class="e-img"><img src="assets/demos/tessaron-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>Maison Tessaron</h3><p>Peinture et rénovation</p></a>
+          <a class="exemple" href="beauty-palace/index.html"><div class="e-img"><img src="assets/demos/beauty-palace-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>Beauty Palace</h3><p>Institut de beauté</p></a>
+          <a class="exemple" href="atelier-vermail/index.html"><div class="e-img"><img src="assets/demos/atelier-vermail-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>L&rsquo;Atelier Vermail</h3><p>Restaurant</p></a>
+          <a class="exemple" href="plomberie-durance/index.html"><div class="e-img"><img src="assets/demos/durance-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>Durance Plomberie</h3><p>Plomberie et chauffage</p></a>
+          <a class="exemple" href="coiffure-celeste/index.html"><div class="e-img"><img src="assets/demos/celeste-ordi.webp" width="900" height="506" alt="" loading="lazy" decoding="async"></div><h3>Atelier Céleste</h3><p>Salon de coiffure</p></a>
+        </div>
+        <p class="note">Les entreprises, adresses et avis de ces démonstrations sont fictifs. <a href="realisations.html">Toutes les réalisations</a></p>
+      </div>
+    </section>
+
+    <!-- ===== Fin de page : une demande en deux gestes ===== -->
+    <section class="fin a-deco" aria-labelledby="t-appel">
+      <img class="deco deco-hg" src="assets/3d/deco-spheres.webp" data-fixe="assets/3d/deco-spheres-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="deco deco-bd" src="assets/3d/deco-anneau.webp" data-fixe="assets/3d/deco-anneau-fixe.webp" width="280" height="280" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="cadre fin-boite">
+        <h2 id="t-appel">Parlons de votre projet</h2>
+        <p>Le devis est gratuit et ne vous engage à rien. Dites-nous ce qui vous intéresse, nous vous emmenons au formulaire.</p>
+        <form class="fin-form" action="contact.html" method="get">
+          <fieldset class="choix-fin">
+            <legend class="visuellement-cache">Ce qui vous intéresse</legend>
+            <label><input type="radio" name="service" value="site" checked><span>Un site internet</span></label>
+            <label><input type="radio" name="service" value="ia"><span>Un assistant IA</span></label>
+            <label><input type="radio" name="service" value="automatisation"><span>De l&rsquo;automatisation</span></label>
+            <label><input type="radio" name="service" value="indecis"><span>Je ne sais pas encore</span></label>
+          </fieldset>
+          <button class="bouton" type="submit">Continuer vers le formulaire</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied-site">
+    <div class="conteneur pied-grille">
+      <div class="pied-marque">
+        <a href="index.html" aria-label="SolaWeb, page d'accueil" style="display:inline-block"><span class="logo-said" aria-hidden="true"><i class="ld-lettres"></i><img class="ld-trait" src="assets/logo-solaweb-v2-trait-orange.png" width="1187" height="317" alt=""></span></a>
+        <p>Sites vitrines, assistants IA et automatisation pour les artisans, commerçants et indépendants. Votre première maquette avant tout paiement.</p>
+      </div>
+      <nav aria-labelledby="pied-t1">
+        <h2 class="pied-titre" id="pied-t1">Le site</h2>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="pied-t2">
+        <h2 class="pied-titre" id="pied-t2">Informations</h2>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+          <li><a href="conditions.html">Conditions commerciales</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="pied-titre">Contact</h2>
+        <p>Par le <a href="contact.html">formulaire de contact</a>. Nous vous répondons avec un devis écrit.</p>
+      </div>
+    </div>
+    <div class="conteneur pied-bas">
+      <p>© 2026 SolaWeb · Version de travail : contenus provisoires, non destinée à la publication.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* Partie centrale de l'accueil reprise de la « Version finale 23-11-2026 » (Souad et Saïd),
+   posée dans la page d'Ayoub. Cycle de 9 s : le grand logo, puis le titre, sur le film. */
+html body main#contenu > section.hs.hs { position: relative; display: grid; place-items: center; min-height: min(100svh, 860px); margin: 0; padding: 0 !important; overflow: hidden; background: #14213D; }
+.hs-fond, .hs-fond video, .hs-voile, .hs-logo { position: absolute; inset: 0; }
+.hs-fond video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hs-voile { background: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(20,33,61,.88) 0%, rgba(20,33,61,.62) 60%, rgba(20,33,61,.42) 100%); opacity: 0; animation: hs-deux 9s ease-in-out infinite; }
+
+/* Grand logo central */
+.hs-logo { display: grid; grid-template-columns: max-content; justify-content: center; align-content: center; gap: .5rem; padding: 0 1rem 2.5rem; text-align: center; background: radial-gradient(ellipse 55% 50% at 50% 47%, rgba(20,33,61,.82) 0%, rgba(20,33,61,.5) 65%, rgba(20,33,61,.32) 100%); animation: hs-un 9s ease-in-out infinite; }
+.hs-logo .logo-anime { display: grid; width: min(28rem, 82vw); justify-self: center; filter: drop-shadow(0 3px 14px rgba(0,0,0,.45)); }
+.hs-logo .logo-anime > * { grid-area: 1 / 1; width: 100%; height: auto; display: block; }
+html body .hs .hs-logo p { margin: 0; max-width: none; white-space: nowrap; color: #F5F0E4; font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif; font-size: clamp(.8rem, 1.52vw, 1.28rem); font-weight: 500; line-height: 1.6; letter-spacing: .03em; text-shadow: 0 2px 12px rgba(0,0,0,.55); }
+.logo-anime .la-lettres { -webkit-mask-image: linear-gradient(90deg, #000 40%, transparent 60%); mask-image: linear-gradient(90deg, #000 40%, transparent 60%); -webkit-mask-size: 260% 100%; mask-size: 260% 100%; -webkit-mask-position: 0 0; mask-position: 0 0; animation: la-lettres-cycle 9s infinite; }
+.logo-anime .la-trait { transform-origin: 49.5% 50%; animation: la-trait-cycle 9s infinite; }
+.logo-anime .la-reflet { background: linear-gradient(105deg, transparent 42%, rgba(255,248,232,.95) 50%, transparent 58%) no-repeat; background-size: 300% 100%; background-position: 100% 0; -webkit-mask: var(--logo-forme) 0 0 / 100% 100% no-repeat; mask: var(--logo-forme) 0 0 / 100% 100% no-repeat; opacity: 0; animation: la-reflet-cycle 9s infinite; }
+
+/* Titre central */
+.hs-texte { position: relative; z-index: 2; max-width: 46rem; padding: 0 1.25rem; text-align: center; opacity: 0; animation: hs-deux 9s ease-in-out infinite; }
+html body .hs .hs-texte h1 { margin: 0 0 .5em; color: #FBF7F1; font-family: "Segoe UI Variable Display", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, Arial, sans-serif !important; font-size: clamp(2.1rem, 3.7vw, 3.5rem) !important; font-weight: 700 !important; line-height: 1.1 !important; letter-spacing: -.015em !important; }
+html body .hs .hs-texte h1 * { font-family: inherit !important; font-weight: inherit !important; letter-spacing: inherit !important; }
+.hs-texte h1 .hs-accent { display: block; }
+.hs-texte h1 .hs-accent::after { content: ""; display: block; width: 5.5em; max-width: 78%; height: .2em; margin: .12em auto 0; opacity: .85; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 14' preserveAspectRatio='none'%3E%3Cpath d='M3 10C60 3 170 2 297 6' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+html body .hs .hs-texte p { margin: .6rem 0 0; color: #FBF7F1; font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif; font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: 700; line-height: 1.6; }
+
+@keyframes hs-un { 0%, 33% { opacity: 1; } 41%, 91% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes hs-deux { 0%, 33% { opacity: 0; } 41%, 91% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes la-lettres-cycle {
+  0%, 2% { -webkit-mask-position: 100% 0; mask-position: 100% 0; opacity: .3; animation-timing-function: cubic-bezier(.4,0,.2,1); }
+  15%, 86% { -webkit-mask-position: 0 0; mask-position: 0 0; opacity: 1; }
+  88%, 100% { -webkit-mask-position: 100% 0; mask-position: 100% 0; opacity: .3; }
+}
+@keyframes la-trait-cycle {
+  0%, 12% { transform: scaleX(0); opacity: 0; animation-timing-function: cubic-bezier(.22,1,.36,1); }
+  21%, 86% { transform: scaleX(1); opacity: 1; }
+  88%, 100% { transform: scaleX(0); opacity: 0; }
+}
+@keyframes la-reflet-cycle {
+  0%, 21% { background-position: 100% 0; opacity: 0; animation-timing-function: ease-in-out; }
+  22%, 31% { opacity: 1; }
+  32%, 100% { background-position: 0 0; opacity: 0; }
+}
+
+/* Bouton et prix (demande du 25.11.2026) : visibles dès l'arrivée et pendant tout le cycle */
+.hs-action { position: absolute; z-index: 3; left: 0; right: 0; bottom: clamp(7.5rem, 15%, 10rem); display: flex; flex-flow: row wrap; justify-content: center; align-items: center; gap: .5rem .8rem; padding: 0 1.25rem; text-align: center; }
+html body .hs .hs-action a { display: inline-flex; align-items: center; justify-content: center; min-height: 3.1rem; padding: .7rem 1.9rem; border-radius: 999px; background: #F3EEE4; color: #14213D; font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif; font-size: 1rem; font-weight: 700; text-decoration: none; box-shadow: 0 12px 30px -12px rgba(0,0,0,.55); transition: background-color .2s; }
+html body .hs .hs-action a:hover { background: #fff; }
+.hs-action a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+html body .hs .hs-action p { margin: 0; color: #F5F0E4; font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif; font-size: .95rem; text-shadow: 0 2px 10px rgba(0,0,0,.65); }
+
+/* téléphone : remonté pour ne pas passer sous le bandeau cookies */
+@media (max-width: 920px) { .hs-action { bottom: clamp(8.5rem, 20svh, 11rem); } }
+@media (max-width: 920px) { html body .hs .hs-logo p { white-space: normal; font-size: 1rem; } }
+/* Animations réduites : le titre reste affiché, sans logo ni mouvement */
+@media (prefers-reduced-motion: reduce) {
+  .hs-logo { display: none; }
+  .hs-voile, .hs-texte { animation: none; opacity: 1; }
+}

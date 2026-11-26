@@ -151,8 +151,22 @@
 
     var MAJ = { chantier: function (p) { chantierMaj(p); }, offre: offreMaj, promesse: promesseMaj };
 
+    // --- le chantier se joue tout seul, en boucle, quand il est visible ---
+    var chantierVu = false, chantierT = 0, dernier = null;
+    var BOUCLE = 11900, ANIM = 10150;
+    if (chantier && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { chantierVu = es[0].isIntersecting; }, { threshold: .3 }).observe(chantier);
+    } else if (chantier) { chantierVu = true; }
+
     function image() {
+      var maintenant = performance.now();
+      if (chantier) {
+        if (chantierVu && !document.hidden && dernier !== null) chantierT = (chantierT + (maintenant - dernier)) % BOUCLE;
+        dernier = maintenant;
+        chantierMaj(Math.min(1, chantierT / ANIM));
+      }
       scenes.forEach(function (s) {
+        if (s.type === 'chantier') return;
         s.cible = progression(s);
         var ecart = s.cible - s.cur;
         if (Math.abs(ecart) < .0005 && s.pose) return;

@@ -275,3 +275,7 @@ html body .scene-couchant .bouton, html body .panneau-fin .bouton { --b-soleil: 
   .scene-offre .scene-colle { position: static; height: auto; padding: 5rem 0; }
   .msg, .d-flux li { opacity: 1; transform: none; animation: none !important; }
 }
+
+/* chantier : se joue tout seul, sans épinglage (26.11.2026) */
+.scene-chantier.scene-auto { height: auto !important; }
+.scene-chantier.scene-auto .scene-colle { position: relative; height: auto; min-height: min(100svh, 820px); padding-block: clamp(4.5rem, 9vw, 7rem); }
